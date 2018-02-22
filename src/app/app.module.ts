@@ -17,13 +17,14 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/modal.component';
+
  
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        routing
+        routing,
     ],
     declarations: [
         AppComponent,
