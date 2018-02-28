@@ -1,12 +1,13 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-modal',
   templateUrl: 'modal.component.html',
   styleUrls: ['./modal.component.css']
-})
+})  
 export class ModalComponent {
 
   modalRef: BsModalRef;

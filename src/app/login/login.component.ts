@@ -4,8 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
  
 @Component({
+    selector: 'app-login',
     moduleId: module.id,
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styles: ['head { background-color: green; }'] // Ei vaihda vielä edes taustaväriä perkele.
+    //styleUrls: ['./login.component.css']
 })
  
 export class LoginComponent implements OnInit {

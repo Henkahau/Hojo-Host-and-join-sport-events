@@ -14,11 +14,12 @@ import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index';
+import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
 import { ModalModule } from 'ngx-bootstrap/modal';
- 
+
+
 @NgModule({
     imports: [
         BrowserModule,
