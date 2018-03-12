@@ -1,8 +1,29 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
- 
-<ng-template #template> 
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+<button type="button" class="btn btn-primary" (click)="openModal(login)">
+  Create template modal
+</button>
+
+
+<ng-template #login>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
   <app-login></app-login>
+
+  <div class="form-group">
+      <button class="btn btn-primary" (click)="modalRef.hide()">
+          LOGIN
+      </button>
+      <button class="btn btn-primary" (click)="modalRef.hide(); openModal(register)">
+          REGISTER
+      </button>
+  </div>
+</ng-template>
+
+<ng-template #register>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <app-register></app-register>
+
+  <a class="btn btn-link" (click)="modalRef.hide()">Cancel</a>
 </ng-template>

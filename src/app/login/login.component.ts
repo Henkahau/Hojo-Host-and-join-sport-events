@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
  
 import { AlertService, AuthenticationService } from '../_services/index';
  
 @Component({
-    selector: 'app-login',
+    selector: "app-login",
     moduleId: module.id,
     templateUrl: 'login.component.html',
     styles: ['head { background-color: green; }'] // Ei vaihda vielä edes taustaväriä perkele.
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
         this.authenticationService.logout();
  
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        // Koska testauksessa pääsivu on modalwindow vaihdetaan '/' '/home' :ksi
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     }
  
     login() {
