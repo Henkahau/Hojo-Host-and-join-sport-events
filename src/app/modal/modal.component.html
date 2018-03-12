@@ -10,12 +10,11 @@
   <app-login></app-login>
 
   <div class="form-group">
-      <button class="btn btn-primary" *ngIf="!loginActive" (click)="modalRef.hide(); openModal(register)">
-          REGISTER
-      </button>
-      <button class="btn btn-primary" *ngIf="!loginActive" (click)="modalRef.hide()">
-        
+      <button class="btn btn-primary" (click)="modalRef.hide()">
           LOGIN
+      </button>
+      <button class="btn btn-primary" (click)="modalRef.hide(); openModal(register)">
+          REGISTER
       </button>
   </div>
 </ng-template>
@@ -26,5 +25,5 @@
   </button>
   <app-register></app-register>
 
-  <a class="btn btn-link" *ngIf="!loginActive" (click)="modalRef.hide()">Cancel</a>
+  <a class="btn btn-link" (click)="modalRef.hide()">Cancel</a>
 </ng-template>

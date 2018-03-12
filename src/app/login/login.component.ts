@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
-    @Output() loginActive = true;
  
     constructor(
         private route: ActivatedRoute,
@@ -26,7 +25,8 @@ export class LoginComponent implements OnInit {
         this.authenticationService.logout();
  
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        // Koska testauksessa pääsivu on modalwindow vaihdetaan '/' '/home' :ksi
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     }
  
     login() {
