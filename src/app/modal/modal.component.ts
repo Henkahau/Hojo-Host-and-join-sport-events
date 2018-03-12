@@ -9,6 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class ModalComponent {
 
+  x: string;
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService) {}
   

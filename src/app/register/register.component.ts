@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertService, UserService } from '../_services/index';
  
 @Component({
+    selector: 'app-register',
     moduleId: module.id,
     templateUrl: 'register.component.html'
 })
@@ -23,8 +24,10 @@ export class RegisterComponent {
             .subscribe(
                 data => {
                     // set success message and pass true paramater to persist the message after redirecting to the login page
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.alertService.success('Registration successful', false);
+                    // Ei käytetä routeria ainakaan vielä:
+                    // this.router.navigate(['/login']);
+
                 },
                 error => {
                     this.alertService.error(error);
