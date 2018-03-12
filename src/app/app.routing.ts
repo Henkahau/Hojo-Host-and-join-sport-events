@@ -4,11 +4,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
-<<<<<<< HEAD
-
-=======
 import { ModalComponent } from './modal/index';
->>>>>>> master
  
 const appRoutes: Routes = [
     { path: '' ,component: ModalComponent },

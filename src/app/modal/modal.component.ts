@@ -10,6 +10,7 @@ import { LoginComponent } from '../login/login.component';
 })  
 export class ModalComponent {
 
+  x: string;
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService) {}
   
