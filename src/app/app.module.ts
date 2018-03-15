@@ -17,9 +17,10 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
-import { ModalModule } from 'ngx-bootstrap/mod;
-import { Create } from './create.event/create.event.compone;
-import { CreateEventComponent } from './create-event/create-event.component'nt'al';
+import { ModalModule } from 'ngx-bootstrap/modal';
+// import { Create } from './create.event/create.event.component';
+// import { CreateEventComponent } from './create-event/create-event.component';
+import { EventViewComponent } from './event/event-view/event-view.component';
 
 
 @NgModule({
@@ -36,9 +37,10 @@ import { CreateEventComponent } from './create-event/create-event.component'nt'a
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ModalCompon,
-        Create.EventComponent,
-        CreateEventComponentent
+        ModalComponent,
+        // Create.EventComponent,
+        // CreateEventComponent,
+        EventViewComponent
     ],
     providers: [
         AuthGuard,

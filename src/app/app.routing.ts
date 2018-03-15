@@ -5,12 +5,14 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
 import { ModalComponent } from './modal/index';
+import { EventViewComponent } from './event/event-view/index';
  
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },
     { path: '' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'event-view', component: EventViewComponent },
  
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
