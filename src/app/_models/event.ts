@@ -10,7 +10,7 @@ export class Event{
     playType: PlayType;
 }
 
-enum SportType{
+export enum SportType{
     Football,
     Climbing,
     Golf,
