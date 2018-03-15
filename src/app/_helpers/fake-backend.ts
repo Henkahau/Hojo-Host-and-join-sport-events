@@ -24,7 +24,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/api/authenticate') && request.method === 'POST') {
                 // find if any user matches login credentials
                 let filteredUsers = users.filter(user => {
-                    return user.username === request.body.username && user.password === request.body.password;
+                    return user.email === request.body.email && user.password === request.body.password;
                 });
  
                 if (filteredUsers.length) {
@@ -32,7 +32,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     let user = filteredUsers[0];
                     let body = {
                         id: user.id,
-                        username: user.username,
+                        email: user.email,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         token: 'fake-jwt-token'
@@ -41,7 +41,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200, body: body }));
                 } else {
                     // else return 400 bad request
-                    return Observable.throw('Username or password is incorrect');
+                    return Observable.throw('email or password is incorrect');
                 }
             }
  
@@ -79,9 +79,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let newUser = request.body;
  
                 // validation
-                let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
+                let duplicateUser = users.filter(user => { return user.email === newUser.email; }).length;
                 if (duplicateUser) {
-                    return Observable.throw('Username "' + newUser.username + '" is already taken');
+                    return Observable.throw('email "' + newUser.email + '" is already taken');
                 }
  
                 // save new user

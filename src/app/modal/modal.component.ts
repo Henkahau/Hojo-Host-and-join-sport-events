@@ -7,7 +7,7 @@ import { LoginComponent } from '../login';
   selector: 'app-modal',
   templateUrl: 'modal.component.html',
   styleUrls: ['./modal.component.css']
-})
+})  
 export class ModalComponent {
 
   modalRef: BsModalRef;

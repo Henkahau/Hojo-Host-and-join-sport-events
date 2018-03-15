@@ -7,8 +7,8 @@ import { AuthGuard } from './_guards/index';
 import { ModalComponent } from './modal/index';
  
 const appRoutes: Routes = [
-    { path: '' ,component: ModalComponent },
-    { path: 'home' ,component: HomeComponent, canActivate: [AuthGuard] },
+    //{ path: '' ,component: ModalComponent },
+    { path: '' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
  
