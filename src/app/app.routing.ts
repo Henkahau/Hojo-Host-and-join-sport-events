@@ -7,6 +7,7 @@ import { AuthGuard } from './_guards/index';
 import { ModalComponent } from './modal/index';
 import { EventViewComponent } from './event/event-view/index';
 import { CreateEventComponent } from './event/index'
+import { MapComponent } from './map/index';
  
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },

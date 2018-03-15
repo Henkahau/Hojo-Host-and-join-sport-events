@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
  
 // used to create fake backend
@@ -21,6 +21,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 // import { Create } from './create.event/create.event.component';
 // import { CreateEventComponent } from './create-event/create-event.component';
 import { EventViewComponent } from './event/event-view/event-view.component';
+import { ProfileComponent } from './profile/profile.component'
+import { ModalModule } from 'ngx-bootstrap';
+import { MapComponent } from './map';
+import { AgmCoreModule } from '@agm/core';
+import { SearchfieldComponent } from './searchfield/searchfield.component';
+import { HeaderComponent } from './header/header.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+
 
 
 @NgModule({
@@ -28,8 +36,14 @@ import { EventViewComponent } from './event/event-view/event-view.component';
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        ReactiveFormsModule,
         routing,
-        ModalModule.forRoot()
+       ModalModule.forRoot(),
+       AgmCoreModule.forRoot( {
+        apiKey: 'AIzaSyCxTAeTahMYWk1U-r4DTUlTNnojLL0g4MU', 
+        libraries: ["places"]
+      }
+    )
     ],
     declarations: [
         AppComponent,
@@ -37,10 +51,15 @@ import { EventViewComponent } from './event/event-view/event-view.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        EventViewComponent
         ModalComponent,
+        MapComponent,
+        ProfileComponent,
+        SearchfieldComponent,
+        HeaderComponent,
+        SearchboxComponent
         // Create.EventComponent,
         // CreateEventComponent,
-        EventViewComponent
     ],
     providers: [
         AuthGuard,
