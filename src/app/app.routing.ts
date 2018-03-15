@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
 import { ModalComponent } from './modal/index';
 import { EventViewComponent } from './event/event-view/index';
+import { CreateEventComponent } from './event/index'
  
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'event-view', component: EventViewComponent },
  
+    { path: 'createEvent', component:CreateEventComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
