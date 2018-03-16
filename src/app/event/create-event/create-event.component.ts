@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event, SportType } from '../../_models/index';
+import { Event, SportType, SkillLevel, PlayType } from '../../_models/index';
 import { EventService, AlertService } from '../../_services/index';
 
 @Component({
@@ -14,6 +14,8 @@ export class CreateEventComponent implements OnInit {
   model: any = {};
   loading = false;
   sportValues = Object.values(SportType);
+  skillValues = Object.values(SkillLevel);
+  playTypeValues: PlayType[] = [PlayType.CASUAL, PlayType.COMPETETIVE];
   
   constructor(
       private router: Router,

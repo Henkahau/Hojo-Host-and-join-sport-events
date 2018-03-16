@@ -112,12 +112,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let newEvent = request.body;
  
                 // validation
-                let duplicateEvent = events.filter(event => { return event.title === newEvent.title; }).length;
+               /*  let duplicateEvent = events.filter(event => { return event.title === newEvent.title; }).length;
                 if (duplicateEvent) {
                     return Observable.throw('email "' + newEvent.title + '" is already taken');
-                }
+                } */
  
-                // save new user
+                // save new event
                 newEvent.id = events.length + 1;
                 events.push(newEvent);
                 localStorage.setItem('events', JSON.stringify(events));
