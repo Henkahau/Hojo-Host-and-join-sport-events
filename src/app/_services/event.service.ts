@@ -28,4 +28,8 @@ export class EventService {
     return this.http.get<Event[]>('/api/events');
   }
 
+  joinEvent(){
+    // FFFFFFFFUUUUUUUUUUUUUUUUUUUUUUU
+  }
+
 }
