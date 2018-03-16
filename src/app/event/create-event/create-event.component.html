@@ -1,7 +1,7 @@
-<div "col-md-6 col-md-offset-3">
+<div class="col-md-6 col-md-offset-3">
   <h2>Create new event</h2>
-<!--
-  <from name="form" (ngSubmit)="f.form.valid && createEvent()" #f="ngForm" novalidate>
+
+  <form name="form" (ngSubmit)="f.form.valid && createEvent()" #f="ngForm" novalidate>
 
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid }">
       <label for="title">Title</label>
@@ -11,10 +11,22 @@
 
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid }">
       <label for="sportType">Sport</label>
-      <select>
-
+      <select class="form-control" name="sportType" [(ngModel)]="model.sportType" #sportType="ngModel">
+        <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
       </select>
     </div>
 
-  </from>-->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid}">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" name="location" [(ngModel)]="model.location" #location="ngModel" required />
+      <div *ngIf="f.submitted && !location.valid" class="help-blog">Location is required</div>
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Create</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+
+  </form> 
 </div>
