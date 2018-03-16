@@ -4,8 +4,11 @@
         <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
           <h3>Activity </h3>
           <div>
-            <select>
-              <option *ngFor="let sport of sports">{{sport}}</option>
+            <select  [(ngModel)]= "activitySelected" (ngModelChange)='onActivitySelected($event)'>
+              <option *ngFor="let sport of activity"[value]="sport.id">
+
+                {{sport.sport}}
+              </option>
             </select>
            </div> 
         </div>
