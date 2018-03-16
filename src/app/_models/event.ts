@@ -1,10 +1,14 @@
+import { Time } from "@angular/common";
+
 export class Event{
     id: number;
     title: string;
     sportType: SportType;
     location: string;
     date: Date;
+    time: Time;
     skillLevel: SkillLevel;
+    minAttendees: number;
     maxAttendees: number;
     description: string;
     playType: PlayType;
@@ -22,15 +26,15 @@ export enum SportType{
     TENNIS = 'Tennis'
 }
 
-enum SkillLevel{
-    beginner,
-    average,
-    advanced,
-    pro
+export enum SkillLevel{
+    BEGINNER = 'Beginner',
+    AVERAGE = 'Average',
+    ADVANCED = 'Advanced',
+    PRO = 'Pro'
 }
 
-enum PlayType{
-    Casual,
-    Competetive
+export enum PlayType{
+    CASUAL = 'Casual',
+    COMPETETIVE = 'Competetive'
 }
 
