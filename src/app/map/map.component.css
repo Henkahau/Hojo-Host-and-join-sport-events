@@ -1,13 +1,7 @@
 agm-map {
-    height: 300px;
-    width: 600px;
-    right: 50%;
- }
- .col{
-    border: 0;
-    padding: 10em;
-    width: 80%;
-    margin-bottom: 2em;
+    height: 250px;
+    width: 500px;
+    /* right: 50%; */
  }
  .div2{
     position: relative;
@@ -22,9 +16,4 @@ agm-map {
     height: 200px;
     top: 9px;
     left: 200px;
- }
- .korjataankoko{
-    width: 200px;
-    align-self: center;
-    top: 100px
  }

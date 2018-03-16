@@ -17,9 +17,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
-import { ModalModule } from 'ngx-bootstrap/modal';
-// import { Create } from './create.event/create.event.component';
-// import { CreateEventComponent } from './create-event/create-event.component';
+import { CreateEventComponent } from './event/index';
 import { EventViewComponent } from './event/event-view/event-view.component';
 import { ProfileComponent } from './profile/profile.component'
 import { ModalModule } from 'ngx-bootstrap';
@@ -51,15 +49,14 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        EventViewComponent
+        EventViewComponent,
         ModalComponent,
         MapComponent,
         ProfileComponent,
         SearchfieldComponent,
         HeaderComponent,
-        SearchboxComponent
-        // Create.EventComponent,
-        // CreateEventComponent,
+        SearchboxComponent,
+        CreateEventComponent,
     ],
     providers: [
         AuthGuard,

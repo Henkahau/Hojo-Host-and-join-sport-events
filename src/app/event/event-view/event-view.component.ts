@@ -5,7 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './event-view.component.html',
   styleUrls: ['./event-view.component.css']
 })
-export class EventViewComponent implements OnInit {
+export class EventViewComponent implements OnInit 
+{
+  ifSignedIn = true;  
 
   constructor() { }
 
