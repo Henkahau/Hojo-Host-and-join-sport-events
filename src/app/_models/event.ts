@@ -1,5 +1,5 @@
 export class Event{
-    eventId: number;
+    id: number;
     title: string;
     sportType: SportType;
     location: string;
@@ -10,16 +10,16 @@ export class Event{
     playType: PlayType;
 }
 
-enum SportType{
-    Football,
-    Climbing,
-    Golf,
-    Fishing,
-    Basketball,
-    Badminton,
-    Chess,
-    Icehockey,
-    Tennis
+export enum SportType{
+    FOOTBALL = 'Football',
+    CLIMBING = 'Climbing',
+    GOLF = 'Golf',
+    FISHING = 'Fishing',
+    BASKETBALL = 'Basketball',
+    BADMINTON = 'Badminton',
+    CHESS = 'Chess',
+    ICEHOCKEY = 'Icehockey',
+    TENNIS = 'Tennis'
 }
 
 enum SkillLevel{
@@ -33,3 +33,4 @@ enum PlayType{
     Casual,
     Competetive
 }
+

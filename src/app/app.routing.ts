@@ -11,8 +11,8 @@ import { MapComponent } from './map/index';
  
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },
-    // { path: '' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: '', component: MapComponent },
+    { path: 'home' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'event-view', component: EventViewComponent },

@@ -12,7 +12,7 @@ import { routing } from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, EventService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
 import { RegisterComponent } from './register/index';
@@ -63,6 +63,12 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
         AlertService,
         AuthenticationService,
         UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        },
+        EventService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,

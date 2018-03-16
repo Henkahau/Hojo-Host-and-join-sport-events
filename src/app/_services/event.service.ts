@@ -13,7 +13,7 @@ export class EventService {
   }
 
   updateEvent(event: Event){
-    return this.http.put('/api/events' + event.eventId, event);
+    return this.http.put('/api/events' + event.id, event);
   }
 
   deleteEvent(id: number){
