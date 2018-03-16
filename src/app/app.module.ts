@@ -38,6 +38,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
         routing,
        ModalModule.forRoot(),
        AgmCoreModule.forRoot( {
+        apiKey: 'AIzaSyCxTAeTahMYWk1U-r4DTUlTNnojLL0g4MU',
         libraries: ["places"]
       }
     )
