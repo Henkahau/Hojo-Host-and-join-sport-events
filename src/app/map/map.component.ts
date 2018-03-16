@@ -104,8 +104,7 @@ markers =[ {
 
  onChoseLocation(event) {
    this.latitude = event.coords.lat;
-   this.longitude = event.coords.lng;
-   
+   this.longitude = event.coords.lng; 
  }
  receiveMessage($event) {
   this.message = $event

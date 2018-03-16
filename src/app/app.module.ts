@@ -12,11 +12,13 @@ import { routing } from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, EventService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
+import { CreateEventComponent } from './event/index';
+import { EventViewComponent } from './event/event-view/event-view.component';
 import { ProfileComponent } from './profile/profile.component'
 import { ModalModule } from 'ngx-bootstrap';
 import { MapComponent } from './map';
@@ -47,18 +49,26 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        EventViewComponent,
         ModalComponent,
         MapComponent,
         ProfileComponent,
         SearchfieldComponent,
         HeaderComponent,
-        SearchboxComponent
+        SearchboxComponent,
+        CreateEventComponent,
     ],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        },
+        EventService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,

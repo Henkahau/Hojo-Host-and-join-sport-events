@@ -26,7 +26,7 @@ export class RegisterComponent {
                     // set success message and pass true paramater to persist the message after redirecting to the login page
                     this.alertService.success('Registration successful', false);
                     // Ei käytetä routeria ainakaan vielä:
-                    // this.router.navigate(['/login']);
+                     this.router.navigate(['/login']);
 
                 },
                 error => {
