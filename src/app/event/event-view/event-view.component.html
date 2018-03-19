@@ -25,30 +25,40 @@
 
   <div class="col-lg-5">
     <h2>MAP</h2>
-    <app-map></app-map>
+    <app-map zoom=11></app-map>
     <h2>EVENT INFO</h2>
-    <textarea cols="60" rows="5">
+    <textarea cols="65" rows="5">
       SPORT: 
       ATTENDEES:
-      ADDRESS 
-      SKILL LEVEL
+      ADDRESS:
+      SKILL LEVEL:
     </textarea>
   </div>
 
   <div class="col-lg-3">
     <h2>DESCRIPTION TEXT BOX</h2>
     <textarea cols="30" rows="18">
-      DESCRIPTION
+      DESCRIPTION OR
+      EXTRA INFO
     </textarea>
     <div class="row">
       <button class="btn btn-primary" 
-      style="position: relative; left: 15px;">Cancel</button>
+      style="position: relative; left: 15px;"
+      (click)="close()">Close</button>
 
       <button class="btn btn-primary" 
-      style="padding-right: 15px;">Join</button>
+      style="padding-right: 15px;"
+      *ngIf="signedIn; else leaveEvent"
+      (click)="joinEvent()">Join</button>
+      <ng-template #leaveEvent>
+        <button class="btn btn-primary" 
+        style="padding-right: 15px;"
+        (click)="joinEvent()">Leave</button>
+      </ng-template>
 
-      <button class="btn btn-primary" [hidden]="!ifSignedIn" 
-      style="position: relative; left: 15px;">Delete</button>
+      <button class="btn btn-primary" [hidden]="!signedIn" 
+      style="position: relative; left: 15px;"
+      (click)="deleteEvent()">Delete</button>
     </div>
     
   </div>
