@@ -2,7 +2,7 @@ import { Component, OnInit,ElementRef, NgZone,ViewChild } from '@angular/core';
 import { FormControl,ReactiveFormsModule } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -51,7 +51,8 @@ markers =[ {
 
  constructor(
    private mapsAPILoader: MapsAPILoader,
-   private ngZone: NgZone
+   private ngZone: NgZone,
+   private router: Router
  ) {}
 
   ngOnInit() {
@@ -122,5 +123,12 @@ markers =[ {
 
  
 }
+onMarkerClick(event) {
+  if(this.message == 1) {
+  this.router.navigate(['/event-view']);
+
+  }
+
+ }
 }
 
