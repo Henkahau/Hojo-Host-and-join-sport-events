@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event, SportType, SkillLevel, PlayType } from '../../_models/index';
+import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
 import { EventService, AlertService } from '../../_services/index';
 
 @Component({
@@ -16,24 +16,32 @@ export class CreateEventComponent implements OnInit {
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
   playTypeValues: PlayType[] = [PlayType.CASUAL, PlayType.COMPETETIVE];
+  currentUser: User;
   
   constructor(
       private router: Router,
       private eventService: EventService,
-      private alertService: AlertService) {}
+      private alertService: AlertService) 
+      {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      }
 
   ngOnInit() {
   }
  
   createEvent(){
     this.loading = true;
+    console.log('!!!');
+
+    console.log(this.currentUser);
+    console.log(this.model.host);
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
             this.alertService.success('Event created succesfull')
             //navigate to main page..
-            this.router.navigate(['/']);
+            //this.router.navigate(['/']);
           },
           error => {
             this.alertService.error(error);

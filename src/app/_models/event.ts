@@ -1,6 +1,8 @@
 import { Time } from "@angular/common";
+import { User } from "./index";
 
 export class Event{
+    host: User;
     id: number;
     title: string;
     sportType: SportType;
