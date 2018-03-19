@@ -19,7 +19,6 @@ export class CreateEventComponent implements OnInit {
   skillValues = Object.values(SkillLevel);
   playTypeValues: PlayType[] = [PlayType.CASUAL, PlayType.COMPETETIVE];
   currentUser: User;
-  uuidv4 = require('uuid/v4');
   
   constructor(
       private router: Router,
@@ -29,7 +28,6 @@ export class CreateEventComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.uuidv4());
   }
  
   createEvent(){
