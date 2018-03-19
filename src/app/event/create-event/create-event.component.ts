@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event, SportType, SkillLevel, PlayType } from '../../_models/index';
+import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
 import { EventService, AlertService } from '../../_services/index';
 import { NgModel } from '@angular/forms';
 
@@ -29,7 +29,6 @@ export class CreateEventComponent implements OnInit {
       }
 
   ngOnInit() {
-    console.log(this.uuidv4());
   }
  
   createEvent(){
@@ -40,7 +39,7 @@ export class CreateEventComponent implements OnInit {
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
             this.alertService.success('Event created succesfull')
             //navigate to main page..
-            //this.router.navigate(['/']);
+            this.router.navigate(['/']);
           },
           error => {
             this.alertService.error(error);
