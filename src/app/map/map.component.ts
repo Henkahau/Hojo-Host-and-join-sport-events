@@ -4,6 +4,7 @@ import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class MapComponent implements OnInit {
 markers =[ {
   longitude:25.6,
   latitude: 65.5,
-  tag: 1
+  tag: 1,
+  
   
   
 },
@@ -54,7 +56,9 @@ markers =[ {
 
  constructor(
    private mapsAPILoader: MapsAPILoader,
-   private ngZone: NgZone
+   private ngZone: NgZone,
+   private router: Router,
+   private route: ActivatedRoute
   
  ) {}
 
@@ -112,19 +116,36 @@ markers =[ {
  }
  receiveMessage($event) {
   this.message = $event
-  if(this.message == 3) {
+  // if(this.message == 3) {
    
     
     
     
-  }
-  if(this.message == 1) {
+  // }
+  // if(this.message == 1) {
     
     
     
-  }
+  // }
 
  
+}
+onMapClick(event)
+{
+ if(this.message == 1) {
+
+  console.log('jeejee')
+  this.router.navigate(['/event-view']);
+
+
+ }
+ if(this.message == 2){
+   console.log('no voi vittu')
+ }
+ 
+
+
+  //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
 }
 
 }
