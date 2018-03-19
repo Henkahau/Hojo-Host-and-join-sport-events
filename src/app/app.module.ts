@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
  
 // used to create fake backend
@@ -14,11 +14,19 @@ import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService, EventService } from './_services/index';
 import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
+import { LoginComponent } from './login/index'; 
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { CreateEventComponent } from './event/index';
+import { EventViewComponent } from './event/event-view/event-view.component';
+import { ProfileComponent } from './profile/profile.component'
+import { ModalModule } from 'ngx-bootstrap';
+import { MapComponent } from './map';
+import { AgmCoreModule } from '@agm/core';
+import { SearchfieldComponent } from './searchfield/searchfield.component';
+import { HeaderComponent } from './header/header.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
+
 
 
 @NgModule({
@@ -26,8 +34,14 @@ import { CreateEventComponent } from './event/index';
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        ReactiveFormsModule,
         routing,
-        ModalModule.forRoot()
+       ModalModule.forRoot(),
+       AgmCoreModule.forRoot( {
+        apiKey: 'YOUR_API_KEY',
+        libraries: ["places"]
+      }
+    )
     ],
     declarations: [
         AppComponent,
@@ -35,8 +49,14 @@ import { CreateEventComponent } from './event/index';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        EventViewComponent,
         ModalComponent,
-        CreateEventComponent
+        MapComponent,
+        ProfileComponent,
+        SearchfieldComponent,
+        HeaderComponent,
+        SearchboxComponent,
+        CreateEventComponent,
     ],
     providers: [
         AuthGuard,

@@ -1,0 +1,38 @@
+<!-- <div class="container">
+  <app-header></app-header>
+  <app-profile></app-profile> -->
+  <!-- <app-searchfield></app-searchfield> -->
+
+  <!-- <app-searchfield (messageEvent)="receiveMessage($event)"></app-searchfield> -->
+<!-- {{message}}
+
+</div> -->
+
+
+
+<!-- <div class="div2">
+  <div class="container">
+
+    <div class="container">
+      <div class="korjataankoko">
+        <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+          #search [formControl]="searchControl">
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="div3"> -->
+  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+    <agm-marker style="color:blue;" [latitude]="latitude" [longitude]="longitude"></agm-marker>
+<div >
+    <div *ngFor="let marker of markers" >
+      <div *ngIf="marker.tag == message">
+        <agm-marker [latitude]= marker.latitude [longitude]= marker.longitude></agm-marker>
+      </div>
+    </div>
+  </div>
+
+
+
+  </agm-map>
+<!-- </div> -->
