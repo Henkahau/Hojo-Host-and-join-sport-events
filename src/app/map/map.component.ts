@@ -14,24 +14,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MapComponent implements OnInit {
 
- 
-  // latitude =65.0121;
-  // longitude =25.4651;
-  // locationChosen = false;
 markers =[ {
   longitude:25.6,
   latitude: 65.5,
-  tag: 1,
-  
-  
-  
+  tag: 1
 },
 {
 
   longitude:24.9384,
   latitude: 60.1699,
   tag: 1
-
 },
 {
   longitude:23.45,
