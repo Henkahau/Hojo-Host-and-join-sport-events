@@ -1,3 +1,6 @@
+At this point project doesn't have necessary functionalities. To access login/register view navigate to localhost:4200/login after setting up project using ng serve. After making an account and logging in you are able to browse through existing views.
+
+
 # Userlogin
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
