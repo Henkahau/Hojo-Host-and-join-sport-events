@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Event, User, SportType, SkillLevel, PlayType } from '../../_models/index';
 import { EventService, AlertService } from '../../_services/index';
 import { NgModel } from '@angular/forms';
-import { uuid } from 'uuid'
+
 
 @Component({
   selector: 'app-create-event',
