@@ -8,10 +8,13 @@ import { ModalComponent } from './modal/index';
 import { EventViewComponent } from './event/event-view/index';
 import { CreateEventComponent } from './event/index'
 import { MapComponent } from './map/index';
+import { MainpageComponent } from './mainpage/index';
+
  
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },
-    { path: '', component: MapComponent },
+ //   { path: '', component: MapComponent },
+ { path: '', component: MainpageComponent },
     { path: 'home' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
