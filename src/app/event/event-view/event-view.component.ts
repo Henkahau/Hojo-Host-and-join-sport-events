@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from '../../_services/index';
 import { Router } from '@angular/router';
 import { MapComponent } from '../../map/index';
+import { Event } from '../../_models';
 
 @Component({
   selector: 'app-event-view',
@@ -12,10 +13,15 @@ import { MapComponent } from '../../map/index';
 export class EventViewComponent implements OnInit 
 {
   signedIn = true;
+  attendees: string[] = [
+    'Mister Tester'
+  ];
 
   // These ids will be received when user clicks marker/event
   @Input() eventID: number;
   @Input() accountID: number;
+
+  @Input() event: Event;
 
   constructor(
     private router: Router,

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event, SportType, SkillLevel, PlayType } from '../../_models/index';
+import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
 import { EventService, AlertService } from '../../_services/index';
+import { NgModel } from '@angular/forms';
+
 
 @Component({
   selector: 'app-create-event',
@@ -16,11 +18,15 @@ export class CreateEventComponent implements OnInit {
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
   playTypeValues: PlayType[] = [PlayType.CASUAL, PlayType.COMPETETIVE];
+  currentUser: User;
   
   constructor(
       private router: Router,
       private eventService: EventService,
-      private alertService: AlertService) {}
+      private alertService: AlertService) 
+      {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      }
 
   ngOnInit() {
   }

@@ -7,5 +7,12 @@
             - <a (click)="deleteUser(user.id)">Delete</a>
         </li>
     </ul>
+    <ul>
+        <li *ngFor="let event of events">
+            {{event.title}} {{event.sportType}} {{event.location}} {{event.date}} {{event.time}}
+            {{event.skillLevel}} {{event.minAttendees}} {{event.maxAttendees}} {{event.description}}
+        </li>
+    </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
+    <p><a [routerLink]="['/createEvent']">createEvent</a></p>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
  
-import { User } from '../_models/index';
-import { UserService } from '../_services/index';
+import { User, Event } from '../_models/index';
+import { UserService, EventService } from '../_services/index';
  
 @Component({
     moduleId: module.id,
@@ -11,13 +11,17 @@ import { UserService } from '../_services/index';
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    events: Event[] = [];
  
-    constructor(private userService: UserService) {
+    constructor(
+        private userService: UserService,
+        private eventService: EventService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
  
     ngOnInit() {
         this.loadAllUsers();
+        this.loadAllEvents();
     }
  
     deleteUser(id: number) {
@@ -26,5 +30,9 @@ export class HomeComponent implements OnInit {
  
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+
+    private loadAllEvents(){
+        this.eventService.getAllEvents().subscribe(events => {this.events = events; });
     }
 }
