@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef, NgZone,ViewChild } from '@angular/core';
+import { Component, OnInit,ElementRef, NgZone,ViewChild, Input } from '@angular/core';
 import { FormControl,ReactiveFormsModule } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
@@ -38,7 +38,7 @@ markers =[ {
   public longitude: number;
   
   public searchControl: FormControl;
-  public zoom: number;
+  @Input() public zoom: number;
   message;
   displayMarkker = true;
   displayMarkker2 = true;
