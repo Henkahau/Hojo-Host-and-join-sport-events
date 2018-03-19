@@ -1,7 +1,9 @@
-import { Component, OnInit,ElementRef, NgZone,ViewChild, Input } from '@angular/core';
+import { Component, OnInit,ElementRef, NgZone,ViewChild, TemplateRef } from '@angular/core';
 import { FormControl,ReactiveFormsModule } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class MapComponent implements OnInit {
 
+ 
   // latitude =65.0121;
   // longitude =25.4651;
   // locationChosen = false;
@@ -52,6 +55,7 @@ markers =[ {
  constructor(
    private mapsAPILoader: MapsAPILoader,
    private ngZone: NgZone
+  
  ) {}
 
   ngOnInit() {
@@ -122,5 +126,6 @@ markers =[ {
 
  
 }
+
 }
 

@@ -26,6 +26,8 @@ import { AgmCoreModule } from '@agm/core';
 import { SearchfieldComponent } from './searchfield/searchfield.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { SimplemapComponent } from './simplemap/simplemap.component';
 
 
 
@@ -38,7 +40,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
         routing,
        ModalModule.forRoot(),
        AgmCoreModule.forRoot( {
-        apiKey: 'YOUR_API_KEY',
+        apiKey: 'AIzaSyCxTAeTahMYWk1U-r4DTUlTNnojLL0g4MU', 
         libraries: ["places"]
       }
     )
@@ -57,6 +59,8 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
         HeaderComponent,
         SearchboxComponent,
         CreateEventComponent,
+        MainpageComponent,
+        SimplemapComponent,
     ],
     providers: [
         AuthGuard,
