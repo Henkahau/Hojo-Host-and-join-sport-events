@@ -7,8 +7,8 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337"
-  nappi: boolean = false;
-  nimi: string = "Anton Skummaster";
+  // nappi: boolean = false;
+  // nimi: string = "My Profile";
   serverStatus: string = 'offline';
 
 

@@ -12,7 +12,7 @@
   </div>
 
   <div class="col-lg-3">
-    <h2>HOST PICTURE / INFO</h2>
+    <!-- HOST PICTURE / INFO -->
     <img src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337" style="max-height: 150px;">
     <p>Anton Scummaster</p>
     <textarea cols="30" rows="6">
@@ -24,28 +24,44 @@
   </div>
 
   <div class="col-lg-5">
-    <h2>MAP</h2>
-    <app-simplemap></app-simplemap>
-    <h2>EVENT INFO</h2>
-    <textarea cols="60" rows="5">
+    <!-- MAP --> 
+    <div class="row" style="padding-left: 15px; padding-bottom: 15px;">
+        <app-simplemap></app-simplemap>
+    </div>
+    
+    <!-- EVENT INFO -->
+    <textarea cols="67" rows="5">
       SPORT: 
-      ATTENDEES:
-      ADDRESS 
-      SKILL LEVEL
+      ATTENDEES: {{ attendees.length }}
+      ADDRESS:
+      SKILL LEVEL:
     </textarea>
   </div>
 
   <div class="col-lg-3">
-    <h2>DESCRIPTION TEXT BOX</h2>
-    <textarea cols="30" rows="18">
-      DESCRIPTION
+    <!-- DESCRIPTION TEXT BOX -->
+    <textarea cols="30" rows="16">
+      DESCRIPTION OR
+      EXTRA INFO
     </textarea>
     <div class="row">
-      <button class="btn btn-primary" style="position: relative; left: 15px;">Cancel</button>
-      <button class="btn btn-primary" style="padding-right: 15px;">Join</button>
-      <button class="btn btn-primary" [hidden]="!ifSignedIn" style="position: relative; left: 15px;">
-        Delete
-      </button>
+      <button class="btn btn-primary" 
+      style="position: relative; left: 15px;"
+      (click)="close()">Close</button>
+
+      <button class="btn btn-primary" 
+      style="padding-right: 15px;"
+      *ngIf="signedIn; else leaveEvent"
+      (click)="joinEvent()">Join</button>
+      <ng-template #leaveEvent>
+        <button class="btn btn-primary" 
+        style="padding-right: 15px;"
+        (click)="joinEvent()">Leave</button>
+      </ng-template>
+
+      <button class="btn btn-primary" [hidden]="!signedIn" 
+      style="position: relative; left: 15px;"
+      (click)="deleteEvent()">Delete</button>
     </div>
     
   </div>

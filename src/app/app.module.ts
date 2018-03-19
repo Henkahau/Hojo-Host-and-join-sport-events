@@ -14,7 +14,7 @@ import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService, EventService } from './_services/index';
 import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index'; // login/login.component ei toimi myöskään
+import { LoginComponent } from './login/index'; 
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
 import { CreateEventComponent } from './event/index';
@@ -28,6 +28,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SimplemapComponent } from './simplemap/simplemap.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -61,6 +62,7 @@ import { SimplemapComponent } from './simplemap/simplemap.component';
         CreateEventComponent,
         MainpageComponent,
         SimplemapComponent,
+        UserProfileComponent,
     ],
     providers: [
         AuthGuard,

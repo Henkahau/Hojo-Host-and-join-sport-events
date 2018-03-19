@@ -1,8 +1,10 @@
-import { Component, OnInit,ElementRef, NgZone,ViewChild } from '@angular/core';
+import { Component, OnInit,ElementRef, NgZone,ViewChild, TemplateRef } from '@angular/core';
 import { FormControl,ReactiveFormsModule } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
-import { Router } from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -11,22 +13,16 @@ import { Router } from '@angular/router';
 })
 export class MapComponent implements OnInit {
 
-  // latitude =65.0121;
-  // longitude =25.4651;
-  // locationChosen = false;
 markers =[ {
   longitude:25.6,
   latitude: 65.5,
   tag: 1
-  
-  
 },
 {
 
   longitude:24.9384,
   latitude: 60.1699,
   tag: 1
-
 },
 {
   longitude:23.45,
@@ -52,7 +48,9 @@ markers =[ {
  constructor(
    private mapsAPILoader: MapsAPILoader,
    private ngZone: NgZone,
-   private router: Router
+   private router: Router,
+   private route: ActivatedRoute
+  
  ) {}
 
   ngOnInit() {
@@ -109,26 +107,37 @@ markers =[ {
  }
  receiveMessage($event) {
   this.message = $event
-  if(this.message == 3) {
+  // if(this.message == 3) {
    
     
     
     
-  }
-  if(this.message == 1) {
+  // }
+  // if(this.message == 1) {
     
     
     
-  }
+  // }
 
  
 }
-onMarkerClick(event) {
-  if(this.message == 1) {
+onMapClick(event)
+{
+ if(this.message == 1) {
+
+  console.log('jeejee')
   this.router.navigate(['/event-view']);
 
-  }
 
  }
+ if(this.message == 2){
+   console.log('no voi vittu')
+ }
+ 
+
+
+  //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+}
+
 }
 

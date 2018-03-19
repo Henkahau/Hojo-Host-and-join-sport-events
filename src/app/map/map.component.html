@@ -1,15 +1,11 @@
 <div class="container">
 
   <app-searchfield (messageEvent)="receiveMessage($event)"></app-searchfield>
-{{message}}
-
+  {{message}}
 </div>
-
-
 
 <div class="div2">
   <div class="container">
-
     <div class="container">
       <div class="korjataankoko">
         <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
@@ -21,15 +17,12 @@
 <div class="div3">
   <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
     <agm-marker style="color:blue;" [latitude]="latitude" [longitude]="longitude"></agm-marker>
-<div >
-    <div *ngFor="let marker of markers" >
-      <div *ngIf="marker.tag == message">
-        <agm-marker (markerClick)="onMarkerClick($event)" [latitude]= marker.latitude [longitude]= marker.longitude></agm-marker>
+    <div>
+      <div *ngFor="let marker of markers">
+        <div *ngIf="marker.tag == message">
+          <agm-marker (markerClick)="onMapClick($event)" [latitude]=marker.latitude [longitude]=marker.longitude></agm-marker>
+        </div>
       </div>
     </div>
-  </div>
-
-
-
   </agm-map>
 </div>
