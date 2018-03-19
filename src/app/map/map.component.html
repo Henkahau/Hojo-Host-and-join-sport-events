@@ -4,7 +4,7 @@
     <div>
       <div *ngFor="let marker of markers">
         <div *ngIf="marker.tag == message">
-          <agm-marker [latitude]=m arker.latitude [longitude]=m arker.longitude></agm-marker>
+          <agm-marker [latitude]=marker.latitude [longitude]=marker.longitude></agm-marker>
         </div>
       </div>
     </div>
