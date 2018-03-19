@@ -1,11 +1,10 @@
 <div class="container">
   <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
     <agm-marker style="color:blue;" [latitude]="latitude" [longitude]="longitude"></agm-marker>
-    <div>
-      <div *ngFor="let marker of markers">
-        <div *ngIf="marker.tag == message">
-          <agm-marker [latitude]=marker.latitude [longitude]=marker.longitude></agm-marker>
-        </div>
+<div >
+    <div *ngFor="let marker of markers" >
+      <div *ngIf="marker.tag == message">
+        <agm-marker (markerClick)="onMapClick($event)" [latitude]= marker.latitude [longitude]= marker.longitude></agm-marker>
       </div>
     </div>
   </agm-map>
