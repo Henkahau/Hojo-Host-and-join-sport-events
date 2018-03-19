@@ -9,6 +9,7 @@ import { EventViewComponent } from './event/event-view/index';
 import { CreateEventComponent } from './event/index'
 import { MapComponent } from './map/index';
 import { MainpageComponent } from './mainpage/index';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
  
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'event-view', component: EventViewComponent },
     { path: 'createEvent', component: CreateEventComponent },
+    { path: 'user-profile', component: UserProfileComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

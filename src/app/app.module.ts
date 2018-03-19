@@ -28,6 +28,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SimplemapComponent } from './simplemap/simplemap.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -61,6 +62,7 @@ import { SimplemapComponent } from './simplemap/simplemap.component';
         CreateEventComponent,
         MainpageComponent,
         SimplemapComponent,
+        UserProfileComponent,
     ],
     providers: [
         AuthGuard,
