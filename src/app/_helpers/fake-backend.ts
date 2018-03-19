@@ -10,14 +10,14 @@ import 'rxjs/add/operator/dematerialize';
  
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
- 
+
     constructor() { }
  
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // array in local storage for registered users
         let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
         let events: any[] = JSON.parse(localStorage.getItem('events')) || [];
-
+        let uuidv4 = require('uuid/v4');
  
         // wrap in delayed observable to simulate server api call
         return Observable.of(null).mergeMap(() => {
@@ -96,9 +96,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 if (duplicateUser) {
                     return Observable.throw('email "' + newUser.email + '" is already taken');
                 }
- 
+                
                 // save new user
-                newUser.id = users.length + 1;
+                newUser.id = uuidv4();
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
  

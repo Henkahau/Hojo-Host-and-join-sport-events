@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
+import { Event, SportType, SkillLevel, PlayType } from '../../_models/index';
 import { EventService, AlertService } from '../../_services/index';
+import { NgModel } from '@angular/forms';
+
 
 @Component({
   selector: 'app-create-event',
@@ -27,14 +29,11 @@ export class CreateEventComponent implements OnInit {
       }
 
   ngOnInit() {
+    console.log(this.uuidv4());
   }
  
   createEvent(){
     this.loading = true;
-    console.log('!!!');
-
-    console.log(this.currentUser);
-    console.log(this.model.host);
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
