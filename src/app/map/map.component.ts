@@ -13,23 +13,16 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class MapComponent implements OnInit {
 
- 
-  // latitude =65.0121;
-  // longitude =25.4651;
-  // locationChosen = false;
 markers =[ {
   longitude:25.6,
   latitude: 65.5,
   tag: 1
-  
-  
 },
 {
 
   longitude:24.9384,
   latitude: 60.1699,
   tag: 1
-
 },
 {
   longitude:23.45,
@@ -41,7 +34,7 @@ markers =[ {
   public longitude: number;
   
   public searchControl: FormControl;
-  @Input() public zoom: number;
+  public zoom: number;
   message;
   displayMarkker = true;
   displayMarkker2 = true;
