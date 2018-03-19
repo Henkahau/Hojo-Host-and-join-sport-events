@@ -1,0 +1,20 @@
+textarea
+{
+    text-align: left;
+    resize: none;
+}
+
+button + button
+{
+    margin-left: 5%;
+}
+
+.btn.btn-primary
+{
+    margin-top: 10px;
+}
+
+button[hidden]
+{
+    display: none;
+}

@@ -10,12 +10,13 @@ import 'rxjs/add/operator/dematerialize';
  
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
- 
+
     constructor() { }
  
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // array in local storage for registered users
         let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+        let events: any[] = JSON.parse(localStorage.getItem('events')) || [];
  
         // wrap in delayed observable to simulate server api call
         return Observable.of(null).mergeMap(() => {
@@ -24,7 +25,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/api/authenticate') && request.method === 'POST') {
                 // find if any user matches login credentials
                 let filteredUsers = users.filter(user => {
-                    return user.username === request.body.username && user.password === request.body.password;
+                    return user.email === request.body.email && user.password === request.body.password;
                 });
  
                 if (filteredUsers.length) {
@@ -32,7 +33,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     let user = filteredUsers[0];
                     let body = {
                         id: user.id,
-                        username: user.username,
+                        email: user.email,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         token: 'fake-jwt-token'
@@ -41,7 +42,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200, body: body }));
                 } else {
                     // else return 400 bad request
-                    return Observable.throw('Username or password is incorrect');
+                    return Observable.throw('email or password is incorrect');
                 }
             }
  
@@ -55,6 +56,17 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.throw('Unauthorised');
                 }
             }
+ 
+             // get events
+            if (request.url.endsWith('/api/events') && request.method === 'GET') {
+                // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    return Observable.of(new HttpResponse({ status: 200, body: events }));
+                } else {
+                    // return 401 not authorised if token is null or invalid
+                    return Observable.throw('Unauthorised');
+                }
+             }
  
             // get user by id
             if (request.url.match(/\/api\/users\/\d+$/) && request.method === 'GET') {
@@ -79,15 +91,34 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let newUser = request.body;
  
                 // validation
-                let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
+                let duplicateUser = users.filter(user => { return user.email === newUser.email; }).length;
                 if (duplicateUser) {
-                    return Observable.throw('Username "' + newUser.username + '" is already taken');
+                    return Observable.throw('email "' + newUser.email + '" is already taken');
                 }
- 
+                
                 // save new user
-                newUser.id = users.length + 1;
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
+ 
+                // respond 200 OK
+                return Observable.of(new HttpResponse({ status: 200 }));
+            }
+
+            // create event
+            if (request.url.endsWith('/api/events') && request.method === 'POST') {
+                // get new user object from post body
+                let newEvent = request.body;
+ 
+                // validation
+               /*  let duplicateEvent = events.filter(event => { return event.title === newEvent.title; }).length;
+                if (duplicateEvent) {
+                    return Observable.throw('email "' + newEvent.title + '" is already taken');
+                } */
+ 
+                // save new event
+                newEvent.id = events.length + 1;
+                events.push(newEvent);
+                localStorage.setItem('events', JSON.stringify(events));
  
                 // respond 200 OK
                 return Observable.of(new HttpResponse({ status: 200 }));
@@ -112,7 +143,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
  
                     // respond 200 OK
                     return Observable.of(new HttpResponse({ status: 200 }));
-                } else {
+                }
+                
+                else {
                     // return 401 not authorised if token is null or invalid
                     return Observable.throw('Unauthorised');
                 }
