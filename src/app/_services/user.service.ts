@@ -6,13 +6,15 @@ import { User } from '../_models/index';
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient) { }
+
+    static url ='/api';
  
     getAll() {
         return this.http.get<User[]>('/api/users');
     }
  
-    getById(id: number) {
-        return this.http.get('/api/users/' + id);
+    getById(id: string) {
+        return this.http.get(UserService.url + '/account?uuid=' + id).map(res => res);
     }
  
     create(user: User) {
