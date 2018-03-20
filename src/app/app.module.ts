@@ -82,7 +82,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         },
  
         // provider used to create fake backend
-        fakeBackendProvider
+        //fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })
