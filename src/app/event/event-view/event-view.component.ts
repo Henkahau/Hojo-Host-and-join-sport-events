@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { EventService } from '../../_services/index';
+import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
 import { MapComponent } from '../../map/index';
-import { Event } from '../../_models';
+import { Event, User } from '../../_models';
 
 @Component({
   selector: 'app-event-view',
@@ -23,12 +23,18 @@ export class EventViewComponent implements OnInit
 
   @Input() event: Event;
 
+  host: any;
   constructor(
     private router: Router,
     private eventService: EventService,
+    private userService: UserService
     ) { }
 
   ngOnInit() {
+    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(res => {
+      console.log(res);
+      this.host = res["firstName"];
+    })
   }
 
   deleteEvent()
