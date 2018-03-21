@@ -25,7 +25,7 @@ export class EventViewComponent implements OnInit
   host: any;
   hostFirstName: any;
   hostLastName: any;
-  host: User;
+
   constructor(
     private router: Router,
     private eventService: EventService,
