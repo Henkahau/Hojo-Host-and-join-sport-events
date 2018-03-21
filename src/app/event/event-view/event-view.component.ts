@@ -8,7 +8,6 @@ import { Event, User } from '../../_models';
 @Component({
   selector: 'app-event-view',
   templateUrl: './event-view.component.html',
-  styleUrls: ['./event-view.component.css']
 })
 export class EventViewComponent implements OnInit 
 {
@@ -24,6 +23,9 @@ export class EventViewComponent implements OnInit
   @Input() event: Event;
 
   host: any;
+  hostFirstName: any;
+  hostLastName: any;
+  host: User;
   constructor(
     private router: Router,
     private eventService: EventService,
@@ -34,6 +36,9 @@ export class EventViewComponent implements OnInit
     this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(res => {
       console.log(res);
       this.host = res["firstName"];
+      this.hostFirstName = res["firstName"];
+      this.hostLastName = res["lastName"];
+      this.host = res[""];
     })
   }
 
