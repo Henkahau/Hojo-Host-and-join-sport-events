@@ -10,22 +10,22 @@ export class UserService {
     static url ='/api';
  
     getAll() {
-        return this.http.get<User[]>('/api/users');
+        return this.http.get<User[]>('/api/person');
     }
  
     getById(id: string) {
-        return this.http.get(UserService.url + '/account?uuid=' + id).map(res => res);
+        return this.http.get('api/account?uuid=' + id).map(res => res);
     }
  
     create(user: User) {
-        return this.http.post('/api/users', user);
+        return this.http.post('api/account/person', user);
     }
  
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user);
+        return this.http.put('/api/person/' + user.id, user);
     }
  
     delete(id: number) {
-        return this.http.delete('/api/users/' + id);
+        return this.http.delete('/api/person/' + id);
     }
 }
