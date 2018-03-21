@@ -13,7 +13,7 @@ export class UserProfileComponent implements OnInit {
     id: '',
     profilePicture: '',
     email: 'email',
-    mobileNumber: '0700123123',
+    mobileNumber: 100123123,
     biography: '',
     password: '',
     firstName: 'Anton',
