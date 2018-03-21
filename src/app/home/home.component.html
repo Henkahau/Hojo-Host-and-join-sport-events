@@ -1,16 +1,17 @@
 <div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.firstName}}!</h1>
+    <!-- <h1>Hi {{currentUser.firstName}}!</h1> -->
     <h3>All registered users:</h3>
-    <ul>
+ <!--    <ul>
         <li *ngFor="let user of users">
             {{user.email}} ({{user.firstName}} {{user.lastName}})
             - <a (click)="deleteUser(user.id)">Delete</a>
         </li>
-    </ul>
+    </ul> -->
     <ul>
         <li *ngFor="let event of events">
-            {{event.title}} {{event.sportType}} {{event.location}} {{event.date}} {{event.time}}
-            {{event.skillLevel}} {{event.minAttendees}} {{event.maxAttendees}} {{event.description}}
+            Title :{{event.title}} id: {{event.eventId}} Sport: {{event.sportType}} Location: {{event.location}} Date: {{event.date}} <!-- {{event.time}} -->
+            Skill: {{event.skillLevel}} MinAttendees: <!-- {{event.minAttendees}} --> {{event.maxAttendees}} {{event.description}}
+            - <a (click)="deleteEvent(event.eventId)">Delete event</a>
         </li>
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
