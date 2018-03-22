@@ -1,0 +1,8 @@
+{
+    "/api/": {
+        "target": "http://www.strijder.net/playm/",
+        "secure": false,
+        "changeOrigin": true,
+        "loglevel": "debug"
+    }
+}

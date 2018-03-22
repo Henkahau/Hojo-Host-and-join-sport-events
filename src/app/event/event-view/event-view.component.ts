@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { EventService } from '../../_services/index';
+import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
-import { MapComponent } from '../../map/index';
-import { Event } from '../../_models';
+import { Event, User } from '../../_models';
 
 @Component({
   selector: 'app-event-view',
@@ -23,23 +22,30 @@ export class EventViewComponent implements OnInit
 
   @Input() event: Event;
 
+  host: User;
+
   constructor(
     private router: Router,
     private eventService: EventService,
+    private userService: UserService
     ) { }
 
   ngOnInit() {
+    // ID should be fetch from backend... json('currentUser')?
+    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
+      this.host = user;
+    });
   }
 
   deleteEvent()
   {
-    this.eventService.deleteEvent(this.eventID);
+   // this.eventService.deleteEvent(this.eventID);
   }
 
   joinEvent()
   {
     // This will be also used to leave event
-    this.eventService.joinEvent(this.eventID, this.accountID);
+  //  this.eventService.joinEvent(this.eventID, this.accountID);
     this.signedIn = !this.signedIn;
   }
 

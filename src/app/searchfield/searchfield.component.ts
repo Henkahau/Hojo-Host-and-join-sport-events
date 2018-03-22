@@ -17,6 +17,7 @@ export class SearchfieldComponent implements OnInit {
  activity:Activity[]; 
  activitySelected: number;
  message: number;
+ message2: number;
  @Output () messageEvent = new EventEmitter<number>();
  sportValues = Object.values(SportType);
  skillValues = Object.values(SkillLevel);
@@ -24,12 +25,12 @@ export class SearchfieldComponent implements OnInit {
  
  
  ngOnInit() {
-  this.activity = [
-    { id:1, sport: "Tennis"},
-    { id:2, sport: "Icehockey"},
-    { id:3, sport: "Running"}
-  ];
-  this.activitySelected = 3;
+  // this.activity = [
+  //   { id:1, sport: "Tennis"},
+  //   { id:2, sport: "Icehockey"},
+  //   { id:3, sport: "Running"}
+  // ];
+ // this.activitySelected = 3;
 
   }
   onActivitySelected(val:any)
@@ -37,12 +38,20 @@ export class SearchfieldComponent implements OnInit {
 
     this.sendMessage(val);
   }
+  onSkillLevelSelected(val2:any)
+  {
+    this.sendMessage(val2)
+  }
 
   sendMessage(val:any)
   {
   
     this.message =   val;
     this.messageEvent.emit(this.message);
+    
   }
-
+  sendLevel(val2: any){
+    this.message2 = val2;
+    this.messageEvent.emit(this.message2)
+  }
 }

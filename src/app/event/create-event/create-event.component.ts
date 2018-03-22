@@ -9,6 +9,7 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
+  styleUrls: ['./create-event.component.css'],
   moduleId: module.id
 })
 
@@ -17,15 +18,14 @@ export class CreateEventComponent implements OnInit {
   loading = false;
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
-  playTypeValues: PlayType[] = [PlayType.CASUAL, PlayType.COMPETETIVE];
-  currentUser: User;
+  playTypeValues = Object.values(PlayType);
   
   constructor(
       private router: Router,
       private eventService: EventService,
       private alertService: AlertService) 
       {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class CreateEventComponent implements OnInit {
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
             this.alertService.success('Event created succesfull')
             //navigate to main page..
-            this.router.navigate(['/']);
+            this.router.navigate(['/home']);
           },
           error => {
             this.alertService.error(error);
