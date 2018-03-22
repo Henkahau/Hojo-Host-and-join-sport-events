@@ -12,11 +12,11 @@ export class EventService {
 
   createEvent(event: Event){
     console.log(event);
-    return this.http.post('/api/events', event);
+    return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
   updateEvent(event: Event){
-    return this.http.put('/api/events' + event.eventId, event);
+    return this.http.put('/api/events/' + event.eventId, event, {responseType: 'text'});
   }
 
   deleteEvent(eventId: string){
@@ -33,6 +33,6 @@ export class EventService {
 
  
   joinEvent(eventId: string, accountId: string){
-    return this.http.put('/api/events' + eventId, accountId);
+    return this.http.put('/api/events' + eventId, accountId, {responseType: 'text'});
   }
 }

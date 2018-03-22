@@ -13,6 +13,7 @@
             Title :{{event.title}} id: {{event.eventId}} Sport: {{event.sportType}} Location: {{event.location}} Date: {{event.date}} 
             Skill: {{event.skillLevel}} ManAttendees: {{event.maxAttendees}} {{event.description}}
             - <a (click)="deleteEvent(event.eventId)">Delete event</a>
+            - <a (click)="openEdit(event.eventId)">Edit event</a>
         </li>
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
