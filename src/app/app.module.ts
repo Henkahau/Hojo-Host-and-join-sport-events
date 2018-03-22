@@ -17,7 +17,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index'; 
 import { RegisterComponent } from './register/index';
 import { ModalComponent } from './modal/index';
-import { CreateEventComponent } from './event/index';
+import { CreateEventComponent, EditEventComponent } from './event/index';
 import { EventViewComponent } from './event/event-view/event-view.component';
 import { ProfileComponent } from './profile/profile.component'
 import { ModalModule } from 'ngx-bootstrap';
@@ -29,6 +29,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SimplemapComponent } from './simplemap/simplemap.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+
 
 
 
@@ -63,6 +64,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         MainpageComponent,
         SimplemapComponent,
         UserProfileComponent,
+        EditEventComponent,
     ],
     providers: [
         AuthGuard,
