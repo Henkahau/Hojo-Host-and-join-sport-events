@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,10 +10,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LocationMapComponent implements OnInit {
 
-  public latitude: number;
+  public latitude:  number;
   public longitude: number;
-  public latitudeMarker: number;
+  public latitudeMarker:  number;
   public longitudeMarker: number;
+  @Output('receivedLocation') sendLocation  = new EventEmitter<{latitude: number, longitude: number}>();
 
   public searchControl: FormControl;
   public zoom: number;
@@ -56,6 +57,11 @@ export class LocationMapComponent implements OnInit {
           this.latitudeMarker = this.latitude;
           this.longitudeMarker = this.longitude;
           this.zoom = 12;
+
+          this.sendLocation.emit({
+            latitude: this.latitudeMarker,
+            longitude: this.longitudeMarker
+          });
         });
       });
     });
@@ -69,6 +75,11 @@ export class LocationMapComponent implements OnInit {
         this.latitudeMarker = this.latitude;
         this.longitudeMarker = this.longitude;
         this.zoom = 12;
+
+        this.sendLocation.emit({
+          latitude: this.latitudeMarker,
+          longitude: this.longitudeMarker
+        });
       });
     }
   }
@@ -77,15 +88,20 @@ export class LocationMapComponent implements OnInit {
   {
     this.latitudeMarker  = event.coords.lat;
     this.longitudeMarker = event.coords.lng;
-    console.log('Click: ' + event.coords.lat);
-    console.log('Click: ' + event.coords.lng);
+    this.sendLocation.emit({
+      latitude: this.latitudeMarker,
+      longitude: this.longitudeMarker
+    });
   }
 
   dragEnd(event: any)
   {
     this.latitudeMarker  = event.coords.lat;
     this.longitudeMarker = event.coords.lng;
-    console.log('Drag: ' + event.coords.lat);
-    console.log('Drag: ' + event.coords.lng);
+
+    this.sendLocation.emit({
+      latitude: this.latitudeMarker,
+      longitude: this.longitudeMarker
+    });
   }
 }

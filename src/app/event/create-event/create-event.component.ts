@@ -19,6 +19,9 @@ export class CreateEventComponent implements OnInit {
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
   playTypeValues = Object.values(PlayType);
+
+  latitude:  number;
+  longitude: number;
   
   constructor(
       private router: Router,
@@ -46,6 +49,5 @@ export class CreateEventComponent implements OnInit {
             this.loading = false;
           }
         );
-  } 
-
+  }
 }

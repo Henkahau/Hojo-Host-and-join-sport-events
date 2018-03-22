@@ -6,6 +6,6 @@
 
 <agm-map (mapClick)="moveMarker($event)" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
   <agm-marker [markerDraggable]="true" (dragEnd)="dragEnd($event)" [latitude]="latitudeMarker" [longitude]="longitudeMarker">
-      <agm-info-window>{{ latitude }} {{ longitude }}</agm-info-window>
+      <agm-info-window>{{ latitudeMarker }} {{ longitudeMarker }}</agm-info-window>
   </agm-marker>
 </agm-map>
