@@ -20,11 +20,11 @@ export class EventService {
   }
 
   deleteEvent(eventId: string){
-    return this.http.delete('/api/events/' + eventId);
+    return this.http.delete('/api/events/' + eventId, {responseType: 'text'});
   }
 
   getEventById(eventId: string){
-    return this.http.get('/api/events' + eventId);
+    return this.http.get<Event>('/api/events/' + eventId);
   }
 
   getAllEvents(){
