@@ -25,7 +25,7 @@ markers =[ {
 
   longitude:24.9384,
   latitude: 60.1699,
-  tag: 1
+  tag: 'Golf'
 },
 {
   longitude:23.45,
@@ -39,6 +39,7 @@ markers =[ {
   public searchControl: FormControl;
   public zoom: number;
   message;
+  message2;
   displayMarkker = true;
   displayMarkker2 = true;
   windowinfo = false;
@@ -107,7 +108,8 @@ markers =[ {
    this.longitude = event.coords.lng; 
  }
  receiveMessage($event) {
-  this.message = $event
+  this.message = $event 
+ // this.message2 = 
   // if(this.message == 3) {
    
     
@@ -122,6 +124,11 @@ markers =[ {
 
  
 }
+receiveLevel($event)
+{
+this.message =$event
+}
+
 onMapClick(event)
 {
  if(this.message == 1) {
