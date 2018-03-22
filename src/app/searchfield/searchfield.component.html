@@ -5,9 +5,9 @@
           <h3>Activity </h3>
           <div>
             <select  [(ngModel)]= "activitySelected" (ngModelChange)='onActivitySelected($event)'>
-              <option *ngFor="let sport of activity"[value]="sport.id">
+              <option *ngFor="let sportValue of sportValues"[ngValue]="sportValue"> {{SportValue}}
 
-                {{sport.sport}}
+                
               </option>
             </select>
            </div> 
