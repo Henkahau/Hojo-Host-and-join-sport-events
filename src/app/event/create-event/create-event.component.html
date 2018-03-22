@@ -10,18 +10,43 @@
     </div>
 
     <div class="form-group">
-      <label for="sportType">Sport</label>
-      <select class="form-control" name="sportType" [(ngModel)]="model.sportType" #sportType="ngModel">
-        <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
-      </select>
-      <div *ngIf="f.submitted && !sportType.valid" class="help-blog">Sport type is required</div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="sportType">Sport</label>
+          <select class="form-control" name="sportType" [(ngModel)]="model.sportType" #sportType="ngModel">
+            <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
+          </select>
+          <div *ngIf="f.submitted && !sportType.valid" class="help-blog">Sport type is required</div>
+        </div>
+
+
+        <div class="col-lg-4">
+          <label for="skillLevel">Skill level</label>
+          <select class="form-control" name="skillLevel" [(ngModel)]="model.skillLevel" #skillLevel="ngModel">
+            <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
+          </select>
+        </div>
+
+
+        <div class="col-lg-4">
+          <label for="playType">Play type</label>
+          <select class="form-control" name="playTYpe" [(ngModel)]="model.playType" #playType="ngModel">
+            <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
+          </select>
+        </div>
+
+      </div>
     </div>
 
-    <div class="form-group">
+
+    <!-- <div class="form-group">
       <label for="location">Location</label>
       <input type="text" class="form-control" name="location" [(ngModel)]="model.location" #location="ngModel" required />
       <div *ngIf="f.submitted && !location.valid" class="help-blog">Location is required</div>
-    </div>
+    </div> -->
+
+    <label for="location">Location</label>
+    <app-location-map ></app-location-map>
 
     <div class="form-group">
       <label for="date">Date</label>
@@ -31,32 +56,25 @@
       <div *ngIf="f.submitted && !date.valid" class="help-blog">Date and time are required</div> -->
     </div>
 
-    <div class="form-group">
-      <label for="skillLevel">Skill level</label>
-      <select class="form-control" name="skillLevel" [(ngModel)]="model.skillLevel" #skillLevel="ngModel">
-        <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
-      </select>
-      <label for="playType">Play type</label>
-      <select class="form-control" name="playTYpe" [(ngModel)]="model.playType" #playType="ngModel">
-        <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
-      </select>
-    </div>
+
 
     <div class="form-group">
       <label for="maxAttendees">Maximum number of attendees</label>
-      <input type="number" name="maxAttendees" min="1" max="30" [(ngModel)]="model.maxAttendees" #maxAttendees="ngModel"/>
+      <input type="number" name="maxAttendees" min="1" max="30" [(ngModel)]="model.maxAttendees" #maxAttendees="ngModel" />
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" name="description" maxlength="300"  [(ngModel)]="model.description" #description="ngModel"/> 
+      <!-- <input type="text" name="description" maxlength="300" [(ngModel)]="model.description" #description="ngModel" /> -->
+      <textarea name="desciption" cols="60" rows="5" [(ngModel)]="model.description" #description="ngModel"></textarea>
     </div>
 
     <div class="form-group">
       <button [disabled]="loading" class="btn btn-primary">Create</button>
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      />
       <a [routerLink]="['/home']" class="btn btn-link">Cancel</a>
     </div>
 
-  </form> 
+  </form>
 </div>

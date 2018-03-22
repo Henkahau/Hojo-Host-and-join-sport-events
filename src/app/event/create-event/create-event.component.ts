@@ -9,6 +9,7 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
+  styleUrls: ['./create-event.component.css'],
   moduleId: module.id
 })
 
@@ -36,7 +37,7 @@ export class CreateEventComponent implements OnInit {
         .subscribe(
           data => {
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
-            this.alertService.success('Event created succesfull')
+            this.alertService.success('Event created succesfull');
             //navigate to main page..
             this.router.navigate(['/home']);
           },

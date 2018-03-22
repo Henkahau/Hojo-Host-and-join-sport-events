@@ -36,14 +36,14 @@ import { CreateEventComponent, EditEventComponent } from './event/index';
 import { EventViewComponent } from './event/event-view/event-view.component';
 import { ProfileComponent } from './profile/profile.component'
 import { ModalModule } from 'ngx-bootstrap';
-import { MapComponent } from './map';
+import { MapComponent } from './mapsFolder/map';
 import { AgmCoreModule } from '@agm/core';
 import { SearchfieldComponent } from './searchfield/searchfield.component';
 import { HeaderComponent } from './header/header.component';
-import { SearchboxComponent } from './searchbox/searchbox.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { SimplemapComponent } from './simplemap/simplemap.component';
+import { SimplemapComponent } from './mapsFolder/simplemap/simplemap.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LocationMapComponent } from './mapsFolder/location-map/location-map.component';
 import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
 
 
@@ -75,10 +75,10 @@ import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.c
         ProfileComponent,
         SearchfieldComponent,
         HeaderComponent,
-        SearchboxComponent,
         CreateEventComponent,
         MainpageComponent,
         SimplemapComponent,
+        LocationMapComponent,
         UserProfileComponent,
         EditProfileComponent,
     ],
