@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent{
+    loggaIn = true;
 
     constructor(private router: Router) {}
 
