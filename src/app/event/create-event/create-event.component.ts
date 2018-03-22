@@ -36,7 +36,7 @@ export class CreateEventComponent implements OnInit {
         .subscribe(
           data => {
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
-            this.alertService.success('Event created succesfull')
+            this.alertService.success('Event created succesfull');
             //navigate to main page..
             this.router.navigate(['/home']);
           },
