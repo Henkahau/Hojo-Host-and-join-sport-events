@@ -5,9 +5,8 @@
           <h3>Activity </h3>
           <div>
             <select  [(ngModel)]= "activitySelected" (ngModelChange)='onActivitySelected($event)'>
-              <option *ngFor="let sport of activity"[value]="sport.id">
+              <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}
 
-                {{sport.sport}}
               </option>
             </select>
            </div> 
@@ -15,8 +14,8 @@
         <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
           <h3>Skill Level </h3>                 
           <div>
-            <select>
-              <option *ngFor="let skillLevel of skillLevels">{{skillLevel}}</option>
+            <select  [(ngModel)]= "skillLevelSelected" (ngModelChange)='onSkillLevelSelected($event)'>
+              <option *ngFor="let skillValue of skillValues">{{skillValue}}</option>
             </select>
            </div> 
         </div>

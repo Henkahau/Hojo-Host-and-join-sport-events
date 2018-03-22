@@ -1,16 +1,13 @@
 import { Time } from "@angular/common";
 import { User } from './index';
-
+   
 export class Event{
-    host: User;
-    id: string;
+    eventId: string;
     title: string;
     sportType: SportType;
     location: string;
-    date: Date;
-    time: Time;
+    date: string;
     skillLevel: SkillLevel;
-    minAttendees: number;
     maxAttendees: number;
     description: string;
     playType: PlayType;
@@ -24,15 +21,15 @@ export enum SportType{
     BASKETBALL = 'Basketball',
     BADMINTON = 'Badminton',
     CHESS = 'Chess',
-    ICEHOCKEY = 'Icehockey',
-    TENNIS = 'Tennis'
+    //ICEHOCKEY = 'Icehockey',
+    //TENNIS = 'Tennis'
 }
 
 export enum SkillLevel{
     BEGINNER = 'Beginner',
     AVERAGE = 'Average',
     ADVANCED = 'Advanced',
-    PRO = 'Pro'
+    PRO = 'Professional'
 }
 
 export enum PlayType{

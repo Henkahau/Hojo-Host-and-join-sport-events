@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
     events: Event[] = [];
- 
+    event: Event;
+   
     constructor(
         private userService: UserService,
         private eventService: EventService) {
@@ -20,12 +21,17 @@ export class HomeComponent implements OnInit {
     }
  
     ngOnInit() {
-        this.loadAllUsers();
+       // this.loadAllUsers();
         this.loadAllEvents();
+        //this.getSingleEvent();
     }
  
     deleteUser(id: string) {
         this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
+    }
+
+    deleteEvent(id: string){
+        this.eventService.deleteEvent(id).subscribe(() => { this.loadAllEvents()});
     }
  
     private loadAllUsers() {
@@ -34,5 +40,10 @@ export class HomeComponent implements OnInit {
 
     private loadAllEvents(){
         this.eventService.getAllEvents().subscribe(events => {this.events = events; });
+    }
+
+    private getSingleEvent(){
+        this.eventService.getEventById('5c86889b-1830-4dbc-8dd0-701733ac0b3e').subscribe(event => { this.event = event });
+        
     }
 }
