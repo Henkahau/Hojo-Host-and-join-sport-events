@@ -1,17 +1,18 @@
 <div class="col-md-6 col-md-offset-3">
     <!--  <h1>Hi {{event.eventId}} </h1>  -->
     <h3>TEST PAGE</h3>
-<!--  <ul>
-        <li *ngIf="event">
-            {{event.eventId}}
-            - <a (click)="deleteEvent(event.eventId)">Delete</a> 
-    </ul> -->
-
-
+<!--LIST ALL EVENTS -->
     <ul>
         <li *ngFor="let event of events">
-            Title :{{event.title}} id: {{event.eventId}} Sport: {{event.sportType}} Location: {{event.location}} Date: {{event.date}} 
-            Skill: {{event.skillLevel}} ManAttendees: {{event.maxAttendees}} {{event.description}}
+            <br>Title: {{event.title}} 
+            <br>id: {{event.eventId}} 
+            <br>Sport: {{event.sportType}} 
+            <br>Location: {{event.location}} 
+            <br>Date: {{event.date}} 
+            <br>Skill: {{event.skillLevel}} 
+            <br>Max Attendees: {{event.maxAttendees}} 
+            <br>Description: {{event.description}}
+            <br><br>
             - <a (click)="deleteEvent(event.eventId)">Delete event</a>
             - <a (click)="openEdit(event.eventId)">Edit event</a>
         </li>
