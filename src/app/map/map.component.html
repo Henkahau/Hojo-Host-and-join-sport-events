@@ -16,11 +16,13 @@
 </div>
 <div class="div3">
   <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-    <agm-marker style="color:blue;" [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    <agm-marker  [latitude]="latitude" [longitude]="longitude"></agm-marker>
     <div>
       <div *ngFor="let marker of markers">
         <div *ngIf="marker.tag == message">
-          <agm-marker (markerClick)="onMapClick($event)" [latitude]=marker.latitude [longitude]=marker.longitude></agm-marker>
+          <agm-marker (markerClick)="onMapClick($event)" [iconUrl]=marker.icon [latitude]=marker.latitude [longitude]=marker.longitude>
+              <agm-info-window>jeejee</agm-info-window> 
+            </agm-marker>
         </div>
       </div>
     </div>
