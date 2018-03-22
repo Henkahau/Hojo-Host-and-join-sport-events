@@ -9,6 +9,7 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
+  styleUrls: ['./create-event.component.css'],
   moduleId: module.id
 })
 
