@@ -13,7 +13,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
  
 const appRoutes: Routes = [
-    //{ path: '' ,component: ModalComponent },
     { path: '', component: MainpageComponent },
     { path: 'home' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
