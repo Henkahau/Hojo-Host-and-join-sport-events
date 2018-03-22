@@ -9,16 +9,16 @@ import { User } from '../_models/user'
 })
 export class UserProfileComponent implements OnInit {
 
-  user: User={
-    id: '',
-    profilePicture: '',
-    email: 'email',
-    mobileNumber: '0700123123',
-    biography: '',
-    password: '',
-    firstName: 'Anton',
-    lastName: 'Junttari',
-  };
+  // user: User={
+  //   id: '',
+  //   profilePicture: '',
+  //   email: 'email',
+  //   mobileNumber: 100123123,
+  //   biography: '',
+  //   notapwhash: '',
+  //   firstName: 'Anton',
+  //   lastName: 'Junttari'
+  // };
 
   constructor() { }
 
