@@ -2,13 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
-import { MapComponent } from '../../map/index';
 import { Event, User } from '../../_models';
 
 @Component({
   selector: 'app-event-view',
   templateUrl: './event-view.component.html',
-  styleUrls: ['./event-view.component.css']
 })
 export class EventViewComponent implements OnInit 
 {
@@ -23,7 +21,8 @@ export class EventViewComponent implements OnInit
 
   @Input() event: Event;
 
-  host: any;
+  user: User;
+
   constructor(
     private router: Router,
     private eventService: EventService,
@@ -31,10 +30,9 @@ export class EventViewComponent implements OnInit
     ) { }
 
   ngOnInit() {
-    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(res => {
-      console.log(res);
-      this.host = res["firstName"];
-    })
+    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
+      this.user = user;
+    });
   }
 
   deleteEvent()
@@ -52,6 +50,7 @@ export class EventViewComponent implements OnInit
   close()
   {
     // Not necessary when using modal window
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
+    console.log(this.user);
   }
 }
