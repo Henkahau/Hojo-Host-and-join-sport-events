@@ -29,6 +29,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SimplemapComponent } from './simplemap/simplemap.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
 
 
 
@@ -63,6 +64,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         MainpageComponent,
         SimplemapComponent,
         UserProfileComponent,
+        EditProfileComponent,
     ],
     providers: [
         AuthGuard,

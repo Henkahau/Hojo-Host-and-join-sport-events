@@ -1,26 +1,58 @@
+
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="#" class="navbar-brand">PlayMates</a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">PlayMates</a>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a href="/" class="thumbnail">
+        <img src="https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/18013339_111491696078587_8890963863319609344_n.jpg?ig_cache_key=MTQ5ODY2ODQyNTgwMzAzODU3NA%3D%3D.2" alt="...">
+      </a>
     </div>
   </div>
-</nav>
+  
 
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="/" class="thumbnail">
-      <img src="https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/18013339_111491696078587_8890963863319609344_n.jpg?ig_cache_key=MTQ5ODY2ODQyNTgwMzAzODU3NA%3D%3D.2" alt="...">
-    </a>
+<!-- <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+          <li><label>First Name</label></li>
+          <li><label>Last Name</label></li>
+          <li><label>Email</label></li>
+          <li><label>mobile</label></li>
+      </div>
+      <div class="col-sm-3">
+          <input [(ngModel)] = "currentUser.firstName" placeholder="firstName">
+          <input [(ngModel)] = "currentUser.lastName" placeholder="lastName">
+          <input [(ngModel)] = "currentUser.email" placeholder="email">
+          <input [(ngModel)] = "currentUser.mobileNumber" placeholder="mobileNumber">          
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+          <li><label>First Name</label></li>
+          <li><label>Last Name</label></li>
+          <li><label>Email</label></li>
+          <li><label>mobile</label></li>
+      </div>
+      <div class="col-sm-3">
+        <p ng-switch-default class="firstName">{{currentUser.firstName}}</p>
+        <p ng-switch-default class="lastName">{{currentUser.lastName}}</p>
+        <p ng-switch-default class="email">{{currentUser.email}}</p>
+        <p ng-switch-default class="mobile">{{currentUser.mobileNumber}}</p> 
+        
+        <!-- <input ng-model="currentUser.firstName" placeholder="First Name" type="text"/>
+        <input ng-model="currentUser.lastName" placeholder="Last Name" type="text"/>
+        <input ng-model="currentUser.email" placeholder="Email" type="text"/>
+        <input ng-model="currentUser.mobileNumber" placeholder="Mobile" type="text"/> -->
+      </div>
+    </div>
   </div>
-</div>
 
-<ul class="list-group">
-  <label>First Name</label>
-  <li class="list-group-item">{{ user.firstName }}</li>
-  <label>Last Name</label>
-  <li class="list-group-item">{{ user.lastName }}</li>
-  <label>Email</label>
-  <li class="list-group-item">{{ user.email }}</li>
-  <label>Phone</label>
-  <li class="list-group-item">{{ user.mobileNumber }}</li>
-</ul>
+<button>Edit</button>
