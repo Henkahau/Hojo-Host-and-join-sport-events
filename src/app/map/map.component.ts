@@ -1,11 +1,10 @@
-import { Component, OnInit,ElementRef, NgZone,ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit,ElementRef, NgZone,ViewChild, TemplateRef, HostListener } from '@angular/core';
 import { FormControl,ReactiveFormsModule } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-map',
@@ -14,16 +13,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MapComponent implements OnInit {
 
+
+
 markers =[ {
   longitude:25.6,
   latitude: 65.5,
-  tag: 1
+  tag: 1,
+ // icon: "https://mapicons.mapsmarker.com/wp-content/uploads/mapicons/shape-default/color-ff8a22/shapecolor-light/shadow-1/border-white/symbolstyle-dark/symbolshadowstyle-no/gradient-no/usfootball.png"
 },
 {
 
   longitude:24.9384,
   latitude: 60.1699,
-  tag: 1
+  tag: 'Golf'
 },
 {
   longitude:23.45,
@@ -37,12 +39,11 @@ markers =[ {
   public searchControl: FormControl;
   public zoom: number;
   message;
+  message2;
   displayMarkker = true;
   displayMarkker2 = true;
+  windowinfo = false;
 
-
-
-  
  @ViewChild("search")
  public searchElementRef: ElementRef;
 
@@ -107,7 +108,8 @@ markers =[ {
    this.longitude = event.coords.lng; 
  }
  receiveMessage($event) {
-  this.message = $event
+  this.message = $event 
+ // this.message2 = 
   // if(this.message == 3) {
    
     
@@ -122,22 +124,38 @@ markers =[ {
 
  
 }
+receiveLevel($event)
+{
+this.message =$event
+}
+
 onMapClick(event)
 {
  if(this.message == 1) {
 
-  console.log('jeejee')
-  this.router.navigate(['/event-view']);
+  
+ // this.router.navigate(['/event-view']);
 
 
  }
  if(this.message == 2){
-   console.log('no voi vittu')
+  this.router.navigate(['/event-view']);
  }
  
 
 
   //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+}
+
+onMouseOver(infoWindow, gm) {
+
+  if (gm.lastOpen != null) {
+      gm.lastOpen.close();
+  }
+
+  gm.lastOpen = infoWindow;
+
+  infoWindow.open();
 }
 
 }

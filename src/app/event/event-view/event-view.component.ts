@@ -39,13 +39,13 @@ export class EventViewComponent implements OnInit
 
   deleteEvent()
   {
-    this.eventService.deleteEvent(this.eventID);
+   // this.eventService.deleteEvent(this.eventID);
   }
 
   joinEvent()
   {
     // This will be also used to leave event
-    this.eventService.joinEvent(this.eventID, this.accountID);
+  //  this.eventService.joinEvent(this.eventID, this.accountID);
     this.signedIn = !this.signedIn;
   }
 

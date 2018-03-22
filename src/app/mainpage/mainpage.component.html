@@ -1,6 +1,9 @@
 
 <div class="container">
 <app-header></app-header>
-  <app-profile></app-profile>
+<div *ngIf="loggaIn"> 
+    <app-profile></app-profile>
+</div>
+ 
 <app-map></app-map>
 </div>

@@ -17,3 +17,6 @@ agm-map {
     top: 9px;
     left: 200px;
  }
+ .iconUrl {
+     max-height: 20px;
+ }
