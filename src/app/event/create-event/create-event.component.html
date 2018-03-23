@@ -63,7 +63,7 @@
     </div> -->
 
     <label for="location">Location</label>
-    <app-location-map (receivedLocation)="model.latitude = $event.latitude; model.longitude = $event.longitude">
+    <app-location-map (receivedLocation)="model.location = $event.location">
     </app-location-map>
 
     <p>{{ model.latitude }} {{ model.longitude }}</p>

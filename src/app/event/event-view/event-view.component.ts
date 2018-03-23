@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
-import { Event, User } from '../../_models';
+import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
 
 @Component({
   selector: 'app-event-view',
@@ -17,24 +17,25 @@ export class EventViewComponent implements OnInit
   ];
 
   // These ids will be received when user clicks marker/event
-  @Input() eventID: number;
-  @Input() accountID: number;
+  static eventID: string;
+  eventTitle: string;
+  accountID: number;
 
-  @Input() event: Event;
+  event: Event;
 
   host: User;
 
   constructor(
-    private router: Router,
-    private eventService: EventService,
-    private userService: UserService
-    ) { }
+        private router: Router,
+        private eventService: EventService,
+        private userService: UserService) { }
 
   ngOnInit() {
-    // ID should be fetch from backend... json('currentUser')?
-    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
-      this.host = user;
-    });
+    this.loadEvent();
+  }
+
+  private loadEvent(){
+    this.eventService.getEventById(EventViewComponent.eventID).subscribe(event => { this.event = event, this.eventTitle = event.title });
   }
 
   deleteEvent()
