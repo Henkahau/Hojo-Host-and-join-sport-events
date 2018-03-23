@@ -1,4 +1,5 @@
 <h1 style="text-align: center;">EVENT INFO</h1>
+<h2 style="text-align: center;" *ngIf="event">{{event.title}}</h2>
 <h2 style="text-align: center; color:red;">THIS VIEW WILL BE MOVED TO MODAL WINDOW (POPUP) LATER</h2>
 
 
@@ -16,9 +17,9 @@
     <img src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337" style="max-height: 150px;">
     <p>Anton Scummaster</p>
     <textarea disabled cols="40" rows="6" *ngIf="host; else noHost">
-      Name: {{ host.firstName }} {{ host.lastName }}
-      Phone: {{ host.mobileNumber }}
-      Description: {{ host.biography }}
+      Name: <!-- {{ host.firstName }} {{ host.lastName }} -->
+      Phone: <!-- {{ host.mobileNumber }} -->
+      Description:<!--  {{ host.biography }} -->
 
     </textarea>
     <ng-template #noHost>
@@ -36,19 +37,19 @@
     </div>
     
     <!-- EVENT INFO -->
-    <textarea disabled cols="67" rows="5">
-      SPORT: 
-      ATTENDEES: {{ attendees.length }}
-      ADDRESS:
-      SKILL LEVEL:
+    <textarea *ngIf="event" disabled cols="67" rows="5">
+      SPORT: {{event.sportType}}
+      ATTENDEES: 
+      ADDRESS: {{event.location}}
+      SKILL LEVEL: {{event.skillLevel}}
+
     </textarea>
   </div>
 
   <div class="col-lg-3">
     <!-- DESCRIPTION TEXT BOX -->
-    <textarea disabled cols="30" rows="16">
-      DESCRIPTION OR
-      EXTRA INFO
+    <textarea *ngIf="event" disabled cols="30" rows="16">
+      DESCRIPTION: {{event.description}}
     </textarea>
     <div class="row">
       <button class="btn btn-primary" 

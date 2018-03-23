@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; 
  
 import { User, Event } from '../_models/index';
 import { UserService, EventService } from '../_services/index';
+import { EditEventComponent } from '../event';
+import { EventViewComponent } from '../event/event-view';
  
 @Component({
     moduleId: module.id,
@@ -16,7 +19,8 @@ export class HomeComponent implements OnInit {
    
     constructor(
         private userService: UserService,
-        private eventService: EventService) {
+        private eventService: EventService,
+        private router: Router) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
  
@@ -45,5 +49,15 @@ export class HomeComponent implements OnInit {
     private getSingleEvent(){
         this.eventService.getEventById('5c86889b-1830-4dbc-8dd0-701733ac0b3e').subscribe(event => { this.event = event });
         
+    }
+
+    private openEdit(id: string){
+        EditEventComponent.editEventId = id;
+        this.router.navigate(['/edit-event']);
+    }
+
+    private openEventView(id: string){
+        EventViewComponent.eventID = id;
+        this.router.navigate(['/event-view']);
     }
 }

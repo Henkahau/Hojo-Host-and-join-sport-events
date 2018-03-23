@@ -33,6 +33,12 @@ export class LocationMapComponent implements OnInit {
   ngOnInit() {
     
 
+    this.zoom = 4;
+    this.latitude = 65.0121;
+    this.longitude = 25.4651;
+
+    this.latitudeMarker = this.latitude;
+    this.longitudeMarker = this.longitude;
     //create search FormControl
     this.searchControl = new FormControl();
 
