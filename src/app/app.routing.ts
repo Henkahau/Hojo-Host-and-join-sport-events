@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'createEvent', component: CreateEventComponent },
     { path: 'user-profile', component: UserProfileComponent },
 
+    // Test
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
