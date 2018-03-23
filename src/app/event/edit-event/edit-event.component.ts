@@ -33,7 +33,10 @@ export class EditEventComponent implements OnInit {
   }
 
   private loadEvent(){
-    this.eventService.getEventById(EditEventComponent.editEventId).subscribe(event => { this.event = event, this.eventTitle = event.title });
+    this.eventService.getEventById(EditEventComponent.editEventId).subscribe(event => {
+       this.event = event, 
+       this.eventTitle = event.title 
+      });
   }
 
  
