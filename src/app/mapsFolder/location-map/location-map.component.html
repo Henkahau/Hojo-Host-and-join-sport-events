@@ -4,8 +4,8 @@
     #searchLocation [formControl]="searchControl">
 </div>
 
-<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-  <agm-marker [markerDraggable]="true" (dragEnd)="dragEnd($event)" [latitude]="latitude" [longitude]="longitude">
-      <agm-info-window>{{ latitude }} {{ longitude }}</agm-info-window>
+<agm-map (mapClick)="moveMarker($event)" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+  <agm-marker [markerDraggable]="true" (dragEnd)="dragEnd($event)" [latitude]="latitudeMarker" [longitude]="longitudeMarker">
+      <agm-info-window>{{ latitudeMarker }} {{ longitudeMarker }}</agm-info-window>
   </agm-marker>
 </agm-map>
