@@ -50,6 +50,7 @@ export class LocationMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
 
     this.zoom = 4;
     this.latitude = 65.0121;
@@ -98,4 +99,9 @@ export class LocationMapComponent implements OnInit {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
   }
+  dragEnd(event: any)
+{
+ this.latitude = event.coord.lat;
+ this.longitude = event.coord.lng;
+}
 }
