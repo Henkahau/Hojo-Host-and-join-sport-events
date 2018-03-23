@@ -23,6 +23,7 @@ const appRoutes: Routes = [
     { path: 'user-profile', component: UserProfileComponent },
     { path: 'edit-event', component: EditEventComponent },
 
+    // Test
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
