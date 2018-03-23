@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User, Event } from '../_models/index';
 import { UserService, EventService } from '../_services/index';
 import { EditEventComponent } from '../event';
+import { EventViewComponent } from '../event/event-view';
  
 @Component({
     moduleId: module.id,
@@ -53,5 +54,10 @@ export class HomeComponent implements OnInit {
     private openEdit(id: string){
         EditEventComponent.editEventId = id;
         this.router.navigate(['/edit-event']);
+    }
+
+    private openEventView(id: string){
+        EventViewComponent.eventID = id;
+        this.router.navigate(['/event-view']);
     }
 }

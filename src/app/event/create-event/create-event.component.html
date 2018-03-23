@@ -11,6 +11,7 @@
 
     <div class="form-group">
       <div class="row">
+
         <div class="col-lg-4">
           <label for="sportType">Sport</label>
           <select class="form-control" name="sportType" [(ngModel)]="model.sportType" #sportType="ngModel">
@@ -30,7 +31,7 @@
 
         <div class="col-lg-4">
           <label for="playType">Play type</label>
-          <select class="form-control" name="playTYpe" [(ngModel)]="model.playType" #playType="ngModel">
+          <select class="form-control" name="playType" [(ngModel)]="model.playType" #playType="ngModel">
             <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
           </select>
         </div>
@@ -46,7 +47,10 @@
     </div> -->
 
     <label for="location">Location</label>
-    <app-location-map ></app-location-map>
+    <app-location-map (receivedLocation)="model.location = $event.location">
+    </app-location-map>
+
+    <p>{{ model.latitude }} {{ model.longitude }}</p>
 
     <div class="form-group">
       <label for="date">Date</label>

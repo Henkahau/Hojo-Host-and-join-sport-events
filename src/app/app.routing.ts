@@ -7,7 +7,7 @@ import { AuthGuard } from './_guards/index';
 import { ModalComponent } from './modal/index';
 import { EventViewComponent } from './event/event-view/index';
 import { CreateEventComponent, EditEventComponent } from './event/index'
-import { MapComponent } from './map/index';
+import { MapComponent } from './mapsFolder/map/index';
 import { MainpageComponent } from './mainpage/index';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
