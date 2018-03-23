@@ -105,9 +105,5 @@ export class LocationMapComponent implements OnInit {
       longitude: this.longitudeMarker
     });
   }
-  dragEnd(event: any)
-{
- this.latitude = event.coord.lat;
- this.longitude = event.coord.lng;
-}
+
 }
