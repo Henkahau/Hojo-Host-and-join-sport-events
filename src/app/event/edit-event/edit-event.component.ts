@@ -29,7 +29,6 @@ export class EditEventComponent implements OnInit {
 
   ngOnInit() {
     this.loadEvent();
-    
   }
 
   private loadEvent(){
