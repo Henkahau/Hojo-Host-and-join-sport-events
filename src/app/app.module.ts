@@ -81,6 +81,7 @@ import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.c
         LocationMapComponent,
         UserProfileComponent,
         EditProfileComponent,
+        EditEventComponent,
     ],
     providers: [
         AuthGuard,

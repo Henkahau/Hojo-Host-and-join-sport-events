@@ -1,3 +1,69 @@
-<p>
-  edit-profile works!
-</p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">PlayMates</a>
+    </div>
+  </div>
+</nav>
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Edit Profile</h2>
+
+<form name="form" *ngIf="user" (ngSubmit)="f.form.valid && editProfile()" #f="ngForm" novalidate>
+    
+<hr>
+
+<div class="row">
+  <div class="col-sm-3 col-sm-3">
+    <a href="/" class="thumbnail">
+      <img src="http://clipart-library.com/images/Aibr5LR8T.jpg" alt="">
+    </a>
+  </div>
+</div>
+
+  <div>
+    <button>Change</button>
+  </div>
+
+<hr>
+
+  <div class="form-group">
+    <label for="firstName">First name</label>
+    <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" *ngIf="user" />
+    <!-- <option *ngFor="let user of users" [ngValue]="firstName">{{firstName}}</option> -->
+  </div>
+  
+  <div class="form-group">
+    <label for="lastName">Last name</label>
+    <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" *ngIf="user" />
+    <!-- <option *ngFor="let user of users" [ngValue]="lastName">{{lastName}}</option> -->
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" *ngIf="user" />
+    <!-- <option *ngFor="let user of users" [ngValue]="email">{{email}}</option> -->
+  </div>
+  
+  <div class="form-group">
+    <label for="mobileNumber">Mobile Number</label>
+    <input type="number" class="form-control" name="mobileNumber" [(ngModel)]="user.mobileNumber" #mobileNumber="ngModel" *ngIf="user" />
+    <!-- <option *ngFor="let user of users" [ngValue]="mobileNumber">{{mobileNumber}}</option> -->
+  </div>
+  
+  <div class="form-group">
+    <label for="biography">Biography</label>
+    <textarea name="biography" cols="80" rows="5" [(ngModel)]="user.biography" #biography="ngModel" *ngIf="user" ></textarea>
+    <!-- <option *ngFor="let user of users" [ngValue]="biography">{{biography}}</option> -->
+  </div>
+
+  <div>
+    <button routerLink="/user-profile">Cancel</button>
+    <button class="btn btn-primary">Save</button>
+  </div>
+
+</form>
+
+</div>
+
+<hr>

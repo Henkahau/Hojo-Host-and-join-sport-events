@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -6,53 +5,46 @@
       </div>
     </div>
   </nav>
+<div class="col-md-6 col-md-offset-3">
+  <h2>Your profile</h2>
   
   <div class="row">
-    <div class="col-xs-6 col-md-3">
+    <div class="col-sm-3 col-sm-3">
       <a href="/" class="thumbnail">
-        <img src="https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/18013339_111491696078587_8890963863319609344_n.jpg?ig_cache_key=MTQ5ODY2ODQyNTgwMzAzODU3NA%3D%3D.2" alt="...">
+        <img src="http://clipart-library.com/images/Aibr5LR8T.jpg" alt="">
       </a>
     </div>
   </div>
+
+  <hr>
   
-
-<!-- <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-          <li><label>First Name</label></li>
-          <li><label>Last Name</label></li>
-          <li><label>Email</label></li>
-          <li><label>mobile</label></li>
-      </div>
-      <div class="col-sm-3">
-          <input [(ngModel)] = "currentUser.firstName" placeholder="firstName">
-          <input [(ngModel)] = "currentUser.lastName" placeholder="lastName">
-          <input [(ngModel)] = "currentUser.email" placeholder="email">
-          <input [(ngModel)] = "currentUser.mobileNumber" placeholder="mobileNumber">          
-      </div>
-    </div>
-  </div> -->
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-          <li><label>First Name</label></li>
-          <li><label>Last Name</label></li>
-          <li><label>Email</label></li>
-          <li><label>mobile</label></li>
-      </div>
-      <div class="col-sm-3">
-        <p ng-switch-default class="firstName">{{currentUser.firstName}}</p>
-        <p ng-switch-default class="lastName">{{currentUser.lastName}}</p>
-        <p ng-switch-default class="email">{{currentUser.email}}</p>
-        <p ng-switch-default class="mobile">{{currentUser.mobileNumber}}</p> 
-        
-        <!-- <input ng-model="currentUser.firstName" placeholder="First Name" type="text"/>
-        <input ng-model="currentUser.lastName" placeholder="Last Name" type="text"/>
-        <input ng-model="currentUser.email" placeholder="Email" type="text"/>
-        <input ng-model="currentUser.mobileNumber" placeholder="Mobile" type="text"/> -->
-      </div>
-    </div>
+  <div class="form-group">
+    <label for="firstName">First name</label>
+    <input disabled type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" *ngIf="user"  />
   </div>
 
-<button>Edit</button>
+  <div class="form-group">
+    <label for="lastName">Last name</label>
+    <input disabled type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" *ngIf="user" />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input disabled type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" *ngIf="user" />
+  </div>
+
+  <div class="form-group">
+    <label for="mobileNumber">Mobile Number</label>
+    <input disabled type="number" class="form-control" name="mobileNumber" [(ngModel)]="user.mobileNumber" #mobileNumber="ngModel" *ngIf="user" />
+  </div>
+
+  <div class="form-group">
+    <label for="biography">Biography</label>
+    <textarea disabled name="biography" cols="80" rows="5" [(ngModel)]="user.biography" #biography="ngModel" *ngIf="user" ></textarea>
+  </div>
+
+  <div>
+    <button routerLink="/edit-profile">Edit</button>
+  </div>
+  <hr>
+</div>

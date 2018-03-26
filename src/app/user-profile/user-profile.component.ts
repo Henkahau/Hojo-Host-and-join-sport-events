@@ -1,23 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-
 import { User } from '../_models/user'
-import { UserService } from '../_services';
+import { UserService, AlertService } from '../_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
+  moduleId: module.id
 })
 export class UserProfileComponent implements OnInit {
-  currentUser: User;
-
-  //  $scope.editingUser = function(currentUser){
-  //    $scope.editObject = angular.copy($scope.users[currentUser]);
-  // }
   
-  constructor(private userService: UserService) { this.currentUser = JSON.parse(localStorage.getItem('currentUser')); }
+  model: any = {};
+  user: User;
+  router: Router;
+
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.loadProfile();
   }
 
+  private loadProfile(){
+    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user =>{this.user = user});
+  }
+
+  gotoEditProfile() {
+    this.router.navigate(['/edit-profile']);
+  }
 }
