@@ -1,22 +1,4 @@
 agm-map {
     height: 250px;
     width: 500px;
-    /* right: 50%; */
- }
- .div2{
-    position: relative;
-    width: 150px;
-    height: 100px;
-    top: 50px;
-    left: 50px;
- }
- .div3{
-    position: relative;
-    width: 10px;
-    height: 200px;
-    top: 9px;
-    left: 200px;
- }
- .iconUrl {
-     max-height: 20px;
  }
