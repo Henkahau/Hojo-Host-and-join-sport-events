@@ -18,15 +18,10 @@ export class CreateEventComponent implements OnInit {
   loading = false;
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
-<<<<<<< HEAD
-  playTypeValues: PlayType[] = [PlayType.CASUAL, PlayType.COMPETETIVE];
-  currentUser: User;
-=======
   playTypeValues = Object.values(PlayType);
 
   latitude:  number;
   longitude: number;
->>>>>>> 0d2b17f5e173dd8b7590878b661ef9c2c37a161a
   
   constructor(
       private router: Router,
