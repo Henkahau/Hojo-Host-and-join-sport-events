@@ -106,51 +106,24 @@ export class MapComponent implements OnInit {
     this.longitude = event.coords.lng;
   }
   receiveMessage($event) {
-    this.message = $event
-    // this.message2 = 
-    // if(this.message == 3) {
-
-
-
-
-    // }
-    // if(this.message == 1) {
-
-
-
-    // }
-
-
+    this.message = $event;
   }
   receiveLevel($event) {
     this.message = $event
   }
 
   onMapClick(event) {
-    
 
+  }
 
-    //   this.router.navigate(['/event-view']);
-
-
-   
-      
+  mouseOvermarker(infoWindow,gm) {
+    if (gm.lastOpen != null) {
+      gm.lastOpen.close();
     }
-
-mouseOvermarker(){
- // this.router.navigate(['/event-view']);
-
-}
-
+    gm.lastOpen = infoWindow;
+    infoWindow.open();
+  }
     //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
-  
-
-
-
-
-
-
-
 }
 
 
