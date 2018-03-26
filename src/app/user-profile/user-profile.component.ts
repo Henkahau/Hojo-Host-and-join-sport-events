@@ -16,11 +16,8 @@ export class UserProfileComponent implements OnInit {
   user: User;
   router: Router;
 
-<<<<<<< HEAD
-=======
   user: User;
   userProfileId: string; 
->>>>>>> 56ffc878e5c7ef9a836236508ddaea57048a0459
 
   constructor(private userService: UserService) { }
 
@@ -32,15 +29,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user =>{this.user = user});
   }
 
-<<<<<<< HEAD
   gotoEditProfile() {
     this.router.navigate(['/edit-profile']);
   }
 }
-=======
-  private loadProfile(){
-    
-  }
-
-}
->>>>>>> 56ffc878e5c7ef9a836236508ddaea57048a0459
