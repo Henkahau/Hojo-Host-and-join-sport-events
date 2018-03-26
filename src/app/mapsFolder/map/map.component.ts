@@ -6,6 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AgmInfoWindow } from '@agm/core/directives/info-window';
+import { InfoWindowManager } from '@agm/core/services/managers/info-window-manager';
 
 @Component({
   selector: 'app-map',
@@ -127,23 +128,29 @@ export class MapComponent implements OnInit {
   }
 
   onMapClick(event) {
-    
+
 
 
     //   this.router.navigate(['/event-view']);
 
 
-   
-      
+
+
+  }
+
+  mouseOverMarker(infoWindow, gm) {
+
+    if (gm.lastOpen != null) {
+      gm.lastOpen.close();
     }
+    gm.lastOpen = infoWindow;
+    infoWindow.open();
+  }
+  //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+  mouseLeftMarker(infoWindow) {
 
-mouseOvermarker(){
- // this.router.navigate(['/event-view']);
-
-}
-
-    //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
-  
+    infoWindow.close();
+  }
 
 
 
