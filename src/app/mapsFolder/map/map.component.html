@@ -11,8 +11,8 @@
   <div>
     <div *ngFor="let marker of markers">
       <div *ngIf="marker.tag == message">
-        <agm-marker (markerClick)="onMapClick($event)" [iconUrl]=marker.icon [latitude]=marker.latitude [longitude]=marker.longitude>
-          <agm-info-window>{{ marker.latitude }} {{ marker.longitude }}</agm-info-window>
+        <agm-marker  (markerClick)="onMapClick($event)" [iconUrl]=marker.icon [latitude]=marker.latitude [longitude]=marker.longitude (mouseOver)="mouseOverMarker(infoWindow,gm)">
+          <agm-info-window #infowindow>{{ marker.latitude }} {{ marker.longitude }}</agm-info-window>
         </agm-marker>
       </div>
     </div>

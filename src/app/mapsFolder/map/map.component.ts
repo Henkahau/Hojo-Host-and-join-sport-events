@@ -5,6 +5,7 @@ import { MapsAPILoader } from '@agm/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AgmInfoWindow } from '@agm/core/directives/info-window';
 
 @Component({
   selector: 'app-map',
@@ -126,21 +127,23 @@ export class MapComponent implements OnInit {
   }
 
   onMapClick(event) {
-    if (this.message == 1) {
+    
 
 
-      // this.router.navigate(['/event-view']);
+    //   this.router.navigate(['/event-view']);
 
 
+   
+      
     }
-    if (this.message === 'Golf') {
-      // this.router.navigate(['/event-view']);
-    }
 
+mouseOvermarker(){
+ // this.router.navigate(['/event-view']);
 
+}
 
     //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
-  }
+  
 
 
 
