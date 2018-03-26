@@ -1,73 +1,111 @@
-<h1 style="text-align: center;">EVENT INFO</h1>
-<h2 style="text-align: center;" *ngIf="event">{{event.title}}</h2>
-
-
-
 <div class="col-md-6 col-md-offset-3">
-  <div class="row">
-    <div class="col-lg-6">
+
+  <h1 style="text-align: center;">EVENT INFO</h1>
+  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-6">
+        <label for="title">Title</label>
+        <p class="form-control" *ngIf="event">{{event.title}}</p>
+      </div>
+      <div class="col-lg-6">
+        <label for="date">Date</label>
+        <p class="form-control">{{event.date}}</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+
+      
+      <div class="col-lg-3">
+        <label>Sport:</label>
+        <p class="form-control">
+        {{event.sportType}}
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <label>Skill level</label>
+        <p class="form-control">
+        {{event.skillLevel}}
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <label>Play type</label>
+        <p  class="form-control">
+        {{event.playType}}
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <label>Number of players</label>
+        <p class="form-control">
+        ATTENDEES:
+        </p>
+      </div>
+    </div>
+  
+     
+        <label>Location</label>
+        <p class="form-control">
+        {{event.location}}
+        </p>
+        <app-simplemap></app-simplemap>
         
     </div>
-  </div>
-
-  <div class="col-lg-3">
-    <!-- host PICTURE / INFO -->
-    <img id="profilePicture" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
-    <p>Anton Scummaster</p>
-    <textarea disabled cols="40" rows="6" *ngIf="host; else noHost">
-      Name: <!-- {{ host.firstName }} {{ host.lastName }} -->
-      Phone: <!-- {{ host.mobileNumber }} -->
-      Description:<!--  {{ host.biography }} -->
-
-    </textarea>
-    <ng-template #noHost>
-        <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <p>If page doesn't load in 10 seconds,</p>
-        <p>check your internet connection and</p>
-        <p>try to load the page again</p>
-    </ng-template>
-  </div>
-
-  <div class="col-lg-5">
-    <!-- MAP --> 
-    <div class="row" style="padding-left: 15px; padding-bottom: 15px;">
-        <app-simplemap></app-simplemap>
-    </div>
     
-    <!-- EVENT INFO -->
-    <textarea *ngIf="event" disabled cols="67" rows="5">
-      SPORT: {{event.sportType}}
-      ATTENDEES: 
-      ADDRESS: {{event.location}}
-      SKILL LEVEL: {{event.skillLevel}}
-
-    </textarea>
   </div>
-
-  <div class="col-lg-3">
-    <!-- DESCRIPTION TEXT BOX -->
-    <textarea *ngIf="event" disabled cols="30" rows="16">
-      DESCRIPTION: {{event.description}}
-    </textarea>
+  <div class="form-group">
     <div class="row">
-      <button class="btn btn-primary" 
-      style="position: relative; left: 15px;"
-      (click)="close()">Close</button>
+      <div class="col-lg-4">
+        <!-- host PICTURE / INFO -->
+        <img id="profilePicture" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
+        <p>Host profile</p>
+      
+      </div>
+      <div class="col-lg-4">
+          <textarea disabled cols="40" rows="6" *ngIf="host; else noHost">
+                        Name: <!-- {{ host.firstName }} {{ host.lastName }} -->
+                        Phone: <!-- {{ host.mobileNumber }} -->
+                        Description:<!--  {{ host.biography }} -->
+                      </textarea>
+          
+          <ng-template #noHost>
+            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+            />
+            <p>If page doesn't load in 10 seconds,</p>
+            <p>check your internet connection and</p>
+            <p>try to load the page again</p>
+          </ng-template>
+      </div>
+      <div class="col-lg-4">
+        <!-- DESCRIPTION TEXT BOX -->
+        <label>Description:</label>
+        <textarea class="form-control" *ngIf="event" cols="30" rows="8">
+          {{event.description}}
+        </textarea>
+        <div align="right">
+          <button class="btn btn-primary" (click)="close()">Close</button>
+        
+          <button class="btn btn-primary" *ngIf="signedIn; else leaveEvent" (click)="joinEvent()">Join</button>
+          <ng-template #leaveEvent>
+        
+            <button class="btn btn-primary" (click)="joinEvent()">Leave</button>
+          </ng-template>
+        
+          <button class="btn btn-primary" [hidden]="!signedIn" (click)="deleteEvent()">Delete</button>
+          </div>
 
-      <button class="btn btn-primary" 
-      style="padding-right: 15px;"
-      *ngIf="signedIn; else leaveEvent"
-      (click)="joinEvent()">Join</button>
-      <ng-template #leaveEvent>
-        <button class="btn btn-primary" 
-        style="padding-right: 15px;"
-        (click)="joinEvent()">Leave</button>
-      </ng-template>
-
-      <button class="btn btn-primary" [hidden]="!signedIn" 
-      style="position: relative; left: 15px;"
-      (click)="deleteEvent()">Delete</button>
-    </div>
+      </div>
+        
+      </div>
+      
+       
+        
+      
     
-  </div>
+
+  
+
+  
+    
 </div>
