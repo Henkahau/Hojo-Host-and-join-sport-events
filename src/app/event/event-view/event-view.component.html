@@ -49,6 +49,28 @@
         <p class="form-control">
         {{event.location}}
         </p>
+  <div class="col-lg-3">
+    <!-- host PICTURE / INFO -->
+    <img src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337" style="max-height: 150px;">
+    <p>Anton Scummaster</p>
+    <!-- CHECK NGIF CONDITION! -->
+    <textarea disabled cols="40" rows="6" *ngIf="REPLACABLE_USER; else noHost">
+      Name: {{ REPLACABLE_USER.firstName }} {{ REPLACABLE_USER.lastName }} 
+      Phone: {{ REPLACABLE_USER.mobileNumber }} 
+      Description: 
+      {{ REPLACABLE_USER.biography }}
+    </textarea>
+    <ng-template #noHost>
+        <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <p>If page doesn't load in 10 seconds,</p>
+        <p>check your internet connection and</p>
+        <p>try to load the page again</p>
+    </ng-template>
+  </div>
+
+  <div class="col-lg-5">
+    <!-- MAP --> 
+    <div class="row" style="padding-left: 15px; padding-bottom: 15px;">
         <app-simplemap></app-simplemap>
         
     </div>

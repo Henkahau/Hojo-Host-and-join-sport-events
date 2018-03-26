@@ -107,4 +107,5 @@ export class LocationMapComponent implements OnInit {
       location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
     });
   }
+
 }
