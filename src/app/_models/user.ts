@@ -4,7 +4,8 @@ export class User {
     email: string;
     mobileNumber: number;
     biography: string;
-    password: string;
+    notapwhash: string;
+    pwsalt: string;
     firstName: string;
     lastName: string;
 }

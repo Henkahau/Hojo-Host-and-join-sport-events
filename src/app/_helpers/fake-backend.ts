@@ -17,7 +17,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // array in local storage for registered users
         let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
         let events: any[] = JSON.parse(localStorage.getItem('events')) || [];
-        let uuidv4 = require('uuid/v4');
  
         // wrap in delayed observable to simulate server api call
         return Observable.of(null).mergeMap(() => {
@@ -98,7 +97,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 }
                 
                 // save new user
-                newUser.id = uuidv4();
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
  

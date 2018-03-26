@@ -1,7 +1,7 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../login';
 
 @Component({
   selector: 'app-modal',
@@ -10,7 +10,6 @@ import { LoginComponent } from '../login/login.component';
 })  
 export class ModalComponent {
 
-  x: string;
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService) {}
   

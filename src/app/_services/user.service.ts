@@ -6,24 +6,27 @@ import { User } from '../_models/index';
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient) { }
+
+    static url ='/api';
  
     getAll() {
-        return this.http.get<User[]>('/api/users');
+        return this.http.get<User[]>(UserService.url + '/users');
     }
  
-    getById(id: number) {
-        return this.http.get('/api/users/' + id);
+    getById(id: string) {
+        return this.http.get<User>(UserService.url + '/account?uuid=' + id).map(res => res);
     }
  
     create(user: User) {
-        return this.http.post('/api/users', user);
+        console.log('SERVICE: ' + user);
+        return this.http.post(UserService.url + '/account/person', user, {responseType: 'text'});
     }
  
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user);
+        return this.http.put(UserService.url + '/users/' + user.id, user);
     }
  
-    delete(id: number) {
-        return this.http.delete('/api/users/' + id);
+    delete(id: string) {
+        return this.http.delete(UserService.url + '/users/' + id);
     }
 }

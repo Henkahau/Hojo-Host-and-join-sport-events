@@ -1,31 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
-import { Event } from '../_models/index';
+import { Event, User } from '../_models/index';
 
 @Injectable()
 export class EventService {
 
   constructor(private http: HttpClient) { }
 
+  static url ='/api';
+
   createEvent(event: Event){
-    return this.http.post('/api/events', event);
+    console.log(event);
+    return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
   updateEvent(event: Event){
-    return this.http.put('/api/events' + event.id, event);
+    return this.http.put('/api/events/' + event.eventId, event, {responseType: 'text'});
   }
 
-  deleteEvent(id: number){
-    return this.http.delete('/api/events' + id);
+  deleteEvent(eventId: string){
+    return this.http.delete('/api/events/' + eventId, {responseType: 'text'});
   }
 
-  getEventById(id: number){
-    return this.http.get('/api/events' + id);
+  getEventById(eventId: string){
+    return this.http.get<Event>('/api/events/' + eventId);
   }
 
   getAllEvents(){
-    return this.http.get<Event[]>('/api/events');
+    return this.http.get<Event[]>('api/events');
   }
 
+ 
+  joinEvent(eventId: string, accountId: string){
+    return this.http.put('/api/events' + eventId, accountId, {responseType: 'text'});
+  }
 }
