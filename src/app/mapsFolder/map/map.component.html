@@ -1,18 +1,18 @@
 <app-searchfield (messageEvent)="receiveMessage($event)" (messageEvent)="receiveLevel"></app-searchfield>
 
-<div style="padding-bottom: 50px; width: 500px; padding-left: 200px; padding-top: 80px;" >
+<div style="padding-bottom: 50px; width: 500px; padding-left: 200px; padding-top: 80px;">
   <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
     #search [formControl]="searchControl">
 </div>
-
-<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+<agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
   <agm-marker [latitude]="latitude" [longitude]="longitude">
   </agm-marker>
   <div>
     <div *ngFor="let marker of markers">
       <div *ngIf="marker.tag == message">
-        <agm-marker  (markerClick)="onMapClick($event)" [iconUrl]=marker.icon [latitude]=marker.latitude [longitude]=marker.longitude (mouseOver)="mouseOverMarker(infoWindow,gm)">
-          <agm-info-window #infowindow>{{ marker.latitude }} {{ marker.longitude }}</agm-info-window>
+        <agm-marker (markerClick)="onMapClick($event)" [latitude]=marker.latitude [longitude]=marker.longitude (mouseOver)="mouseOverMarker(infoWindow,gm)"
+          (mouseOut)="mouseLeftMarker(infoWindow)">
+          <agm-info-window #infoWindow>{{ marker.latitude }} {{ marker.longitude }}</agm-info-window>
         </agm-marker>
       </div>
     </div>
