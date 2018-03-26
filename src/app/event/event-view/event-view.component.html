@@ -1,20 +1,18 @@
 <h1 style="text-align: center;">EVENT INFO</h1>
 <h2 style="text-align: center;" *ngIf="event">{{event.title}}</h2>
-<h2 style="text-align: center; color:red;">THIS VIEW WILL BE MOVED TO MODAL WINDOW (POPUP) LATER</h2>
 
 
-<div class="container-fluid">
+
+<div class="col-md-6 col-md-offset-3">
   <div class="row">
-    <div class="col-lg-11">
-        <button type="button" class="close pull-right" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="col-lg-6">
+        
     </div>
   </div>
 
   <div class="col-lg-3">
     <!-- host PICTURE / INFO -->
-    <img src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337" style="max-height: 150px;">
+    <img id="profilePicture" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
     <p>Anton Scummaster</p>
     <textarea disabled cols="40" rows="6" *ngIf="host; else noHost">
       Name: <!-- {{ host.firstName }} {{ host.lastName }} -->
