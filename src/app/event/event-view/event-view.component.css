@@ -1,3 +1,8 @@
+#profilePicture 
+{
+    height: 125px;
+    width: 125px;
+}
 textarea
 {
     text-align: left;
@@ -11,7 +16,7 @@ textarea:disabled
 
 button + button
 {
-    margin-left: 5%;
+    
 }
 
 .btn.btn-primary

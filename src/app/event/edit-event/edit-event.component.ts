@@ -16,7 +16,6 @@ export class EditEventComponent implements OnInit {
   model: any = {};
   event: Event;
   eventTitle: string;
-  static editEventId: string;
 
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
@@ -29,15 +28,22 @@ export class EditEventComponent implements OnInit {
 
   ngOnInit() {
     this.loadEvent();
-    
   }
 
   private loadEvent(){
-    this.eventService.getEventById(EditEventComponent.editEventId).subscribe(event => { this.event = event, this.eventTitle = event.title });
+    this.eventService.getEventById(sessionStorage.getItem("eventId")).subscribe(event => {
+       this.event = event, 
+       this.eventTitle = event.title
+      });
   }
 
- 
+  private cancel(){
+    sessionStorage.removeItem("eventId");
+    this.router.navigate(['/home']);
+  }
+
   private editEvent(){
+    sessionStorage.removeItem("eventId");
     this.eventService.updateEvent(this.event)
     .subscribe(
       data => {

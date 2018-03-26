@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
-import { EventService, AlertService } from '../../_services/index';
+import { EventService, AlertService, UserService } from '../../_services/index';
 import { NgModel } from '@angular/forms';
 
 
@@ -26,12 +26,25 @@ export class CreateEventComponent implements OnInit {
   constructor(
       private router: Router,
       private eventService: EventService,
-      private alertService: AlertService) 
+      private alertService: AlertService,
+      private userService: UserService) 
       {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
 
   ngOnInit() {
+    // Find a (better) way to send host
+    // if (localStorage.getItem('currentUser').length > 0)
+    // {
+    //   this.model.host = JSON.parse(localStorage.getItem('currentUser'));
+    // }
+
+    // Until that use this:
+    // BEWARE! AT THE MOMENT THIS WILL BREAK THE BACKEND WITH INFINITE LOOP!!
+    // this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
+    //   this.model.host = user;
+    //   console.log(this.model.host);
+    // });
   }
  
   createEvent(){
@@ -47,7 +60,6 @@ export class CreateEventComponent implements OnInit {
           error => {
             this.alertService.error(error);
             this.loading = false;
-          }
-        );
+          });
   }
 }
