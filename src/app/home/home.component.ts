@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User, Event } from '../_models/index';
 import { UserService, EventService } from '../_services/index';
 import { EditEventComponent } from '../event';
+import { EventViewComponent } from '../event/event-view';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
  
 @Component({
     moduleId: module.id,
@@ -15,6 +17,7 @@ export class HomeComponent implements OnInit {
     users: User[] = [];
     events: Event[] = [];
     event: Event;
+    user: User;
    
     constructor(
         private userService: UserService,
@@ -27,6 +30,7 @@ export class HomeComponent implements OnInit {
        // this.loadAllUsers();
         this.loadAllEvents();
         //this.getSingleEvent();
+        this.getSingleUser();
     }
  
     deleteUser(id: string) {
@@ -51,7 +55,21 @@ export class HomeComponent implements OnInit {
     }
 
     private openEdit(id: string){
-        EditEventComponent.editEventId = id;
+        sessionStorage.setItem("eventId", id);
         this.router.navigate(['/edit-event']);
+    }
+
+    private openEventView(id: string){
+        sessionStorage.setItem("eventId", id);
+        this.router.navigate(['/event-view']);
+    }
+
+    private openProfileView(id: string){
+        sessionStorage.setItem("userId", id);
+        this.router.navigate(['/user-profile']);
+    }
+
+    private getSingleUser(){
+        this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => { this.user = user });
     }
 }

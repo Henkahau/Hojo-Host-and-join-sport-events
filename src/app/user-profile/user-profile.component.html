@@ -33,6 +33,7 @@
     <input disabled type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" *ngIf="user" />
   </div>
 
+<<<<<<< HEAD
   <div class="form-group">
     <label for="mobileNumber">Mobile Number</label>
     <input disabled type="number" class="form-control" name="mobileNumber" [(ngModel)]="user.mobileNumber" #mobileNumber="ngModel" *ngIf="user" />
@@ -48,3 +49,15 @@
   </div>
   <hr>
 </div>
+=======
+<ul class="list-group" *ngIf="user">
+  <label>First Name</label>
+  <li class="list-group-item">{{ user.firstName }}</li>
+  <label>Last Name</label>
+  <li class="list-group-item">{{ user.lastName }}</li>
+  <label>Email</label>
+  <li class="list-group-item">{{ user.email }}</li>
+  <label>Phone</label>
+  <li class="list-group-item">{{ user.mobileNumber }}</li>
+</ul>
+>>>>>>> 56ffc878e5c7ef9a836236508ddaea57048a0459

@@ -15,8 +15,10 @@
             <br><br>
             - <a (click)="deleteEvent(event.eventId)">Delete event</a>
             - <a (click)="openEdit(event.eventId)">Edit event</a>
+            - <a (click)="openEventView(event.eventId)">View event</a>
         </li>
     </ul>
+    <p *ngIf="user"><a (click)="openProfileView(user.id)">{{user.email}}</a></p>
     <p><a [routerLink]="['/login']">Logout</a></p>
     <p><a [routerLink]="['/createEvent']">createEvent</a></p>
 </div>

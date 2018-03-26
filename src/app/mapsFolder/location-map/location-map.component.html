@@ -4,16 +4,8 @@
     #searchLocation [formControl]="searchControl">
 </div>
 
-<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-  <agm-marker [latitude]="latitude" [longitude]="longitude">
+<agm-map (mapClick)="moveMarker($event)" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+  <agm-marker [markerDraggable]="true" (dragEnd)="dragEnd($event)" [latitude]="latitudeMarker" [longitude]="longitudeMarker">
+      <agm-info-window>{{ latitudeMarker }} {{ longitudeMarker }}</agm-info-window>
   </agm-marker>
-  <div>
-    <div *ngFor="let marker of markers">
-      <div *ngIf="marker.tag == message">
-        <agm-marker (markerClick)="onMapClick($event)" [iconUrl]=marker.icon [latitude]=marker.latitude [longitude]=marker.longitude>
-          <agm-info-window>{{ marker.latitude }} {{ marker.longitude }}</agm-info-window>
-        </agm-marker>
-      </div>
-    </div>
-  </div>
 </agm-map>

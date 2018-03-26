@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
-import { Event, User } from '../../_models';
+import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
 
 @Component({
   selector: 'app-event-view',
@@ -12,46 +12,54 @@ import { Event, User } from '../../_models';
 export class EventViewComponent implements OnInit 
 {
   signedIn = true;
-  attendees: string[] = [
-    'Mister Tester'
-  ];
+  attendees: string[] = [];
 
   // These ids will be received when user clicks marker/event
-  @Input() eventID: number;
-  @Input() accountID: number;
+  eventID: string;
+  eventTitle: string;
+  accountID: number;
 
-  @Input() event: Event;
-
+  event: Event;
   host: User;
+  REPLACABLE_USER: User;
 
   constructor(
-    private router: Router,
-    private eventService: EventService,
-    private userService: UserService
-    ) { }
+        private router: Router,
+        private eventService: EventService,
+        private userService: UserService) { }
 
   ngOnInit() {
-    // ID should be fetch from backend... json('currentUser')?
-    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
-      this.host = user;
-    });
+    this.loadEvent();
+    console.log('2');
+      console.log(this.REPLACABLE_USER);
   }
 
-  deleteEvent()
-  {
+  private loadEvent(){
+    this.eventService.getEventById('f4edbecf-ab9d-4a47-bd83-1359d9893c0e').subscribe(event => {
+      this.event = event;
+    });
+    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
+      this.REPLACABLE_USER = user;
+      console.log('3');
+      console.log(this.REPLACABLE_USER);
+    });
+    console.log('1');
+      console.log(this.REPLACABLE_USER);
+  }
+
+  deleteEvent() {
    // this.eventService.deleteEvent(this.eventID);
   }
 
-  joinEvent()
-  {
+  joinEvent() {
     // This will be also used to leave event
-  //  this.eventService.joinEvent(this.eventID, this.accountID);
+    // this.eventService.joinEvent(this.eventID, this.accountID);
     this.signedIn = !this.signedIn;
+    console.log(this.REPLACABLE_USER.firstName);
   }
 
-  close()
-  {
+  close() {
     // Not necessary when using modal window
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 }

@@ -11,6 +11,9 @@ export class Event{
     maxAttendees: number;
     description: string;
     playType: PlayType;
+    latitude:  number;
+    longitude: number;
+    host: User;
 }
 
 export enum SportType{
