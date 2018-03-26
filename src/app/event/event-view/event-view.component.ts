@@ -36,8 +36,11 @@ export class EventViewComponent implements OnInit
     this.eventService.getEventById('f4edbecf-ab9d-4a47-bd83-1359d9893c0e').subscribe(event => {
       this.event = event;
     });
+    // THIS ONE WILL BE HOST
     this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
-      this.REPLACABLE_USER = user;
+    this.REPLACABLE_USER = user;
+    // Add host as player to list
+    this.event.players.push(this.REPLACABLE_USER);
     });
   }
 
@@ -49,7 +52,6 @@ export class EventViewComponent implements OnInit
     // This will be also used to leave event
     // this.eventService.joinEvent(this.eventID, this.accountID);
     this.signedIn = !this.signedIn;
-    console.log(this.REPLACABLE_USER.firstName);
   }
 
   close() {
