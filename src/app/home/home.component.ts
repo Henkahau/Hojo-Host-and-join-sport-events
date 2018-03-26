@@ -55,17 +55,17 @@ export class HomeComponent implements OnInit {
     }
 
     private openEdit(id: string){
-        EditEventComponent.editEventId = id;
+        sessionStorage.setItem("eventId", id);
         this.router.navigate(['/edit-event']);
     }
 
     private openEventView(id: string){
-        EventViewComponent.eventID = id;
+        sessionStorage.setItem("eventId", id);
         this.router.navigate(['/event-view']);
     }
 
     private openProfileView(id: string){
-        UserProfileComponent.userProfileId = id;
+        sessionStorage.setItem("userId", id);
         this.router.navigate(['/user-profile']);
     }
 

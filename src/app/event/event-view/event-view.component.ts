@@ -17,7 +17,7 @@ export class EventViewComponent implements OnInit
   ];
 
   // These ids will be received when user clicks marker/event
-  static eventID: string;
+  eventID: string;
   eventTitle: string;
   accountID: number;
 
@@ -35,12 +35,14 @@ export class EventViewComponent implements OnInit
   }
 
   private loadEvent(){
-    this.eventService.getEventById(EventViewComponent.eventID).subscribe(event => { this.event = event, this.eventTitle = event.title });
+    this.eventID = sessionStorage.getItem("eventId");
+    this.eventService.getEventById(this.eventID)
+        .subscribe(event => { this.event = event, this.eventTitle = event.title });
   }
 
   deleteEvent()
   {
-   // this.eventService.deleteEvent(this.eventID);
+    this.eventService.deleteEvent(this.eventID);
   }
 
   joinEvent()

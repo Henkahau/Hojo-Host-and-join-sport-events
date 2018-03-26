@@ -11,7 +11,7 @@ import { User } from '../_models/user'
 export class UserProfileComponent implements OnInit {
 
   user: User;
-  static userProfileId: string; 
+  userProfileId: string; 
 
   constructor() { }
 
