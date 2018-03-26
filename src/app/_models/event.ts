@@ -13,6 +13,7 @@ export class Event{
     playType: PlayType;
     latitude:  number;
     longitude: number;
+    host: User;
 }
 
 export enum SportType{
