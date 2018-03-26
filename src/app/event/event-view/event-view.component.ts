@@ -30,8 +30,6 @@ export class EventViewComponent implements OnInit
 
   ngOnInit() {
     this.loadEvent();
-    console.log('2');
-      console.log(this.REPLACABLE_USER);
   }
 
   private loadEvent(){
@@ -40,11 +38,7 @@ export class EventViewComponent implements OnInit
     });
     this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
       this.REPLACABLE_USER = user;
-      console.log('3');
-      console.log(this.REPLACABLE_USER);
     });
-    console.log('1');
-      console.log(this.REPLACABLE_USER);
   }
 
   deleteEvent() {
