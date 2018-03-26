@@ -14,7 +14,6 @@ export class LocationMapComponent implements OnInit {
   public longitude: number;
   public latitudeMarker:  number;
   public longitudeMarker: number;
-  // @Output('receivedLocation') sendLocation  = new EventEmitter<{latitude: number, longitude: number}>();
   @Output('receivedLocation') sendLocation  = new EventEmitter<{location: string}>();
 
   public searchControl: FormControl;
@@ -28,7 +27,6 @@ export class LocationMapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute
-
   ) { }
 
   ngOnInit() {
@@ -66,10 +64,6 @@ export class LocationMapComponent implements OnInit {
           this.longitudeMarker = this.longitude;
           this.zoom = 12;
 
-          // this.sendLocation.emit({
-          //   latitude: this.latitudeMarker,
-          //   longitude: this.longitudeMarker
-          // });
           this.sendLocation.emit({
             location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
           });
@@ -87,10 +81,6 @@ export class LocationMapComponent implements OnInit {
         this.longitudeMarker = this.longitude;
         this.zoom = 12;
 
-        // this.sendLocation.emit({
-        //   latitude: this.latitudeMarker,
-        //   longitude: this.longitudeMarker
-        // });
         this.sendLocation.emit({
           location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
         });
@@ -102,10 +92,7 @@ export class LocationMapComponent implements OnInit {
   {
     this.latitudeMarker  = event.coords.lat;
     this.longitudeMarker = event.coords.lng;
-    // this.sendLocation.emit({
-    //   latitude: this.latitudeMarker,
-    //   longitude: this.longitudeMarker
-    // });
+    
     this.sendLocation.emit({
       location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
     });
@@ -116,10 +103,6 @@ export class LocationMapComponent implements OnInit {
     this.latitudeMarker  = event.coords.lat;
     this.longitudeMarker = event.coords.lng;
 
-    // this.sendLocation.emit({
-    //   latitude: this.latitudeMarker,
-    //   longitude: this.longitudeMarker
-    // });
     this.sendLocation.emit({
       location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
     });

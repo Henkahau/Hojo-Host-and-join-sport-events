@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<ul class="list-group">
+<ul class="list-group" *ngIf="user">
   <label>First Name</label>
   <li class="list-group-item">{{ user.firstName }}</li>
   <label>Last Name</label>

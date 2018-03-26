@@ -42,7 +42,7 @@ import { SearchfieldComponent } from './searchfield/searchfield.component';
 import { HeaderComponent } from './header/header.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SimplemapComponent } from './mapsFolder/simplemap/simplemap.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent, EditProfileComponent } from './user-profile/index';
 import { LocationMapComponent } from './mapsFolder/location-map/location-map.component';
 
 
@@ -79,6 +79,7 @@ import { LocationMapComponent } from './mapsFolder/location-map/location-map.com
         SimplemapComponent,
         LocationMapComponent,
         UserProfileComponent,
+        EditProfileComponent,
         EditEventComponent,
     ],
     providers: [
