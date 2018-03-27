@@ -14,6 +14,7 @@ export class Event{
     latitude:  number;
     longitude: number;
     host: User;
+    players: User[];
 }
 
 export enum SportType{
