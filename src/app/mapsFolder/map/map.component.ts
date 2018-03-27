@@ -45,8 +45,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
 
-    this.zoom = 4;
-    this.latitude = 65.5121;
+    this.zoom = 10;
+    this.latitude = 65.0121;
     this.longitude = 25.4651;
 
 
@@ -72,7 +72,7 @@ export class MapComponent implements OnInit {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          // this.zoom = 12;
+          this.zoom = 12;
         });
       });
     });
@@ -85,7 +85,7 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        // this.zoom = 12;
+        this.zoom = 12;
       });
     }
   }
