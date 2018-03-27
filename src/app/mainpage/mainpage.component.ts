@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../_services';
 
 @Component({
   selector: 'app-mainpage',
@@ -9,15 +8,9 @@ import { EventService } from '../_services';
 export class MainpageComponent implements OnInit {
   loggaIn = true;
 
-  events: Event[];
-
-  constructor(private eventService: EventService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.eventService.getAllEvents().subscribe(allEvents => {
-      this.events = Object.assign([], allEvents);
-      console.log(this.events);
-    });
   }
 
 }
