@@ -59,8 +59,8 @@ import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.
         HttpClientModule,
         ReactiveFormsModule,
         routing,
-       ModalModule.forRoot(),
-       AgmCoreModule.forRoot( {
+        ModalModule.forRoot(),
+        AgmCoreModule.forRoot( {
         apiKey: 'AIzaSyCxTAeTahMYWk1U-r4DTUlTNnojLL0g4MU', 
         libraries: ["places"]
       }
