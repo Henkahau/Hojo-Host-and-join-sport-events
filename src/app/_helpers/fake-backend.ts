@@ -116,7 +116,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 } */
  
                 // save new event
-                newEvent.id = events.length + 1;
+                //newEvent.id = uuidv4();
                 events.push(newEvent);
                 localStorage.setItem('events', JSON.stringify(events));
  
