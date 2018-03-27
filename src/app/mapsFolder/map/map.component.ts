@@ -19,6 +19,7 @@ import { Marker } from '../../_models/marker';
 export class MapComponent implements OnInit {
 
   markers: Marker[] = [];
+  events: Event[] = [];
 
   public latitude: number;
   public longitude: number;
@@ -30,8 +31,6 @@ export class MapComponent implements OnInit {
   displayMarkker = true;
   displayMarkker2 = true;
   windowinfo = false;
-
-  events: Event[] = [];
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -47,7 +46,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
 
     this.zoom = 4;
-    this.latitude = 65.0121;
+    this.latitude = 65.5121;
     this.longitude = 25.4651;
 
 
@@ -91,7 +90,6 @@ export class MapComponent implements OnInit {
     }
   }
 
-
   onChoseLocation(event) {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
@@ -106,7 +104,7 @@ export class MapComponent implements OnInit {
   onMapClick(event) {
   }
 
-  mouseOverMarker(infoWindow,gm) {
+  mouseOverMarker(infoWindow, gm) {
     if (gm.lastOpen != null) {
       gm.lastOpen.close();
     }
@@ -127,9 +125,9 @@ export class MapComponent implements OnInit {
         var latLng = this.events[i].location.replace("N", " ").replace("E", "");
         var arrayLatLng = latLng.split(" ");
         var lat = +arrayLatLng[0];
-        var lng = +arrayLatLng[1]; 
+        var lng = +arrayLatLng[1];
         // PUSH IT BABY
-        this.markers.push({markerLatitude: lat, markerLongitude: lng});
+        this.markers.push({ markerLatitude: lat, markerLongitude: lng });
       }
     });
   }
