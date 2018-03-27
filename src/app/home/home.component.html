@@ -7,7 +7,7 @@
     <p><a (click)="openModal('eventView')">Modal eventView</a></p>
 <!--LIST ALL EVENTS -->
     <ul>
-        <li *ngFor="let event of events" (click)="openEventView(event.eventId)">
+        <li *ngFor="let event of events">
             <br>Title: {{event.title}} 
             <br>id: {{event.eventId}} 
             <br>Sport: {{event.sportType}} 
