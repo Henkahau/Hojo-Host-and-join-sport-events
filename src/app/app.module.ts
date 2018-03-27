@@ -45,9 +45,9 @@ import { SimplemapComponent } from './mapsFolder/simplemap/simplemap.component';
 import { UserProfileComponent } from './user-profile/index';
 import { LocationMapComponent } from './mapsFolder/location-map/location-map.component';
 import { EventlistComponent } from './event/eventlist/eventlist.component';
-import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
-import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
 import { EditProfileComponent } from './user-profile/index';
+import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
+
 
 
 
