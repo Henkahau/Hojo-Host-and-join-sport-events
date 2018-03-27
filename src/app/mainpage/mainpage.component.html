@@ -1,16 +1,13 @@
-
 <div class="container">
-<app-header></app-header>
-<div *ngIf="loggaIn"> 
-    <app-profile></app-profile>
-</div>
- 
-<div class="col-lg-6">
-<app-map></app-map>
-</div>
-<div class="col-lg-6">
-<app-eventlist></app-eventlist>
-</div>
+    <app-header></app-header>
+    <div *ngIf="loggaIn">
+        <app-profile></app-profile>
+    </div>
 
-
+    <div class="col-lg-6">
+        <app-map></app-map>
+    </div>
+    <div class="col-lg-6">
+        <app-eventlist></app-eventlist>
+    </div>
 </div>
