@@ -29,11 +29,8 @@ export class CreateEventComponent implements OnInit {
       private router: Router,
       private eventService: EventService,
       private alertService: AlertService,
-<<<<<<< HEAD
-      private userService: UserService) 
-=======
+      private userService: UserService, 
       public bsModalRef: BsModalRef ) 
->>>>>>> d2683492f0122c7d334dc4d754035884abf92048
       {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
