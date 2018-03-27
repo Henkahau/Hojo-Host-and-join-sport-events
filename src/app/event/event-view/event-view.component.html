@@ -1,0 +1,101 @@
+
+  <h1 style="text-align: center;">EVENT INFO</h1>
+  
+  <div class="form-group" *ngIf="event">
+    <div class="row">
+      <div class="col-lg-6">
+        <label for="title">Title</label>
+        <p class="form-control">{{event.title}}</p>
+      </div>
+      <div class="col-lg-6">
+        <label for="date">Date</label>
+        <p class="form-control">{{event.date}}</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+      <div class="col-lg-3">
+        <label>Sport:</label>
+        <p class="form-control">
+        {{event.sportType}}
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <label>Skill level</label>
+        <p class="form-control">
+        {{event.skillLevel}}
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <label>Play type</label>
+        <p  class="form-control">
+        {{event.playType}}
+        </p>
+      </div>
+      <div class="col-lg-3">
+        <label>Number of players</label>
+        <p class="form-control">
+        ATTENDEES:
+        </p>
+      </div>
+    </div>
+      <label>Location</label>
+        <p class="form-control">
+        {{event.location}}
+        </p>
+  
+      <!-- MAP --> 
+      <app-simplemap></app-simplemap>
+        
+    
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-4">
+        <!-- host PICTURE / INFO -->
+        <img id="profilePicture" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
+        <p>Host profile</p>
+      
+      </div>
+      <div class="col-lg-4">
+          <!-- CHECK NGIF CONDITION! -->
+          <label>Host information</label>
+          <div *ngIf="REPLACABLE_USER; else noHost">
+                <p>Name: {{ REPLACABLE_USER.firstName }} {{ REPLACABLE_USER.lastName }} </p>
+                <p> Phone: {{ REPLACABLE_USER.mobileNumber }} </p>
+                <p> Description: {{ REPLACABLE_USER.biography }} </p>    
+          </div>
+          
+          <ng-template #noHost>
+            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+            />
+            <p>If page doesn't load in 10 seconds,</p>
+            <p>check your internet connection and</p>
+            <p>try to load the page again</p>
+          </ng-template>
+      </div>
+      <div class="col-lg-4">
+        <!-- DESCRIPTION TEXT BOX -->
+        <label>Description:</label>
+        <textarea class="form-control" *ngIf="event" cols="30" rows="8">
+          {{event.description}}
+        </textarea>
+        <div align="right">
+          <button class="btn btn-primary" (click)="close()">Close</button>
+        
+          <button class="btn btn-primary" *ngIf="signedIn; else leaveEvent" (click)="joinEvent()">Join</button>
+          <ng-template #leaveEvent>
+        
+            <button class="btn btn-primary" (click)="joinEvent()">Leave</button>
+          </ng-template>
+        
+          <button class="btn btn-primary" [hidden]="!signedIn" (click)="deleteEvent()">Delete</button>
+          </div>
+
+      </div>
+        
+      </div>
+      
+    
+</div>

@@ -34,17 +34,10 @@ export class EventViewComponent implements OnInit
       console.log(this.REPLACABLE_USER);
   }
 
-  private loadEvent(){
-    this.eventService.getEventById('f4edbecf-ab9d-4a47-bd83-1359d9893c0e').subscribe(event => {
-      this.event = event;
-    });
-    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
-      this.REPLACABLE_USER = user;
-      console.log('3');
-      console.log(this.REPLACABLE_USER);
-    });
-    console.log('1');
-      console.log(this.REPLACABLE_USER);
+  private loadEvent() {
+    this.eventID = sessionStorage.getItem("eventId");
+    this.eventService.getEventById(this.eventID)
+      .subscribe(event => { this.event = event, this.eventTitle = event.title });
   }
 
   deleteEvent() {
