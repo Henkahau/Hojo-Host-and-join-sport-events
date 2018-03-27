@@ -71,8 +71,8 @@ export class HomeComponent implements OnInit {
 
     private openEventView(id: string){
         sessionStorage.setItem("eventId", id);
-        //this.openModal('eventView'); 
-        this.router.navigate(['/event-view']);
+        this.openModal('eventView'); 
+        //this.router.navigate(['/event-view']);
     }
 
     private openProfileView(id: string){

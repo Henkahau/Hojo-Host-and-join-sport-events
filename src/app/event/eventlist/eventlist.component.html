@@ -1,6 +1,6 @@
 
 <div class="scrollmenu">
-     <li class="list-group-item" *ngFor="let event of events">
+     <li class="list-group-item" *ngFor="let event of events" (click)="openEventView(event.eventId)">
       <label>Title:</label> 
       <br>
       {{event.title}}
