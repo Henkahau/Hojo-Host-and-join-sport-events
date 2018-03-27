@@ -16,6 +16,10 @@ export class EditProfileComponent implements OnInit {
   user: User;
   static editProfileId: string;
 
+  onFileSelected(event){
+    console.log(event);
+  }
+
 
 
   constructor(private userService: UserService,
