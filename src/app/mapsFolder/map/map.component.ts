@@ -7,6 +7,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AgmInfoWindow } from '@agm/core/directives/info-window';
 import { InfoWindowManager } from '@agm/core/services/managers/info-window-manager';
+import { EventService } from '../../_services';
+import { Event } from '../../_models';
 
 @Component({
   selector: 'app-map',
@@ -15,24 +17,7 @@ import { InfoWindowManager } from '@agm/core/services/managers/info-window-manag
 })
 export class MapComponent implements OnInit {
 
-
-
-  markers = [{
-    longitude: 25.6,
-    latitude: 65.5,
-    tag: 1,
-  },
-  {
-
-    longitude: 24.9384,
-    latitude: 60.1699,
-    tag: 'Golf'
-  },
-  {
-    longitude: 23.45,
-    latitude: 61.29,
-    tag: 'Golf'
-  }];
+  markers: string[] = [];
 
   public latitude: number;
   public longitude: number;
@@ -45,6 +30,8 @@ export class MapComponent implements OnInit {
   displayMarkker2 = true;
   windowinfo = false;
 
+  events: Event[] = [];
+
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
@@ -52,8 +39,8 @@ export class MapComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private router: Router,
-    private route: ActivatedRoute
-
+    private route: ActivatedRoute,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
@@ -89,8 +76,24 @@ export class MapComponent implements OnInit {
         });
       });
     });
+    //--------------------------------------------------------------------------------!
 
+    this.eventService.getAllEvents().subscribe(allEvents => {
+      this.events = Object.assign([], allEvents);
+      
+    });
+    console.log(this.events);
+
+    for (var i = 0; i <= this.events.length; i++)
+    {
+      console.log("!");
+      console.log(this.events.length);
+      console.log(this.events);
+    }
+    console.log(this.markers);
   }
+  //--------------------------------------------------------------------------------!
+
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -114,10 +117,9 @@ export class MapComponent implements OnInit {
   }
 
   onMapClick(event) {
-
   }
 
-  mouseOvermarker(infoWindow,gm) {
+  mouseOverMarker(infoWindow,gm) {
     if (gm.lastOpen != null) {
       gm.lastOpen.close();
     }
