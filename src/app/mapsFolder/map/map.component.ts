@@ -9,6 +9,7 @@ import { AgmInfoWindow } from '@agm/core/directives/info-window';
 import { InfoWindowManager } from '@agm/core/services/managers/info-window-manager';
 import { EventService } from '../../_services';
 import { Event } from '../../_models';
+import { Marker } from '../../_models/marker';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,7 @@ import { Event } from '../../_models';
 })
 export class MapComponent implements OnInit {
 
-  markers: string[] = [];
+  markers: Marker[] = [];
 
   public latitude: number;
   public longitude: number;
@@ -121,10 +122,14 @@ export class MapComponent implements OnInit {
   getAllEvents() {
     this.eventService.getAllEvents().subscribe(allEvents => {
       this.events = Object.assign([], allEvents);
-      
+
       for (var i = 0; i < this.events.length; i++) {
-        this.markers.push(this.events[i].location);
-        console.log(this.markers[i] + '   ' + this.events[i].title);
+        var latLng = this.events[i].location.replace("N", " ").replace("E", "");
+        var arrayLatLng = latLng.split(" ");
+        var lat = +arrayLatLng[0];
+        var lng = +arrayLatLng[1]; 
+        // PUSH IT BABY
+        this.markers.push({markerLatitude: lat, markerLongitude: lng});
       }
     });
   }
