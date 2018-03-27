@@ -35,7 +35,7 @@ import { ModalComponent } from './modal/index';
 import { CreateEventComponent, EditEventComponent } from './event/index';
 import { EventViewComponent } from './event/event-view/event-view.component';
 import { ProfileComponent } from './profile/profile.component'
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { MapComponent } from './mapsFolder/map';
 import { AgmCoreModule } from '@agm/core';
 import { SearchfieldComponent } from './searchfield/searchfield.component';
@@ -44,8 +44,9 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { SimplemapComponent } from './mapsFolder/simplemap/simplemap.component';
 import { UserProfileComponent } from './user-profile/index';
 import { LocationMapComponent } from './mapsFolder/location-map/location-map.component';
-import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
 import { EventlistComponent } from './event/eventlist/eventlist.component';
+import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
+import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
 
 
 
@@ -89,6 +90,7 @@ import { EventlistComponent } from './event/eventlist/eventlist.component';
         AuthGuard,
         AlertService,
         AuthenticationService,
+        BsModalRef,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,

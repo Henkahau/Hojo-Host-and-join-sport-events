@@ -1,6 +1,10 @@
 <div class="col-md-6 col-md-offset-3">
     <!--  <h1>Hi {{event.eventId}} </h1>  -->
     <h3>TEST PAGE</h3>
+    <p><a (click)="openModal('login')">Modal Login</a></p>
+    <p><a (click)="openModal('register')">Modal register</a></p>
+    <p><a (click)="openModal('createEvent')">Modal create event</a></p>
+    <p><a (click)="openModal('eventView')">Modal eventView</a></p>
 <!--LIST ALL EVENTS -->
     <ul>
         <li *ngFor="let event of events">
@@ -14,7 +18,7 @@
             <br>Description: {{event.description}}
             <br><br>
             - <a (click)="deleteEvent(event.eventId)">Delete event</a>
-            - <a (click)="openEdit(event.eventId)">Edit event</a>
+            - <a (click)="openEdit(event.eventId);">Edit event</a>
             - <a (click)="openEventView(event.eventId)">View event</a>
         </li>
     </ul>
@@ -22,3 +26,4 @@
     <p><a [routerLink]="['/login']">Logout</a></p>
     <p><a [routerLink]="['/createEvent']">createEvent</a></p>
 </div>
+
