@@ -52,11 +52,11 @@
     <div class="row">
       <div class="col-lg-4">
         <!-- host PICTURE / INFO -->
-        <img id="profilePicture" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
+        <img id="profilePicture" style="height: 30%;" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
         <p>Host profile</p>
 
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <!-- CHECK NGIF CONDITION! -->
         <label>Host information</label>
         <div *ngIf="REPLACABLE_USER; else noHost">
@@ -73,14 +73,14 @@
           <p>try to load the page again</p>
         </ng-template>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-5">
         <!-- DESCRIPTION TEXT BOX -->
         <label>Description:</label>
         <textarea class="form-control" *ngIf="event" cols="30" rows="8">
           {{event.description}}
         </textarea>
-        <div align="right">
 
+        <div align="right">
           <button class="btn btn-primary" (click)="close()">Close</button>
 
           <button class="btn btn-primary" *ngIf="signedIn; else leaveEvent" (click)="joinEvent()">Join</button>

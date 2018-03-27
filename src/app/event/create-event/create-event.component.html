@@ -1,8 +1,8 @@
-<div class="col-lg-16 col-md-offset"  style="padding: 35px;" id="event">
+<div class="col-lg-16 col-md-offset" style="padding: 35px;" id="event">
   <h2>Create new event</h2>
 
   <form name="form" (ngSubmit)="f.form.valid && createEvent()" #f="ngForm" novalidate>
- 
+
     <div class="form-group">
       <div class="row">
         <div class="col-lg-6">
@@ -14,8 +14,8 @@
           <label for="date">Date</label>
           <input type="date" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required />
         </div>
-    
-      </div>      
+
+      </div>
     </div>
 
     <div class="form-group">
@@ -47,8 +47,7 @@
 
         <div class="col-lg-3">
           <label for="maxAttendees">Max number of players</label>
-          <input type="number" class="form-control" name="maxAttendees" min="1" max="30" [(ngModel)]="model.maxAttendees" #maxAttendees="ngModel"
-          />
+          <input type="number" class="form-control" name="maxAttendees" min="1" max="30" [(ngModel)]="model.maxAttendees" #maxAttendees="ngModel"/>
         </div>
 
       </div>
@@ -65,7 +64,7 @@
     </app-location-map>
 
     <div class="form-group">
-     <!-- <label for="date">Date</label>
+      <!-- <label for="date">Date</label>
       <input type="date" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required /> -->
       <!-- <label for="time">Time</label>
       <input type="time" class="form-control" name="time" value="0" [(ngModel)]="model.time" #time="ngModel" required />
@@ -75,22 +74,22 @@
     <div class="form-group">
       <div class="">
         <label for="description">Description</label>
-      <!-- <input type="text" name="description" maxlength="300" [(ngModel)]="model.description" #description="ngModel" /> -->
-      
+        <!-- <input type="text" name="description" maxlength="300" [(ngModel)]="model.description" #description="ngModel" /> -->
+
       </div>
       <textarea name="desciption" class="form-control" cols="90" rows="5" [(ngModel)]="model.description" #description="ngModel"></textarea>
-    <!--  <label for="description">Description</label>
+      <!--  <label for="description">Description</label>
        <input type="text" name="description" maxlength="300" [(ngModel)]="model.description" #description="ngModel" /> 
       <textarea name="desciption" cols="60" rows="5" [(ngModel)]="model.description" #description="ngModel"></textarea> -->
     </div>
 
     <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary">Create</button>
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-      />
-      <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+      <div align="right">
+        <button [disabled]="loading" class="btn btn-primary">Create</button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+        <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+      </div>
     </div>
-    
   </form>
 
 </div>
