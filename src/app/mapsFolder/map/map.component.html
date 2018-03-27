@@ -4,14 +4,18 @@
   <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
     #search [formControl]="searchControl">
 </div>
+
 <agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
   <agm-marker [latitude]="latitude" [longitude]="longitude">
   </agm-marker>
   <div>
     <div *ngFor="let marker of markers">
       <div *ngIf="marker.tag == message">
-        <agm-marker (markerClick)="onMapClick($event)" [latitude]=marker.latitude [longitude]=marker.longitude (mouseOver)="mouseOverMarker(infoWindow,gm)"
-          (mouseOut)="mouseLeftMarker(infoWindow)">
+        <agm-marker (markerClick)="onMapClick($event)" 
+        [latitude]=marker.latitude 
+        [longitude]=marker.longitude 
+        (mouseOver)="mouseOverMarker(infoWindow,gm)"
+        (mouseOut)="mouseLeftMarker(infoWindow)">
           <agm-info-window #infoWindow>{{ marker.latitude }} {{ marker.longitude }}</agm-info-window>
         </agm-marker>
       </div>
