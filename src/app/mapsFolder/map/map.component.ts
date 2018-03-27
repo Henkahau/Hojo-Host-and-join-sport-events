@@ -76,23 +76,9 @@ export class MapComponent implements OnInit {
         });
       });
     });
-    //--------------------------------------------------------------------------------!
 
-    this.eventService.getAllEvents().subscribe(allEvents => {
-      this.events = Object.assign([], allEvents);
-      
-    });
-    console.log(this.events);
-
-    for (var i = 0; i <= this.events.length; i++)
-    {
-      console.log("!");
-      console.log(this.events.length);
-      console.log(this.events);
-    }
-    console.log(this.markers);
+    this.getAllEvents();
   }
-  //--------------------------------------------------------------------------------!
 
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
@@ -126,10 +112,21 @@ export class MapComponent implements OnInit {
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
-    //this.router.navigate(['event-view'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+
   mouseLeftMarker(infoWindow) {
 
     infoWindow.close();
+  }
+
+  getAllEvents() {
+    this.eventService.getAllEvents().subscribe(allEvents => {
+      this.events = Object.assign([], allEvents);
+      
+      for (var i = 0; i < this.events.length; i++) {
+        this.markers.push(this.events[i].location);
+        console.log(this.markers[i] + '   ' + this.events[i].title);
+      }
+    });
   }
 }
 
