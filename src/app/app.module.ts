@@ -45,6 +45,7 @@ import { SimplemapComponent } from './mapsFolder/simplemap/simplemap.component';
 import { UserProfileComponent } from './user-profile/index';
 import { LocationMapComponent } from './mapsFolder/location-map/location-map.component';
 import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
+import { EditProfileComponent } from './user-profile/index';
 
 
 
