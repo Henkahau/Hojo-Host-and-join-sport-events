@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        public bsModalRef: BsModalRef) { }
+        private bsModalRef: BsModalRef) { }
  
     ngOnInit() {
         // reset login status
@@ -52,6 +52,10 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+
+    close(){
+        this.bsModalRef.hide();
     }
 
  

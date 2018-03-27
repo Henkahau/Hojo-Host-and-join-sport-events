@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
@@ -26,7 +27,8 @@ export class EventViewComponent implements OnInit
   constructor(
         private router: Router,
         private eventService: EventService,
-        private userService: UserService) { }
+        private userService: UserService,
+        private bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     this.loadEvent();
@@ -41,7 +43,7 @@ export class EventViewComponent implements OnInit
   }
 
   deleteEvent() {
-   // this.eventService.deleteEvent(this.eventID);
+    this.eventService.deleteEvent(this.eventID);
   }
 
   joinEvent() {
@@ -52,7 +54,6 @@ export class EventViewComponent implements OnInit
   }
 
   close() {
-    // Not necessary when using modal window
-    this.router.navigate(['/home']);
+    this.bsModalRef.hide();
   }
 }
