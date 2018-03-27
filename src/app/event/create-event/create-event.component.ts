@@ -30,7 +30,7 @@ export class CreateEventComponent implements OnInit {
       private eventService: EventService,
       private alertService: AlertService,
       private userService: UserService, 
-      public bsModalRef: BsModalRef ) 
+      private bsModalRef: BsModalRef ) 
       {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
@@ -48,6 +48,10 @@ export class CreateEventComponent implements OnInit {
     //   this.model.host = user;
     //   console.log(this.model.host);
     // });
+  }
+
+  close(){
+    this.bsModalRef.hide();
   }
  
   createEvent(){
