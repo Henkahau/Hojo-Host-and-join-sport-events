@@ -2,7 +2,7 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
  
-import { AlertService, AuthenticationService, ModalService } from '../_services/index';
+import { AlertService, AuthenticationService } from '../_services/index';
 
  
 @Component({
@@ -44,9 +44,8 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                  //  this.loggedIn;
-                   // this.onLoggedIn();
-
+                    this.close();
+                  
                 },
                 error => {
                     this.alertService.error(error);
