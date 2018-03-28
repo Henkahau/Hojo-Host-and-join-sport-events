@@ -16,11 +16,11 @@ import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.c
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },
     { path: '', component: MainpageComponent },
-    { path: 'home' ,component: HomeComponent/*, canActivate: [AuthGuard]*/ },
+    { path: 'home' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'event-view', component: EventViewComponent },
-    { path: 'createEvent', component: CreateEventComponent },
+    { path: 'createEvent', component: CreateEventComponent, canActivate: [AuthGuard] },
     { path: 'user-profile', component: UserProfileComponent },
     { path: 'edit-event', component: EditEventComponent },
     { path: 'edit-profile', component: EditProfileComponent },
