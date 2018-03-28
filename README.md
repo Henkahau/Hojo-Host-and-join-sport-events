@@ -1,4 +1,4 @@
-At this point project doesn't have necessary functionalities. To access login/register view navigate to localhost:4200/login after setting up project using ng serve. After making an account and logging in you are able to browse through existing views.
+At this point project doesn't have necessary functionalities. To access login/register view navigate to localhost:4200/login after setting up project using npm start. You are now able to browse through existing views.
 
 
 # Userlogin

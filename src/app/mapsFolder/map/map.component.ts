@@ -9,6 +9,7 @@ import { AgmInfoWindow } from '@agm/core/directives/info-window';
 import { InfoWindowManager } from '@agm/core/services/managers/info-window-manager';
 import { EventService } from '../../_services';
 import { Event } from '../../_models';
+import { Marker } from '../../_models/marker';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,8 @@ import { Event } from '../../_models';
 })
 export class MapComponent implements OnInit {
 
-  markers: string[] = [];
+  markers: Marker[] = [];
+  events: Event[] = [];
 
   public latitude: number;
   public longitude: number;
@@ -29,8 +31,6 @@ export class MapComponent implements OnInit {
   displayMarkker = true;
   displayMarkker2 = true;
   windowinfo = false;
-
-  events: Event[] = [];
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -45,7 +45,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
 
-    this.zoom = 4;
+    this.zoom = 10;
     this.latitude = 65.0121;
     this.longitude = 25.4651;
 
@@ -72,7 +72,7 @@ export class MapComponent implements OnInit {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          // this.zoom = 12;
+          this.zoom = 12;
         });
       });
     });
@@ -85,11 +85,10 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        // this.zoom = 12;
+        this.zoom = 12;
       });
     }
   }
-
 
   onChoseLocation(event) {
     this.latitude = event.coords.lat;
@@ -105,7 +104,7 @@ export class MapComponent implements OnInit {
   onMapClick(event) {
   }
 
-  mouseOverMarker(infoWindow,gm) {
+  mouseOverMarker(infoWindow, gm) {
     if (gm.lastOpen != null) {
       gm.lastOpen.close();
     }
@@ -121,10 +120,14 @@ export class MapComponent implements OnInit {
   getAllEvents() {
     this.eventService.getAllEvents().subscribe(allEvents => {
       this.events = Object.assign([], allEvents);
-      
+
       for (var i = 0; i < this.events.length; i++) {
-        this.markers.push(this.events[i].location);
-        console.log(this.markers[i] + '   ' + this.events[i].title);
+        var latLng = this.events[i].location.replace("N", " ").replace("E", "");
+        var arrayLatLng = latLng.split(" ");
+        var lat = +arrayLatLng[0];
+        var lng = +arrayLatLng[1];
+        // PUSH IT BABY
+        this.markers.push({ markerLatitude: lat, markerLongitude: lng });
       }
     });
   }

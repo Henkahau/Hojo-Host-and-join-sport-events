@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
+
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
  
 import { User, Event } from '../_models/index';
 import { UserService, EventService } from '../_services/index';
-import { EditEventComponent } from '../event';
+import { EditEventComponent, CreateEventComponent } from '../event';
 import { EventViewComponent } from '../event/event-view';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { LoginComponent } from '../login/index';
+import { RegisterComponent } from '../register/index';
  
 @Component({
     moduleId: module.id,
@@ -18,11 +24,15 @@ export class HomeComponent implements OnInit {
     events: Event[] = [];
     event: Event;
     user: User;
+
+    modalRef: BsModalRef;
+    
    
     constructor(
         private userService: UserService,
         private eventService: EventService,
-        private router: Router) {
+        private router: Router,
+        private modalService: BsModalService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
  
@@ -61,7 +71,8 @@ export class HomeComponent implements OnInit {
 
     private openEventView(id: string){
         sessionStorage.setItem("eventId", id);
-        this.router.navigate(['/event-view']);
+        this.openModal('eventView'); 
+        //this.router.navigate(['/event-view']);
     }
 
     private openProfileView(id: string){
@@ -71,5 +82,25 @@ export class HomeComponent implements OnInit {
 
     private getSingleUser(){
         this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => { this.user = user });
+    }
+
+    private openModal(template: string){
+        switch(template){
+            case "login":
+            this.modalRef = this.modalService.show(LoginComponent);
+            break;
+
+            case "register":
+            this.modalRef = this.modalService.show(RegisterComponent, {class: 'modal-lg'});
+            break;
+
+            case "createEvent":
+            this.modalRef = this.modalService.show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});
+            break;
+
+            case "eventView":
+            this.modalRef = this. modalService.show(EventViewComponent, {class: 'modal-lg'});
+        }
+       
     }
 }

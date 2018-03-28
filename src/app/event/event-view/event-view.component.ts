@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { EventService, UserService } from '../../_services/index';
 import { Router } from '@angular/router';
@@ -26,16 +27,17 @@ export class EventViewComponent implements OnInit
   constructor(
         private router: Router,
         private eventService: EventService,
-        private userService: UserService) { }
+        private userService: UserService,
+        private bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     this.loadEvent();
   }
 
-  private loadEvent(){
-    this.eventService.getEventById('f4edbecf-ab9d-4a47-bd83-1359d9893c0e').subscribe(event => {
-      this.event = event;
-    });
+  private loadEvent() {
+    this.eventID = sessionStorage.getItem("eventId");
+    this.eventService.getEventById(this.eventID)
+      .subscribe(event => { this.event = event, this.eventTitle = event.title });
     // THIS ONE WILL BE HOST
     this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
     this.REPLACABLE_USER = user;
@@ -45,7 +47,7 @@ export class EventViewComponent implements OnInit
   }
 
   deleteEvent() {
-   // this.eventService.deleteEvent(this.eventID);
+    this.eventService.deleteEvent(this.eventID);
   }
 
   joinEvent() {
@@ -55,7 +57,6 @@ export class EventViewComponent implements OnInit
   }
 
   close() {
-    // Not necessary when using modal window
-    this.router.navigate(['/home']);
+    this.bsModalRef.hide();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
 import { EventService, AlertService, UserService } from '../../_services/index';
@@ -22,12 +23,14 @@ export class CreateEventComponent implements OnInit {
 
   latitude:  number;
   longitude: number;
+
   
   constructor(
       private router: Router,
       private eventService: EventService,
       private alertService: AlertService,
-      private userService: UserService) 
+      private userService: UserService, 
+      private bsModalRef: BsModalRef ) 
       {
         //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
@@ -46,6 +49,10 @@ export class CreateEventComponent implements OnInit {
     //   console.log(this.model.host);
     // });
   }
+
+  close(){
+    this.bsModalRef.hide();
+  }
  
   createEvent(){
     this.loading = true;
@@ -55,7 +62,7 @@ export class CreateEventComponent implements OnInit {
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
             this.alertService.success('Event created succesfull', false);
             //navigate to main page..
-            this.router.navigate(['/home']);
+            this.bsModalRef.hide();
           },
           error => {
             this.alertService.error(error);

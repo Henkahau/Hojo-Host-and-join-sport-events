@@ -1,7 +1,9 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
  
 import { AlertService, AuthenticationService } from '../_services/index';
+
  
 @Component({
     selector: 'app-login',
@@ -15,15 +17,18 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    closeBtn: string;
    // loggedIn = false;
    // message: number;
+
     @Output () messageEvent = new EventEmitter<number>();
  
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private bsModalRef: BsModalRef) { }
  
     ngOnInit() {
         // reset login status
@@ -39,15 +44,20 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                  //  this.loggedIn;
-                   // this.onLoggedIn();
-
+                    this.close();
+                  
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
     }
+
+    close(){
+        this.bsModalRef.hide();
+    }
+
+ 
  //  onLoggedIn(){
        
   //  this.sendMessage(val)
