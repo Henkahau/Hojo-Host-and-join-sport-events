@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-import { Event } from '../_models/index';
+import { Event, User} from '../_models/index';
 import { UserService, EventService } from '../_services/index';
 
 import { CreateEventComponent } from '../event/index';
@@ -19,20 +19,30 @@ export class HeaderComponent{
     loggaIn = true;
     modalRef: BsModalRef;
 
+    currentUser: User;
+
     constructor(
         private router: Router,
         private modalService: BsModalService,
-        private eventService: EventService) {}
+        private eventService: EventService) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
 
     onSelect(feature: string)
     {
         switch (feature)
         {
-            case 'create': {
+            case 'create': 
+            if(this.currentUser != null){
                 this.modalRef = this.modalService.
                             show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});
-                break;
+            }else{
+                this.modalRef = this.modalService.
+                show(LoginComponent);
             }
+                
+                break;
+            
             case 'login': {
                 this.modalRef = this.modalService.
                 show(LoginComponent);
