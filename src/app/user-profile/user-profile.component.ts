@@ -16,6 +16,8 @@ export class UserProfileComponent implements OnInit {
   user: User;
   router: Router;
 
+ // user: User;
+  userProfileId: string; 
 
   constructor(private userService: UserService) { }
 
@@ -31,6 +33,3 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/edit-profile']);
   }
 }
-
-
-
