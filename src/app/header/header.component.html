@@ -16,14 +16,16 @@
           <!-- <li><a (click)="onSelect('search')">Search Events</a></li> -->
 
         </ul>
+        
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a (click)="onSelect('login')">Login</a>
+            <a (click)="onSelect('login')" >Login</a>
           </li>
           <li>
             <a (click)="onSelect('register')">Register</a>
           </li>
-          <li class="dropdown" appDropdown>
+          
+          <!-- <li class="dropdown" appDropdown>
             <a href="#" class="dropdown-toggle" role="button">Options
               <span class="caret"></span>
             </a>
@@ -33,9 +35,10 @@
               </li>
               <li>
                 <a href="#">Own Profile</a>
-              </li>
+              </li>  
             </ul>
-          </li>
+          </li> -->
+          <a href="#" class="navbar-left"><img [src]="imagePath" style="max-height: 110px;"></a>
         </ul>
       </div>
     </div>
