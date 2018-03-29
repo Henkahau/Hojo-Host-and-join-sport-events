@@ -43,7 +43,9 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.email, this.model.notapwhash)
             .subscribe(
                 data => {
+                    this.alertService.success('Login successful', false);
                     //this.router.navigate([this.returnUrl]);
+                    this.authenticationService.setLoginStatus(true);
                     this.close();
                   
                 },
