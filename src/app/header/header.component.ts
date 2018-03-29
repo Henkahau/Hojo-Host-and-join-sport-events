@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -18,6 +18,7 @@ import { RegisterComponent } from '../register';
 export class HeaderComponent{
     
     isUserloggedIn: boolean;
+    @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337"
     modalRef: BsModalRef;
 
     constructor(
