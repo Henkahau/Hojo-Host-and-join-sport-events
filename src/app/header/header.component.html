@@ -45,7 +45,7 @@
               </li>  
             </ul>
           </li> -->
-          <a href="#" class="navbar-left"><img [src]="imagePath" style="max-height: 110px;"></a>
+          <a *ngIf="getUserLoginStatus()" href="#" class="navbar-left"><img [src]="imagePath" style="max-height: 110px;"></a>
         </ul>
       </div>
     </div>
