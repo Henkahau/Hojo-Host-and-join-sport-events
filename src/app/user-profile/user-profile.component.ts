@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../_models/user'
-import { UserService, AlertService } from '../_services';
+import { UserService, AlertService, AuthenticationService } from '../_services';
 import { Router } from '@angular/router';
 
 
@@ -13,18 +13,20 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   
   model: any = {};
-  user: User;
+  currentUser: User;
   router: Router;
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private authenticationService: AuthenticationService) {
+                this.currentUser = JSON.parse(localStorage.getItem('currentUser')); }
 
   ngOnInit() {
     this.loadProfile();
   }
 
   private loadProfile(){
-    this.userService.getById('95aa5bcb-7ab1-4313-9d90-98eb3532bf21').subscribe(user =>{this.user = user});
+    this.currentUser
   }
 
   gotoEditProfile() {
