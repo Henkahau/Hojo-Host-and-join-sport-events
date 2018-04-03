@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.email, this.model.notapwhash)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    //this.router.navigate([this.returnUrl]);
                     this.close();
                   
                 },
