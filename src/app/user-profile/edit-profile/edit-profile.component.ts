@@ -13,7 +13,7 @@ export class EditProfileComponent implements OnInit {
 
   loading = false;
   model: any = {};
-  user: User;
+  currentUser: User;
   static editProfileId: string;
 
   onFileSelected(event){
@@ -24,27 +24,27 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private alertService: AlertService,
-              private router: Router) { }
+              private router: Router) { this.currentUser = JSON.parse(localStorage.getItem('currentUser')); }
 
   ngOnInit() {
     this.loadProfile();
   }
 
   private loadProfile(){
-    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user =>{this.user = user});
+   this.currentUser // this.userService.getById(this.currentUser.id).subscribe(user =>{this.currentUser = user});
   }
 
-  // private editProfile(){
-  //   this.userService.update(this.user).subscribe
-  //   (
-  //     data=>{
-  //         this.alertService.success('Profile edited successfully');
-  //         this.router.navigate(['/user-profile']);
-  //       }
-  //     ,error =>{
-  //         this.alertService.error(error);
-  //         this.loading = false;
-  //       }
-  //   );
-  // }
+  private editProfile(){
+    this.userService.update(this.currentUser).subscribe
+    (
+      data=>{
+          this.alertService.success('Profile edited successfully');
+          this.router.navigate(['/user-profile']);
+        }
+      ,error =>{
+          this.alertService.error(error);
+          this.loading = false;
+        }
+    );
+  }
 }

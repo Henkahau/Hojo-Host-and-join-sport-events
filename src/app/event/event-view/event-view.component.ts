@@ -35,17 +35,17 @@ export class EventViewComponent implements OnInit
     this.eventID = sessionStorage.getItem("eventId");
     this.eventService.getEventById(this.eventID)
       .subscribe(event => { this.event = event, this.eventTitle = event.title });
-
-    // HOST
-    this.userService.getById(this.event.host.accountId).subscribe(user => {
-    this.host = user;
+    // THIS ONE WILL BE HOST
+  /*   this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
+    this.REPLACABLE_USER = user;
     // Add host as player to list
-    this.event.players.push(this.host);
-    });
+    this.event.players.push(this.REPLACABLE_USER);
+    }); */
   }
 
-  deleteEvent() {
-    this.eventService.deleteEvent(this.eventID);
+  deleteEvent(id:string) {
+    this.eventService.deleteEvent(id).subscribe(() => { EventService.refreshEventList.next(true)});
+    this.close();
   }
 
   joinEvent() {
@@ -57,21 +57,13 @@ export class EventViewComponent implements OnInit
     this.bsModalRef.hide();
   }
 
-  hasJoined() {
-    if (this.event.players.includes(this.currentUser)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  confirm(){
+    
   }
 
-  isHost() {
-    if (this.currentUser == this.host) {
-      return true;
-    }
-    else { 
-      return false;
-    }
+  editEvent(){
+    this.close();
+    this.router.navigate(['/edit-event']);
   }
+
 }
