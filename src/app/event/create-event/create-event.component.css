@@ -1,0 +1,26 @@
+
+h2
+{
+    padding-bottom: 5%;
+}
+textarea
+{
+    resize: none;
+    width: 100%;
+}
+label
+{
+    padding-right: 5%;
+}
+form 
+{
+    width: 100%;
+}
+input
+{
+    width: 100%;
+}
+#title
+{
+    width: 100%
+}

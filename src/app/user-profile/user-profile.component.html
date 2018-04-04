@@ -5,22 +5,47 @@
     </div>
   </div>
 </nav>
+<div class="col-md-6 col-md-offset-3">
+  <h2>Your profile</h2>
 
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="/" class="thumbnail">
-      <img src="https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/18013339_111491696078587_8890963863319609344_n.jpg?ig_cache_key=MTQ5ODY2ODQyNTgwMzAzODU3NA%3D%3D.2" alt="...">
-    </a>
+  <div class="row">
+    <div class="col-sm-3 col-sm-3">
+        <img src="http://clipart-library.com/images/Aibr5LR8T.jpg" alt="" style="max-width: 100%; max-height: 100%;">
+    </div>
   </div>
-</div>
 
-<ul class="list-group">
-  <label>First Name</label>
-  <li class="list-group-item">{{ user.firstName }}</li>
-  <label>Last Name</label>
-  <li class="list-group-item">{{ user.lastName }}</li>
-  <label>Email</label>
-  <li class="list-group-item">{{ user.email }}</li>
-  <label>Phone</label>
-  <li class="list-group-item">{{ user.mobileNumber }}</li>
-</ul>
+  <hr>
+
+  <div class="form-group">
+    <label for="firstName">First name</label>
+    <input disabled type="text" class="form-control" name="firstName" [(ngModel)]="currentUser.firstName" #firstName="ngModel" *ngIf="currentUser"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last name</label>
+    <input disabled type="text" class="form-control" name="lastName" [(ngModel)]="currentUser.lastName" #lastName="ngModel" *ngIf="currentUser"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input disabled type="text" class="form-control" name="email" [(ngModel)]="currentUser.email" #email="ngModel" *ngIf="currentUser" />
+  </div>
+
+  <div class="form-group">
+    <label for="mobileNumber">Mobile Number</label>
+    <input disabled type="number" class="form-control" name="mobileNumber" [(ngModel)]="currentUser.mobileNumber" #mobileNumber="ngModel" *ngIf="currentUser" />
+  </div>
+
+  <div class="form-group">
+    <label for="biography">Biography</label>
+    <input disabled name="biography" class="form-control" type="text" style="height: 15%;" [(ngModel)]="currentUser.biography" #biography="ngModel" *ngIf="currentUser" />
+  </div>
+
+  <div>
+    <button routerLink="/edit-profile" class="btn btn-primary">Edit</button>
+    <button routerLink="/" class="btn btn-primary">Back</button>
+  </div>
+  <hr>
+</div>

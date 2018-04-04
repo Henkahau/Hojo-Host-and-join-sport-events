@@ -1,0 +1,11 @@
+<div style="padding-bottom: 15px;">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" 
+    spellcheck="off" type="text" class="form-control"
+    #searchLocation [formControl]="searchControl">
+</div>
+
+<agm-map (mapClick)="moveMarker($event)" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+  <agm-marker (markerClick)="markerClick($event)" [markerDraggable]="true" (dragEnd)="dragEnd($event)" [latitude]="latitudeMarker" [longitude]="longitudeMarker">
+      <agm-info-window>{{ latitudeMarker }} {{ longitudeMarker }}</agm-info-window>
+  </agm-marker>
+</agm-map>

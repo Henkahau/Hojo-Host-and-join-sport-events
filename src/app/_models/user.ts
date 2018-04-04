@@ -1,10 +1,11 @@
 export class User {
-    id: string;
+    accountId: string;
     profilePicture: string;
     email: string;
-    mobileNumber: string;
+    mobileNumber: number;
     biography: string;
-    password: string;
+    notapwhash: string;
+    pwsalt: string;
     firstName: string;
     lastName: string;
 }

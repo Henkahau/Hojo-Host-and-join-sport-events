@@ -1,41 +1,30 @@
+<div class="form-group">
+  <div class="row" style="padding-bottom: 5px;">
+    <div class="col-lg-6">
+      <label for="sportType">Sport</label>
+      <select class="form-control" name="sportType" [(ngModel)]="activitySelected" (ngModelChange)='onActivitySelected($event)'>
+        <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
+      </select>
+    </div>
 
-      <div class="row">
-       
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-          <h3>Activity </h3>
-          <div>
-            <select  [(ngModel)]= "activitySelected" (ngModelChange)='onActivitySelected($event)'>
-              <option *ngFor="let sport of activity"[value]="sport.id">
-
-                {{sport.sport}}
-              </option>
-            </select>
-           </div> 
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-          <h3>Skill Level </h3>                 
-          <div>
-            <select>
-              <option *ngFor="let skillLevel of skillLevels">{{skillLevel}}</option>
-            </select>
-           </div> 
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-            <h3>Player count </h3>
-            <div>
-              <select>
-                <option *ngFor="let amountofpeople of amountOfPeople">{{amountofpeople}}</option>
-              </select>
-             </div> 
-          </div>
-          <!-- <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-          <div class="checkbox">
-
-              <label><input type="checkbox" value="">Casual</label>
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="">Hardcore</label>
-            </div>
-          </div>  -->
-      </div>
-   
+    <div class="col-lg-6">
+      <label for="skillLevel">Skill level</label>
+      <select class="form-control" name="skillLevel">
+        <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <label for="playType">Play type</label>
+      <select class="form-control" name="playTYpe">
+        <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
+      </select>
+    </div>
+    <!-- <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12"> -->
+    <div class="col-lg-6">
+      <label for="maxAttendees">Player amount</label>
+      <input class="form-control" type="number" name="maxAttendees" min="1" max="30" />
+    </div>
+  </div>
+</div>

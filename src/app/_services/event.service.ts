@@ -7,31 +7,32 @@ import { Event, User } from '../_models/index';
 export class EventService {
 
   constructor(private http: HttpClient) { }
-  // uuid? varmista hollantilaisilta
-  // Haluavatko id:t stringeinä
+
+  static url ='/api';
 
   createEvent(event: Event){
-    return this.http.post('/api/events', event);
+    console.log(event);
+    return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
   updateEvent(event: Event){
-    return this.http.put('/api/events' + event.id, event);
+    return this.http.put('/api/events/' + event.eventId, event, {responseType: 'text'});
   }
 
-  deleteEvent(eventId: number){
-    return this.http.delete('/api/events' + eventId);
+  deleteEvent(eventId: string){
+    return this.http.delete('/api/events/' + eventId, {responseType: 'text'});
   }
 
-  getEventById(eventId: number){
-    return this.http.get('/api/events' + eventId);
+  getEventById(eventId: string){
+    return this.http.get<Event>('/api/events/' + eventId);
   }
 
   getAllEvents(){
-    return this.http.get<Event[]>('/api/events');
+    return this.http.get<Event[]>('api/events');
   }
 
-  // Miksi accountId on string Hollantilaisten interfacessa?
-  joinEvent(eventId: number, accountId: number){
-    return this.http.put('/api/events' + eventId, accountId);
+ 
+  joinEvent(eventId: string, accountId: string){
+    return this.http.put('/api/events' + eventId, accountId, {responseType: 'text'});
   }
 }

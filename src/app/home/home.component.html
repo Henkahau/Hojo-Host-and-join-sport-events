@@ -1,18 +1,29 @@
 <div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.firstName}}!</h1>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.email}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
+    <!--  <h1>Hi {{event.eventId}} </h1>  -->
+    <h3>TEST PAGE</h3>
+    <p><a (click)="openModal('login')">Modal Login</a></p>
+    <p><a (click)="openModal('register')">Modal register</a></p>
+    <p><a (click)="openModal('createEvent')">Modal create event</a></p>
+    <p><a (click)="openModal('eventView')">Modal eventView</a></p>
+<!--LIST ALL EVENTS -->
     <ul>
         <li *ngFor="let event of events">
-            {{event.title}} {{event.sportType}} {{event.location}} {{event.date}} {{event.time}}
-            {{event.skillLevel}} {{event.minAttendees}} {{event.maxAttendees}} {{event.description}}
+            <br>Title: {{event.title}} 
+            <br>id: {{event.eventId}} 
+            <br>Sport: {{event.sportType}} 
+            <br>Location: {{event.location}} 
+            <br>Date: {{event.date}} 
+            <br>Skill: {{event.skillLevel}} 
+            <br>Max Attendees: {{event.maxAttendees}} 
+            <br>Description: {{event.description}}
+            <br><br>
+            - <a (click)="deleteEvent(event.eventId)">Delete event</a>
+            - <a (click)="openEdit(event.eventId);">Edit event</a>
+            - <a (click)="openEventView(event.eventId)">View event</a>
         </li>
     </ul>
+    <p *ngIf="user"><a (click)="openProfileView(user.id)">{{user.email}}</a></p>
     <p><a [routerLink]="['/login']">Logout</a></p>
     <p><a [routerLink]="['/createEvent']">createEvent</a></p>
 </div>
+

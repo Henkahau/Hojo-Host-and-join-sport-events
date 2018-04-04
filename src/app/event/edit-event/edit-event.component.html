@@ -1,0 +1,72 @@
+<div class="col-md-6 col-md-offset-3" id="event">
+  <h2 *ngIf="event">Edit event {{eventTitle}}</h2>
+
+  <form name="form" *ngIf="event" (ngSubmit)="f.form.valid && editEvent()" #f="ngForm" novalidate>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-6">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" name="title" [(ngModel)]="event.title" #title="ngModel" required />
+          <div *ngIf="f.submitted && !title.valid" class="help-blog">Title is required</div>
+        </div>
+        <div class="col-lg-6">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" name="date" [(ngModel)]="event.date" #date="ngModel" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3">
+          <label for="sportType">Sport</label>
+          <select class="form-control" name="sportType" [(ngModel)]="event.sportType" #sportType="ngModel">
+            <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
+          </select>
+        <div *ngIf="f.submitted && !sportType.valid" class="help-blog">Sport type is required</div>
+      </div>
+        
+        <div class="col-lg-3">
+          <label for="skillLevel">Skill level</label>
+          <select class="form-control" name="skillLevel" [(ngModel)]="event.skillLevel" #skillLevel="ngModel">
+            <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
+          </select>
+        </div>
+        
+        <div class="col-lg-3">
+          <label for="playType">Play type</label>
+          <select class="form-control" name="playTYpe" [(ngModel)]="event.playType" #playType="ngModel">
+            <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
+          </select>
+        </div>
+        
+        <div class="col-lg-3">
+          <label for="maxAttendees">Max number of players</label>
+          <input type="number" class="form-control" name="maxAttendees" min="1" max="30" [(ngModel)]="event.maxAttendees" #maxAttendees="ngModel" />
+        </div>
+      </div>
+    </div>
+
+    <label for="location">Location</label>
+    <app-location-map (receivedLocation)="model.location = $event.location">
+    </app-location-map>
+    
+    <p>{{ model.latitude }} {{ model.longitude }}</p>
+
+  
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" cols="90" rows="5" type="text" name="description"  [(ngModel)]="event.description" #description="ngModel"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Edit</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      <a (click)="cancel()" class="btn btn-link">Cancel</a>
+    </div>
+
+  </form> 
+</div>
