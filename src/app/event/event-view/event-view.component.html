@@ -88,9 +88,11 @@
             <button class="btn btn-primary" (click)="joinEvent()">Leave</button>
           </ng-template>
 
-          <button class="btn btn-primary" [hidden]="!signedIn" (click)="deleteEvent()">Delete</button>
+          <button class="btn btn-primary" (click)="deleteEvent(event.eventId)">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="editEvent()">Edit</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+

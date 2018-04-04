@@ -5,6 +5,9 @@ import 'rxjs/add/operator/map'
  
 @Injectable()
 export class AuthenticationService {
+
+    isUserLoggedIn: boolean;
+
     constructor(private http: HttpClient) { }
  
     login(email: string, notapwhash: string) { 
@@ -33,6 +36,18 @@ export class AuthenticationService {
  
     logout() {
         // remove user from local storage to log user out
+        this.setLoginStatus(false);
         localStorage.removeItem('currentUser');
+    }
+
+    setLoginStatus(flag){
+        this.isUserLoggedIn = flag;
+    }
+
+    getLoginStatus(): boolean{
+        if(localStorage.getItem('currentUser')){
+            this.setLoginStatus(true);
+        }
+        return this.isUserLoggedIn;
     }
 }

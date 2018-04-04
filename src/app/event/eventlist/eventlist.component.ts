@@ -21,7 +21,11 @@ export class EventlistComponent implements OnInit {
   constructor(
     private userService: UserService,
     private eventService: EventService,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService) {
+      EventService.refreshEventList.subscribe(res => {
+        this.loadAllEvents();
+      })
+    }
 
   ngOnInit() {
     this.loadAllEvents();
@@ -37,5 +41,7 @@ export class EventlistComponent implements OnInit {
     this.modalRef = this.modalService.show(EventViewComponent, {class: 'modal-lg'});
 
   }
+
+
 
 }
