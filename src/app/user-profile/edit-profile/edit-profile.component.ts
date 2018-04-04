@@ -34,17 +34,17 @@ export class EditProfileComponent implements OnInit {
     this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user =>{this.user = user});
   }
 
-  private editProfile(){
-    this.userService.update(this.user).subscribe
-    (
-      data=>{
-          this.alertService.success('Profile edited successfully');
-          this.router.navigate(['/user-profile']);
-        }
-      ,error =>{
-          this.alertService.error(error);
-          this.loading = false;
-        }
-    );
-  }
+  // private editProfile(){
+  //   this.userService.update(this.user).subscribe
+  //   (
+  //     data=>{
+  //         this.alertService.success('Profile edited successfully');
+  //         this.router.navigate(['/user-profile']);
+  //       }
+  //     ,error =>{
+  //         this.alertService.error(error);
+  //         this.loading = false;
+  //       }
+  //   );
+  // }
 }
