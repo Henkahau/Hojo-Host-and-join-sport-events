@@ -59,6 +59,7 @@ export class CreateEventComponent implements OnInit {
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
+            EventService.refreshEventList.next(true);
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
             this.alertService.success('Event created succesfull', false);
             //navigate to main page..

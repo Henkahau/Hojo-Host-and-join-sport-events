@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { Event } from '../_models/index';
-import { UserService, EventService } from '../_services/index';
+import { UserService, EventService, AuthenticationService } from '../_services/index';
 
 import { CreateEventComponent } from '../event/index';
 import { LoginComponent } from '../login';
@@ -16,13 +16,20 @@ import { RegisterComponent } from '../register';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent{
-    loggaIn = true;
+    
+    isUserloggedIn: boolean;
+    @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
     modalRef: BsModalRef;
 
     constructor(
         private router: Router,
         private modalService: BsModalService,
-        private eventService: EventService) {}
+        private eventService: EventService,
+        private authenticationService: AuthenticationService) {}
+
+    getUserLoginStatus(): boolean {
+        return this.authenticationService.getLoginStatus();
+    }
 
     onSelect(feature: string)
     {
@@ -42,6 +49,10 @@ export class HeaderComponent{
                 this.modalRef = this.modalService.
                 show(RegisterComponent, {ignoreBackdropClick: true, class: 'modal-lg'});
                 break;
+            }
+
+            case 'logout':{
+                this.authenticationService.logout();
             }
         }
     }
