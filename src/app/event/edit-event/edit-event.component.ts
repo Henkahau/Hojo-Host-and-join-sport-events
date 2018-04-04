@@ -39,7 +39,7 @@ export class EditEventComponent implements OnInit {
 
   private cancel(){
     sessionStorage.removeItem("eventId");
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   private editEvent(){
@@ -51,7 +51,7 @@ export class EditEventComponent implements OnInit {
         //set succes message and pass true parameter to persist the message after redirectin to the main page
         this.alertService.success('Event edited succesfull');
         //navigate to main page..
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       },
       error => {
         this.alertService.error(error);
