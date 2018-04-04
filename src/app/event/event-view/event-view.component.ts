@@ -46,8 +46,9 @@ export class EventViewComponent implements OnInit
     });
   }
 
-  deleteEvent() {
-    this.eventService.deleteEvent(this.eventID);
+  deleteEvent(id:string) {
+    this.eventService.deleteEvent(id).subscribe(() => { EventService.refreshEventList.next(true)});
+    this.close();
   }
 
   joinEvent() {

@@ -47,6 +47,7 @@ export class EditEventComponent implements OnInit {
     this.eventService.updateEvent(this.event)
     .subscribe(
       data => {
+        EventService.refreshEventList.next(true);
         //set succes message and pass true parameter to persist the message after redirectin to the main page
         this.alertService.success('Event edited succesfull');
         //navigate to main page..
