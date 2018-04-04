@@ -2,3 +2,39 @@
 .pac-container{
     z-index: 1050;
 }
+label{
+    color: #81C784;
+}
+
+body {
+    background:   rgba(164, 224, 168, 0.295);
+    
+}
+.navbar-default {
+    background-color: white;
+    border-color: white;
+    border-radius: 0;
+    box-shadow: 5px 5px 5px #888888;
+    font-size: 25px;
+    padding-top: 20px;
+    cursor: pointer;
+    
+    
+    
+     
+}
+.scrolling{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    border-color: white;
+    border-radius: 0;
+    box-shadow: 5px 5px 5px #888888;
+    font-size: 25px;
+    padding-top: 20px;
+    cursor: pointer;
+    z-index: 1050;
+    
+    
+    
+}
