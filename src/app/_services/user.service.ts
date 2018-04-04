@@ -23,7 +23,7 @@ export class UserService {
     }
  
     update(user: User) {
-        return this.http.put(UserService.url + '/users/' + user.id, user);
+        return this.http.put(UserService.url + '/users/' + user.accountId, user);
     }
  
     delete(id: string) {
