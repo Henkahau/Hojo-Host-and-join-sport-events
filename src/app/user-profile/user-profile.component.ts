@@ -16,17 +16,18 @@ export class UserProfileComponent implements OnInit {
   user: User;
   router: Router;
 
- // user: User;
   userProfileId: string; 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+   }
 
   ngOnInit() {
     this.loadProfile();
   }
 
   private loadProfile(){
-    this.userService.getById('95aa5bcb-7ab1-4313-9d90-98eb3532bf21').subscribe(user =>{this.user = user});
+    this.userService.getById(this.user.accountId).subscribe(user =>{this.user = user});
   }
 
   gotoEditProfile() {
