@@ -83,7 +83,7 @@
         <div align="right">
           <button class="btn btn-primary" (click)="close()">Close</button>
 
-          <button class="btn btn-primary" *ngIf="signedIn; else leaveEvent" (click)="joinEvent()">Join</button>
+          <button class="btn btn-primary" *ngIf="hasJoined; else leaveEvent" (click)="joinEvent()">Join</button>
           <ng-template #leaveEvent>
             <button class="btn btn-primary" (click)="joinEvent()">Leave</button>
           </ng-template>

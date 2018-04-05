@@ -24,6 +24,8 @@ export class CreateEventComponent implements OnInit {
   latitude:  number;
   longitude: number;
 
+  currentUser: User;
+
   
   constructor(
       private router: Router,
@@ -32,7 +34,7 @@ export class CreateEventComponent implements OnInit {
       private userService: UserService, 
       private bsModalRef: BsModalRef ) 
       {
-        //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       }
 
   ngOnInit() {
@@ -56,6 +58,7 @@ export class CreateEventComponent implements OnInit {
  
   createEvent(){
     this.loading = true;
+    //this.model.host = this.currentUser;
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
