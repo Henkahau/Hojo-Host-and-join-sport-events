@@ -7,12 +7,12 @@ label{
 }
 
 body {
-    background:   rgba(164, 224, 168, 0.295);
-    
+    background:  #F8F9FD;
+   
 }
 .navbar-default {
-    background-color: white;
-    border-color: white;
+    background-color:#F8F9FD;
+    border-color:#F8F9FD;
     border-radius: 0;
     box-shadow: 5px 5px 5px #888888;
     font-size: 25px;
@@ -26,15 +26,24 @@ body {
 .scrolling{
     position: fixed;
     width: 100%;
-    background-color: white;
-    border-color: white;
+    background-color: #F8F9FD;
+    border-color: #F8F9FD;
     border-radius: 0;
     box-shadow: 5px 5px 5px #888888;
     font-size: 25px;
-    padding-top: 20px;
+    padding-top: 5px;
     cursor: pointer;
-    z-index: 1050;
-    
-    
-    
+    z-index: 1050;   
+}
+.movingHeader
+{
+    padding-left: 170px;
+    font-size: 30px;
+    color:#040f0f; 
+}
+
+.moving
+{
+    padding-right: 145px;
+       
 }
