@@ -45,8 +45,7 @@ export class CreateEventComponent implements OnInit {
 
   createEvent() {
     this.loading = true;
-    // this.model.host = this.currentUser;
-    // console.log(this.model.host);
+    //this.model.host = this.currentUser;
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
