@@ -63,7 +63,8 @@ export class EventViewComponent implements OnInit {
   close() {
     this.bsModalRef.hide();
   }
-  editEvent(){
+
+  editEvent() {
     this.close();
     this.router.navigate(['/edit-event']);
   }
