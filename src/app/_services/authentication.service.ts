@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
@@ -8,7 +9,9 @@ export class AuthenticationService {
 
     isUserLoggedIn: boolean;
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private router: Router) { }
  
     login(email: string, notapwhash: string) { 
         return this.http.post<any>('/api/authenticate/login?email=' + email +'&notapwhash=' + notapwhash, {email, notapwhash})
@@ -38,6 +41,7 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         this.setLoginStatus(false);
         localStorage.removeItem('currentUser');
+        this.router.navigate(['/']);
     }
 
     setLoginStatus(flag){
