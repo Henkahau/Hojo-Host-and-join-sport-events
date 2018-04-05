@@ -13,20 +13,19 @@
         <div class="col-lg-6">
           <label for="date">Date</label>
           <input type="date" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required />
+          <div *ngIf="f.submitted && date.value == null" class="help-blog">Date is required</div>
         </div>
-
       </div>
     </div>
 
     <div class="form-group">
       <div class="row">
-
         <div class="col-lg-3">
           <label for="sportType">Sport</label>
           <select class="form-control" name="sportType" [(ngModel)]="model.sportType" #sportType="ngModel">
             <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
           </select>
-          <div *ngIf="f.submitted && !sportType.valid" class="help-blog">Sport type is required</div>
+          <div *ngIf="f.submitted && sportType.value == null" class="help-blog">Sport type is required</div>
         </div>
 
 
@@ -35,6 +34,7 @@
           <select class="form-control" name="skillLevel" [(ngModel)]="model.skillLevel" #skillLevel="ngModel">
             <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
           </select>
+          <div *ngIf="f.submitted && skillLevel.value == null" class="help-blog">Skill level is required</div>
         </div>
 
 
@@ -43,13 +43,14 @@
           <select class="form-control" name="playType" [(ngModel)]="model.playType" #playType="ngModel">
             <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
           </select>
+          <div *ngIf="f.submitted && playType.value == null" class="help-blog">Play type is required</div>
         </div>
 
         <div class="col-lg-3">
           <label for="maxAttendees">Max number of players</label>
           <input type="number" class="form-control" name="maxAttendees" min="1" max="30" [(ngModel)]="model.maxAttendees" #maxAttendees="ngModel"/>
+          <div *ngIf="f.submitted && maxAttendees.value == null" class="help-blog">Max number of players is required</div>
         </div>
-
       </div>
     </div>
 
@@ -62,14 +63,6 @@
     <label for="location">Location</label>
     <app-location-map (receivedLocation)="model.location = $event.location">
     </app-location-map>
-
-    <div class="form-group">
-      <!-- <label for="date">Date</label>
-      <input type="date" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required /> -->
-      <!-- <label for="time">Time</label>
-      <input type="time" class="form-control" name="time" value="0" [(ngModel)]="model.time" #time="ngModel" required />
-      <div *ngIf="f.submitted && !date.valid" class="help-blog">Date and time are required</div> -->
-    </div>
 
     <div class="form-group">
       <div class="">
