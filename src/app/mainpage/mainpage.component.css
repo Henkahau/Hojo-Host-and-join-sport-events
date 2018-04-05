@@ -1,5 +1,7 @@
 .container {
      background: #F8F9FD;
-     top: 100px;
+     top: 80px;
      position: relative;
+     padding-top: 15px
+    
 }
