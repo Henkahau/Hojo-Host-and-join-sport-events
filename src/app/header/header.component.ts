@@ -54,7 +54,9 @@ export class HeaderComponent{
 
             case 'logout':{
                 this.authenticationService.logout();
+                break;
             }
+
         }
     }
 }
