@@ -19,6 +19,7 @@ export class HeaderComponent{
     
     isUserloggedIn: boolean;
     @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
+    @Output ()public imagePath2: string = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Qt_logo_2016.svg";
     modalRef: BsModalRef;
 
     constructor(
