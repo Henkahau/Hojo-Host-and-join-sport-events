@@ -1,18 +1,31 @@
 
 <div class="scrollmenu">
-     <li class="list-group-item" *ngFor="let event of events" (click)="openEventView(event.eventId)">
-      <label>Title:</label> 
-      <br>
-      {{event.title}}
+    
+    <ul class="list-group-item " *ngFor="let event of events; let i = index; let isEven = even; let isOdd = odd" (click)="openEventView(event.eventId) ">
+     <div style="background: #A9D861" *ngIf="isOdd; else even ">
+      <label style="padding-top: 10px">Title:</label> 
+      {{event.title}} 
       <br>
       <label>Sport:</label>
-      <br>
       {{event.sportType}}
       <br>
       <label>Date:</label>
-      <br>
       {{event.date}}
-     </li>
+   
+     </div>
+     <ng-template #even >
+         <div style="background: rgba(168, 216, 97, 0.863)">
+            <label style="padding-top: 10px" >Title:</label> 
+            {{event.title}}
+            <br>
+            <label>Sport:</label>
+            {{event.sportType}}
+            <br>
+            <label>Date:</label>
+            {{event.date}}
+        </div>
+     </ng-template>
+    </ul>
 </div>
 
 <!-- id: {{event.eventId}} Location: {{event.location}} Skill: {{event.skillLevel}} Max Attendees: {{event.maxAttendees}} Description:

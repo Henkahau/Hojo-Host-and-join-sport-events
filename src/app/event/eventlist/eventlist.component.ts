@@ -17,6 +17,7 @@ export class EventlistComponent implements OnInit {
 
   events: Event[] = [];
   modalRef: BsModalRef;
+  
 
   constructor(
     private userService: UserService,
