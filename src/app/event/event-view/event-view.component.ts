@@ -12,23 +12,20 @@ import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
 })
 export class EventViewComponent implements OnInit 
 {
-  signedIn = true;
-  attendees: string[] = [];
-
-  // These ids will be received when user clicks marker/event
   eventID: string;
   eventTitle: string;
-  accountID: number;
 
   event: Event;
   host: User;
-  REPLACABLE_USER: User;
+  currentUser: User;
 
   constructor(
         private router: Router,
         private eventService: EventService,
         private userService: UserService,
-        private bsModalRef: BsModalRef) { }
+        private bsModalRef: BsModalRef) { 
+          this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
 
   ngOnInit() {
     this.loadEvent();
@@ -53,8 +50,7 @@ export class EventViewComponent implements OnInit
 
   joinEvent() {
     // This will be also used to leave event
-    // this.eventService.joinEvent(this.eventID, this.accountID);
-    this.signedIn = !this.signedIn;
+    this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
   }
 
   close() {
