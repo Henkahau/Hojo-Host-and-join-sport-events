@@ -57,12 +57,11 @@
 
       </div>
       <div class="col-lg-3">
-        <!-- CHECK NGIF CONDITION! -->
         <label>Host information</label>
-        <div *ngIf="REPLACABLE_USER; else noHost">
-          <p>Name: {{ REPLACABLE_USER.firstName }} {{ REPLACABLE_USER.lastName }} </p>
-          <p> Phone: {{ REPLACABLE_USER.mobileNumber }} </p>
-          <p> Description: {{ REPLACABLE_USER.biography }} </p>
+        <div *ngIf="host; else noHost">
+          <p>Name: {{ host.firstName }} {{ host.lastName }} </p>
+          <p> Phone: {{ host.mobileNumber }} </p>
+          <p> Description: {{ host.biography }} </p>
         </div>
 
         <ng-template #noHost>
@@ -83,13 +82,14 @@
         <div align="right">
           <button class="btn btn-primary" (click)="close()">Close</button>
 
-          <button class="btn btn-primary" *ngIf="signedIn; else leaveEvent" (click)="joinEvent()">Join</button>
+          <button class="btn btn-primary" *ngIf="hasJoined; else leaveEvent" (click)="joinEvent()">Join</button>
           <ng-template #leaveEvent>
-            <button class="btn btn-primary" (click)="joinEvent()">Leave</button>
+            <button class="btn btn-primary" (click)="leaveEvent()">Leave</button>
           </ng-template>
 
           <button class="btn btn-primary" (click)="deleteEvent(event.eventId)">Delete</button>
           <button type="button" class="btn btn-primary" (click)="editEvent()">Edit</button>
+          <button class="btn btn-primary" [hidden]="isHost" (click)="deleteEvent()">Delete</button>
         </div>
       </div>
     </div>
