@@ -31,8 +31,11 @@ export class EventService {
     return this.http.get<Event[]>('api/events');
   }
 
-  // Used to join and leave event
   joinEvent(eventId: string, accountId: string){
-    return this.http.put('/api/events' + eventId, accountId, {responseType: 'text'});
+    return this.http.post('/api/event/' + eventId + '/join/', accountId, {responseType: 'text'});
+  }
+
+  leaveEvent(eventId: string, accountId: string){
+    return this.http.post('/api/event/' + eventId + '/leave/', accountId, {responseType: 'text'});
   }
 }
