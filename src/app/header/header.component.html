@@ -48,7 +48,7 @@
               </li>  
             </ul>
           </li> -->
-        <a href="#" class="navbar-left moving">
+        <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']" class="navbar-left moving">
           <img [src]="imagePath" style="max-height: 50px;">
         </a>
       </ul>
