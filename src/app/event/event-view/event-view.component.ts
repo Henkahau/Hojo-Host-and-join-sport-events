@@ -10,25 +10,21 @@ import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
   templateUrl: './event-view.component.html',
   styleUrls: ['./event-view.component.css']
 })
-export class EventViewComponent implements OnInit 
-{
-  signedIn = true;
-  attendees: string[] = [];
-
-  // These ids will be received when user clicks marker/event
+export class EventViewComponent implements OnInit {
   eventID: string;
   eventTitle: string;
-  accountID: number;
 
   event: Event;
   host: User;
-  REPLACABLE_USER: User;
+  currentUser: User;
 
   constructor(
-        private router: Router,
-        private eventService: EventService,
-        private userService: UserService,
-        private bsModalRef: BsModalRef) { }
+    private router: Router,
+    private eventService: EventService,
+    private userService: UserService,
+    private bsModalRef: BsModalRef) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
     this.loadEvent();
@@ -39,24 +35,37 @@ export class EventViewComponent implements OnInit
     this.eventService.getEventById(this.eventID)
       .subscribe(event => { this.event = event, this.eventTitle = event.title });
     // THIS ONE WILL BE HOST
-    this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
+  /*   this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
     this.REPLACABLE_USER = user;
     // Add host as player to list
     this.event.players.push(this.REPLACABLE_USER);
-    });
+    }); */
   }
 
-  deleteEvent() {
-    this.eventService.deleteEvent(this.eventID);
+  deleteEvent(id:string) {
+    this.eventService.deleteEvent(id).subscribe(() => { EventService.refreshEventList.next(true)});
+    this.close();
   }
 
   joinEvent() {
-    // This will be also used to leave event
-    // this.eventService.joinEvent(this.eventID, this.accountID);
-    this.signedIn = !this.signedIn;
+    this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
+  }
+
+  leaveEvent() {
+    this.eventService.leaveEvent(this.eventID, this.currentUser.accountId);
   }
 
   close() {
     this.bsModalRef.hide();
   }
+
+  confirm(){
+    
+  }
+
+  editEvent(){
+    this.close();
+    this.router.navigate(['/edit-event']);
+  }
+
 }

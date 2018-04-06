@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { Subject } from 'rxjs/Subject';
 
 import { Event, User } from '../_models/index';
 
@@ -31,8 +32,15 @@ export class EventService {
     return this.http.get<Event[]>('api/events');
   }
 
- 
   joinEvent(eventId: string, accountId: string){
-    return this.http.put('/api/events' + eventId, accountId, {responseType: 'text'});
+    return this.http.post('/api/event/' + eventId + '/join/', accountId, {responseType: 'text'});
   }
+
+  leaveEvent(eventId: string, accountId: string){
+    return this.http.post('/api/event/' + eventId + '/leave/', accountId, {responseType: 'text'});
+  }
+
+  //used for refresh eventList
+  public static refreshEventList: Subject<boolean> = new Subject;
+
 }

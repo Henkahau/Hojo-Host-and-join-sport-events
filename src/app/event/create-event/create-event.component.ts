@@ -21,44 +21,35 @@ export class CreateEventComponent implements OnInit {
   skillValues = Object.values(SkillLevel);
   playTypeValues = Object.values(PlayType);
 
-  latitude:  number;
+  latitude: number;
   longitude: number;
 
-  
+  event: Event;
+  currentUser: User;
+
+
   constructor(
-      private router: Router,
-      private eventService: EventService,
-      private alertService: AlertService,
-      private userService: UserService, 
-      private bsModalRef: BsModalRef ) 
-      {
-        //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      }
-
-  ngOnInit() {
-    // Find a (better) way to send host
-    // if (localStorage.getItem('currentUser').length > 0)
-    // {
-    //   this.model.host = JSON.parse(localStorage.getItem('currentUser'));
-    // }
-
-    // Until that use this:
-    // BEWARE! AT THE MOMENT THIS WILL BREAK THE BACKEND WITH INFINITE LOOP!!
-    // this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
-    //   this.model.host = user;
-    //   console.log(this.model.host);
-    // });
+    private router: Router,
+    private eventService: EventService,
+    private alertService: AlertService,
+    private userService: UserService,
+    private bsModalRef: BsModalRef) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  close(){
+  ngOnInit() {}
+
+  close() {
     this.bsModalRef.hide();
   }
- 
-  createEvent(){
+
+  createEvent() {
     this.loading = true;
+    //this.model.host = this.currentUser;
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
+            EventService.refreshEventList.next(true);
             //set succes message and pass true parameter to persist teh message after redirectin to the main page
             this.alertService.success('Event created succesfull', false);
             //navigate to main page..
