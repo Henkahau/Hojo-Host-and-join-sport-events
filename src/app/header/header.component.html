@@ -5,7 +5,7 @@
   <div class="container-fluid ">
     <div class="navbar-header ">
       <!-- placeholder for real logo -->
-        <a> <img [src]="imagePath2" style="max-height: 50px;"></a>
+        <a> <img [src]="imagePath2" style="max-height: 50px; padding-bottom: 5px" ></a>
         
       <a href="#" class="navbar-brand movingHeader" style="color:#F3F0F3">PlayMates</a>   
     </div>
@@ -27,7 +27,7 @@
         </li>
 
         <li *ngIf="!getUserLoginStatus()">
-          <a (click)="onSelect('register')" style="color:#F3F0F3">Register</a>
+          <a (click)="onSelect('register')" style="color:#F3F0F3; padding-right:200px">Register</a>
         </li>
 
         <li *ngIf="getUserLoginStatus()">

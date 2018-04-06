@@ -31,6 +31,7 @@ export class MapComponent implements OnInit {
   displayMarkker = true;
   displayMarkker2 = true;
   windowinfo = false;
+  markerPath: string = '../../assets/Images/home2.png';
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
