@@ -23,6 +23,7 @@ export class CreateEventComponent implements OnInit {
 
   latitude: number;
   longitude: number;
+  eventTime: Date = new Date();
 
   event: Event;
   currentUser: User;
@@ -46,7 +47,7 @@ export class CreateEventComponent implements OnInit {
   createEvent() {
     this.loading = true;
     //this.model.host = this.currentUser;
-    this.eventService.createEvent(this.model)
+    /* this.eventService.createEvent(this.model)
         .subscribe(
           data => {
             EventService.refreshEventList.next(true);
@@ -58,6 +59,7 @@ export class CreateEventComponent implements OnInit {
           error => {
             this.alertService.error(error);
             this.loading = false;
-          });
+          }); */
+          console.log(this.model);
   }
 }

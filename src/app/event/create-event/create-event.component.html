@@ -10,11 +10,17 @@
           <input type="text" id="title" class="form-control" name="title" [(ngModel)]="model.title" #title="ngModel" required />
           <div *ngIf="f.submitted && !title.valid" class="help-blog">Title is required</div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-3">
           <label for="date">Date</label>
+
           <input type="date" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required />
           <div *ngIf="f.submitted && date.value == null" class="help-blog">Date is required</div>
         </div>
+        <div class="col-lg-3">
+          <label for="date">Time</label>
+            <timepicker [(ngModel)]="model.date" [showSpinners]=false [showMeridian]=false #date="ngModel" required></timepicker>           
+        </div>
+
       </div>
     </div>
 
