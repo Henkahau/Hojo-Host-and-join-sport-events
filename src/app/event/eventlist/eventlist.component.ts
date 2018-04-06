@@ -7,6 +7,7 @@ import { Event } from '../../_models/index';
 
 import { UserService, EventService } from '../../_services/index';
 import { EventViewComponent } from '../../event/event-view';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-eventlist',
@@ -19,13 +20,15 @@ export class EventlistComponent implements OnInit {
   modalRef: BsModalRef;
   
 
+  date: Date;
+
   constructor(
     private userService: UserService,
     private eventService: EventService,
     private modalService: BsModalService) {
       EventService.refreshEventList.subscribe(res => {
         this.loadAllEvents();
-      })
+      });
     }
 
   ngOnInit() {
@@ -33,7 +36,7 @@ export class EventlistComponent implements OnInit {
   }
 
   loadAllEvents() {
-    this.eventService.getAllEvents().subscribe(events => { this.events = events; });
+    this.eventService.getAllEvents().subscribe(events => { this.events = events });
   }
 
 
@@ -43,6 +46,9 @@ export class EventlistComponent implements OnInit {
 
   }
 
-
+  private getDate(date: string){
+    this.date = new Date(date);
+    return this.date.toLocaleDateString();
+  }
 
 }

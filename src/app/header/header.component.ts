@@ -19,9 +19,9 @@ export class HeaderComponent{
     
     isUserloggedIn: boolean;
     @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
-    @Output ()public imagePath2: string = "https://i.imgur.com/HDMFXSE.png";
+    @Output ()public imagePath2: string = '../../assets/Images/logo.png'; 
     modalRef: BsModalRef;
-
+ 
     constructor(
         private router: Router,
         private modalService: BsModalService,
