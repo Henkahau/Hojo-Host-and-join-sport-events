@@ -45,20 +45,19 @@ export class CreateEventComponent implements OnInit {
 
   createEvent() {
     this.loading = true;
-    // this.model.host = this.currentUser;
-    // console.log(this.model.host);
+    //this.model.host = this.currentUser;
     this.eventService.createEvent(this.model)
-      .subscribe(
-        data => {
-          //set succes message and pass true parameter to persist teh message after redirectin to the main page
-          this.alertService.success('Event created succesfully', false);
-
-          //navigate to main page..
-          this.bsModalRef.hide();
-        },
-        error => {
-          this.alertService.error(error.message);
-          this.loading = false;
-        });
+        .subscribe(
+          data => {
+            EventService.refreshEventList.next(true);
+            //set succes message and pass true parameter to persist teh message after redirectin to the main page
+            this.alertService.success('Event created succesfull', false);
+            //navigate to main page..
+            this.bsModalRef.hide();
+          },
+          error => {
+            this.alertService.error(error);
+            this.loading = false;
+          });
   }
 }

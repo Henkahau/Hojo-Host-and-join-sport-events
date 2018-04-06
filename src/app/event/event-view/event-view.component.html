@@ -87,9 +87,12 @@
             <button class="btn btn-primary" (click)="leaveEvent()">Leave</button>
           </ng-template>
 
+          <button class="btn btn-primary" (click)="deleteEvent(event.eventId)">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="editEvent()">Edit</button>
           <button class="btn btn-primary" [hidden]="isHost" (click)="deleteEvent()">Delete</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+

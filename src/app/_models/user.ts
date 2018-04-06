@@ -2,7 +2,7 @@ export class User {
     accountId: string;
     profilePicture: string;
     email: string;
-    mobileNumber: number;
+    mobileNumber: String;
     biography: string;
     notapwhash: string;
     pwsalt: string;

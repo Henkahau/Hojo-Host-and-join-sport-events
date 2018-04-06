@@ -50,8 +50,9 @@ export class EventViewComponent implements OnInit {
 
   }
 
-  deleteEvent() {
-    this.eventService.deleteEvent(this.eventID);
+  deleteEvent(id:string) {
+    this.eventService.deleteEvent(id).subscribe(() => { EventService.refreshEventList.next(true)});
+    this.close();
   }
 
   joinEvent() {
@@ -82,5 +83,10 @@ export class EventViewComponent implements OnInit {
     else {
       return false;
     }
+  }
+
+  editEvent(){
+    this.close();
+    this.router.navigate(['/edit-event']);
   }
 }
