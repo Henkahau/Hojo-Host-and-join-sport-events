@@ -7,7 +7,7 @@
 </div>
 
 <agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-  <agm-marker [latitude]="latitude" [longitude]="longitude">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="markerPath">
   </agm-marker>
   <div *ngIf="markers">
     <div *ngFor="let marker of markers">
