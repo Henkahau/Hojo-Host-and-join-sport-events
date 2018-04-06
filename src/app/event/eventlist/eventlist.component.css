@@ -4,4 +4,12 @@ div.scrollmenu {
     overflow: scroll;
     overflow-x: hidden;
     white-space: nowrap;
+    cursor: pointer;
+}
+.list-group-item
+{
+    padding: 0px;
+}
+label{
+    padding-left: 15px;  
 }

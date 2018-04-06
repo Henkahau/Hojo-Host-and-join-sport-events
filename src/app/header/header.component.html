@@ -7,14 +7,14 @@
       <!-- placeholder for real logo -->
         <a> <img [src]="imagePath2" style="max-height: 50px;"></a>
         
-      <a href="#" class="navbar-brand movingHeader" style="color:#040f0f;">PlayMates</a>   
+      <a href="#" class="navbar-brand movingHeader" style="color:#F3F0F3">PlayMates</a>   
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
 
         <li *ngIf="getUserLoginStatus()">
-          <a (click)="onSelect('create')" style="color:#040f0f;">Create Event</a>
+          <a (click)="onSelect('create')" style="color:#F3F0F3">Create Event</a>
         </li>
 
         <!-- <li><a (click)="onSelect('search')">Search Events</a></li> -->
@@ -23,15 +23,15 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!getUserLoginStatus()">
-          <a (click)="onSelect('login')"style="color:#040f0f;">Login</a>
+          <a (click)="onSelect('login')" style="color:#F3F0F3">Login</a>
         </li>
 
         <li *ngIf="!getUserLoginStatus()">
-          <a (click)="onSelect('register')"style="color:#040f0f;">Register</a>
+          <a (click)="onSelect('register')" style="color:#F3F0F3">Register</a>
         </li>
 
         <li *ngIf="getUserLoginStatus()">
-          <a (click)="onSelect('logout')">Logout</a>
+          <a (click)="onSelect('logout')" style="color:#F3F0F3">Logout</a>
         </li>
 
 
@@ -49,7 +49,7 @@
             </ul>
           </li> -->
         <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']" class="navbar-left moving">
-          <img [src]="imagePath" style="max-height: 50px;">
+          <img [src]="imagePath" style="max-height: 55px;">
         </a>
       </ul>
     </div>

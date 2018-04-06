@@ -18,6 +18,8 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
 
+  date: Date;
+
   constructor(
     private router: Router,
     private eventService: EventService,
@@ -28,11 +30,11 @@ export class EventViewComponent implements OnInit {
 
   ngOnInit() {
     this.loadEvent();
+       
   }
 
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
-    console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event;
       this.eventTitle = event.title;
@@ -67,13 +69,9 @@ export class EventViewComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
-  hasJoined() {
-    if (this.event.players.includes(this.currentUser)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  private getDate(date: string){
+    this.date = new Date(date);
+    return this.date.toLocaleDateString();
   }
 
   isHost() {
