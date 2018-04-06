@@ -1,10 +1,13 @@
 .color-dark
 {
     background: #232627;
+    width: 100%;
+ 
 }
 h5
 {
-    color: gray
+    color: rgb(212, 212, 212);
+    padding-left: 40px;
 }
 a
 {
