@@ -16,7 +16,8 @@
         [latitude]=marker.markerLatitude 
         [longitude]=marker.markerLongitude 
         (mouseOver)="mouseOverMarker(infoWindow,gm)"
-        (mouseOut)="mouseLeftMarker(infoWindow)">
+        (mouseOut)="mouseLeftMarker(infoWindow)"
+        [iconUrl]="sportIconPath">
           <agm-info-window #infoWindow>{{ marker.markerLatitude }} {{ marker.markerLongitude }}</agm-info-window>
         </agm-marker>
       <!-- </div> -->
