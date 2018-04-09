@@ -18,6 +18,8 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
 
+  date: Date;
+
   constructor(
     private router: Router,
     private eventService: EventService,
@@ -28,6 +30,7 @@ export class EventViewComponent implements OnInit {
 
   ngOnInit() {
     this.loadEvent();
+       
   }
 
   private loadEvent() {
@@ -50,8 +53,9 @@ export class EventViewComponent implements OnInit {
 
   }
 
-  deleteEvent() {
-    this.eventService.deleteEvent(this.eventID);
+  deleteEvent(id:string) {
+    this.eventService.deleteEvent(id).subscribe(() => { EventService.refreshEventList.next(true)});
+    this.close();
   }
 
   joinEvent() {
@@ -66,13 +70,9 @@ export class EventViewComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
-  hasJoined() {
-    if (this.event.players.includes(this.currentUser)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  private getDate(date: string){
+    this.date = new Date(date);
+    return this.date.toLocaleDateString();
   }
 
   isHost() {
@@ -82,5 +82,9 @@ export class EventViewComponent implements OnInit {
     else {
       return false;
     }
+  editEvent(){
+    this.close();
+    this.router.navigate(['/edit-event']);
   }
+
 }

@@ -2,3 +2,57 @@
 .pac-container{
     z-index: 1050;
 }
+label{
+    color: #437422;
+}
+
+body {
+    background:  #F3F0F3;
+   
+}
+.navbar-default {
+    background-color:#284100;
+    border-color:#284100;
+    border-radius: 0;
+    box-shadow: 5px 5px 5px #888888;
+    font-size: 25px;
+    padding-top: 20px;
+    cursor: pointer;
+    
+    
+    
+     
+}
+.scrolling{
+    position: fixed;
+    width: 100%;
+    background-color: #012400;
+    border-color: #012400;
+    border-radius: 0;
+    box-shadow: 5px 5px 5px #888888;
+    font-size: 25px;
+    padding-top: 5px;
+    cursor: pointer;
+    z-index: 1050;   
+}
+.movingHeader
+{
+    padding-left: 170px;
+    font-size: 30px;
+    color:#040f0f; 
+}
+
+.moving
+{
+    padding-right: 145px;
+       
+}
+.cancelButton{
+    color: #012400;
+    background: #A9D861;
+
+}
+.create{
+    color: #DFF1A0;
+    background:  #437422;
+}

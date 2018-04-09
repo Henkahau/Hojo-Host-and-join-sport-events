@@ -9,7 +9,7 @@
       </div>
       <div class="col-lg-6">
         <label for="date">Date</label>
-        <p class="form-control">{{event.date}}</p>
+        <p class="form-control">{{getDate(event.date)}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -82,14 +82,16 @@
         <div align="right">
           <button class="btn btn-primary" (click)="close()">Close</button>
 
-          <button class="btn btn-primary" *ngIf="hasJoined; else leaveEvent" (click)="joinEvent()">Join</button>
+        <!-- <button class="btn btn-primary" *ngIf="hasJoined; else leaveEvent" (click)="joinEvent()">Join</button> -->
           <ng-template #leaveEvent>
             <button class="btn btn-primary" (click)="leaveEvent()">Leave</button>
           </ng-template>
 
-          <button class="btn btn-primary" [hidden]="isHost" (click)="deleteEvent()">Delete</button>
+          <button class="btn btn-primary" (click)="deleteEvent(event.eventId)">Delete</button>
+          <button type="button" class="btn btn-primary" (click)="editEvent()">Edit</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
