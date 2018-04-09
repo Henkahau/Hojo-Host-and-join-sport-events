@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { User } from '../_models/user'
 import { UserService, AlertService, AuthenticationService } from '../_services';
 import { Router } from '@angular/router';
@@ -16,7 +16,9 @@ export class UserProfileComponent implements OnInit {
   currentUser: User;
   router: Router;
 
-  userProfileId: string; 
+  userProfileId: string;
+
+  @Output ()public imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService) {

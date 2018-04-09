@@ -3,16 +3,16 @@
     z-index: 1050;
 }
 label{
-    color: #81C784;
+    color: #437422;
 }
 
 body {
-    background:  #F8F9FD;
+    background:  #F3F0F3;
    
 }
 .navbar-default {
-    background-color:#F8F9FD;
-    border-color:#F8F9FD;
+    background-color:#284100;
+    border-color:#284100;
     border-radius: 0;
     box-shadow: 5px 5px 5px #888888;
     font-size: 25px;
@@ -26,8 +26,8 @@ body {
 .scrolling{
     position: fixed;
     width: 100%;
-    background-color: #F8F9FD;
-    border-color: #F8F9FD;
+    background-color: #012400;
+    border-color: #012400;
     border-radius: 0;
     box-shadow: 5px 5px 5px #888888;
     font-size: 25px;
@@ -46,4 +46,13 @@ body {
 {
     padding-right: 145px;
        
+}
+.cancelButton{
+    color: #012400;
+    background: #A9D861;
+
+}
+.create{
+    color: #DFF1A0;
+    background:  #437422;
 }
