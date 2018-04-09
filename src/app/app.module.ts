@@ -48,9 +48,7 @@ import { EventlistComponent } from './event/eventlist/eventlist.component';
 import { EditProfileComponent } from './user-profile/index';
 import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
 import { FooterComponent } from './footer/footer.component';
-
-
-
+import { RatingComponent } from './rating/rating.component';
 
 
 @NgModule({
@@ -87,6 +85,7 @@ import { FooterComponent } from './footer/footer.component';
         EditProfileComponent,
         EventlistComponent,
         FooterComponent,
+        RatingComponent,
         EditEventComponent,
     ],
     providers: [
