@@ -29,8 +29,7 @@ export class EventViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadEvent();
-       
+    this.loadEvent();    
   }
 
   private loadEvent() {
@@ -39,6 +38,7 @@ export class EventViewComponent implements OnInit {
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event;
       this.eventTitle = event.title;
+      this.date = new Date(event.date);
     });
 
     // // HOST
@@ -82,7 +82,9 @@ export class EventViewComponent implements OnInit {
     else {
       return false;
     }
-  editEvent(){
+  }
+
+  editEvent() {
     this.close();
     this.router.navigate(['/edit-event']);
   }
