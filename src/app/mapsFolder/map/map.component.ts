@@ -32,6 +32,7 @@ export class MapComponent implements OnInit {
   displayMarkker2 = true;
   windowinfo = false;
   markerPath: string = '../../assets/Images/home2.png';
+  sportIconPath: string = '../../assets/Images/sumo.png';
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -103,6 +104,8 @@ export class MapComponent implements OnInit {
   }
 
   onMapClick(event) {
+    console.log('Painoit markeria')
+
   }
 
   mouseOverMarker(infoWindow, gm) {
