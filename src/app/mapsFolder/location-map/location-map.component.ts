@@ -14,7 +14,7 @@ export class LocationMapComponent implements OnInit {
   public longitude: number;
   public latitudeMarker:  number;
   public longitudeMarker: number;
-  @Output('receivedLocation') sendLocation  = new EventEmitter<{location: string}>();
+  @Output('receivedLocation') sendLocation  = new EventEmitter<{lat: number, lng: number}>();
 
   public searchControl: FormControl;
   public zoom: number;
@@ -65,7 +65,8 @@ export class LocationMapComponent implements OnInit {
           this.zoom = 12;
 
           this.sendLocation.emit({
-            location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
+            lat: this.latitudeMarker,
+            lng: this.longitudeMarker
           });
         });
       });
@@ -82,7 +83,8 @@ export class LocationMapComponent implements OnInit {
         this.zoom = 12;
 
         this.sendLocation.emit({
-          location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
+          lat: this.latitudeMarker,
+          lng: this.longitudeMarker
         });
       });
     }
@@ -94,7 +96,8 @@ export class LocationMapComponent implements OnInit {
     this.longitudeMarker = event.coords.lng;
     
     this.sendLocation.emit({
-      location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
+      lat: this.latitudeMarker,
+      lng: this.longitudeMarker
     });
   }
 
@@ -104,7 +107,8 @@ export class LocationMapComponent implements OnInit {
     this.longitudeMarker = event.coords.lng;
 
     this.sendLocation.emit({
-      location: this.latitudeMarker + 'N' + this.longitudeMarker + 'E'
+      lat: this.latitudeMarker,
+      lng: this.longitudeMarker
     });
   }
 }

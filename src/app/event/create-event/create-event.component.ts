@@ -21,31 +21,30 @@ export class CreateEventComponent implements OnInit {
   skillValues = Object.values(SkillLevel);
   playTypeValues = Object.values(PlayType);
 
-  latitude:  number;
+  latitude: number;
   longitude: number;
 
+  event: Event;
   currentUser: User;
   dateT: Date;
 
-  
-  constructor(
-      private router: Router,
-      private eventService: EventService,
-      private alertService: AlertService,
-      private userService: UserService, 
-      private bsModalRef: BsModalRef ) 
-      {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      }
 
-  ngOnInit() {
+  constructor(
+    private router: Router,
+    private eventService: EventService,
+    private alertService: AlertService,
+    private userService: UserService,
+    private bsModalRef: BsModalRef) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  close(){
+  ngOnInit() {}
+
+  close() {
     this.bsModalRef.hide();
   }
- 
-  createEvent(){
+
+  createEvent() {
     this.loading = true;
     this.model.date = this.dateT.toISOString();
     //this.model.host = this.currentUser;
