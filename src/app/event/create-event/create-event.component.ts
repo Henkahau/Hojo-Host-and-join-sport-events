@@ -25,6 +25,7 @@ export class CreateEventComponent implements OnInit {
   longitude: number;
 
   currentUser: User;
+  dateT: Date;
 
   
   constructor(
@@ -38,18 +39,6 @@ export class CreateEventComponent implements OnInit {
       }
 
   ngOnInit() {
-    // Find a (better) way to send host
-    // if (localStorage.getItem('currentUser').length > 0)
-    // {
-    //   this.model.host = JSON.parse(localStorage.getItem('currentUser'));
-    // }
-
-    // Until that use this:
-    // BEWARE! AT THE MOMENT THIS WILL BREAK THE BACKEND WITH INFINITE LOOP!!
-    // this.userService.getById('58ac4635-b5ed-44c2-b134-96d2161496c7').subscribe(user => {
-    //   this.model.host = user;
-    //   console.log(this.model.host);
-    // });
   }
 
   close(){
@@ -58,7 +47,9 @@ export class CreateEventComponent implements OnInit {
  
   createEvent(){
     this.loading = true;
+    this.model.date = this.dateT.toISOString();
     //this.model.host = this.currentUser;
+    console.log(this.model);
     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
