@@ -49,14 +49,21 @@ import { EditProfileComponent } from './user-profile/index';
 import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
 import { FooterComponent } from './footer/footer.component';
 import { RatingComponent } from './rating/rating.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
+        OwlDateTimeModule, 
+        OwlNativeDateTimeModule,
         routing,
         ModalModule.forRoot(),
         AgmCoreModule.forRoot( {
