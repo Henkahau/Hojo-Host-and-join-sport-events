@@ -61,7 +61,7 @@
     </div> -->
 
     <label for="location">Location</label>
-    <app-location-map (receivedLocation)="model.location = $event.location">
+    <app-location-map (receivedLocation)="model.lat = $event.lat; model.lng = $event.lng;">
     </app-location-map>
 
     <div class="form-group">
