@@ -38,12 +38,11 @@ export class EventlistComponent implements OnInit {
     // Catch filters emitted from map.component
     this.eventService.eventInfo.subscribe(res => {
       this.eventInfo = res;
-      console.log(this.eventInfo);
     });
 
     this.eventService.getSpecificEvents(this.eventInfo).subscribe(
-      allEvents => {
-        this.events = Object.assign([], allEvents);
+      events => {
+        this.events = Object.assign([], events);
       },
       error => {
         // In case there is no events
