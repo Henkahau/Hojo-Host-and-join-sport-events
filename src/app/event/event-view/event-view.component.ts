@@ -12,8 +12,6 @@ import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
 })
 export class EventViewComponent implements OnInit {
   eventID: string;
-  eventTitle: string;
-
   event: Event;
   host: User;
   currentUser: User;
@@ -35,7 +33,6 @@ export class EventViewComponent implements OnInit {
     console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event;
-      this.eventTitle = event.title;
     });
 
     // // HOST
