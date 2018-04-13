@@ -26,6 +26,7 @@ export class MapComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   message;
+  eventInfo: any = {};
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -91,16 +92,19 @@ export class MapComponent implements OnInit {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
   }
-  receiveMessage($event) {
-    this.message = $event;
+
+  receiveMessage(event: any) {
+    console.log(event);
+    this.eventInfo = event;
+    this.getAllEvents();
   }
+
   receiveLevel($event) {
     this.message = $event
   }
 
   onMapClick(event) {
-    console.log('Painoit markeria')
-
+   
   }
 
   mouseOverMarker(infoWindow, gm) {
@@ -116,7 +120,10 @@ export class MapComponent implements OnInit {
   }
 
   getAllEvents() {
-    this.eventService.getAllEvents().subscribe(allEvents => {
+    // this.eventService.getAllEvents().subscribe(allEvents => {
+    //   this.events = Object.assign([], allEvents);
+    // });
+    this.eventService.getSpecificEvents(this.eventInfo).subscribe(allEvents => {
       this.events = Object.assign([], allEvents);
     });
   }
