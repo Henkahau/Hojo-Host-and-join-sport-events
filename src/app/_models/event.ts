@@ -11,8 +11,8 @@ export class Event{
     maxAttendees: number;
     description: string;
     playType: PlayType;
-    latitude:  number;
-    longitude: number;
+    lat:  number;
+    lng: number;
     host: User;
     players: User[];
 }
