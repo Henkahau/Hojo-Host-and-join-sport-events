@@ -9,8 +9,8 @@
   <agm-marker [latitude]="latitude" [longitude]="longitude">
   </agm-marker>
   <div *ngIf="events">
-    <div *ngFor="let marker of events;">
-      <!-- <div *ngIf="marker.tag == message"> -->
+    <div *ngFor="let marker of events">
+      <!-- <div *ngIf="marker.sportType == message"> -->
         <agm-marker (markerClick)="onMapClick($event)" 
         [latitude]=+marker.lat
         [longitude]=+marker.lng
