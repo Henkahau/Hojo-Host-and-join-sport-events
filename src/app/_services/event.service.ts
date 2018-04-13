@@ -31,6 +31,23 @@ export class EventService {
     return this.http.get<Event[]>('api/events');
   }
 
+  getSpecificEvents(event: any){
+    if(event.sportType == null )
+      event.sportType = '';   
+    if(event.skillLevel == null )
+      event.skillLevel = '';   
+    if(event.playType == null )
+      event.playType = '';  
+    if(event.maxAttendees == null )
+      event.maxAttendees = '';
+      
+    return this.http.get<Event[]>('api/events?sporttype=' + event.sportType +
+                                  '&skilllevel=' + event.skillLevel +
+                                  '&playtype=' + event.playType +
+                                  '&maxattendees=' + event.maxAttendees  );
+
+  }
+
   joinEvent(eventId: string, accountId: string){
     return this.http.post('/api/event/' + eventId + '/join/', accountId, {responseType: 'text'});
   }
