@@ -42,4 +42,10 @@ export class EventService {
   //used for refresh eventList
   public static refreshEventList: Subject<boolean> = new Subject;
 
+  //parsing date for eventViews
+  public parseDate(date: string){
+    var dateTime = new Date(date);
+    return dateTime.toLocaleDateString();
+  }
+
 }

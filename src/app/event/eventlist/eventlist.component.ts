@@ -18,13 +18,10 @@ export class EventlistComponent implements OnInit {
 
   events: Event[] = [];
   modalRef: BsModalRef;
-  
-
-  date: Date;
 
   constructor(
     private userService: UserService,
-    private eventService: EventService,
+    protected eventService: EventService,
     private modalService: BsModalService) {
       EventService.refreshEventList.subscribe(res => {
         this.loadAllEvents();
@@ -44,11 +41,6 @@ export class EventlistComponent implements OnInit {
     sessionStorage.setItem("eventId", id);
     this.modalRef = this.modalService.show(EventViewComponent, {class: 'modal-lg'});
 
-  }
-
-  private getDate(date: string){
-    this.date = new Date(date);
-    return this.date.toLocaleDateString();
   }
 
 }

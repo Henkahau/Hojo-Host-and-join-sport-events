@@ -10,7 +10,8 @@
       {{event.sportType}}
       <br>
       <label>Date:</label>
-      {{getDate(event.date)}}
+      {{eventService.parseDate(event.date)}}
+      
    
      </div>
      <ng-template #even >
@@ -22,7 +23,7 @@
             {{event.sportType}}
             <br>
             <label>Date:</label>
-            {{getDate(event.date)}}
+            {{eventService.parseDate(event.date)}}
         </div>
      </ng-template>
     </ul>

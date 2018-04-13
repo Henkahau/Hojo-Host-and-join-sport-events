@@ -18,11 +18,9 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
 
-  date: Date;
-
   constructor(
     private router: Router,
-    private eventService: EventService,
+    protected eventService: EventService,
     private userService: UserService,
     private bsModalRef: BsModalRef) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -38,7 +36,6 @@ export class EventViewComponent implements OnInit {
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event;
       this.eventTitle = event.title;
-      this.date = new Date(event.date);
     });
 
     // // HOST
@@ -62,17 +59,12 @@ export class EventViewComponent implements OnInit {
     this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
   }
 
-  leaveEvent() {
+  leaveEvents() {
     this.eventService.leaveEvent(this.eventID, this.currentUser.accountId);
   }
 
   close() {
     this.bsModalRef.hide();
-  }
-
-  private getDate(date: string){
-    this.date = new Date(date);
-    return this.date.toLocaleDateString();
   }
 
   isHost() {
