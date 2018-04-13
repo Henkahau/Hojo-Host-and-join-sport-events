@@ -35,7 +35,11 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService) { }
+    private eventService: EventService) { 
+      EventService.refreshEventList.subscribe(res => {
+        this.getAllEvents();
+      });
+     }
 
   ngOnInit() {
 
@@ -106,7 +110,6 @@ export class MapComponent implements OnInit {
   }
 
   mouseLeftMarker(infoWindow) {
-
     infoWindow.close();
   }
 
