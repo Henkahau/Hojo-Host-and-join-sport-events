@@ -103,7 +103,6 @@ export class MapComponent implements OnInit {
     this.getAllEvents();
 
     // Emit eventInfo to eventlist
-    // For some reason gets emitted only once!
     this.eventService.emitEventInfo(this.eventInfo);
   }
 
