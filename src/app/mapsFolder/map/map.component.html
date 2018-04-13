@@ -1,4 +1,4 @@
-<app-searchfield (messageEvent)="receiveMessage($event)" (messageEvent)="receiveLevel"></app-searchfield>
+<app-searchfield (messageEvent)="receiveMessage($event)"></app-searchfield>
 
 <!-- <div style="padding-bottom: 50px; width: 500px; padding-left: 200px; padding-top: 80px;"> -->
     <div style="padding-bottom: 20px;">
@@ -6,7 +6,7 @@
     #search [formControl]="searchControl">
 </div>
 <agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom"> 
-  <agm-marker [latitude]="latitude" [longitude]="longitude">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconImagePath" >
   </agm-marker>
   <div *ngIf="events">
     <div *ngFor="let marker of events">
