@@ -26,6 +26,8 @@ export class MapComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   message;
+  eventInfo: any = {};
+  public iconImagePath: string = '../../assets/Images/sumo.png'; 
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -35,7 +37,11 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService) { }
+    private eventService: EventService) { 
+      EventService.refreshEventList.subscribe(res => {
+        this.getAllEvents();
+      });
+     }
 
   ngOnInit() {
 
@@ -87,31 +93,41 @@ export class MapComponent implements OnInit {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
   }
-  receiveMessage($event) {
-    this.message = $event;
+
+  receiveMessage(event: any) {
+    console.log(event);
+    this.eventInfo = event;
+
+    if(this.events != null)
+      this.events = [];
+    this.getAllEvents();
   }
+
   receiveLevel($event) {
     this.message = $event
   }
 
   onMapClick(event) {
+   
   }
 
   mouseOverMarker(infoWindow, gm) {
-    if (gm.lastOpen != null) {
-      gm.lastOpen.close();
-    }
+    // if (gm.lastOpen != null) {
+    //   gm.lastOpen.close();
+    // }
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
 
   mouseLeftMarker(infoWindow) {
-
     infoWindow.close();
   }
 
   getAllEvents() {
-    this.eventService.getAllEvents().subscribe(allEvents => {
+    // this.eventService.getAllEvents().subscribe(allEvents => {
+    //   this.events = Object.assign([], allEvents);
+    // });
+    this.eventService.getSpecificEvents(this.eventInfo).subscribe(allEvents => {
       this.events = Object.assign([], allEvents);
     });
   }

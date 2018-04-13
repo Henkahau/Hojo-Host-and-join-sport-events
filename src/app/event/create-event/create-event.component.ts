@@ -27,6 +27,8 @@ export class CreateEventComponent implements OnInit {
 
   event: Event;
   currentUser: User;
+  dateT: Date;
+  now = new Date();
 
 
   constructor(
@@ -46,6 +48,7 @@ export class CreateEventComponent implements OnInit {
 
   createEvent() {
     this.loading = true;
+    this.model.date = this.dateT.toISOString();
     //this.model.host = this.currentUser;
     /* this.eventService.createEvent(this.model)
         .subscribe(

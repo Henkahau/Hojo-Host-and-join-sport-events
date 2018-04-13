@@ -12,7 +12,6 @@ export class EventService {
   static url ='/api';
 
   createEvent(event: Event){
-    console.log(event);
     return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
@@ -30,6 +29,23 @@ export class EventService {
 
   getAllEvents(){
     return this.http.get<Event[]>('api/events');
+  }
+
+  getSpecificEvents(event: any){
+    if(event.sportType == null || event.sportType == 'Any' )
+      event.sportType = '';   
+    if(event.skillLevel == null || event.skillLevel == 'Any' )
+      event.skillLevel = '';   
+    if(event.playType == null || event.skillLevel == 'Any' )
+      event.playType = '';  
+    if(event.maxAttendees == null || event.skillLevel == 'Any')
+      event.maxAttendees = '';
+      
+    return this.http.get<Event[]>('api/events?sporttype=' + event.sportType +
+                                  '&skilllevel=' + event.skillLevel +
+                                  '&playtype=' + event.playType +
+                                  '&maxattendees=' + event.maxAttendees  );
+
   }
 
   joinEvent(eventId: string, accountId: string){
