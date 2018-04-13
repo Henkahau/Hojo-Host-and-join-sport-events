@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Activity } from './activity';
 import { Event, SportType, SkillLevel, PlayType} from '../_models/index';
+import { EventService } from '../_services';
 
 @Component({
   selector: 'app-searchfield',
@@ -22,8 +23,13 @@ export class SearchfieldComponent implements OnInit {
  sportValues = Object.values(SportType);
  skillValues = Object.values(SkillLevel);
  playTypeValues = Object.values(PlayType);
+
+ eventInfo: any = {};
  
- 
+ constructor(private eventService: EventService)
+{
+
+} 
  ngOnInit() {
   // this.activity = [
   //   { id:1, sport: "Tennis"},
@@ -33,10 +39,10 @@ export class SearchfieldComponent implements OnInit {
  // this.activitySelected = 3;
 
   }
-  onActivitySelected(val:any)
-  {
-
-    this.sendMessage(val);
+  onActivitySelected(val:any) {
+  //  this.sendMessage(val);
+   
+    this.messageEvent.emit(this.eventInfo);
   }
   onSkillLevelSelected(val2:any)
   {
@@ -47,7 +53,7 @@ export class SearchfieldComponent implements OnInit {
   {
   
     this.message =   val;
-    this.messageEvent.emit(this.message);
+  
     
   }
   sendLevel(val2: any){
