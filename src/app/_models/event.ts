@@ -18,6 +18,7 @@ export class Event{
 }
 
 export enum SportType{
+    ANY   = 'Any',
     FOOTBALL = 'Football',
     CLIMBING = 'Climbing',
     GOLF = 'Golf',
@@ -25,11 +26,13 @@ export enum SportType{
     BASKETBALL = 'Basketball',
     BADMINTON = 'Badminton',
     CHESS = 'Chess',
+    
     //ICEHOCKEY = 'Icehockey',
     //TENNIS = 'Tennis'
 }
 
 export enum SkillLevel{
+    ANY   = 'Any',
     BEGINNER = 'Beginner',
     AVERAGE = 'Average',
     ADVANCED = 'Advanced',
@@ -37,6 +40,7 @@ export enum SkillLevel{
 }
 
 export enum PlayType{
+    ANY   = 'Any',
     CASUAL = 'Casual',
     COMPETETIVE = 'Competetive'
 }
