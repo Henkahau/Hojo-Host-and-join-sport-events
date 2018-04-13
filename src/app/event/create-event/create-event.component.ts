@@ -50,7 +50,7 @@ export class CreateEventComponent implements OnInit {
     this.loading = true;
     this.model.date = this.dateT.toISOString();
     //this.model.host = this.currentUser;
-    /* this.eventService.createEvent(this.model)
+     this.eventService.createEvent(this.model)
         .subscribe(
           data => {
             EventService.refreshEventList.next(true);

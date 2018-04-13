@@ -16,7 +16,9 @@
         [longitude]=+marker.lng
         (mouseOver)="mouseOverMarker(infoWindow,gm)"
         (mouseOut)="mouseLeftMarker(infoWindow)">
-          <agm-info-window #infoWindow>{{ marker.title }}</agm-info-window>
+          <agm-info-window #infoWindow>
+            {{ marker.title }}
+          </agm-info-window>
         </agm-marker>
       <!-- </div> -->
     </div>
