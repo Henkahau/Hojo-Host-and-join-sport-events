@@ -24,7 +24,31 @@ export class EventService {
   }
 
   getEventById(eventId: string){
-    return this.http.get<Event>('/api/events/' + eventId);
+    return this.http.get<Event>('/api/events?id=' + eventId);
+  }
+
+  getEventByTitle(title: string){
+    return this.http.get<Event>('/api/events?title=' + title);
+  }
+
+  getEventByPlayType(playType: string){
+    return this.http.get<Event>('/api/events?playtype=' + playType);
+  }
+
+  getEventBySkillLevel(skillLevel: string){
+    return this.http.get<Event>('/api/events?skilllevel=' + skillLevel);
+  }
+
+  getEventBySportType(sportType: string){
+    return this.http.get<Event>('/api/events?sporttype=' + sportType);
+  }
+
+  getEventByLongitude(longitude: string){
+    return this.http.get<Event>('/api/events?lng=' + longitude);
+  }
+
+  getEventByLatitude(latitude: string){
+    return this.http.get<Event>('/api/events?lat=' + latitude);
   }
 
   getAllEvents(){
