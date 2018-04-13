@@ -12,7 +12,6 @@ export class EventService {
   static url ='/api';
 
   createEvent(event: Event){
-    console.log(event);
     return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
@@ -42,5 +41,11 @@ export class EventService {
 
   //used for refresh eventList
   public static refreshEventList: Subject<boolean> = new Subject;
+
+  //parsing date for eventViews
+  public parseDate(date: string){
+    var dateTime = new Date(date);
+    return dateTime.toLocaleDateString();
+  }
 
 }

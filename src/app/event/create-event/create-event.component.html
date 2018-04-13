@@ -12,8 +12,9 @@
         </div>
         <div class="col-lg-6">
           <label for="date">Date</label>
-          <input type="date" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required />
-          <div *ngIf="f.submitted && date.value == null" class="help-blog">Date is required</div>
+          <!-- <input type="datetime-local" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required /> -->
+          <input [owlDateTime]="dateTime" [min]="now" [owlDateTimeTrigger]="dateTime" name="date" [(ngModel)]="dateT" #date="ngModel" required>
+          <owl-date-time #dateTime [pickerMode]="'dialog'"></owl-date-time>
         </div>
       </div>
     </div>
@@ -61,7 +62,7 @@
     </div> -->
 
     <label for="location">Location</label>
-    <app-location-map (receivedLocation)="model.location = $event.location">
+    <app-location-map (receivedLocation)="model.lat = $event.lat; model.lng = $event.lng;">
     </app-location-map>
 
     <div class="form-group">

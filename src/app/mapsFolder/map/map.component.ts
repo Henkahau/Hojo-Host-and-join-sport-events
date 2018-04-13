@@ -18,7 +18,6 @@ import { Marker } from '../../_models/marker';
 })
 export class MapComponent implements OnInit {
 
-  markers: Marker[] = [];
   events: Event[] = [];
 
   public latitude: number;
@@ -27,10 +26,6 @@ export class MapComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   message;
-  message2;
-  displayMarkker = true;
-  displayMarkker2 = true;
-  windowinfo = false;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -40,15 +35,17 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService
-  ) { }
+    private eventService: EventService) { 
+      EventService.refreshEventList.subscribe(res => {
+        this.getAllEvents();
+      });
+     }
 
   ngOnInit() {
 
     this.zoom = 10;
     this.latitude = 65.0121;
     this.longitude = 25.4651;
-
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -113,22 +110,12 @@ export class MapComponent implements OnInit {
   }
 
   mouseLeftMarker(infoWindow) {
-
     infoWindow.close();
   }
 
   getAllEvents() {
     this.eventService.getAllEvents().subscribe(allEvents => {
       this.events = Object.assign([], allEvents);
-
-      for (var i = 0; i < this.events.length; i++) {
-        var latLng = this.events[i].location.replace("N", " ").replace("E", "");
-        var arrayLatLng = latLng.split(" ");
-        var lat = +arrayLatLng[0];
-        var lng = +arrayLatLng[1];
-        // PUSH IT BABY
-        this.markers.push({ markerLatitude: lat, markerLongitude: lng });
-      }
     });
   }
 }

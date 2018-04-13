@@ -11,7 +11,7 @@ import { MapComponent } from './mapsFolder/map/index';
 import { MainpageComponent } from './mainpage/index';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
-
+import { RatingComponent } from './rating/index';
  
 const appRoutes: Routes = [
     //{ path: '' ,component: ModalComponent },
@@ -24,6 +24,7 @@ const appRoutes: Routes = [
     { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'edit-event', component: EditEventComponent },
     { path: 'edit-profile', component: EditProfileComponent },
+    { path: 'rating', component:RatingComponent},
 
     // Test
     // otherwise redirect to home
