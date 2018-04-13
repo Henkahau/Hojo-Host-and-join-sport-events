@@ -10,6 +10,7 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   static url ='/api';
+  public eventInfo = new Subject<{}>();
 
   createEvent(event: Event){
     return this.http.post('/api/events', event, {responseType: 'text'});
@@ -54,6 +55,11 @@ export class EventService {
 
   leaveEvent(eventId: string, accountId: string){
     return this.http.post('/api/event/' + eventId + '/leave/', accountId, {responseType: 'text'});
+  }
+
+  // Emit eventInfo (filters) from map.component to eventlist.component
+  emitEventInfo(eventFilters) {
+    this.eventInfo.next(eventFilters);
   }
 
   //used for refresh eventList
