@@ -32,13 +32,13 @@ export class EventService {
   }
 
   getSpecificEvents(event: any){
-    if(event.sportType == null )
+    if(event.sportType == null || event.sportType == 'Any' )
       event.sportType = '';   
-    if(event.skillLevel == null )
+    if(event.skillLevel == null || event.skillLevel == 'Any' )
       event.skillLevel = '';   
-    if(event.playType == null )
+    if(event.playType == null || event.skillLevel == 'Any' )
       event.playType = '';  
-    if(event.maxAttendees == null )
+    if(event.maxAttendees == null || event.skillLevel == 'Any')
       event.maxAttendees = '';
       
     return this.http.get<Event[]>('api/events?sporttype=' + event.sportType +
