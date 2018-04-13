@@ -5,20 +5,18 @@
   <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
     #search [formControl]="searchControl">
 </div>
-
-<agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="markerPath">
+<agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom"> 
+  <agm-marker [latitude]="latitude" [longitude]="longitude">
   </agm-marker>
-  <div *ngIf="markers">
-    <div *ngFor="let marker of markers">
+  <div *ngIf="events">
+    <div *ngFor="let marker of events;">
       <!-- <div *ngIf="marker.tag == message"> -->
         <agm-marker (markerClick)="onMapClick($event)" 
-        [latitude]=marker.markerLatitude 
-        [longitude]=marker.markerLongitude 
+        [latitude]=+marker.lat
+        [longitude]=+marker.lng
         (mouseOver)="mouseOverMarker(infoWindow,gm)"
-        (mouseOut)="mouseLeftMarker(infoWindow)"
-        [iconUrl]="sportIconPath">
-          <agm-info-window #infoWindow>{{ marker.markerLatitude }} {{ marker.markerLongitude }}</agm-info-window>
+        (mouseOut)="mouseLeftMarker(infoWindow)">
+          <agm-info-window #infoWindow>{{ marker.title }}</agm-info-window>
         </agm-marker>
       <!-- </div> -->
     </div>

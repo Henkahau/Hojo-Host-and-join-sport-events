@@ -22,8 +22,7 @@ export class RegisterComponent {
         private bsModalRef: BsModalRef) { }
  
     register() {
-        this.model.pwsalt = 'tamaonhienotoiminto';
-
+        
         this.loading = true;
         this.userService.create(this.model)
             .subscribe(

@@ -18,8 +18,8 @@ export class UserService {
     }
  
     create(user: User) {
-        console.log('SERVICE: ' + user);
-        return this.http.post(UserService.url + '/account/person', user, {responseType: 'text'});
+        console.log('SERVICE: ' + JSON.stringify(user));
+        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'text'});
     }
  
     update(user: User) {
