@@ -18,7 +18,7 @@ export class EditProfileComponent implements OnInit {
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   onFileSelected(event){
-    console.log(event);
+    
   }
 
 
@@ -32,11 +32,14 @@ export class EditProfileComponent implements OnInit {
   }
 
   private loadProfile(){
-   this.currentUser // this.userService.getById(this.currentUser.id).subscribe(user =>{this.currentUser = user});
+  //  this.currentUser
   }
 
   private editProfile(){
-    this.userService.update(this.currentUser).subscribe
+    this.model.firstName = this.currentUser.firstName;
+    this.model.accountId = this.currentUser.accountId;
+    this.userService.update
+    this.userService.update(this.model).subscribe
     (
       data=>{
           localStorage.setItem('currentUser', JSON.stringify(this.currentUser));

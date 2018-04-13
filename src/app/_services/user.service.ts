@@ -19,21 +19,15 @@ export class UserService {
  
     create(user: User) {
         console.log('SERVICE: ' + JSON.stringify(user));
-        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'text'});
+        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'json'});
     }
  
     update(user: User) {
-        return this.http.patch( UserService.url + '/account/?uuid=' + user.accountId + 
-                                '&profilePicture=' + user.profilePicture +
-                                '&email='+ user.email +
-                                '&mobileNumber=' + user.mobileNumber +
-                                '&biography=' + user.biography +
-                                '&firstName=' + user.firstName +
-                                '&lastName=' + user.lastName,
-                                user, {responseType: 'text'});
+        return this.http.patch( UserService.url + '/accounts?id=' + user.accountId, user, {responseType: 'text'});
     }
  
     delete(id: string) {
         return this.http.delete(UserService.url + '/users/' + id);
     }
 }
+
