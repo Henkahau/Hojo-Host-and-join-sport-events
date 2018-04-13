@@ -29,15 +29,16 @@ export class EventViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadEvent();
-       
+    this.loadEvent();    
   }
 
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
+    console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event;
       this.eventTitle = event.title;
+      this.date = new Date(event.date);
     });
 
     // // HOST
@@ -83,7 +84,7 @@ export class EventViewComponent implements OnInit {
     }
   }
 
-  editEvent(){
+  editEvent() {
     this.close();
     this.router.navigate(['/edit-event']);
   }

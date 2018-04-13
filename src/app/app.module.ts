@@ -48,7 +48,9 @@ import { EventlistComponent } from './event/eventlist/eventlist.component';
 import { EditProfileComponent } from './user-profile/index';
 import { BsComponentRef } from 'ngx-bootstrap/component-loader/bs-component-ref.class';
 import { FooterComponent } from './footer/footer.component';
-
+import { RatingComponent } from './rating/rating.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -56,9 +58,12 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
+        OwlDateTimeModule, 
+        OwlNativeDateTimeModule,
         routing,
         ModalModule.forRoot(),
         TimepickerModule.forRoot(),
@@ -88,6 +93,7 @@ import { FooterComponent } from './footer/footer.component';
         EditProfileComponent,
         EventlistComponent,
         FooterComponent,
+        RatingComponent,
         EditEventComponent,
     ],
     providers: [

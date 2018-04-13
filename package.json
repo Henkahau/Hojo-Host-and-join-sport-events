@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
-    "@angular/animations": "^5.2.0",
+    "@angular/animations": "^5.2.9",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
     "@angular/core": "^5.2.6",
@@ -27,6 +27,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
+    "ng-pick-datetime": "^5.2.4",
     "ng2-bootstrap-modal": "^1.0.1",
     "ngx-bootstrap": "^2.0.2",
     "npm": "^5.8.0",
