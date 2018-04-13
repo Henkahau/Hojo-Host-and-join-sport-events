@@ -101,6 +101,10 @@ export class MapComponent implements OnInit {
     if(this.events != null)
       this.events = [];
     this.getAllEvents();
+
+    // Emit eventInfo to eventlist
+    // For some reason gets emitted only once!
+    this.eventService.emitEventInfo(this.eventInfo);
   }
 
   receiveLevel($event) {
@@ -127,10 +131,16 @@ export class MapComponent implements OnInit {
     // this.eventService.getAllEvents().subscribe(allEvents => {
     //   this.events = Object.assign([], allEvents);
     // });
-    this.eventService.getSpecificEvents(this.eventInfo).subscribe(allEvents => {
-      this.events = Object.assign([], allEvents);
-    });
-  }
+    this.eventService.getSpecificEvents(this.eventInfo).subscribe(
+      allEvents => {
+        this.events = Object.assign([], allEvents);
+      },
+      error => {
+        // In case there is no events
+        if(error.status === 200)
+          console.log("No events found");
+      });
+    }
 }
 
 
