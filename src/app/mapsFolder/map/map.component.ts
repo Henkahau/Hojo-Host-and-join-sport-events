@@ -27,6 +27,7 @@ export class MapComponent implements OnInit {
   public zoom: number;
   message;
   eventInfo: any = {};
+  public iconImagePath: string = '../../assets/Images/sumo.png'; 
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -96,6 +97,9 @@ export class MapComponent implements OnInit {
   receiveMessage(event: any) {
     console.log(event);
     this.eventInfo = event;
+
+    if(this.events != null)
+      this.events = [];
     this.getAllEvents();
   }
 
@@ -108,9 +112,9 @@ export class MapComponent implements OnInit {
   }
 
   mouseOverMarker(infoWindow, gm) {
-    if (gm.lastOpen != null) {
-      gm.lastOpen.close();
-    }
+    // if (gm.lastOpen != null) {
+    //   gm.lastOpen.close();
+    // }
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
