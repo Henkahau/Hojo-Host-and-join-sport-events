@@ -23,7 +23,14 @@ export class UserService {
     }
  
     update(user: User) {
-        return this.http.patch(UserService.url + '/account/?uuid=' + user.accountId, user, {responseType: 'text'});
+        return this.http.patch( UserService.url + '/account/?uuid=' + user.accountId + 
+                                '&profilePicture=' + user.profilePicture +
+                                '&email='+ user.email +
+                                '&mobileNumber=' + user.mobileNumber +
+                                '&biography=' + user.biography +
+                                '&firstName=' + user.firstName +
+                                '&lastName=' + user.lastName,
+                                user, {responseType: 'text'});
     }
  
     delete(id: string) {

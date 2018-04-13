@@ -15,6 +15,7 @@ export class EditProfileComponent implements OnInit {
   model: any = {};
   currentUser: User;
   static editProfileId: string;
+  imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   onFileSelected(event){
     console.log(event);
@@ -38,6 +39,7 @@ export class EditProfileComponent implements OnInit {
     this.userService.update(this.currentUser).subscribe
     (
       data=>{
+          localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
           this.alertService.success('Profile edited successfully');
           this.router.navigate(['/user-profile']);
         }
