@@ -12,7 +12,6 @@ export class EventService {
   static url ='/api';
 
   createEvent(event: Event){
-    console.log(event);
     return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
