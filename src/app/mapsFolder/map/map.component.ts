@@ -22,6 +22,7 @@ export class MapComponent implements OnInit {
 
   public latitude: number;
   public longitude: number;
+  public radius: number;
 
   public searchControl: FormControl;
   public zoom: number;
@@ -48,6 +49,7 @@ export class MapComponent implements OnInit {
     this.zoom = 10;
     this.latitude = 65.0121;
     this.longitude = 25.4651;
+    this.radius = 5;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -95,8 +97,9 @@ export class MapComponent implements OnInit {
   }
 
   receiveMessage(event: any) {
-    console.log(event);
     this.eventInfo = event;
+
+    console.log(this.eventInfo);
 
     if(this.events != null)
       this.events = [];
@@ -130,6 +133,11 @@ export class MapComponent implements OnInit {
     // this.eventService.getAllEvents().subscribe(allEvents => {
     //   this.events = Object.assign([], allEvents);
     // });
+
+    this.eventInfo.lat = this.latitude;
+    this.eventInfo.lng = this.longitude;
+    this.eventInfo.radius = this.radius;
+
     this.eventService.getSpecificEvents(this.eventInfo).subscribe(
       allEvents => {
         this.events = Object.assign([], allEvents);
