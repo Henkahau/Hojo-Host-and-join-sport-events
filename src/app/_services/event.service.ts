@@ -31,30 +31,6 @@ export class EventService {
     return this.http.get<Event>('/api/events?id=' + eventId);
   }
 
-  getEventByTitle(title: string){
-    return this.http.get<Event>('/api/events?title=' + title);
-  }
-
-  getEventByPlayType(playType: string){
-    return this.http.get<Event>('/api/events?playtype=' + playType);
-  }
-
-  getEventBySkillLevel(skillLevel: string){
-    return this.http.get<Event>('/api/events?skilllevel=' + skillLevel);
-  }
-
-  getEventBySportType(sportType: string){
-    return this.http.get<Event>('/api/events?sporttype=' + sportType);
-  }
-
-  getEventByLongitude(longitude: string){
-    return this.http.get<Event>('/api/events?lng=' + longitude);
-  }
-
-  getEventByLatitude(latitude: string){
-    return this.http.get<Event>('/api/events?lat=' + latitude);
-  }
-
   getAllEvents(){
     return this.http.get<Event[]>('api/events');
   }
@@ -103,5 +79,4 @@ export class EventService {
     var dateTime = new Date(date);
     return dateTime.toLocaleDateString();
   }
-
 }

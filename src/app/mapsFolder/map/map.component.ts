@@ -38,7 +38,7 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService) { 
+    protected eventService: EventService) { 
       EventService.refreshEventList.subscribe(res => {
         this.getAllEvents();
       });
