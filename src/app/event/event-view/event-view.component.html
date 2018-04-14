@@ -5,11 +5,11 @@
     <div class="row">
       <div class="col-lg-6">
         <label for="title">Title</label>
-        <p class="form-control">{{event.title}}</p>
+        <p class="form-control">{{event[0].title}}</p>
       </div>
       <div class="col-lg-6">
         <label for="date">Date</label>
-        <p class="form-control">{{getDate(event.date)}}</p>
+        <p class="form-control">{{eventService.parseDate(event[0].date)}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -17,25 +17,25 @@
         <div class="col-lg-3">
           <label>Sport:</label>
           <p class="form-control">
-            {{event.sportType}}
+            {{event[0].sportType}}
           </p>
         </div>
         <div class="col-lg-3">
           <label>Skill level</label>
           <p class="form-control">
-            {{event.skillLevel}}
+            {{event[0].skillLevel}}
           </p>
         </div>
         <div class="col-lg-3">
           <label>Play type</label>
           <p class="form-control">
-            {{event.playType}}
+            {{event[0].playType}}
           </p>
         </div>
         <div class="col-lg-3">
           <label>Number of players</label>
           <p class="form-control">
-            {{ event.players.length }}
+            {{ event[0].players.length }}
           </p>
         </div>
       </div>
@@ -84,7 +84,7 @@
 
         <!-- <button class="btn btn-primary" *ngIf="hasJoined; else leaveEvent" (click)="joinEvent()">Join</button> -->
           <ng-template #leaveEvent>
-            <button class="btn btn-primary" (click)="leaveEvent()">Leave</button>
+            <button class="btn btn-primary" (click)="leaveEvents()">Leave</button>
           </ng-template>
 
           <button class="btn btn-primary" (click)="deleteEvent(event.eventId)">Delete</button>

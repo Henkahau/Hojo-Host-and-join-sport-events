@@ -17,11 +17,9 @@ export class EventlistComponent implements OnInit {
   modalRef: BsModalRef;
   eventInfo: any = {};
 
-  date: Date;
-
   constructor(
     private userService: UserService,
-    private eventService: EventService,
+    protected eventService: EventService,
     private modalService: BsModalService) {
     EventService.refreshEventList.subscribe(res => {
       this.loadEvents();
@@ -47,11 +45,6 @@ export class EventlistComponent implements OnInit {
   private openEventView(id: string) {
     sessionStorage.setItem("eventId", id);
     this.modalRef = this.modalService.show(EventViewComponent, { class: 'modal-lg' });
-  }
-
-  private getDate(date: string) {
-    this.date = new Date(date);
-    return this.date.toLocaleDateString();
   }
 
   filteredEvents() {
