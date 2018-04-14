@@ -10,6 +10,9 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   static url ='/api';
+  urlLat = '';
+  urlLng = '';
+  urlRadius = '';
   public eventInfo = new Subject<{}>();
 
   createEvent(event: Event){
@@ -41,12 +44,18 @@ export class EventService {
       event.playType = '';  
     if(event.maxAttendees == null || event.maxAttendees == 'Any')
       event.maxAttendees = '';
+    if(event.lat)
+       this.urlLat = '&lat=' + event.lat;
+    if(event.lng)
+       this.urlLng = '&lng=' + event.lng;
+    if(event.radius)
+      this.urlRadius = '&radius=' + event.radius;
       
     return this.http.get<Event[]>('api/events?sporttype=' + event.sportType +
                                   '&skilllevel=' + event.skillLevel +
                                   '&playtype=' + event.playType +
-                                  '&maxattendees=' + event.maxAttendees  );
-
+                                  '&maxattendees=' + event.maxAttendees +
+                                  this.urlLat + this.urlLng + this.urlRadius);
   }
 
   joinEvent(eventId: string, accountId: string){
