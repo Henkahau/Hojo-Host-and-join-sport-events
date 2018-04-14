@@ -24,7 +24,7 @@ export class EventlistComponent implements OnInit {
     private eventService: EventService,
     private modalService: BsModalService) {
     EventService.refreshEventList.subscribe(res => {
-      // this.loadEvents();
+      this.loadEvents();
     });
   }
 
@@ -63,6 +63,7 @@ export class EventlistComponent implements OnInit {
         // In case there is no events
         if (error.status === 200)
           console.log("No events found");
+          this.events = [];
       });
   }
 }
