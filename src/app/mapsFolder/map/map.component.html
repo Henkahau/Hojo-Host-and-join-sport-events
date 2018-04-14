@@ -1,25 +1,27 @@
 <app-searchfield (messageEvent)="receiveMessage($event)"></app-searchfield>
 
 <!-- <div style="padding-bottom: 50px; width: 500px; padding-left: 200px; padding-top: 80px;"> -->
-    <div style="padding-bottom: 20px;">
+<div style="padding-bottom: 20px;">
   <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
     #search [formControl]="searchControl">
 </div>
-<agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom"> 
-  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconImagePath" >
+<agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconImagePath">
   </agm-marker>
   <div *ngIf="events">
     <div *ngFor="let marker of events">
-      <!-- <div *ngIf="marker.sportType == message"> -->
-        <agm-marker (markerClick)="onMapClick($event)" 
-        [latitude]=+marker.lat
-        [longitude]=+marker.lng
-        (mouseOver)="mouseOverMarker(infoWindow,gm)"
+      <agm-marker 
+        (markerClick)="onMapClick($event)" 
+        [latitude]=+marker.lat 
+        [longitude]=+marker.lng 
+        (mouseOver)="mouseOverMarker(infoWindow,gm, marker.eventId)"
         (mouseOut)="mouseLeftMarker(infoWindow)">
-          <agm-info-window #infoWindow>
-            {{ marker.title }}
-          </agm-info-window>
-        </agm-marker>
-      <!-- </div> -->
+        <agm-info-window #infoWindow>
+          {{ marker.sportType }} <br> 
+          {{ playerAmount }}/{{ marker.maxAttendees }} <br> 
+          {{ eventService.parseDate(marker.date) }}
+        </agm-info-window>
+      </agm-marker>
     </div>
   </div>
+</agm-map>

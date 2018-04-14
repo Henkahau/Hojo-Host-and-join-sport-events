@@ -23,6 +23,7 @@ export class MapComponent implements OnInit {
   public latitude: number;
   public longitude: number;
   public radius: number;
+  playerAmount: number;
 
   public searchControl: FormControl;
   public zoom: number;
@@ -117,10 +118,19 @@ export class MapComponent implements OnInit {
   onMapClick(event) {
   }
 
-  mouseOverMarker(infoWindow, gm) {
+  mouseOverMarker(infoWindow, gm, eventId) {
     // if (gm.lastOpen != null) {
     //   gm.lastOpen.close();
     // }
+    this.eventService.getEventById(eventId).subscribe(event => {   
+      if(event.players === undefined) {
+        this.playerAmount = 1; 
+      }
+      else {
+        this.playerAmount = event.players.length;
+      }
+    });
+
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
