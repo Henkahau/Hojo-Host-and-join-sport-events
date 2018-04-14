@@ -23,41 +23,46 @@ export class EventlistComponent implements OnInit {
     private userService: UserService,
     private eventService: EventService,
     private modalService: BsModalService) {
-      EventService.refreshEventList.subscribe(res => {
-        this.loadAllEvents();
-      });
-    }
-
-  ngOnInit() {
-    this.loadAllEvents();
+    EventService.refreshEventList.subscribe(res => {
+      // this.loadEvents();
+    });
   }
 
-  loadAllEvents() {
+  ngOnInit() {
+    this.loadEvents();
+    this.filteredEvents();
+  }
+
+  loadEvents() {
     // this.eventService.getAllEvents().subscribe(events => { this.events = events });
 
     // Catch filters emitted from map.component
     this.eventService.eventInfo.subscribe(res => {
       this.eventInfo = res;
+      console.log(this.eventInfo);
+      this.filteredEvents();
     });
+  }
 
+  private openEventView(id: string) {
+    sessionStorage.setItem("eventId", id);
+    this.modalRef = this.modalService.show(EventViewComponent, { class: 'modal-lg' });
+  }
+
+  private getDate(date: string) {
+    this.date = new Date(date);
+    return this.date.toLocaleDateString();
+  }
+
+  filteredEvents() {
     this.eventService.getSpecificEvents(this.eventInfo).subscribe(
       events => {
         this.events = Object.assign([], events);
       },
       error => {
         // In case there is no events
-        if(error.status === 200)
+        if (error.status === 200)
           console.log("No events found");
       });
-  }
-
-  private openEventView(id: string) {
-    sessionStorage.setItem("eventId", id);
-    this.modalRef = this.modalService.show(EventViewComponent, {class: 'modal-lg'});
-  }
-
-  private getDate(date: string) {
-    this.date = new Date(date);
-    return this.date.toLocaleDateString();
   }
 }
