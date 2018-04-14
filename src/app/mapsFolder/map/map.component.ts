@@ -100,6 +100,7 @@ export class MapComponent implements OnInit {
 
     if(this.events != null)
       this.events = [];
+
     this.getAllEvents();
 
     // Emit eventInfo to eventlist
@@ -111,7 +112,6 @@ export class MapComponent implements OnInit {
   }
 
   onMapClick(event) {
-   
   }
 
   mouseOverMarker(infoWindow, gm) {
