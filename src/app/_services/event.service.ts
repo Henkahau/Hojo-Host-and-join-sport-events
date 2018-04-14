@@ -37,9 +37,9 @@ export class EventService {
       event.sportType = '';   
     if(event.skillLevel == null || event.skillLevel == 'Any' )
       event.skillLevel = '';   
-    if(event.playType == null || event.skillLevel == 'Any' )
+    if(event.playType == null || event.playType == 'Any' )
       event.playType = '';  
-    if(event.maxAttendees == null || event.skillLevel == 'Any')
+    if(event.maxAttendees == null || event.maxAttendees == 'Any')
       event.maxAttendees = '';
       
     return this.http.get<Event[]>('api/events?sporttype=' + event.sportType +
