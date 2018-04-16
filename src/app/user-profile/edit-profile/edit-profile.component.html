@@ -24,27 +24,27 @@
 
   <div class="form-group">
     <label for="firstName">First name</label>
-    <input type="text" class="form-control" name="firstName" [(ngModel)]="currentUser.firstName" #firstName="ngModel" *ngIf="currentUser" />
+    <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" *ngIf="currentUser" />
   </div>
   
   <div class="form-group">
     <label for="lastName">Last name</label>
-    <input type="text" class="form-control" name="lastName" [(ngModel)]="currentUser.lastName" #lastName="ngModel" *ngIf="currentUser" />
+    <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" *ngIf="currentUser" />
   </div>
   
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" class="form-control" name="email" [(ngModel)]="currentUser.email" #email="ngModel" *ngIf="currentUser" />
+    <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" *ngIf="currentUser" />
   </div>
   
   <div class="form-group">
     <label for="mobileNumber">Mobile Number</label>
-    <input type="number" class="form-control" name="mobileNumber" [(ngModel)]="currentUser.mobileNumber" #mobileNumber="ngModel" *ngIf="currentUser" />
+    <input type="string" class="form-control" name="mobileNumber" [(ngModel)]="model.mobileNumber" #mobileNumber="ngModel" *ngIf="currentUser" />
   </div>
   
   <div class="form-group">
     <label for="biography">Biography</label>
-    <textarea name="biography" class="form-control" type="text" style="height: 15%;" [(ngModel)]="currentUser.biography" #biography="ngModel" *ngIf="currentUser" ></textarea>
+    <textarea name="biography" class="form-control" type="text" style="height: 15%;" [(ngModel)]="model.biography" #biography="ngModel" *ngIf="currentUser" ></textarea>
   </div>
 
   <div>

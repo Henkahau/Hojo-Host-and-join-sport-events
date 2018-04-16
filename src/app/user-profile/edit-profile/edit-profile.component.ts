@@ -36,13 +36,11 @@ export class EditProfileComponent implements OnInit {
   }
 
   private editProfile(){
-    this.model.firstName = this.currentUser.firstName;
-    this.model.accountId = this.currentUser.accountId;
-    this.userService.update
-    this.userService.update(this.model).subscribe
+    /* console.log(this.currentUser); */
+    this.userService.update(this.currentUser.accountId, this.model).subscribe
     (
       data=>{
-          localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+          //localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
           this.alertService.success('Profile edited successfully');
           this.router.navigate(['/user-profile']);
         }
