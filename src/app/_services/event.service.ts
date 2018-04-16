@@ -78,18 +78,6 @@ export class EventService {
   public parseDate(date: string){
     var dateTime = new Date(date);
     dateTime.setSeconds(0); 
-    return dateTime.toLocaleString().replace(".00", "");
+    return dateTime.toLocaleString().replace(".00", "").replace(":00 AM"," AM").replace(":00 PM"," PM");
   }
-
-=======
-  }
-
-  leaveEvent(eventId: string, accountId: string){
-    return this.http.post('/api/event/' + eventId + '/leave/', accountId, {responseType: 'text'});
-  }
-
-  //used for refresh eventList
-  public static refreshEventList: Subject<boolean> = new Subject;
-
->>>>>>> Temporary merge branch 2
 }
