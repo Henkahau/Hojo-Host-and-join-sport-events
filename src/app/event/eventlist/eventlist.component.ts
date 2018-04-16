@@ -22,7 +22,7 @@ export class EventlistComponent implements OnInit {
     protected eventService: EventService,
     private modalService: BsModalService) {
     EventService.refreshEventList.subscribe(res => {
-      this.loadEvents();
+      this.filteredEvents();
     });
   }
 

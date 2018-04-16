@@ -16,24 +16,32 @@ export class EditEventComponent implements OnInit {
   model: any = {};
   event: Event;
   eventTitle: string;
+  dateT: Date;
+  now = new Date();
 
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
   playTypeValues = Object.values(PlayType);
 
   constructor(
-            private eventService: EventService,  
+            protected eventService: EventService,  
             private alertService: AlertService,
             private router: Router) { }
 
   ngOnInit() {
-    this.loadEvent();
+    if(sessionStorage.getItem("eventId") != null){
+      this.loadEvent();
+    }else{
+      this.router.navigate(['/']);
+    }
+    
   }
 
   private loadEvent(){
     this.eventService.getEventById(sessionStorage.getItem("eventId")).subscribe(event => {
        this.event = event, 
-       this.eventTitle = event.title
+       this.eventTitle = event[0].title
+       this.dateT = new Date(event[0].date);
       });
   }
 
@@ -44,6 +52,10 @@ export class EditEventComponent implements OnInit {
 
   private editEvent(){
     sessionStorage.removeItem("eventId");
+    this.event[0].date = this.dateT.toISOString();
+    delete this.event[0].ratings;
+    delete this.event[0].players;
+    //this.event[0].removeItem("ratings");
     this.eventService.updateEvent(this.event)
     .subscribe(
       data => {

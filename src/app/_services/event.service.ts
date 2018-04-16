@@ -20,7 +20,7 @@ export class EventService {
   }
 
   updateEvent(event: Event){
-    return this.http.put('/api/events/' + event.eventId, event, {responseType: 'text'});
+    return this.http.put('/api/events/' + event[0].eventId, event[0], {responseType: 'text'});
   }
 
   deleteEvent(eventId: string){

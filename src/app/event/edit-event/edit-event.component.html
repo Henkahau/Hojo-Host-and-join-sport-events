@@ -7,12 +7,14 @@
       <div class="row">
         <div class="col-lg-6">
           <label for="title">Title</label>
-          <input type="text" class="form-control" name="title" [(ngModel)]="event.title" #title="ngModel" required />
+          <input type="text" class="form-control" name="title" [(ngModel)]="event[0].title" #title="ngModel" required />
           <div *ngIf="f.submitted && !title.valid" class="help-blog">Title is required</div>
         </div>
         <div class="col-lg-6">
           <label for="date">Date</label>
-          <input type="date" class="form-control" name="date" [(ngModel)]="event.date" #date="ngModel" required />
+          <!-- <input type="date" class="form-control" name="date" [(ngModel)]="event[0].date" #date="ngModel" required /> -->
+          <input class="form-control" value="dateT" [owlDateTime]="dateTime" [min]="now" [owlDateTimeTrigger]="dateTime" name="date" [(ngModel)]="dateT"  #date="ngModel" required>
+          <owl-date-time #dateTime [pickerMode]="'dialog'"></owl-date-time>
         </div>
       </div>
     </div>
@@ -21,7 +23,7 @@
       <div class="row">
         <div class="col-lg-3">
           <label for="sportType">Sport</label>
-          <select class="form-control" name="sportType" [(ngModel)]="event.sportType" #sportType="ngModel">
+          <select class="form-control" name="sportType" [(ngModel)]="event[0].sportType" #sportType="ngModel">
             <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
           </select>
         <div *ngIf="f.submitted && !sportType.valid" class="help-blog">Sport type is required</div>
@@ -29,28 +31,31 @@
         
         <div class="col-lg-3">
           <label for="skillLevel">Skill level</label>
-          <select class="form-control" name="skillLevel" [(ngModel)]="event.skillLevel" #skillLevel="ngModel">
+          <select class="form-control" name="skillLevel" [(ngModel)]="event[0].skillLevel" #skillLevel="ngModel">
             <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
           </select>
         </div>
         
         <div class="col-lg-3">
           <label for="playType">Play type</label>
-          <select class="form-control" name="playTYpe" [(ngModel)]="event.playType" #playType="ngModel">
+          <select class="form-control" name="playTYpe" [(ngModel)]="event[0].playType" #playType="ngModel">
             <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
           </select>
         </div>
         
         <div class="col-lg-3">
           <label for="maxAttendees">Max number of players</label>
-          <input type="number" class="form-control" name="maxAttendees" min="1" max="30" [(ngModel)]="event.maxAttendees" #maxAttendees="ngModel" />
+          <input type="number" class="form-control" name="maxAttendees" min="1" max="30" [(ngModel)]="event[0].maxAttendees" #maxAttendees="ngModel" />
         </div>
       </div>
     </div>
 
+    <!-- <app-location-map (receivedLocation)="model[0].location = $event.location">
+    </app-location-map> -->
     <label for="location">Location</label>
-    <app-location-map (receivedLocation)="model.location = $event.location">
+    <app-location-map (receivedLocation)="event.lat = $event[0].lat; event.lng = $event[0].lng;">
     </app-location-map>
+    
     
     <p>{{ model.latitude }} {{ model.longitude }}</p>
 
@@ -59,7 +64,7 @@
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea class="form-control" cols="90" rows="5" type="text" name="description"  [(ngModel)]="event.description" #description="ngModel"></textarea>
+      <textarea class="form-control" cols="90" rows="5" type="text" name="description"  [(ngModel)]="event[0].description" #description="ngModel"></textarea>
     </div>
 
     <div class="form-group">

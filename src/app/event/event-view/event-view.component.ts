@@ -61,6 +61,7 @@ export class EventViewComponent implements OnInit {
   }
 
   close() {
+    EventService.refreshEventList.next(true);
     this.bsModalRef.hide();
   }
 
