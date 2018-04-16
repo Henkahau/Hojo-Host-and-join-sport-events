@@ -6,11 +6,12 @@
     #search [formControl]="searchControl">
 </div>
 <agm-map #gm [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconImagePath">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="locationImagePath">
   </agm-marker>
   <div *ngIf="events">
     <div *ngFor="let marker of events">
       <agm-marker 
+        [iconUrl]="imagePath(marker.sportType)"
         (markerClick)="openEventView(marker.eventId)" 
         [latitude]=+marker.lat 
         [longitude]=+marker.lng 
