@@ -22,6 +22,8 @@ export class MapComponent implements OnInit {
 
   public latitude: number;
   public longitude: number;
+  public radius: number;
+  playerAmount: number;
 
   public searchControl: FormControl;
   public zoom: number;
@@ -37,7 +39,7 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService) { 
+    protected eventService: EventService) { 
       EventService.refreshEventList.subscribe(res => {
         this.getAllEvents();
       });
@@ -48,6 +50,7 @@ export class MapComponent implements OnInit {
     this.zoom = 10;
     this.latitude = 65.0121;
     this.longitude = 25.4651;
+    this.radius = 5;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -95,12 +98,17 @@ export class MapComponent implements OnInit {
   }
 
   receiveMessage(event: any) {
-    console.log(event);
     this.eventInfo = event;
+
+    console.log(this.eventInfo);
 
     if(this.events != null)
       this.events = [];
+
     this.getAllEvents();
+
+    // Emit eventInfo to eventlist
+    this.eventService.emitEventInfo(this.eventInfo);
   }
 
   receiveLevel($event) {
@@ -108,13 +116,21 @@ export class MapComponent implements OnInit {
   }
 
   onMapClick(event) {
-   
   }
 
-  mouseOverMarker(infoWindow, gm) {
+  mouseOverMarker(infoWindow, gm, eventId) {
     // if (gm.lastOpen != null) {
     //   gm.lastOpen.close();
     // }
+    this.eventService.getEventById(eventId).subscribe(event => {   
+      if(event.players === undefined) {
+        this.playerAmount = 1; 
+      }
+      else {
+        this.playerAmount = event.players.length;
+      }
+    });
+
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
@@ -127,10 +143,21 @@ export class MapComponent implements OnInit {
     // this.eventService.getAllEvents().subscribe(allEvents => {
     //   this.events = Object.assign([], allEvents);
     // });
-    this.eventService.getSpecificEvents(this.eventInfo).subscribe(allEvents => {
-      this.events = Object.assign([], allEvents);
-    });
-  }
+
+    this.eventInfo.lat = this.latitude;
+    this.eventInfo.lng = this.longitude;
+    this.eventInfo.radius = this.radius;
+
+    this.eventService.getSpecificEvents(this.eventInfo).subscribe(
+      allEvents => {
+        this.events = Object.assign([], allEvents);
+      },
+      error => {
+        // In case there is no events
+        if(error.status === 200)
+          console.log("No events found");
+      });
+    }
 }
 
 

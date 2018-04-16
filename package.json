@@ -30,6 +30,7 @@
     "ng-pick-datetime": "^5.2.4",
     "ng2-bootstrap-modal": "^1.0.1",
     "ngx-bootstrap": "^2.0.2",
+    "npm": "^5.8.0",
     "rxjs": "^5.5.6",
     "uuid": "^3.2.1",
     "webpack": "3.11.0",
