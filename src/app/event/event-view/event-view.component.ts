@@ -77,5 +77,4 @@ export class EventViewComponent implements OnInit {
     this.close();
     this.router.navigate(['/edit-event']);
   }
-
 }

@@ -10,6 +10,7 @@ import { InfoWindowManager } from '@agm/core/services/managers/info-window-manag
 import { EventService } from '../../_services';
 import { Event } from '../../_models';
 import { Marker } from '../../_models/marker';
+import { EventViewComponent } from '../../event/event-view';
 
 @Component({
   selector: 'app-map',
@@ -19,13 +20,19 @@ import { Marker } from '../../_models/marker';
 export class MapComponent implements OnInit {
 
   events: Event[] = [];
+  modalRef: BsModalRef;
 
   public latitude: number;
   public longitude: number;
+  public radius: number;
+  playerAmount: number;
 
   public searchControl: FormControl;
   public zoom: number;
   message;
+  eventInfo: any = {};
+  public locationImagePath: string = '../../assets/Images/home2.png'; 
+  public iconImagePath: string;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -35,7 +42,8 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    private eventService: EventService) { 
+    protected eventService: EventService,
+    private modalService: BsModalService) { 
       EventService.refreshEventList.subscribe(res => {
         this.getAllEvents();
       });
@@ -46,6 +54,7 @@ export class MapComponent implements OnInit {
     this.zoom = 10;
     this.latitude = 65.0121;
     this.longitude = 25.4651;
+    this.radius = 5;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -91,9 +100,21 @@ export class MapComponent implements OnInit {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
   }
-  receiveMessage($event) {
-    this.message = $event;
+
+  receiveMessage(event: any) {
+    this.eventInfo = event;
+
+    console.log(this.eventInfo);
+
+    if(this.events != null)
+      this.events = [];
+
+    this.getAllEvents();
+
+    // Emit eventInfo to eventlist
+    this.eventService.emitEventInfo(this.eventInfo);
   }
+
   receiveLevel($event) {
     this.message = $event
   }
@@ -101,10 +122,19 @@ export class MapComponent implements OnInit {
   onMapClick(event) {
   }
 
-  mouseOverMarker(infoWindow, gm) {
-    if (gm.lastOpen != null) {
-      gm.lastOpen.close();
-    }
+  mouseOverMarker(infoWindow, gm, eventId) {
+    // if (gm.lastOpen != null) {
+    //   gm.lastOpen.close();
+    // }
+    this.eventService.getEventById(eventId).subscribe(event => {   
+      if(event.players === undefined) {
+        this.playerAmount = 1; 
+      }
+      else {
+        this.playerAmount = event.players.length;
+      }
+    });
+
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
@@ -114,10 +144,33 @@ export class MapComponent implements OnInit {
   }
 
   getAllEvents() {
-    this.eventService.getAllEvents().subscribe(allEvents => {
-      this.events = Object.assign([], allEvents);
-    });
-  }
+    // this.eventService.getAllEvents().subscribe(allEvents => {
+    //   this.events = Object.assign([], allEvents);
+    // });
+
+    this.eventInfo.lat = this.latitude;
+    this.eventInfo.lng = this.longitude;
+    this.eventInfo.radius = this.radius;
+
+    this.eventService.getSpecificEvents(this.eventInfo).subscribe(
+      allEvents => {
+        this.events = Object.assign([], allEvents);
+      },
+      error => {
+        // In case there is no events
+        if(error.status === 200)
+          console.log("No events found");
+      });
+    }
+
+    private openEventView(id: string) {
+      sessionStorage.setItem("eventId", id);
+      this.modalRef = this.modalService.show(EventViewComponent, { class: 'modal-lg' });
+    }
+    
+    imagePath(sporttype: string) {
+      return '../../assets/Images/' + sporttype + '.png';
+    }
 }
 
 

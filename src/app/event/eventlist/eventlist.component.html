@@ -1,8 +1,8 @@
-
+<label>Events in the area</label>
 <div class="scrollmenu">
     
     <ul class="list-group-item " *ngFor="let event of events; let i = index; let isEven = even; let isOdd = odd" (click)="openEventView(event.eventId) ">
-     <div style="background: #A9D861" *ngIf="isOdd; else even ">
+     <div style="background: #F3F0F3" *ngIf="isOdd; else even ">
       <label style="padding-top: 10px">Title:</label> 
       {{event.title}} 
       <br>
@@ -11,11 +11,10 @@
       <br>
       <label>Date:</label>
       {{eventService.parseDate(event.date)}}
-      
-   
      </div>
+     
      <ng-template #even >
-         <div style="background: rgba(168, 216, 97, 0.863)">
+         <div style="background: white">
             <label style="padding-top: 10px" >Title:</label> 
             {{event.title}}
             <br>

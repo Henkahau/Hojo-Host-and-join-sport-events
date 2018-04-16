@@ -2,14 +2,14 @@
   <div class="row" style="padding-bottom: 5px;">
     <div class="col-lg-6">
       <label for="sportType">Sport</label>
-      <select class="form-control" name="sportType" [(ngModel)]="activitySelected" (ngModelChange)='onActivitySelected($event)'>
+      <select class="form-control" name="sportType" [(ngModel)]="eventInfo.sportType" (ngModelChange)="onActivitySelected($event)" #sportType="ngModel">
         <option *ngFor="let sportValue of sportValues" [ngValue]="sportValue">{{sportValue}}</option>
       </select>
     </div>
 
     <div class="col-lg-6">
       <label for="skillLevel">Skill level</label>
-      <select class="form-control" name="skillLevel">
+      <select class="form-control" name="skillLevel" [(ngModel)]="eventInfo.skillLevel" (ngModelChange)="onActivitySelected($event)" #skillLevel="ngModel">
         <option *ngFor="let skillValue of skillValues" [ngValue]="skillValue">{{skillValue}}</option>
       </select>
     </div>
@@ -17,14 +17,14 @@
   <div class="row">
     <div class="col-lg-6">
       <label for="playType">Play type</label>
-      <select class="form-control" name="playTYpe">
+      <select class="form-control" name="playType" [(ngModel)]="eventInfo.playType" (ngModelChange)="onActivitySelected($event)" #playType="ngModel">
         <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
       </select>
     </div>
     <!-- <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12"> -->
     <div class="col-lg-6">
       <label for="maxAttendees">Player amount</label>
-      <input class="form-control" type="number" name="maxAttendees" min="1" max="30" />
+      <input class="form-control" name="maxAttendees" type="number" name="maxAttendees" min="1" max="30" [(ngModel)]="eventInfo.maxAttendees" (ngModelChange)="onActivitySelected($event)" #maxAttendees="ngModel"/>
     </div>
   </div>
 </div>
