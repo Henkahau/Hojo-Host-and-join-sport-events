@@ -1,6 +1,7 @@
 div.scrollmenu {
-    max-height: 62%;
-    background-color: #333;
+    max-height: 59%;
+    min-height: 59%;
+    background-color: #F3F0F3;
     overflow: scroll;
     overflow-x: hidden;
     white-space: nowrap;
