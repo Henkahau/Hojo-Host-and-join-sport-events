@@ -10,6 +10,7 @@ import { InfoWindowManager } from '@agm/core/services/managers/info-window-manag
 import { EventService } from '../../_services';
 import { Event } from '../../_models';
 import { Marker } from '../../_models/marker';
+import { EventViewComponent } from '../../event/event-view';
 
 @Component({
   selector: 'app-map',
@@ -19,6 +20,7 @@ import { Marker } from '../../_models/marker';
 export class MapComponent implements OnInit {
 
   events: Event[] = [];
+  modalRef: BsModalRef;
 
   public latitude: number;
   public longitude: number;
@@ -39,7 +41,8 @@ export class MapComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    protected eventService: EventService) { 
+    protected eventService: EventService,
+    private modalService: BsModalService) { 
       EventService.refreshEventList.subscribe(res => {
         this.getAllEvents();
       });
@@ -157,6 +160,11 @@ export class MapComponent implements OnInit {
         if(error.status === 200)
           console.log("No events found");
       });
+    }
+
+    private openEventView(id: string) {
+      sessionStorage.setItem("eventId", id);
+      this.modalRef = this.modalService.show(EventViewComponent, { class: 'modal-lg' });
     }
 }
 
