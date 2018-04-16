@@ -41,7 +41,7 @@ export class EditEventComponent implements OnInit {
     this.eventService.getEventById(sessionStorage.getItem("eventId")).subscribe(event => {
        this.event = event, 
        this.eventTitle = event[0].title
-       this.dateT = event[0].date;
+       this.dateT = new Date(event[0].date);
       });
   }
 
