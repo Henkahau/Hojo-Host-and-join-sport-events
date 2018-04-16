@@ -19,14 +19,15 @@ export class UserService {
  
     create(user: User) {
         console.log('SERVICE: ' + JSON.stringify(user));
-        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'text'});
+        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'json'});
     }
  
     update(user: User) {
-        return this.http.patch(UserService.url + '/account/?uuid=' + user.accountId, user, {responseType: 'text'});
+        return this.http.patch( UserService.url + '/accounts?id=' + user.accountId, user, {responseType: 'text'});
     }
  
     delete(id: string) {
         return this.http.delete(UserService.url + '/users/' + id);
     }
 }
+

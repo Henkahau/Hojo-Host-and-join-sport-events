@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
 
   userProfileId: string;
 
-  @Output ()public imagePath: string = '../../assets/Images/default_profile_image.png'; 
+  imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService) {
