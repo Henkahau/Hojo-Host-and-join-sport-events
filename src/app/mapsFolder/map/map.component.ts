@@ -29,7 +29,8 @@ export class MapComponent implements OnInit {
   public zoom: number;
   message;
   eventInfo: any = {};
-  public iconImagePath: string = '../../assets/Images/sumo.png'; 
+  public locationImagePath: string = '../../assets/Images/home2.png'; 
+  public iconImagePath: string;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -157,6 +158,10 @@ export class MapComponent implements OnInit {
         if(error.status === 200)
           console.log("No events found");
       });
+    }
+    
+    imagePath(sporttype: string) {
+      return '../../assets/Images/' + sporttype + '.png';
     }
 }
 
