@@ -42,7 +42,7 @@
     </div>
     <label>Location</label>
     <p class="form-control">
-      {{event.location}}
+      {{event[0].location}}
     </p>
     <!-- MAP -->
     <app-simplemap></app-simplemap>
@@ -87,9 +87,9 @@
             <button class="btn btn-primary" (click)="leaveEvents()">Leave</button>
           </ng-template>
 
-          <button class="btn btn-primary" (click)="deleteEvent(event.eventId)">Delete</button>
+          <button class="btn btn-primary" (click)="deleteEvent(event[0].eventId)">Delete</button>
           <button type="button" class="btn btn-primary" (click)="editEvent()">Edit</button>
-          <button class="btn btn-primary" [hidden]="isHost" (click)="deleteEvent()">Delete</button>
+          <!-- <button class="btn btn-primary" [hidden]="isHost" (click)="deleteEvent()">Delete</button> -->
         </div>
       </div>
     </div>
