@@ -69,7 +69,8 @@ export class EventService {
   //parsing date for eventViews
   public parseDate(date: string){
     var dateTime = new Date(date);
-    return dateTime.toLocaleDateString();
+    dateTime.setSeconds(0); 
+    return dateTime.toLocaleString().replace(".00", "");
   }
 
 }
