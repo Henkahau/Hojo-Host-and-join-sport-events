@@ -16,6 +16,7 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
   geocoder = new google.maps.Geocoder;
+  location123: string;
 
   constructor(
     private router: Router,
@@ -28,6 +29,7 @@ export class EventViewComponent implements OnInit {
   ngOnInit() {
     this.loadEvent();    
   }
+ 
 
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
@@ -75,23 +77,25 @@ export class EventViewComponent implements OnInit {
     this.close();
     this.router.navigate(['/edit-event']);
   }
+  reverseGeocode(lat: number, lng: number, map){
+    var latlng = {lat: +lat, lng: +lng };
 
-  // reverseGeocode(){
-  //   this.geocoder.geocode({'location': latlng}, function(results, status) {
-  //     if (status === 'OK') {
-  //       if (results[0]) {
-  //         this.Zoom(11);
-  //         var marker = new google.maps.Marker({
-  //           position: latlng,
-  //           map: map
-  //         });
-  //       } else {
-  //         window.alert('No results found');
-  //       }
-  //     } else {
-  //       window.alert('Geocoder failed due to: ' + status);
-  //     }
-  //   });
+    this.geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status.toString() === 'OK') {
+        if (results[0]) {
+          this.location123 = results[0].formatted_address;
+          console.log(this.location123)
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });
 
-  // }
+  }
+  test(){
+    return this.location123;
+  }
+ 
 }
