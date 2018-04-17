@@ -1,26 +1,29 @@
-.color-dark
-{
+.footer {
     background: #232627;
     width: 100%;
-   
+    max-height: 150px;
     
- 
 }
-h5
-{
+
+
+.color-dark {
+    background: #232627;
+    width: 100%;
+}
+
+h5 {
     color: rgb(212, 212, 212);
-    padding-left: 40px;
+    /* padding-left: 40px; */
 }
-a
-{
+
+a {
     color: gray
 }
-h5
-{
+
+h5 {
     color: #2B8531
 }
-a
-{
+
+a {
     color: #2B8531
->>>>>>> Temporary merge branch 2
 }
