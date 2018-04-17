@@ -20,7 +20,7 @@ export class EventService {
   }
 
   updateEvent(event: Event){
-    return this.http.put('/api/events/' + event.eventId, event, {responseType: 'text'});
+    return this.http.put('/api/events/' + event[0].eventId, event[0], {responseType: 'text'});
   }
 
   deleteEvent(eventId: string){
@@ -58,12 +58,13 @@ export class EventService {
                                   this.urlLat + this.urlLng + this.urlRadius);
   }
 
-  joinEvent(eventId: string, accountId: string){
-    return this.http.post('/api/event/' + eventId + '/join/', accountId, {responseType: 'text'});
+  joinEvent(eventId: string, account: User){
+    console.log(account);
+    return this.http.post('/api/events/' + eventId + '/join/', account, {responseType: 'text'});
   }
 
   leaveEvent(eventId: string, accountId: string){
-    return this.http.post('/api/event/' + eventId + '/leave/', accountId, {responseType: 'text'});
+    return this.http.post('/api/events/' + eventId + '/leave/', accountId, {responseType: 'text'});
   }
 
   // Emit eventInfo (filters) from map.component to eventlist.component
@@ -77,6 +78,7 @@ export class EventService {
   //parsing date for eventViews
   public parseDate(date: string){
     var dateTime = new Date(date);
-    return dateTime.toLocaleDateString();
+    dateTime.setSeconds(0); 
+    return dateTime.toLocaleString().replace(".00", "").replace(":00 AM"," AM").replace(":00 PM"," PM");
   }
 }

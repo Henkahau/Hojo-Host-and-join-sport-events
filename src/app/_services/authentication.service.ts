@@ -18,10 +18,10 @@ export class AuthenticationService {
         .map(res => {
                 console.log(res);
                 var token = res.Token;
-                var user = res.Acount;
+                var user = res.Account;
 
                 console.log("token: ", res.Token);
-                console.log("user: ", res.Acount);
+                console.log("user: ", res.Account);
                 // login successful if there's a jwt token in the response
                 
                 if (user && token) {

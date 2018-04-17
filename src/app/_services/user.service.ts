@@ -22,11 +22,12 @@ export class UserService {
         return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'text'});
     }
  
-    update(user: User) {
-        return this.http.patch(UserService.url + '/account/?uuid=' + user.accountId, user, {responseType: 'text'});
+    update(id: string, user: User) {
+        return this.http.patch( UserService.url + '/accounts?id=' + id, user, {responseType: 'text'});
     }
  
     delete(id: string) {
         return this.http.delete(UserService.url + '/users/' + id);
     }
 }
+
