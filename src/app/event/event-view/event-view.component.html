@@ -41,11 +41,11 @@
       </div>
     </div>
     <label>Location</label>
-    <p class="form-control">
-      {{ event[0].lat }}N {{ event[0].lng }}
+    <p class="form-control">      
+     {{ test() }} 
     </p>
     <!-- MAP -->
-    <app-simplemap (latlng)=""></app-simplemap>
+    <app-simplemap #map (latlng)="reverseGeocode($event.lat, $event.lng, map)"></app-simplemap>
   </div>
   
   <div class="form-group">
