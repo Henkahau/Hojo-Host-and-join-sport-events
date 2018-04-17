@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EventService } from '../../_services';
 
 
@@ -11,6 +11,7 @@ export class SimplemapComponent implements OnInit {
 
   latitude: number;
   longitude: number;
+  @Output() latlng = new EventEmitter<{lat: number, lng: number}>();
   eventID: string;
 
   constructor(private eventService: EventService) { }
@@ -19,7 +20,8 @@ export class SimplemapComponent implements OnInit {
     this.eventID = sessionStorage.getItem("eventId");
     this.eventService.getEventById(this.eventID).subscribe(res => {
       this.latitude = +res[0].lat;
-      this.longitude = +res[0].lng;      
+      this.longitude = +res[0].lng;
+      this.latlng.emit({lat: this.latitude, lng: this.longitude});
     });
   }
 }
