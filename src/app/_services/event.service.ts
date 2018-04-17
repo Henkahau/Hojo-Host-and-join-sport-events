@@ -58,12 +58,13 @@ export class EventService {
                                   this.urlLat + this.urlLng + this.urlRadius);
   }
 
-  joinEvent(eventId: string, accountId: string){
-    return this.http.post('/api/event/' + eventId + '/join/', accountId, {responseType: 'text'});
+  joinEvent(eventId: string, account: User){
+    console.log(account);
+    return this.http.post('/api/events/' + eventId + '/join/', account, {responseType: 'text'});
   }
 
   leaveEvent(eventId: string, accountId: string){
-    return this.http.post('/api/event/' + eventId + '/leave/', accountId, {responseType: 'text'});
+    return this.http.post('/api/events/' + eventId + '/leave/', accountId, {responseType: 'text'});
   }
 
   // Emit eventInfo (filters) from map.component to eventlist.component
