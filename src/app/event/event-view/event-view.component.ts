@@ -84,7 +84,8 @@ export class EventViewComponent implements OnInit {
       if (status.toString() === 'OK') {
         if (results[0]) {
           this.location123 = results[0].formatted_address;
-          console.log(this.location123)
+          console.log(this.location123);
+
         } else {
           window.alert('No results found');
         }
@@ -94,8 +95,10 @@ export class EventViewComponent implements OnInit {
     });
 
   }
-  test(){
+  test(event: any){
+
     return this.location123;
+    
   }
  
 }
