@@ -50,7 +50,7 @@
     </div>
 
     <label for="location">Location</label>
-    <app-location-map (receivedLocation)="event.lat = $event[0].lat; event.lng = $event[0].lng;">
+    <app-location-map (receivedLocation)="event.lat[0] = $event.lat; event.lng[0] = $event.lng;">
     </app-location-map>
     
     
