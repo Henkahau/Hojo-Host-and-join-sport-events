@@ -15,6 +15,7 @@ export class EventViewComponent implements OnInit {
   event: Event;
   host: User;
   currentUser: User;
+  geocoder = new google.maps.Geocoder;
 
   constructor(
     private router: Router,
@@ -74,4 +75,23 @@ export class EventViewComponent implements OnInit {
     this.close();
     this.router.navigate(['/edit-event']);
   }
+
+  // reverseGeocode(){
+  //   this.geocoder.geocode({'location': latlng}, function(results, status) {
+  //     if (status === 'OK') {
+  //       if (results[0]) {
+  //         this.Zoom(11);
+  //         var marker = new google.maps.Marker({
+  //           position: latlng,
+  //           map: map
+  //         });
+  //       } else {
+  //         window.alert('No results found');
+  //       }
+  //     } else {
+  //       window.alert('Geocoder failed due to: ' + status);
+  //     }
+  //   });
+
+  // }
 }
