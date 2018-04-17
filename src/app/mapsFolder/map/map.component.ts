@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
   eventInfo: any = {};
   public locationImagePath: string = '../../assets/Images/home2.png'; 
   public iconImagePath: string;
-
+  
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
@@ -153,6 +153,7 @@ export class MapComponent implements OnInit {
     imagePath(sporttype: string) {
       return '../../assets/Images/' + sporttype + '.png';
     }
+   
 }
 
 
