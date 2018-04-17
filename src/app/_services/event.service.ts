@@ -19,8 +19,8 @@ export class EventService {
     return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
-  updateEvent(event: Event){
-    return this.http.put('/api/events/' + event[0].eventId, event[0], {responseType: 'text'});
+  updateEvent(id: string, event: Event){
+    return this.http.patch('/api/events?id=' + id, event, {responseType: 'text'});
   }
 
   deleteEvent(eventId: string){
