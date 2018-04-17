@@ -22,10 +22,7 @@ export class CreateEventComponent implements OnInit {
   skillValues = Object.values(SkillLevel);
   playTypeValues = Object.values(PlayType);
 
-  latitude: number;
-  longitude: number;
   eventTime: Date = new Date();
-
   event: Event;
   currentUser: User;
   dateT: Date;
