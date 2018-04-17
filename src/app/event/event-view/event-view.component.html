@@ -42,7 +42,7 @@
     </div>
     <label>Location</label>
     <p class="form-control">      
-     {{ test() }} 
+     {{ address }} 
     </p>
     <!-- MAP -->
     <app-simplemap #map (latlng)="reverseGeocode($event.lat, $event.lng, map)"></app-simplemap>
