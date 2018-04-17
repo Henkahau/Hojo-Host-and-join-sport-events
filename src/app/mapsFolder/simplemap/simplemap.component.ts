@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../_services';
 
 
 @Component({
@@ -7,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simplemap.component.css']
 })
 export class SimplemapComponent implements OnInit {
-  public zoom: number;
-  latitude =65.0121;
-  longitude =25.4651;
 
-  constructor() { }
+  latitude: number;
+  longitude: number;
+  eventID: string;
+
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.latitude = 65.0121;
-    this.longitude = 25.4651;
+    this.eventID = sessionStorage.getItem("eventId");
+    this.eventService.getEventById(this.eventID).subscribe(res => {
+      this.latitude = +res[0].lat;
+      this.longitude = +res[0].lng;      
+    });
   }
-
 }
