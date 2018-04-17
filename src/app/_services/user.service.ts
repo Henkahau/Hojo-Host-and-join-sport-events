@@ -22,8 +22,8 @@ export class UserService {
         return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'json'});
     }
  
-    update(user: User) {
-        return this.http.patch( UserService.url + '/accounts?id=' + user.accountId, user, {responseType: 'text'});
+    update(id: string, user: User) {
+        return this.http.patch( UserService.url + '/accounts?id=' + id, user, {responseType: 'text'});
     }
  
     delete(id: string) {
