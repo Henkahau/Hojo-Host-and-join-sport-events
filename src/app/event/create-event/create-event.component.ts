@@ -15,7 +15,7 @@ import { NgModel } from '@angular/forms';
 })
 
 export class CreateEventComponent implements OnInit {
-  model: any = {event:{}, host:{}};
+  model: any = {event:{}};
   loading = false;
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
@@ -43,7 +43,7 @@ export class CreateEventComponent implements OnInit {
   createEvent() {
     this.loading = true;
     this.model.event.date = this.dateT.toISOString(); 
-    this.model.host.accountId = this.currentUser.accountId;
+    this.model.accountId = this.currentUser.accountId;
     console.log(this.model);
      this.eventService.createEvent(this.model)
         .subscribe(
