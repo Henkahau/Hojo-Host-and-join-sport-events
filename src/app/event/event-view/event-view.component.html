@@ -76,13 +76,13 @@
         <!-- DESCRIPTION TEXT BOX -->
         <label>Description:</label>
         <textarea class="form-control" *ngIf="event" cols="30" rows="8">
-          {{event.description}}
+          {{event[0].description}}
         </textarea>
 
         <div align="right">
           <button class="btn btn-primary" (click)="close()">Close</button>
 
-        <!-- <button class="btn btn-primary" *ngIf="hasJoined; else leaveEvent" (click)="joinEvent()">Join</button> -->
+        <button class="btn btn-primary" (click)="joinEvent()">Join</button>
           <ng-template #leaveEvent>
             <button class="btn btn-primary" (click)="leaveEvents()">Leave</button>
           </ng-template>

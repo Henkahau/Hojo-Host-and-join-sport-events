@@ -19,7 +19,7 @@ export class UserService {
  
     create(user: User) {
         console.log('SERVICE: ' + JSON.stringify(user));
-        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'json'});
+        return this.http.post(UserService.url + '/accounts/person', user, {responseType: 'text'});
     }
  
     update(id: string, user: User) {
