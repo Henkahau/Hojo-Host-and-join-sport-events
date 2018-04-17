@@ -79,6 +79,7 @@ export class MapComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 12;
+          this.receiveMessage(this.eventInfo);
         });
       });
     });
@@ -96,11 +97,6 @@ export class MapComponent implements OnInit {
     }
   }
 
-  onChoseLocation(event) {
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
-  }
-
   receiveMessage(event: any) {
     this.eventInfo = event;
 
@@ -115,17 +111,7 @@ export class MapComponent implements OnInit {
     this.eventService.emitEventInfo(this.eventInfo);
   }
 
-  receiveLevel($event) {
-    this.message = $event
-  }
-
-  onMapClick(event) {
-  }
-
   mouseOverMarker(infoWindow, gm, eventId) {
-    // if (gm.lastOpen != null) {
-    //   gm.lastOpen.close();
-    // }
     this.eventService.getEventById(eventId).subscribe(event => {   
       if(event.players === undefined) {
         this.playerAmount = 1; 
@@ -144,10 +130,6 @@ export class MapComponent implements OnInit {
   }
 
   getAllEvents() {
-    // this.eventService.getAllEvents().subscribe(allEvents => {
-    //   this.events = Object.assign([], allEvents);
-    // });
-
     this.eventInfo.lat = this.latitude;
     this.eventInfo.lng = this.longitude;
     this.eventInfo.radius = this.radius;
