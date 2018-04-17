@@ -16,7 +16,7 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
   geocoder = new google.maps.Geocoder;
-  location123: string;
+  address: string;
 
   constructor(
     private router: Router,
@@ -77,28 +77,23 @@ export class EventViewComponent implements OnInit {
     this.close();
     this.router.navigate(['/edit-event']);
   }
+
   reverseGeocode(lat: number, lng: number, map){
     var latlng = {lat: +lat, lng: +lng };
-
+   
     this.geocoder.geocode({'location': latlng}, function(results, status) {
       if (status.toString() === 'OK') {
         if (results[0]) {
-          this.location123 = results[0].formatted_address;
-          console.log(this.location123);
-
+          // Address can't get out of scope without geocode function
+          this.address = results[0].formatted_address.toString();
+          localStorage.setItem('address', this.address);
         } else {
           window.alert('No results found');
-        }
+        } 
       } else {
         window.alert('Geocoder failed due to: ' + status);
       }
     });
-
+    this.address = localStorage.getItem('address');
   }
-  test(event: any){
-
-    return this.location123;
-    
-  }
- 
 }
