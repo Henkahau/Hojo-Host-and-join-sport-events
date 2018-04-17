@@ -53,7 +53,7 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
+  //  this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
   }
 
   leaveEvents() {
