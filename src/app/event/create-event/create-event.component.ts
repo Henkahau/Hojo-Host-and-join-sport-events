@@ -15,19 +15,15 @@ import { NgModel } from '@angular/forms';
 })
 
 export class CreateEventComponent implements OnInit {
-  model: any = {};
-  host: any = {};
+  model: any = {event:{}, host:{}};
   loading = false;
   sportValues = Object.values(SportType);
   skillValues = Object.values(SkillLevel);
   playTypeValues = Object.values(PlayType);
 
-  eventTime: Date = new Date();
-  event: Event;
   currentUser: User;
   dateT: Date;
   now = new Date();
-
 
   constructor(
     private router: Router,
@@ -46,12 +42,8 @@ export class CreateEventComponent implements OnInit {
 
   createEvent() {
     this.loading = true;
-    this.model.date = this.dateT.toISOString();
-   /*  this.host = this.currentUser;
-    delete this.host.events;
-    delete this.host.hostedEvents; 
-    this.host.type = "person";
-    this.model.host = this.host; */
+    this.model.event.date = this.dateT.toISOString(); 
+    this.model.host.accountId = this.currentUser.accountId;
     console.log(this.model);
      this.eventService.createEvent(this.model)
         .subscribe(
