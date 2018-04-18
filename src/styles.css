@@ -1,30 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~ng-pick-datetime/assets/style/picker.min.css";
-.pac-container{
+.pac-container {
     z-index: 1050;
 }
-label{
+
+label {
     color: #437422;
 }
 
 body {
-    background:  #F3F0F3;
-   
+    background: #F3F0F3;
 }
+
 .navbar-default {
-    background-color:#284100;
-    border-color:#284100;
+    background-color: #284100;
+    border-color: #284100;
     border-radius: 0;
     box-shadow: 5px 5px 5px #888888;
     font-size: 25px;
     padding-top: 20px;
     cursor: pointer;
-    
-    
-    
-     
 }
-.scrolling{
+
+.scrolling {
     position: fixed;
     width: 100%;
     background-color: #012400;
@@ -34,26 +33,26 @@ body {
     font-size: 25px;
     padding-top: 5px;
     cursor: pointer;
-    z-index: 1050;   
+    z-index: 1050;
 }
-.movingHeader
-{
+
+.movingHeader {
     padding-left: 170px;
     font-size: 30px;
-    color:#040f0f; 
+    color: #040f0f;
 }
 
-.moving
-{
+.moving {
     padding-right: 145px;
-       
 }
-.cancelButton{
+
+.cancelButton {
     color: #012400;
     background: #A9D861;
+}
 
-}
-.create{
+.create {
     color: #DFF1A0;
-    background:  #437422;
+    background: #437422;
 }
+
