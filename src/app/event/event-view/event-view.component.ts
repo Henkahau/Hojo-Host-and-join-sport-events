@@ -23,7 +23,9 @@ export class EventViewComponent implements OnInit {
     protected eventService: EventService,
     private userService: UserService,
     private bsModalRef: BsModalRef) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    var currentU = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = currentU.Account;
+    this.id.accountId = this.currentUser.accountId;
   }
 
   ngOnInit() {
@@ -70,7 +72,7 @@ export class EventViewComponent implements OnInit {
   }
 
   leaveEvents() {
-    this.eventService.leaveEvent(this.eventID, this.currentUser.accountId);
+    this.eventService.leaveEvent(this.eventID, this.id).subscribe();
   }
 
   close() {

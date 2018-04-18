@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   
   model: any = {};
-  currentUser: User;
+  currentUser: any = {};
   router: Router;
 
   userProfileId: string;
@@ -22,14 +22,18 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService) {
-                this.currentUser = JSON.parse(localStorage.getItem('currentUser')); }
+                 this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                  
+                }
 
   ngOnInit() {
     this.loadProfile();
   }
 
   private loadProfile(){
-    this.currentUser
+    /* this.userService.getById(this.currentUser.Account.accountId).subscribe(user => {
+      this.currentUser = user[0];     
+    }); */
   }
 
   gotoEditProfile() {
