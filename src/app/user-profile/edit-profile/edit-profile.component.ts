@@ -15,6 +15,7 @@ export class EditProfileComponent implements OnInit {
   currentUser: User;
   profileEdited: boolean = false;
   profileToEdit: User;
+  model: any = {};
   static editProfileId: string;
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
@@ -49,34 +50,30 @@ export class EditProfileComponent implements OnInit {
   }
 
   private getChanges(curProf: User, ediProf: User){
-    var model: any = {};
+    
     
     if(curProf.firstName != ediProf.firstName){
-      model.firstName != ediProf.firstName;
+      this.model.firstName = ediProf.firstName;
     }
     if(curProf.lastName != ediProf.lastName){
-      model.lastName = ediProf.lastName;
+      this.model.lastName = ediProf.lastName;
     }
     if(curProf.email != ediProf.email){
-      model.email = ediProf.email;
+      this.model.email = ediProf.email;
     }
     if(curProf.mobileNumber != ediProf.mobileNumber){
-      model.mobileNumber != ediProf.mobileNumber;
+      this.model.mobileNumber = ediProf.mobileNumber;
     }
     if(curProf.biography != ediProf.biography){
-      model.biography = ediProf.biography;
+      this.model.biography = ediProf.biography;
     }
 
-    return model;
+    return this.model;
 
   }
 
   private editProfile(){
-       
-    if(Object.keys(this.getChanges(this.currentUser, this.profileToEdit)).length == 0 ){
-      console.log("tyhyjä");
-    }else{
-      console.log("muutettu");
+    console.log(this.getChanges(this.currentUser, this.profileToEdit));
       this.userService.update(this.currentUser.accountId, this.getChanges(this.currentUser, this.profileToEdit)).subscribe
       (
         data=>{
@@ -92,6 +89,10 @@ export class EditProfileComponent implements OnInit {
             this.loading = false;
           }
       );
-    } 
   }
+
+
+    
+    
+       
 }
