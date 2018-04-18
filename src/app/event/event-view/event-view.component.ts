@@ -15,13 +15,16 @@ export class EventViewComponent implements OnInit {
   event: Event;
   host: User;
   currentUser: User;
+  id: any = {};
 
   constructor(
     private router: Router,
     protected eventService: EventService,
     private userService: UserService,
     private bsModalRef: BsModalRef) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    var currentU = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = currentU.Account;
+    this.id.accountId = this.currentUser.accountId;
   }
 
   ngOnInit() {
@@ -49,11 +52,12 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
+    console.log(this.id);
+    this.eventService.joinEvent(this.eventID, this.id).subscribe();
   }
 
   leaveEvents() {
-    this.eventService.leaveEvent(this.eventID, this.currentUser.accountId);
+    this.eventService.leaveEvent(this.eventID, this.id).subscribe();
   }
 
   close() {
