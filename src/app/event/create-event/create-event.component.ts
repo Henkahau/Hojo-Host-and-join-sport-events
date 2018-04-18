@@ -34,7 +34,14 @@ export class CreateEventComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // deleting 'any' option from dropdownlist
+    this.skillValues.splice(0,1);
+    this.sportValues.splice(0,1);
+    this.playTypeValues.splice(0,1);
+  
+    console.log(this.skillValues)
+  }
 
   close() {
     this.bsModalRef.hide();
