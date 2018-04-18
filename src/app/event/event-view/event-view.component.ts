@@ -15,6 +15,7 @@ export class EventViewComponent implements OnInit {
   event: Event;
   host: User;
   currentUser: User;
+  id: any = {};
   geocoder = new google.maps.Geocoder;
   address: string;
 
@@ -37,15 +38,8 @@ export class EventViewComponent implements OnInit {
     this.eventID = sessionStorage.getItem("eventId");
     console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
-      this.event = event;
-      console.log(this.event[0]);
-      
-      // HOST
+      this.event = event; 
       this.host = event[0].host;
-      // Add host as a player to list
-      if (this.event.players === undefined) {
-        this.eventService.joinEvent(this.eventID, this.host.accountId);
-      } 
     });
   }
 
@@ -55,24 +49,13 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    var isJoined = false;
-    for(var i = 0; i < this.event[0].players.length; i++) {
-      if(this.event[0].players[i].accountId === this.currentUser.accountId) {
-        isJoined = true;
-      }
-    }
-
-    if(!isJoined) {
-      this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
-      console.log("Joined");
-    }
-    else {
-      console.log("Already in");
-    }
+    this.eventService.joinEvent(this.eventID, this.id).subscribe();
+    this.loadEvent();
   }
 
-  leaveEvents() {
+  leaveEvent() {
     this.eventService.leaveEvent(this.eventID, this.id).subscribe();
+    this.loadEvent();
   }
 
   close() {
@@ -81,12 +64,22 @@ export class EventViewComponent implements OnInit {
   }
 
   isHost() {
-    if (this.currentUser == this.host) {
+    if (this.currentUser.accountId == this.host.accountId) {
       return true;
     }
     else {
       return false;
     }
+  }
+
+  hasJoined() {
+    var isJoined = false;
+    for(var i = 0; i < this.event[0].players.length; i++) {
+      if(this.event[0].players[i].accountId === this.currentUser.accountId) {
+        isJoined = true;
+      }
+    }
+    return isJoined;
   }
 
   editEvent() {

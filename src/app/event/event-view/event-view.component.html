@@ -72,20 +72,20 @@
           <p>try to load the page again</p>
         </ng-template>
       </div>
-      <div class="col-lg-5">
+      <div class="col-lg-5" *ngIf="event">
         <!-- DESCRIPTION TEXT BOX -->
         <label>Description:</label>
-        <textarea class="form-control" *ngIf="event" cols="30" rows="8">
-          {{event[0].description}}
+        <textarea class="form-control" cols="30" rows="8">
+          {{ event[0].description }}
         </textarea>
 
         <div align="right">
           <button class="btn btn-primary" (click)="close()">Close</button>
 
-        <button class="btn btn-primary" (click)="joinEvent()">Join</button>
-          <!-- <ng-template #leaveEvent> -->
-            <button class="btn btn-primary" (click)="leaveEvents()">Leave</button>
-          <!-- </ng-template> -->
+        <button class="btn btn-primary" *ngIf="!hasJoined() && !isHost(); else leaveEvent" (click)="joinEvent()">Join</button>
+          <ng-template #leaveEvent>
+            <button class="btn btn-primary" *ngIf="!isHost()" (click)="leaveEvent()">Leave</button>
+          </ng-template>
 
           <button class="btn btn-primary" (click)="deleteEvent(event[0].eventId)">Delete</button>
           <button type="button" class="btn btn-primary" (click)="editEvent()">Edit</button>
