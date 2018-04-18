@@ -1,3 +1,11 @@
-body {
-  padding-bottom: 80px;
+@media all and (min-width:0px) and (max-width: 640px) {
+    /* put your css styles in here */
+    body {
+        padding-top: 10em;
+        padding-bottom: 5em;
+    }
 }
+
+/* body {
+    padding-bottom: 80px;
+} */
