@@ -4,12 +4,13 @@
 
 div.footer-copyright {
     background: #232627;
+    padding-top: 0px;
 }
 
-.color-dark {
+/* .color-dark {
     background: #232627;
     width: 100%;
-}
+} */
 
 h5 {
     color: rgb(212, 212, 212);
