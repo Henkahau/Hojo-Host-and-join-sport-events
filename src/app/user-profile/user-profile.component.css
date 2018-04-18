@@ -1,8 +1,9 @@
-textarea
-{
+textarea {
     resize: none;
 }
-.div.col-lg-12 {
+
+/* .col-sm-6.col-sm-offset-3 {
     padding-bottom: 50px;
     padding-top: 250px;
 }
+ */
