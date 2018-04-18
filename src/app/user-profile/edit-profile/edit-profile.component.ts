@@ -13,7 +13,8 @@ export class EditProfileComponent implements OnInit {
 
   loading = false;
   model: any = {};
-  currentUser: User;
+  currentUser: any = {};
+  profileToEdit: User;
   static editProfileId: string;
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
@@ -32,12 +33,42 @@ export class EditProfileComponent implements OnInit {
   }
 
   private loadProfile(){
-  //  this.currentUser
+    console.log(this.currentUser)
+    /* this.userService.getById(this.currentUser.accountId).subscribe(user => {
+      this.profileToEdit = user[0];      
+    }); */
+  }
+
+  private getChanges(curProf: User, ediProf: User){
+    
+    if(curProf.firstName != ediProf.firstName){
+      this.model.firstName != ediProf.firstName;
+    }
+    if(curProf.lastName != ediProf.lastName){
+      this.model.lastName = ediProf.lastName;
+    }
+    if(curProf.email != ediProf.email){
+      this.model.email = ediProf.email;
+    }
+    if(curProf.mobileNumber != ediProf.mobileNumber){
+      this.model.mobileNumber != ediProf.mobileNumber;
+    }
+    if(curProf.biography != ediProf.biography){
+      this.model.biography = ediProf.biography;
+    }
+
+    return this.model;
+
   }
 
   private editProfile(){
-    /* console.log(this.currentUser); */
-    this.userService.update(this.currentUser.accountId, this.model).subscribe
+       
+    if(this.model == null){
+      console.log("tyhyjä");
+    }else{
+      console.log("jotai muutettu");
+    }
+    /* this.userService.update(this.currentUser.accountId, this.getChanges(this.currentUser, this.profileToEdit)).subscribe
     (
       data=>{
           //localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
@@ -48,6 +79,6 @@ export class EditProfileComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         }
-    );
+    ); */
   }
 }
