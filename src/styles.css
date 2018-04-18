@@ -1,5 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
+@media all and (min-width:0px) and (max-width: 640px) {
+    .scrolling {
+        position: fixed;
+        width: 100%;
+        background-color: #012400;
+        border-color: #012400;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #888888;
+        font-size: 18px;
+        padding-top: 5px;
+        cursor: pointer;
+        z-index: 1050;
+    }
+    img {
+        height: 35px;
+    }
+}
+
+@media all and (min-width:641px) and (max-width: 1920px) {
+    .scrolling {
+        position: fixed;
+        width: 100%;
+        background-color: #012400;
+        border-color: #012400;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #888888;
+        font-size: 25px;
+        padding-top: 10px;
+        cursor: pointer;
+        z-index: 1050;
+    }
+}
+
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 .pac-container {
     z-index: 1050;
@@ -23,28 +56,15 @@ body {
     cursor: pointer;
 }
 
-.scrolling {
-    position: fixed;
-    width: 100%;
-    background-color: #012400;
-    border-color: #012400;
-    border-radius: 0;
-    box-shadow: 5px 5px 5px #888888;
-    font-size: 25px;
-    padding-top: 5px;
-    cursor: pointer;
-    z-index: 1050;
-}
-
-.movingHeader {
+/* .movingHeader {
     padding-left: 170px;
     font-size: 30px;
     color: #040f0f;
-}
+} */
 
-.moving {
+/* .moving {
     padding-right: 145px;
-}
+} */
 
 .cancelButton {
     color: #012400;
@@ -55,4 +75,3 @@ body {
     color: #DFF1A0;
     background: #437422;
 }
-
