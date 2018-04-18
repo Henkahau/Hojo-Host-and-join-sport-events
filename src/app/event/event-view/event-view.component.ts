@@ -40,9 +40,9 @@ export class EventViewComponent implements OnInit {
       // HOST
       this.host = event[0].host;
       // Add host as a player to list
-      if (this.event.players === undefined) {
-        this.eventService.joinEvent(this.eventID, this.host);
-      }
+     /*  if (this.event.players === undefined) {
+        this.eventService.joinEvent(this.eventID, this.host.accountId);
+      } */
     });
   }
 
@@ -52,7 +52,7 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    this.eventService.joinEvent(this.eventID, this.currentUser);
+    this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
   }
 
   leaveEvents() {

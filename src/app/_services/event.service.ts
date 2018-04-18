@@ -19,8 +19,8 @@ export class EventService {
     return this.http.post('/api/events', event, {responseType: 'text'});
   }
 
-  updateEvent(event: Event){
-    return this.http.put('/api/events/' + event[0].eventId, event[0], {responseType: 'text'});
+  updateEvent(id: string, event: Event){
+    return this.http.patch('/api/events?id=' + id, event, {responseType: 'text'});
   }
 
   deleteEvent(eventId: string){
@@ -58,9 +58,8 @@ export class EventService {
                                   this.urlLat + this.urlLng + this.urlRadius);
   }
 
-  joinEvent(eventId: string, account: User){
-    console.log(account);
-    return this.http.post('/api/events/' + eventId + '/join/', account, {responseType: 'text'});
+  joinEvent(eventId: string, accountId: string){
+    return this.http.post('/api/events/' + eventId + '/join/', accountId, {responseType: 'text'});
   }
 
   leaveEvent(eventId: string, accountId: string){
