@@ -14,7 +14,7 @@ export class UserService {
     }
  
     getById(id: string) {
-        return this.http.get<User>(UserService.url + '/account?uuid=' + id).map(res => res);
+        return this.http.get<User>(UserService.url + '/accounts?id=' + id);
     }
  
     create(user: User) {
