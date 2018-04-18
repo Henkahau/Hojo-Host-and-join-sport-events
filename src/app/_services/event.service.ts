@@ -62,8 +62,8 @@ export class EventService {
     return this.http.post('/api/events/' + eventId + '/join/', accountId, {responseType: 'text'});
   }
 
-  leaveEvent(eventId: string, accountId: string){
-    return this.http.post('/api/events/' + eventId + '/leave/', accountId, {responseType: 'text'});
+  leaveEvent(eventId: string, accountId: any){
+    return this.http.delete('/api/events/' + eventId + '/leave/', accountId);
   }
 
   // Emit eventInfo (filters) from map.component to eventlist.component
