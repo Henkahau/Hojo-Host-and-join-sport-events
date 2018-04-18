@@ -1,3 +1,11 @@
+@media all and (min-width:0px) and (max-width: 640px) {
+    div.footer-copyright {
+        font-size: 50%;
+        background: #232627;
+        padding-top: 0px;
+    }
+}
+
 /* .container-fluid {
     background: #232627;
 } */
@@ -13,18 +21,10 @@ div.footer-copyright {
 } */
 
 h5 {
-    color: rgb(212, 212, 212);
+    color: white;
     /* padding-left: 40px; */
 }
 
 a {
     color: gray
-}
-
-h5 {
-    color: #2B8531
-}
-
-a {
-    color: #2B8531
 }
