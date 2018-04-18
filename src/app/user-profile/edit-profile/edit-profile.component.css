@@ -6,5 +6,7 @@ textarea
     padding-bottom: 50px;
 }
 .div {
-    padding-bottom: 500px;
+    height: auto;
+    width: 1000px;
+    margin: 0 auto;
 }
