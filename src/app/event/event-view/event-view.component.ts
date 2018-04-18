@@ -36,13 +36,14 @@ export class EventViewComponent implements OnInit {
     console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event;
+      console.log(this.event[0]);
       
       // HOST
       this.host = event[0].host;
       // Add host as a player to list
       if (this.event.players === undefined) {
-        this.eventService.joinEvent(this.eventID, this.host);
-      }
+        this.eventService.joinEvent(this.eventID, this.host.accountId);
+      } 
     });
   }
 
@@ -52,7 +53,20 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    this.eventService.joinEvent(this.eventID, this.currentUser);
+    var isJoined = false;
+    for(var i = 0; i < this.event[0].players.length; i++) {
+      if(this.event[0].players[i].accountId === this.currentUser.accountId) {
+        isJoined = true;
+      }
+    }
+
+    if(!isJoined) {
+      this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
+      console.log("Joined");
+    }
+    else {
+      console.log("Already in");
+    }
   }
 
   leaveEvents() {

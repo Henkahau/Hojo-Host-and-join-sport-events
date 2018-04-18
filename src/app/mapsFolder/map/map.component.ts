@@ -113,11 +113,11 @@ export class MapComponent implements OnInit {
 
   mouseOverMarker(infoWindow, gm, eventId) {
     this.eventService.getEventById(eventId).subscribe(event => {   
-      if(event.players === undefined) {
+      if(event[0].players === undefined || event[0].players.length == 0) {
         this.playerAmount = 1; 
       }
       else {
-        this.playerAmount = event.players.length;
+        this.playerAmount = event[0].players.length;
       }
     });
 
