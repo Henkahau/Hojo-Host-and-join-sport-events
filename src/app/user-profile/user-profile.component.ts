@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   
   model: any = {};
-  currentUser: any = {};
+  currentUser: User;
   router: Router;
 
   userProfileId: string;
@@ -22,8 +22,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService) {
-                 this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                  
+                 var currUser = JSON.parse(localStorage.getItem('currentUser'));
+                 this.currentUser = currUser.Account;
                 }
 
   ngOnInit() {

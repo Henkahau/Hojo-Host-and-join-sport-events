@@ -22,9 +22,10 @@ export class EventViewComponent implements OnInit {
     protected eventService: EventService,
     private userService: UserService,
     private bsModalRef: BsModalRef) {
-    var currentU = JSON.parse(localStorage.getItem('currentUser'));
-    this.currentUser = currentU.Account;
-    this.id.accountId = this.currentUser.accountId;
+      var currentU = JSON.parse(localStorage.getItem('currentUser'));
+      this.currentUser = currentU.Account;
+      this.id.accountId = this.currentUser.accountId;
+    
   }
 
   ngOnInit() {
