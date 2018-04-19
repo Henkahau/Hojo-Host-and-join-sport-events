@@ -19,6 +19,7 @@ export class EventViewComponent implements OnInit {
   geocoder = new google.maps.Geocoder;
   address: string;
   joining: boolean;
+  playerAmount: number;
 
   constructor(
     private router: Router,
@@ -50,6 +51,13 @@ export class EventViewComponent implements OnInit {
       this.event = event; 
       this.host = event[0].host;
       this.joining = false;
+
+      if(event[0].players === undefined || event[0].players.length == 0) {
+        this.playerAmount = 1; 
+      }
+      else {
+        this.playerAmount = event[0].players.length + 1;
+      }
     });
   }
 
