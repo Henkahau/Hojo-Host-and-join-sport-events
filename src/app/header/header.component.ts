@@ -1,4 +1,4 @@
-import { Component,Output } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -13,7 +13,9 @@ import { RegisterComponent } from '../register';
 
 @Component({
     selector: 'app-header',
-    templateUrl: './header.component.html'
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
+    
 })
 export class HeaderComponent{
     

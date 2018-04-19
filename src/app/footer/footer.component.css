@@ -1,23 +1,30 @@
-.color-dark
-{
+@media all and (min-width:0px) and (max-width: 640px) {
+    div.footer-copyright {
+        font-size: 50%;
+        background: #232627;
+        padding-top: 0px;
+    }
+}
+
+/* .container-fluid {
+    background: #232627;
+} */
+
+div.footer-copyright {
+    background: #232627;
+    padding-top: 0px;
+}
+
+/* .color-dark {
     background: #232627;
     width: 100%;
-    position: relative;
-    height: 150px;
-    margin-top: 450px;
-    
-    clear: both;
+} */
+
+h5 {
+    color: white;
+    /* padding-left: 40px; */
 }
-h5
-{
-    color: rgb(212, 212, 212);
-    padding-left: 40px;
-}
-a
-{
+
+a {
     color: gray
-}
-h5
-{
-    color: white
 }

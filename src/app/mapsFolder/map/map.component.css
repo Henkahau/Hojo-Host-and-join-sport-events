@@ -3,6 +3,7 @@ agm-map {
     width: 500px; */
     height: 40%;
     width: 100%;
+    padding-bottom: 50px;
  }
  input {
      color: #040f0f
