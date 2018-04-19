@@ -78,7 +78,7 @@ export class EditEventComponent implements OnInit {
       this.model.skillLevel = newe.skillLevel;
     }
     if(newe.playType != old.playType){
-      this.model.playType = newe.skillLevel;
+      this.model.playType = newe.playType;
     }
     if(newe.maxAttendees != old.maxAttendees){
       this.model.maxAttendees = newe.maxAttendees;
@@ -87,10 +87,10 @@ export class EditEventComponent implements OnInit {
       this.model.description = newe.description;
     }
     if(newe.lat != old.lat){
-      this.model.lat = newe.lat;
+      this.model.lat = newe.lat.toString();
     }
     if(newe.lng != old.lng){
-      this.model.lng = newe.lng;
+      this.model.lng = newe.lng.toString();
     }
     
     return this.model;
@@ -98,7 +98,7 @@ export class EditEventComponent implements OnInit {
 
   private editEvent(){
     sessionStorage.removeItem("eventId");
-
+    console.log(this.getChanges(this.event, this.eventToEdit));
     this.eventService.updateEvent(this.event.eventId, this.getChanges(this.event, this.eventToEdit))
     .subscribe(
       data => {
