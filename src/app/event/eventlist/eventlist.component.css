@@ -1,3 +1,4 @@
+
 div.scrollmenu {
     max-height: 57%;
     min-height: 57%;
@@ -8,10 +9,11 @@ div.scrollmenu {
     cursor: pointer;
     color: black;
 }
-.list-group-item
-{
+
+.list-group-item {
     padding: 0px;
 }
-label{
-    padding-left: 15px;  
+
+label {
+    padding-left: 15px;
 }

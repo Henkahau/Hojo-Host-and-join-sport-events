@@ -1,7 +1,13 @@
-textarea
-{
+textarea {
     resize: none;
 }
+
+/* .col-sm-6.col-sm-offset-3 {
+    padding-bottom: 50px;
+    padding-top: 250px;
+}
+ */
+
 
 html, body {
     height: 100%;

@@ -1,59 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~ng-pick-datetime/assets/style/picker.min.css";
-.pac-container{
+@media all and (min-width:0px) and (max-width: 640px) {
+    .scrolling {
+        position: fixed;
+        width: 100%;
+        background-color: #012400;
+        border-color: #012400;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #888888;
+        font-size: 18px;
+        padding-top: 5px;
+        cursor: pointer;
+        z-index: 1050;
+    }
+}
+
+@media all and (min-width:641px) and (max-width: 1920px) {
+    .scrolling {
+        position: fixed;
+        width: 100%;
+        background-color: #012400;
+        border-color: #012400;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #888888;
+        font-size: 25px;
+        padding-top: 12px;
+        cursor: pointer;
+        z-index: 1050;
+    }
+}
+
+
+.pac-container {
     z-index: 1050;
 }
-label{
+
+label {
     color: #437422;
 }
 
 body {
-    background:  #F3F0F3;
-   
+    background: #F3F0F3;
 }
+
 .navbar-default {
-    background-color:#284100;
-    border-color:#284100;
-    border-radius: 0;
-    box-shadow: 5px 5px 5px #888888;
-    font-size: 25px;
-    padding-top: 20px;
-    cursor: pointer;
-    
-    
-    
-     
-}
-.scrolling{
-    position: fixed;
-    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 5px;
     background-color: #012400;
     border-color: #012400;
-    border-radius: 0;
-    box-shadow: 5px 5px 5px #888888;
-    font-size: 25px;
-    padding-top: 5px;
-    cursor: pointer;
-    z-index: 1050;   
 }
-.movingHeader
-{
+
+/* .movingHeader {
     padding-left: 170px;
     font-size: 30px;
-    color:#040f0f; 
-}
+    color: #040f0f;
+} */
 
-.moving
-{
+/* .moving {
     padding-right: 145px;
-       
-}
-.cancelButton{
+} */
+
+.cancelButton {
     color: #012400;
     background: #A9D861;
-
 }
-.create{
+
+.create {
     color: #DFF1A0;
-    background:  #437422;
+    background: #437422;
 }
