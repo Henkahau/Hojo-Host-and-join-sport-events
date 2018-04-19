@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 @media all and (min-width:0px) and (max-width: 640px) {
     .scrolling {
         position: fixed;
@@ -13,9 +12,6 @@
         cursor: pointer;
         z-index: 1050;
     }
-    img {
-        height: 35px;
-    }
 }
 
 @media all and (min-width:641px) and (max-width: 1920px) {
@@ -27,13 +23,13 @@
         border-radius: 0;
         box-shadow: 5px 5px 5px #888888;
         font-size: 25px;
-        padding-top: 10px;
+        padding-top: 12px;
         cursor: pointer;
         z-index: 1050;
     }
 }
 
-@import "~ng-pick-datetime/assets/style/picker.min.css";
+
 .pac-container {
     z-index: 1050;
 }
@@ -47,13 +43,10 @@ body {
 }
 
 .navbar-default {
-    background-color: #284100;
-    border-color: #284100;
-    border-radius: 0;
-    box-shadow: 5px 5px 5px #888888;
-    font-size: 25px;
-    padding-top: 20px;
-    cursor: pointer;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    background-color: #012400;
+    border-color: #012400;
 }
 
 /* .movingHeader {
