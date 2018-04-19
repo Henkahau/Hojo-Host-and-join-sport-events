@@ -2,9 +2,11 @@
 {
     background: #232627;
     width: 100%;
-   
+    position: relative;
+    height: 150px;
+    margin-top: 450px;
     
- 
+    clear: both;
 }
 h5
 {
@@ -17,10 +19,5 @@ a
 }
 h5
 {
-    color: #2B8531
-}
-a
-{
-    color: #2B8531
->>>>>>> Temporary merge branch 2
+    color: white
 }

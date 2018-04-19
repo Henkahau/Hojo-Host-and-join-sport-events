@@ -16,6 +16,9 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
   id: any = {};
+  geocoder = new google.maps.Geocoder;
+  address: string;
+  joining: boolean;
 
   constructor(
     private router: Router,
@@ -29,21 +32,17 @@ export class EventViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadEvent();    
+    this.loadEvent();
   }
+ 
 
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
     console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
-      this.event = event;
-      
-      // HOST
+      this.event = event; 
       this.host = event[0].host;
-      // Add host as a player to list
-     /*  if (this.event.players === undefined) {
-        this.eventService.joinEvent(this.eventID, this.host.accountId);
-      } */
+      this.joining = false;
     });
   }
 
@@ -53,12 +52,14 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    console.log(this.id);
+    this.joining = true;
     this.eventService.joinEvent(this.eventID, this.id).subscribe();
+    this.loadEvent();
   }
 
-  leaveEvents() {
+  leaveEvent() {
     this.eventService.leaveEvent(this.eventID, this.id).subscribe();
+    this.loadEvent();
   }
 
   close() {
@@ -67,7 +68,7 @@ export class EventViewComponent implements OnInit {
   }
 
   isHost() {
-    if (this.currentUser == this.host) {
+    if (this.currentUser.accountId == this.host.accountId) {
       return true;
     }
     else {
@@ -75,8 +76,37 @@ export class EventViewComponent implements OnInit {
     }
   }
 
+  hasJoined() {
+    var isJoined = false;
+    for(var i = 0; i < this.event[0].players.length; i++) {
+      if(this.event[0].players[i].accountId === this.currentUser.accountId) {
+        isJoined = true;
+      }
+    }
+    return isJoined;
+  }
+
   editEvent() {
     this.close();
     this.router.navigate(['/edit-event']);
+  }
+
+  reverseGeocode(lat: number, lng: number, map){
+    var latlng = {lat: +lat, lng: +lng };
+   
+    this.geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status.toString() === 'OK') {
+        if (results[0]) {
+          // Address can't get out of scope without geocode function
+          this.address = results[0].formatted_address.toString();
+          localStorage.setItem('address', this.address);
+        } else {
+          window.alert('No results found');
+        } 
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });
+    this.address = localStorage.getItem('address');
   }
 }

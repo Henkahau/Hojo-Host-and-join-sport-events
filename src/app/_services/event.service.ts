@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs/Subject';
 
 import { Event, User } from '../_models/index';
@@ -63,7 +63,7 @@ export class EventService {
   }
 
   leaveEvent(eventId: string, accountId: string){
-    return this.http.post('/api/events/' + eventId + '/leave/', accountId, {responseType: 'text'});
+    return this.http.request('delete', '/api/events/' + eventId + '/leave/', { body: accountId, responseType: 'text'})
   }
 
   // Emit eventInfo (filters) from map.component to eventlist.component
