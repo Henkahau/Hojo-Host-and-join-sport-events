@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
-import { EventService, UserService } from '../../_services/index';
+import { EventService, UserService, AuthenticationService } from '../../_services/index';
 import { Router } from '@angular/router';
 import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
 
@@ -24,16 +24,24 @@ export class EventViewComponent implements OnInit {
     private router: Router,
     protected eventService: EventService,
     private userService: UserService,
-    private bsModalRef: BsModalRef) {
-      var currentU = JSON.parse(localStorage.getItem('currentUser'));
-      this.currentUser = currentU.Account;
-      this.id.accountId = this.currentUser.accountId;
-    
+    private bsModalRef: BsModalRef,
+    private authenticationService: AuthenticationService) {
+      
+      if(this.getUserLoginStatus()){
+        var currentU = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser = currentU.Account;
+        this.id.accountId = this.currentUser.accountId;
+
+      } 
   }
 
   ngOnInit() {
     this.loadEvent();
   }
+
+  getUserLoginStatus(): boolean {
+    return this.authenticationService.getLoginStatus();
+}
  
 
   private loadEvent() {
