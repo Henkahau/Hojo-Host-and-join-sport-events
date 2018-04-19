@@ -18,6 +18,7 @@ export class EventViewComponent implements OnInit {
   id: any = {};
   geocoder = new google.maps.Geocoder;
   address: string;
+  joining: boolean;
 
   constructor(
     private router: Router,
@@ -30,7 +31,7 @@ export class EventViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadEvent();    
+    this.loadEvent();
   }
  
 
@@ -40,6 +41,7 @@ export class EventViewComponent implements OnInit {
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event; 
       this.host = event[0].host;
+      this.joining = false;
     });
   }
 
@@ -49,6 +51,7 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
+    this.joining = true;
     this.eventService.joinEvent(this.eventID, this.id).subscribe();
     this.loadEvent();
   }
