@@ -34,6 +34,13 @@ export class EventViewComponent implements OnInit {
   ngOnInit() {
     this.loadEvent();
   }
+
+  ngDoCheck() {
+    if(sessionStorage.getItem('addressStatus') == 'Y') {
+      this.address = localStorage.getItem('address');
+      sessionStorage.setItem('addressStatus', 'N');
+    }
+  }
  
 
   private loadEvent() {
@@ -93,6 +100,7 @@ export class EventViewComponent implements OnInit {
 
   reverseGeocode(lat: number, lng: number, map){
     var latlng = {lat: +lat, lng: +lng };
+    sessionStorage.setItem('addressStatus', 'N');
    
     this.geocoder.geocode({'location': latlng}, function(results, status) {
       if (status.toString() === 'OK') {
@@ -100,6 +108,7 @@ export class EventViewComponent implements OnInit {
           // Address can't get out of scope without geocode function
           this.address = results[0].formatted_address.toString();
           localStorage.setItem('address', this.address);
+          sessionStorage.setItem('addressStatus', 'Y');
         } else {
           window.alert('No results found');
         } 
@@ -107,6 +116,5 @@ export class EventViewComponent implements OnInit {
         window.alert('Geocoder failed due to: ' + status);
       }
     });
-    this.address = localStorage.getItem('address');
   }
 }
