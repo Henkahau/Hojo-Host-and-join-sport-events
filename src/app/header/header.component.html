@@ -1,16 +1,16 @@
-<div class="col-sm-12 navbar-header scrolling">
+<div class="col-sm-12">
     <div class="col-sm-6">
       <div class="col-sm-1">
         
         <a href="#">
-          <img [src]="imagePath2" style="max-height: 50px;">
+          <img class="img" [src]="imagePath2" style="max-height: 50px;">
         </a>
         
       </div>
-      <div class="col-sm-2">  
-          <a href="#" style="color:#F3F0F3; padding-left: 0px;">Hojo</a>
+      <div class="col-sm-2" style="padding-top: 8.5px;">  
+          <a href="#" style="color:#F3F0F3;">Hojo</a>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" style="padding-top: 8.5px;">
         <a *ngIf="getUserLoginStatus()" (click)="onSelect('create')" style="color:#F3F0F3;">Create Event</a>  
       </div>
 
@@ -20,7 +20,7 @@
       <div class="col-sm-2">
 
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3"  style="padding-top: 8.5px;">
         <!-- <ul class="nav navbar-nav navbar-right"> -->
           
             <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3">Login</a>
@@ -34,7 +34,7 @@
       </div>
       <div class="col-sm-3">
         <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']">
-          <img [src]="imagePath" style="max-height: 55px; padding-bottom: 5px;">
+          <img class="img" [src]="imagePath" style="max-height: 50px;">
         </a>
       </div>
      
@@ -42,3 +42,4 @@
   
 
 </div>
+
