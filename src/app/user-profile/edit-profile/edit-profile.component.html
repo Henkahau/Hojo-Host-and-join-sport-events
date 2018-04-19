@@ -54,8 +54,9 @@
   </div>
 
   <div>
-    <button routerLink="/user-profile" class="btn btn-primary">Cancel</button>
+    <button [routerLink]="['/user-profile']" class="btn btn-primary">Cancel</button>
     <button [disabled]="!isSomethingChanged()" class="btn btn-primary">Save</button>
+    <a class="btn btn-danger" (click)="openConfirm(confirmTemplate)">Delete profile</a>
   </div>
 
 </form>
@@ -63,3 +64,11 @@
 </div>
 </body>
 
+<ng-template #confirmTemplate>
+  <div class="modal-body text-center">
+    <h2>Delete your profile</h2>
+    <p>Are you sure?</p>
+    <button (click)="confirm()" class="btn btn-danger">Yes</button>
+    <button (click)="modalRef.hide()" class="btn create">No</button>
+  </div>
+</ng-template>
