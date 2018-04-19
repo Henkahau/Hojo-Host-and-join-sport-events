@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { User } from '../../_models';
-import { UserService, AlertService } from '../../_services';
+import { UserService, AlertService, AuthenticationService } from '../../_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +20,7 @@ export class EditProfileComponent implements OnInit {
   profileEdited: boolean = false;
   profileToEdit: User;
   model: any = {};
-  static editProfileId: string;
+  modalRef: BsModalRef;
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   onFileSelected(event){
@@ -25,7 +29,9 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private alertService: AlertService,
-              private router: Router) { 
+              private modalService: BsModalService,
+              private router: Router,
+              private authenticationService: AuthenticationService) { 
                 var currUser = JSON.parse(localStorage.getItem('currentUser'));
                 this.currentUser = currUser.Account;
               }
@@ -37,6 +43,16 @@ export class EditProfileComponent implements OnInit {
   private loadProfile(){
     this.userService.getById(this.currentUser.accountId).subscribe(user => {
       this.profileToEdit = user[0];      
+    });
+  }
+
+  openConfirm(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(){
+    this.userService.delete(this.currentUser.accountId).subscribe( data => {
+      this.authenticationService.logout();
     });
   }
 
