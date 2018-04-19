@@ -35,16 +35,15 @@ export class EditEventComponent implements OnInit {
       this.loadEvent();
     }else{
       this.router.navigate(['/']);
-    }
-    
+    }   
   }
 
 
   private loadEvent(){
     this.eventService.getEventById(sessionStorage.getItem("eventId")).subscribe(event => {
-       this.event = event[0];
-       this.eventTitle = event[0].title
-       this.dateT = new Date(event[0].date);
+        this.event = event[0];
+        this.eventTitle = event[0].title
+        this.dateT = new Date(event[0].date);
         this.setCompareEvent(event[0].eventId);
       });
   }
@@ -78,7 +77,7 @@ export class EditEventComponent implements OnInit {
       this.model.skillLevel = newe.skillLevel;
     }
     if(newe.playType != old.playType){
-      this.model.playType = newe.skillLevel;
+      this.model.playType = newe.playType;
     }
     if(newe.maxAttendees != old.maxAttendees){
       this.model.maxAttendees = newe.maxAttendees;
@@ -111,8 +110,6 @@ export class EditEventComponent implements OnInit {
       error => {
         this.alertService.error(error);
         this.loading = false;
-      }
-    );
+      });
   }
-
 }
