@@ -2,15 +2,16 @@
     <div class="col-sm-6">
       <div class="col-sm-1">
         
+        
+        
+      </div>
+      <div class="col-sm-4" style="padding-left: 2px;">
         <a href="#">
           <img class="img" [src]="imagePath2" style="max-height: 50px;">
         </a>
-        
+          <a href="#" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
       </div>
-      <div class="col-sm-2" style="padding-top: 8.5px;">  
-          <a href="#" style="color:#F3F0F3;">Hojo</a>
-      </div>
-      <div class="col-sm-4" style="padding-top: 8.5px;">
+      <div class="col-sm-4" style="padding-top: 3.5px;">
         <a *ngIf="getUserLoginStatus()" (click)="onSelect('create')" style="color:#F3F0F3;">Create Event</a>  
       </div>
 
@@ -23,18 +24,15 @@
       <div class="col-sm-3"  style="padding-top: 8.5px;">
         <!-- <ul class="nav navbar-nav navbar-right"> -->
           
-            <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3">Login</a>
-            <a *ngIf="!getUserLoginStatus()" (click)="onSelect('register')" style="color:#F3F0F3;">Register</a>
-        
-        
-          
-            <a *ngIf="getUserLoginStatus()" (click)="onSelect('logout')" style="color:#F3F0F3">Logout</a>
-          
        <!--  </ul> -->
       </div>
       <div class="col-sm-3">
+        <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3; padding-top: 8.5px;">Login</a>
+        <a *ngIf="!getUserLoginStatus()" (click)="onSelect('register')" style="color:#F3F0F3; padding-top: 8.5px;">Register</a>
+        <a *ngIf="getUserLoginStatus()" (click)="onSelect('logout')" style="color:#F3F0F3; padding-top: 8.5px;">Logout</a>
+        
         <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']">
-          <img class="img" [src]="imagePath" style="max-height: 50px;">
+          <img class="img" [src]="imagePath" style="max-height: 50px; padding-left: 15px;">
         </a>
       </div>
      
