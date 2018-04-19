@@ -87,10 +87,10 @@ export class EditEventComponent implements OnInit {
       this.model.description = newe.description;
     }
     if(newe.lat != old.lat){
-      this.model.lat = newe.lat;
+      this.model.lat = newe.lat.toString();
     }
     if(newe.lng != old.lng){
-      this.model.lng = newe.lng;
+      this.model.lng = newe.lng.toString();
     }
     
     return this.model;
