@@ -31,6 +31,8 @@ export class EditEventComponent implements OnInit {
             private router: Router) { }
 
   ngOnInit() {
+    this.clean();
+
     if(sessionStorage.getItem("eventId") != null){
       this.loadEvent();
     }else{
@@ -111,5 +113,14 @@ export class EditEventComponent implements OnInit {
         this.alertService.error(error);
         this.loading = false;
       });
+  }
+
+  clean() {
+    delete this.sportValues[0];
+    delete this.skillValues[0];
+    delete this.playTypeValues[0];
+    this.sportValues.splice(0, 1);
+    this.skillValues.splice(0, 1);
+    this.playTypeValues.splice(0, 1);
   }
 }
