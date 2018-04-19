@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3" id="event">
+<div class="col-sm-7 col-sm-offset-2" id="event">
   <h2 *ngIf="event">Edit event {{eventTitle}}</h2>
 
   <form name="form" *ngIf="event" (ngSubmit)="f.form.valid && editEvent()" #f="ngForm" novalidate>
@@ -52,10 +52,6 @@
     <label for="location">Location</label>
     <app-location-map (receivedLocation)="event.lat = $event.lat; event.lng = $event.lng;">
     </app-location-map>
-    
-    
-    <p>{{ model.latitude }} {{ model.longitude }}</p>
-
   
     <div class="form-group">
     </div>
