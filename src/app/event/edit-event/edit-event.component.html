@@ -37,7 +37,7 @@
         
         <div class="col-lg-3">
           <label for="playType">Play type</label>
-          <select class="form-control" name="playTYpe" [(ngModel)]="event.playType" #playType="ngModel">
+          <select class="form-control" name="playType" [(ngModel)]="event.playType" #playType="ngModel">
             <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
           </select>
         </div>
