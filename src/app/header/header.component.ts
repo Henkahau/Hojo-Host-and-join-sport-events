@@ -24,7 +24,7 @@ export class HeaderComponent{
     @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
     @Output ()public imagePath2: string = '../../assets/Images/logo.png'; 
     modalRef: BsModalRef;
-    options = ['Create Event', 'My Profile', 'Logout']
+    options = ['Options','Create Event', 'My Profile', 'Logout']
   
  
     constructor(
@@ -56,12 +56,16 @@ export class HeaderComponent{
                 show(RegisterComponent, {ignoreBackdropClick: true, class: 'modal-lg'});
                 break;
             }
-
             case 'logout':{
                 this.authenticationService.logout();
                 break;
             }
+            case 'My Profile':{
+                this.router.navigate(['/user-profile']);
+                break;
 
+            }
+            
         }
     }
     bigScreen(){
@@ -74,18 +78,18 @@ export class HeaderComponent{
             return false;
         }
     }
-    onOptionSelected(val: any) {
-        if(val == 'Create Event'){ 
-            this.modalRef = this.modalService.
-            show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});        
-        }
-        if (val == 'Logout'){
-            this.authenticationService.logout();
-        }
-        if (val == 'My Profile'){
-            this.router.navigate(['/user-profile']);
-        }
-      }
+    // onOptionSelected(val: any) {
+    //     if(val == 'Create Event'){ 
+    //         this.modalRef = this.modalService.
+    //         show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});        
+    //     }
+    //     if (val == 'Logout'){
+    //         this.authenticationService.logout();
+    //     }
+    //     if (val == 'My Profile'){
+    //         this.router.navigate(['/user-profile']);
+    //     }
+    //   }
 
     navigateHome() {
         this.router.navigate(['']);
