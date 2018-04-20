@@ -41,7 +41,7 @@ export class CreateEventComponent implements OnInit {
     this.sportValues.splice(0,1);
     this.playTypeValues.splice(0,1);
   
-    console.log(this.skillValues)
+   // console.log(this.skillValues)
   }
 
   close() {
