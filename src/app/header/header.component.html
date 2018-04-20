@@ -34,14 +34,19 @@
 </div> 
 <ng-template #smallScreen>
     <div class="col-sm-12">
+           
     <a href="#">
         <img class="img" [src]="imagePath2" style="height: 50px;">
       </a>
         <a href="#" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
+      
+        <select name="saatana" style="width: 100px;" id="saatana" *ngIf="getUserLoginStatus()" class="form-control"[(ngModel)]="option" (ngModelChange)="onOptionSelected($event)">
+          <option *ngFor="let option of options"[ngValue]="option">{{option}}</option>
+        </select> 
+    
+  <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3; padding-left: 40px">Login</a>
+  <a *ngIf="!getUserLoginStatus()" (click)="onSelect('register')" style="color:#F3F0F3; padding-left: 10px">Register</a> 
 
-    <select class="form-control" [(ngModel)]="option" (ngModelChange)="onOptionSelected($event)">
-     <option *ngFor="let option of options"[ngValue]="option">{{option}}</option>
-    </select>
   </div>
 </ng-template>
 
