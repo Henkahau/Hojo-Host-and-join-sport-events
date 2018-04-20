@@ -14,14 +14,14 @@ export class UserProfileComponent implements OnInit {
   
   model: any = {};
   currentUser: User;
-  router: Router;
 
   userProfileId: string;
 
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   constructor(private userService: UserService,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private router: Router) {
                  var currUser = JSON.parse(localStorage.getItem('currentUser'));
                  this.currentUser = currUser.Account;
                 }
@@ -36,7 +36,15 @@ export class UserProfileComponent implements OnInit {
     }); */
   }
 
-  gotoEditProfile() {
-    this.router.navigate(['/edit-profile']);
+  navigate(destination: string) {
+    switch(destination) {
+      case 'edit':
+      this.router.navigate(['/edit-profile']);
+      break;
+
+      case 'home':
+      this.router.navigate(['']);
+      break;
+    }
   }
 }
