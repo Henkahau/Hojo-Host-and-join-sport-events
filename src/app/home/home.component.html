@@ -26,6 +26,8 @@
     <p *ngIf="user"><a (click)="openProfileView(user.accountId)">{{user.email}}</a></p>
     <p><a [routerLink]="['/login']">Logout</a></p>
     <p><a [routerLink]="['/createEvent']">createEvent</a></p>
+    <input type="file" id="filePicker" (change)="handleFileSelect($event)">
+    <img src="image">
 </div>
 </body>
 

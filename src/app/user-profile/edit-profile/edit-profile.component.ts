@@ -20,6 +20,7 @@ export class EditProfileComponent implements OnInit {
   profileEdited: boolean = false;
   profileToEdit: User;
   model: any = {};
+  base64ImgStr: string;
   modalRef: BsModalRef;
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
@@ -46,6 +47,25 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+  handleFileSelect(evt){
+    var files = evt.target.files;
+    var file = files[0];
+
+  if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+      
+  }
+}
+
+_handleReaderLoaded(readerEvt) {
+   var binaryString = readerEvt.target.result;
+          this.base64ImgStr= btoa(binaryString);
+          
+  }
+
   openConfirm(template: TemplateRef<any>){
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
@@ -61,12 +81,16 @@ export class EditProfileComponent implements OnInit {
     return this.profileEdited
   }
 
+
   isSomethingChanged(): boolean{
     return this.profileEdited
   }
 
   private getChanges(curProf: User, ediProf: User){
     
+    /* if(this.base64ImgStr != null){
+      this.model.profilePicture = this.base64ImgStr;
+    } */
     
     if(curProf.firstName != ediProf.firstName){
       this.model.firstName = ediProf.firstName;

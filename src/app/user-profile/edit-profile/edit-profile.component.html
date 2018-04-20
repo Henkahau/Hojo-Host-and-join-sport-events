@@ -1,22 +1,15 @@
-<body>
+
 <div class="col-sm-6 col-sm-offset-3" style="padding-top: 100px">
   <h2>Edit Profile</h2>
-
-  <form name="form" *ngIf="currentUser" (ngSubmit)="f.form.valid && editProfile()" #f="ngForm" novalidate></form>
 
 <form name="form" *ngIf="currentUser && profileToEdit" (ngSubmit)="f.form.valid && editProfile()" #f="ngForm" novalidate>
     
 <hr>
   <div class="row">
     <div class="col-sm-3 col-sm-3">
-      <a href="/" class="thumbnail">
-        <img [src]="imagePath" alt="">
-      </a>
-      <input type="file" (change)="onFileSelected($event)">
+        <img [src]="imagePath" style="max-width: 75%; max-height: 75%;">
+      <input type="file" id="filePicker" (change)="handleFileSelect($event); setTrue($event)">
       <hr>
-      <div>
-        <button class="btn btn-primary">Change</button>
-      </div>
 
     </div>
   </div>
@@ -62,7 +55,7 @@
 </form>
 
 </div>
-</body>
+
 
 <ng-template #confirmTemplate>
   <div class="modal-body text-center">
