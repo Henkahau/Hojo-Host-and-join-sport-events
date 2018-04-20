@@ -35,7 +35,11 @@ export class CreateEventComponent implements OnInit {
     this.currentUser = currUser.Account;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.skillValues.splice(0,1);
+    this.sportValues.splice(0,1);
+    this.playTypeValues.splice(0,1);
+  }
 
   close() {
     this.bsModalRef.hide();

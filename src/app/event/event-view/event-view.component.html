@@ -82,12 +82,12 @@
         <div *ngIf="getUserLoginStatus()" align="right">
           <button class="btn btn-primary" [disabled]="joining" *ngIf="!hasJoined() && !isHost(); else leave" (click)="joinEvent()">Join</button>
             <ng-template #leave>
-              <button class="btn create" *ngIf="!isHost()" (click)="leaveEvent()">Leave</button>
+              <button class="btn btn-primary" *ngIf="!isHost()" (click)="leaveEvent()">Leave</button>
             </ng-template>
 
           <button *ngIf="isHost() && getUserLoginStatus()" class="btn btn-danger" style="float: left;" (click)="deleteEvent(event[0].eventId)">Delete</button>
           <button *ngIf="isHost() && getUserLoginStatus()" type="button" class="btn create" (click)="editEvent()">Edit</button>
-          <button class="btn cancelButton" (click)="close()">Close</button>          
+          <button class="btn btn-success" (click)="close()">Close</button>
         </div>
         <div *ngIf="!getUserLoginStatus()" align="right">
             <button class="btn cancelButton" (click)="close()">Close</button> 
