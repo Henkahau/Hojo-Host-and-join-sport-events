@@ -1,4 +1,4 @@
-@media all and (min-width:0px) and (max-width: 640px) {
+/* @media all and (min-width:0px) and (max-width: 640px) {
     .col-sm-12 {
         position: fixed;
         width: 100%;
@@ -6,14 +6,14 @@
         border-color: #012400;
         border-radius: 0;
         box-shadow: 5px 5px 5px #888888;
-        font-size: 18px;
+        font-size: 25x;
         padding-top: 5px;
         cursor: pointer;
         z-index: 1050;
     }
-}
+} */
 
-@media all and (min-width:641px) and (max-width: 1920px) {
+
     .col-sm-12 {
         position: fixed;
         width: 100%;
@@ -36,4 +36,17 @@
     .col-sm-4 {
         padding-top: 0px;
     }
+
+.form-control{
+    max-width: 135px;
+    padding-bottom: 5px;
+    background-color: #437422;
+    color: #DFF1A0;
+    
+  
+
+}
+select{
+    max-width: 135px;
+    border: 0px;
 }

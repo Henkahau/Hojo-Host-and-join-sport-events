@@ -1,5 +1,5 @@
-import { Component, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Output, HostListener, HostBinding } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -10,6 +10,7 @@ import { UserService, EventService, AuthenticationService } from '../_services/i
 import { CreateEventComponent } from '../event/index';
 import { LoginComponent } from '../login';
 import { RegisterComponent } from '../register';
+import { UserProfileComponent } from '../user-profile';
 
 @Component({
     selector: 'app-header',
@@ -23,6 +24,8 @@ export class HeaderComponent{
     @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
     @Output ()public imagePath2: string = '../../assets/Images/logo.png'; 
     modalRef: BsModalRef;
+    options = ['Create Event', 'My Profile', 'Logout']
+  
  
     constructor(
         private router: Router,
@@ -61,6 +64,28 @@ export class HeaderComponent{
 
         }
     }
+    bigScreen(){
+        var screenWidth = Math.max(document.documentElement.clientWidth,window.innerWidth);
+        if( screenWidth > 700 ){
+            console.log(Math.max(document.documentElement.clientWidth, window.innerWidth));
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    onOptionSelected(val: any) {
+        if(val == 'Create Event'){ 
+            this.modalRef = this.modalService.
+            show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});        
+        }
+        if (val == 'Logout'){
+            this.authenticationService.logout();
+        }
+        if (val == 'My Profile'){
+            this.router.navigate(['/user-profile']);
+        }
+      }
 
     navigateHome() {
         this.router.navigate(['']);

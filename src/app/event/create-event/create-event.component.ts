@@ -36,6 +36,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   ngOnInit() {
+    // deleting 'any' option from dropdownlist
     this.skillValues.splice(0,1);
     this.sportValues.splice(0,1);
     this.playTypeValues.splice(0,1);

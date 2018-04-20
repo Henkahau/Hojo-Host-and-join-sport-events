@@ -31,8 +31,11 @@ export class EditEventComponent implements OnInit {
             private router: Router) { }
 
   ngOnInit() {
-    this.clean();
-
+      // deleting 'any' option from dropdownlist
+      this.skillValues.splice(0,1);
+      this.sportValues.splice(0,1);
+      this.playTypeValues.splice(0,1);
+      
     if(sessionStorage.getItem("eventId") != null){
       this.loadEvent();
     }else{
