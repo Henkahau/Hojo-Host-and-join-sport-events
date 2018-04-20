@@ -20,10 +20,10 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'event-view', component: EventViewComponent },
-    { path: 'createEvent', component: CreateEventComponent },
+    { path: 'createEvent', component: CreateEventComponent, canActivate: [AuthGuard] },
     { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
-    { path: 'edit-event', component: EditEventComponent },
-    { path: 'edit-profile', component: EditProfileComponent },
+    { path: 'edit-event', component: EditEventComponent, canActivate: [AuthGuard] },
+    { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
     { path: 'rating', component:RatingComponent},
 
     // Test

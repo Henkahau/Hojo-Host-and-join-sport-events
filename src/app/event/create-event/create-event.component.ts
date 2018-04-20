@@ -31,7 +31,8 @@ export class CreateEventComponent implements OnInit {
     private alertService: AlertService,
     private userService: UserService,
     private bsModalRef: BsModalRef) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    var currUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = currUser.Account;
   }
 
   ngOnInit() {
@@ -51,6 +52,7 @@ export class CreateEventComponent implements OnInit {
     this.loading = true;
     this.model.event.date = this.dateT.toISOString(); 
     this.model.accountId = this.currentUser.accountId;
+    
     console.log(this.model);
      this.eventService.createEvent(this.model)
         .subscribe(

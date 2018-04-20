@@ -14,7 +14,7 @@ export class UserService {
     }
  
     getById(id: string) {
-        return this.http.get<User>(UserService.url + '/account?uuid=' + id).map(res => res);
+        return this.http.get<User>(UserService.url + '/accounts?id=' + id);
     }
  
     create(user: User) {
@@ -27,7 +27,7 @@ export class UserService {
     }
  
     delete(id: string) {
-        return this.http.delete(UserService.url + '/users/' + id);
+        return this.http.delete(UserService.url + '/accounts?id=' + id, {responseType: 'text'});
     }
 }
 

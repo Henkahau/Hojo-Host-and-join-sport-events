@@ -20,14 +20,17 @@ export class AuthenticationService {
                 var token = res.Token;
                 var user = res.Account;
 
-                console.log("token: ", res.Token);
-                console.log("user: ", res.Account);
+                /* console.log("token: ", res.Token);
+                console.log("user: ", res.Account); */
                 // login successful if there's a jwt token in the response
                 
                 if (user && token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    console.log(localStorage.getItem('currentUser'));
+                    
+                    localStorage.setItem('currentUser', JSON.stringify(res));
+                    console.log("currentUser:");
+                    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    console.log(currentUser.Account);
                 } 
  
                 return user;

@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3" id="event">
+<div class="col-sm-7 col-sm-offset-2" id="event">
   <h2 *ngIf="event">Edit event {{eventTitle}}</h2>
 
   <form name="form" *ngIf="event" (ngSubmit)="f.form.valid && editEvent()" #f="ngForm" novalidate>
@@ -37,7 +37,7 @@
         
         <div class="col-lg-3">
           <label for="playType">Play type</label>
-          <select class="form-control" name="playTYpe" [(ngModel)]="event.playType" #playType="ngModel">
+          <select class="form-control" name="playType" [(ngModel)]="event.playType" #playType="ngModel">
             <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
           </select>
         </div>
@@ -52,10 +52,6 @@
     <label for="location">Location</label>
     <app-location-map (receivedLocation)="event.lat[0] = $event.lat; event.lng[0] = $event.lng;">
     </app-location-map>
-    
-    
-    <p>{{ model.latitude }} {{ model.longitude }}</p>
-
   
     <div class="form-group">
     </div>
@@ -65,7 +61,7 @@
     </div>
 
     <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary">Edit</button>
+      <button [disabled]="loading" (click)="editEvent()" class="btn btn-primary">Edit</button>
       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
       <a (click)="cancel()" class="btn btn-link">Cancel</a>
     </div>

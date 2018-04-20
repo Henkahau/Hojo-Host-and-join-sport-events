@@ -1,4 +1,39 @@
-img{
-    padding-bottom: 5px;
-    
+@media all and (min-width:0px) and (max-width: 640px) {
+    .col-sm-12 {
+        position: fixed;
+        width: 100%;
+        background-color: #012400;
+        border-color: #012400;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #888888;
+        font-size: 18px;
+        padding-top: 5px;
+        cursor: pointer;
+        z-index: 1050;
+    }
+}
+
+@media all and (min-width:641px) and (max-width: 1920px) {
+    .col-sm-12 {
+        position: fixed;
+        width: 100%;
+        background-color: #012400;
+        border-color: #012400;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px #888888;
+        font-size: 25px;
+        cursor: pointer;
+        z-index: 1050;
+    }
+    img.img {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        max-height: 50px;
+    }
+    .col-sm-3 {
+        padding-top: 5px;
+    }
+    .col-sm-4 {
+        padding-top: 0px;
+    }
 }

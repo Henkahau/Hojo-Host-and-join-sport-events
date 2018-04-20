@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
-import { EventService, UserService } from '../../_services/index';
+import { EventService, UserService, AuthenticationService } from '../../_services/index';
 import { Router } from '@angular/router';
 import { Event, SportType, PlayType, SkillLevel, User } from '../../_models';
 
@@ -15,35 +15,57 @@ export class EventViewComponent implements OnInit {
   event: Event;
   host: User;
   currentUser: User;
+  id: any = {};
   geocoder = new google.maps.Geocoder;
   address: string;
+  joining: boolean;
+  playerAmount: number;
 
   constructor(
     private router: Router,
     protected eventService: EventService,
     private userService: UserService,
-    private bsModalRef: BsModalRef) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    private bsModalRef: BsModalRef,
+    private authenticationService: AuthenticationService) {
+      
+      if(this.getUserLoginStatus()){
+        var currentU = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser = currentU.Account;
+        this.id.accountId = this.currentUser.accountId;
+
+      } 
   }
 
   ngOnInit() {
-    this.loadEvent();    
+    this.loadEvent();
   }
+
+  ngDoCheck() {
+    if(sessionStorage.getItem('addressStatus') == 'Y') {
+      this.address = localStorage.getItem('address');
+      sessionStorage.setItem('addressStatus', 'N');
+    }
+  }
+
+  getUserLoginStatus(): boolean {
+    return this.authenticationService.getLoginStatus();
+}
  
 
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
     console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
-      this.event = event;
-      console.log(this.event[0]);
-      
-      // HOST
+      this.event = event; 
       this.host = event[0].host;
-      // Add host as a player to list
-      if (this.event.players === undefined) {
-        this.eventService.joinEvent(this.eventID, this.host.accountId);
-      } 
+      this.joining = false;
+
+      if(event[0].players === undefined || event[0].players.length == 0) {
+        this.playerAmount = 1; 
+      }
+      else {
+        this.playerAmount = event[0].players.length + 1;
+      }
     });
   }
 
@@ -53,24 +75,14 @@ export class EventViewComponent implements OnInit {
   }
 
   joinEvent() {
-    var isJoined = false;
-    for(var i = 0; i < this.event[0].players.length; i++) {
-      if(this.event[0].players[i].accountId === this.currentUser.accountId) {
-        isJoined = true;
-      }
-    }
-
-    if(!isJoined) {
-      this.eventService.joinEvent(this.eventID, this.currentUser.accountId);
-      console.log("Joined");
-    }
-    else {
-      console.log("Already in");
-    }
+    this.joining = true;
+    this.eventService.joinEvent(this.eventID, this.id).subscribe();
+    this.loadEvent();
   }
 
-  leaveEvents() {
-    this.eventService.leaveEvent(this.eventID, this.currentUser.accountId);
+  leaveEvent() {
+    this.eventService.leaveEvent(this.eventID, this.id).subscribe();
+    this.loadEvent();
   }
 
   close() {
@@ -79,12 +91,22 @@ export class EventViewComponent implements OnInit {
   }
 
   isHost() {
-    if (this.currentUser == this.host) {
+    if (this.currentUser.accountId == this.host.accountId) {
       return true;
     }
     else {
       return false;
     }
+  }
+
+  hasJoined() {
+    var isJoined = false;
+    for(var i = 0; i < this.event[0].players.length; i++) {
+      if(this.event[0].players[i].accountId === this.currentUser.accountId) {
+        isJoined = true;
+      }
+    }
+    return isJoined;
   }
 
   editEvent() {
@@ -94,6 +116,7 @@ export class EventViewComponent implements OnInit {
 
   reverseGeocode(lat: number, lng: number, map){
     var latlng = {lat: +lat, lng: +lng };
+    sessionStorage.setItem('addressStatus', 'N');
    
     this.geocoder.geocode({'location': latlng}, function(results, status) {
       if (status.toString() === 'OK') {
@@ -101,6 +124,7 @@ export class EventViewComponent implements OnInit {
           // Address can't get out of scope without geocode function
           this.address = results[0].formatted_address.toString();
           localStorage.setItem('address', this.address);
+          sessionStorage.setItem('addressStatus', 'Y');
         } else {
           window.alert('No results found');
         } 
@@ -108,6 +132,5 @@ export class EventViewComponent implements OnInit {
         window.alert('Geocoder failed due to: ' + status);
       }
     });
-    this.address = localStorage.getItem('address');
   }
 }

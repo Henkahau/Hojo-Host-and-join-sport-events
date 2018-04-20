@@ -22,14 +22,18 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService) {
-                this.currentUser = JSON.parse(localStorage.getItem('currentUser')); }
+                 var currUser = JSON.parse(localStorage.getItem('currentUser'));
+                 this.currentUser = currUser.Account;
+                }
 
   ngOnInit() {
     this.loadProfile();
   }
 
   private loadProfile(){
-    this.currentUser
+    /* this.userService.getById(this.currentUser.Account.accountId).subscribe(user => {
+      this.currentUser = user[0];     
+    }); */
   }
 
   gotoEditProfile() {

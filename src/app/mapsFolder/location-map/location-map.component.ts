@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone, Output, EventEmitter 
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { EventService } from '../../_services';
 
 @Component({
   selector: 'app-location-map',
@@ -26,18 +27,14 @@ export class LocationMapComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
     this.zoom = 12;
-    this.latitude = 65.0121;
-    this.longitude = 25.4651;
-    this.latitudeMarker  = this.latitude;
-    this.longitudeMarker = this.longitude;
+    this.getMarkerLocation();
 
-    this.latitudeMarker = this.latitude;
-    this.longitudeMarker = this.longitude;
     //create search FormControl
     this.searchControl = new FormControl();
 
@@ -109,6 +106,17 @@ export class LocationMapComponent implements OnInit {
     this.sendLocation.emit({
       lat: this.latitudeMarker,
       lng: this.longitudeMarker
+    });
+  }
+
+  getMarkerLocation() {
+    var eventID = sessionStorage.getItem("eventId");
+    this.eventService.getEventById(eventID).subscribe(res => {
+      this.latitude = +res[0].lat;
+      this.longitude = +res[0].lng;
+      this.latitudeMarker  = this.latitude;
+      this.longitudeMarker = this.longitude;
+      return true;
     });
   }
 }

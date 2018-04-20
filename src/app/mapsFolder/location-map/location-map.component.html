@@ -5,7 +5,10 @@
 </div>
 
 <agm-map (mapClick)="moveMarker($event)" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
-  <agm-marker (markerClick)="markerClick($event)" [markerDraggable]="true" (dragEnd)="dragEnd($event)" [latitude]="latitudeMarker" [longitude]="longitudeMarker">
-      <agm-info-window>{{ latitudeMarker }}{{ longitudeMarker }}</agm-info-window>
+  <agm-marker (markerClick)="markerClick($event)" 
+  [markerDraggable]="true" 
+  (dragEnd)="dragEnd($event)" 
+  [latitude]="latitudeMarker" 
+  [longitude]="longitudeMarker">
   </agm-marker>
 </agm-map>
