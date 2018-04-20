@@ -23,6 +23,8 @@ export class HeaderComponent{
     @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
     @Output ()public imagePath2: string = '../../assets/Images/logo.png'; 
     modalRef: BsModalRef;
+    options = ['Create Event', 'My Profile', 'Logout']
+  
  
     constructor(
         private router: Router,
@@ -61,4 +63,20 @@ export class HeaderComponent{
 
         }
     }
+    bigScreen(){
+        var screenWidth = Math.max(document.documentElement.clientWidth,window.innerWidth);
+        if( screenWidth > 700 ){
+            console.log(Math.max(document.documentElement.clientWidth, window.innerWidth));
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    onOptionSelected(val: any) {
+        if(val == 'Create Event'){ 
+            this.modalRef = this.modalService.
+            show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});        
+        }
+      }
 }
