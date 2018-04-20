@@ -131,8 +131,7 @@ _handleReaderLoaded(readerEvt) {
       );
   }
 
-
-    
-    
-       
+  navigate() {
+    this.router.navigate(['/user-profile']);
+  }
 }

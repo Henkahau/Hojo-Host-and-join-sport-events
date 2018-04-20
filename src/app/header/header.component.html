@@ -4,10 +4,10 @@
 
       </div>
       <div class="col-sm-4" style="padding-left: 2px;">
-        <a href="#">
+        <a (click)="navigateHome()">
           <img class="img" [src]="imagePath2" style="height: 50px;">
         </a>
-          <a href="#" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
+          <a (click)="navigateHome()" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
       </div>
       <div class="col-sm-3" style="padding-top: 3.5px;">
         <a *ngIf="getUserLoginStatus()" (click)="onSelect('create')" style="color:#F3F0F3;">Create Event</a>  
