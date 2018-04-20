@@ -23,4 +23,7 @@
 
 .col-sm-5 {
     background: #A9D861;
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    border-radius: 5px;
 }
