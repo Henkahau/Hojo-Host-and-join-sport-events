@@ -6,6 +6,7 @@
 textarea
 {
     resize: none;
+    margin-bottom: 10px;
 }
 
 textarea:disabled

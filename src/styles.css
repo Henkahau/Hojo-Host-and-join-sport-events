@@ -98,3 +98,9 @@ body {
     background: #4E0F10 !important;
     border-color: #4E0F10 !important;
 }
+
+.btn-default {
+    color: #DFF1A0 !important;
+    background: #437422 !important;
+    border-color: #437422 !important;
+}
