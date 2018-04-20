@@ -1,5 +1,5 @@
-import { Component, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Output, HostListener, HostBinding } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -10,6 +10,7 @@ import { UserService, EventService, AuthenticationService } from '../_services/i
 import { CreateEventComponent } from '../event/index';
 import { LoginComponent } from '../login';
 import { RegisterComponent } from '../register';
+import { UserProfileComponent } from '../user-profile';
 
 @Component({
     selector: 'app-header',
@@ -77,6 +78,12 @@ export class HeaderComponent{
         if(val == 'Create Event'){ 
             this.modalRef = this.modalService.
             show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});        
+        }
+        if (val == 'Logout'){
+            this.authenticationService.logout();
+        }
+        if (val == 'My Profile'){
+            this.router.navigate(['/user-profile']);
         }
       }
 }
