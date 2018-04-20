@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { SafeUrl } from '@angular/platform-browser';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -12,6 +12,7 @@ import { EventViewComponent } from '../event/event-view';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { LoginComponent } from '../login/index';
 import { RegisterComponent } from '../register/index';
+import { Url } from 'url';
  
 @Component({
     moduleId: module.id,
@@ -24,7 +25,8 @@ export class HomeComponent implements OnInit {
     events: Event[] = [];
     event: Event;
     user: User;
-
+    base64textString: string;
+    image: SafeUrl;
     modalRef: BsModalRef;
     
    
@@ -41,6 +43,30 @@ export class HomeComponent implements OnInit {
         this.loadAllEvents();
         //this.getSingleEvent();
         this.getSingleUser();
+    }
+
+    handleFileSelect(evt){
+        var files = evt.target.files;
+        var file = files[0];
+  
+      if (files && file) {
+          var reader = new FileReader();
+  
+          reader.onload =this._handleReaderLoaded.bind(this);
+        
+          reader.readAsBinaryString(file);
+      }
+    }
+  
+    _handleReaderLoaded(readerEvt) {
+       var binaryString = readerEvt.target.result;
+              this.base64textString= btoa(binaryString);
+              
+              console.log(this.base64textString);
+      }
+
+    baseToImg(){
+        //this.base64textString = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.base64textString);
     }
  
     deleteUser(id: string) {
