@@ -35,7 +35,7 @@ import { ModalComponent } from './modal/index';
 import { CreateEventComponent, EditEventComponent } from './event/index';
 import { EventViewComponent } from './event/event-view/event-view.component';
 import { ProfileComponent } from './profile/profile.component'
-import { ModalModule, BsModalRef, TimepickerModule } from 'ngx-bootstrap';
+import { ModalModule, BsModalRef, TimepickerModule, BsDropdownModule } from 'ngx-bootstrap';
 import { MapComponent } from './mapsFolder/map';
 import { AgmCoreModule } from '@agm/core';
 import { SearchfieldComponent } from './searchfield/searchfield.component';
@@ -65,6 +65,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         routing,
         ModalModule.forRoot(),
         TimepickerModule.forRoot(),
+        BsDropdownModule.forRoot(),
         AgmCoreModule.forRoot( {
         apiKey: 'AIzaSyCxTAeTahMYWk1U-r4DTUlTNnojLL0g4MU', 
         libraries: ["places"]
