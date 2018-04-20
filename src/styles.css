@@ -68,3 +68,33 @@ body {
     color: #DFF1A0;
     background: #437422;
 }
+
+/*
+    Primary button is used for:
+        - Logging in
+        - Creating an event
+        - Joining an event
+        - Edit an event
+    Success:
+        - Cancel button
+    Danger:
+        - Delete an event
+*/
+
+.btn-primary {
+    color: #DFF1A0 !important;
+    background: #437422 !important;
+    border-color: #437422 !important;
+}
+
+.btn-success {
+    color: #012400 !important;
+    background: #A9D861 !important;
+    border-color: #437422 !important;
+}
+
+.btn-danger {
+    color: #F7BBD5 !important;
+    background: #4E0F10 !important;
+    border-color: #4E0F10 !important;
+}
