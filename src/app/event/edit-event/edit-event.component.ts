@@ -116,9 +116,6 @@ export class EditEventComponent implements OnInit {
   }
 
   clean() {
-    delete this.sportValues[0];
-    delete this.skillValues[0];
-    delete this.playTypeValues[0];
     this.sportValues.splice(0, 1);
     this.skillValues.splice(0, 1);
     this.playTypeValues.splice(0, 1);
