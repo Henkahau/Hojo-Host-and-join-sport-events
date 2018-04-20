@@ -32,7 +32,6 @@ export class LocationMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(sessionStorage.getItem('eventId'));
     this.zoom = 12;
     if(sessionStorage.getItem('eventId') != null) {
       this.getMarkerLocation();
