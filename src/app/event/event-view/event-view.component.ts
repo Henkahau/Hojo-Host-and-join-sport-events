@@ -71,6 +71,7 @@ export class EventViewComponent implements OnInit {
 
   deleteEvent(id:string) {
     this.eventService.deleteEvent(id).subscribe(() => { EventService.refreshEventList.next(true)});
+    sessionStorage.removeItem('eventId');
     this.close();
   }
 

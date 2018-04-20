@@ -32,8 +32,17 @@ export class LocationMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(sessionStorage.getItem('eventId'));
     this.zoom = 12;
-    this.getMarkerLocation();
+    if(sessionStorage.getItem('eventId') != null) {
+      this.getMarkerLocation();
+    }
+    else {
+      this.latitude = 65.0;
+      this.longitude = 25.5;
+      this.latitudeMarker  = this.latitude;
+      this.longitudeMarker = this.longitude;
+    }
 
     //create search FormControl
     this.searchControl = new FormControl();
