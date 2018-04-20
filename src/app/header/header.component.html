@@ -1,5 +1,5 @@
 <div *ngIf="bigScreen(), else smallScreen">
-<div class="col-sm-12">
+  <div class="col-sm-12">
     <div class="col-sm-8">
       <div class="col-sm-3">
 
@@ -8,49 +8,58 @@
         <a (click)="navigateHome()">
           <img class="img" [src]="imagePath2" style="height: 50px;">
         </a>
-          <a (click)="navigateHome()" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
+        <a (click)="navigateHome()" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
       </div>
       <div class="col-sm-3" style="padding-top: 3.5px;">
-        <a *ngIf="getUserLoginStatus()" (click)="onSelect('create')" style="color:#F3F0F3;">Create Event</a>  
+        <a *ngIf="getUserLoginStatus()" (click)="onSelect('create')" style="color:#F3F0F3;">Create Event</a>
       </div>
 
     </div>
 
-      
-      <div class="col-sm-4">
-        <div *ngIf="!getUserLoginStatus()" class="col-sm-5" style="padding-top: 3.5px;">
-          <a (click)="onSelect('login')" style="color:#F3F0F3;">Login</a>
-          <a (click)="onSelect('register')" style="color:#F3F0F3; ">Register</a> 
-        </div>
-       
-        <div class="col-sm-5">
-          <a *ngIf="getUserLoginStatus()" (click)="onSelect('logout')" style="color:#F3F0F3;">Logout</a>
-            <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']">
-              <img class="img" [src]="imagePath" style="max-height: 50px; padding-left: 0px;">
-            </a>
-        </div> 
+
+    <div class="col-sm-4">
+      <div *ngIf="!getUserLoginStatus()" class="col-sm-5" style="padding-top: 3.5px;">
+        <a (click)="onSelect('login')" style="color:#F3F0F3;">Login</a>
+        <a (click)="onSelect('register')" style="color:#F3F0F3; ">Register</a>
+      </div>
+
+      <div class="col-sm-5">
+        <a *ngIf="getUserLoginStatus()" (click)="onSelect('logout')" style="color:#F3F0F3;">Logout</a>
+        <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']">
+          <img class="img" [src]="imagePath" style="max-height: 50px; padding-left: 0px;">
+        </a>
+      </div>
     </div>
   </div>
-</div> 
+</div>
 <ng-template #smallScreen>
-    <div class="col-sm-12">
-           
-    <a href="#">
-        <img class="img" [src]="imagePath2" style="height: 50px;">
-      </a>
-        <a href="#" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
-      
-        <select name="saatana" style="width: 100px;" id="saatana" *ngIf="getUserLoginStatus()" class="form-control"[(ngModel)]="option" (ngModelChange)="onOptionSelected($event)">
-          <option *ngFor="let option of options"[ngValue]="option">{{option}}</option>
-        </select> 
-    
-  <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3; padding-left: 40px">Login</a>
-  <a *ngIf="!getUserLoginStatus()" (click)="onSelect('register')" style="color:#F3F0F3; padding-left: 10px">Register</a> 
+  <div class="col-sm-12">
 
+    <a href="#">
+      <img class="img" [src]="imagePath2" style="height: 50px;">
+    </a>
+    <a href="#" style="color:#F3F0F3; padding-top: 3.5px; padding-right: 30px;">Hojo</a>
+
+    <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3; padding-left: 0px">Login</a>
+    <a *ngIf="!getUserLoginStatus()" (click)="onSelect('register')" style="color:#F3F0F3; padding-left: 10px">Register</a>
+
+
+    <div *ngIf="getUserLoginStatus()" style="right: 5px;" class="btn-group" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        Options
+        <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem">
+          <a class="dropdown-item" (click)="onSelect('create')">Create Event</a>
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" (click)="onSelect('My Profile')">My Profile</a>
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" (click)="onSelect('logout')">Logout</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </ng-template>
-
-  
-
-
-
