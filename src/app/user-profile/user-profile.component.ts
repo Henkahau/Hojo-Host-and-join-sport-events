@@ -25,18 +25,23 @@ export class UserProfileComponent implements OnInit {
               private router: Router) {
                  var currUser = JSON.parse(localStorage.getItem('currentUser'));
                  this.currentUser = currUser.Account;
-                 this.joinedEvents = this.currentUser.events;
-                 console.log(this.currentUser.events);
+                
+                 EventService.refreshEventList.subscribe(res =>{
+                   this.loadProfile();
+                 })
                 }
 
   ngOnInit() {
     this.loadProfile();
+    console.log(this.currentUser.profilePicture);
   }
 
   private loadProfile(){
-    /* this.userService.getById(this.currentUser.Account.accountId).subscribe(user => {
-      this.currentUser = user[0];     
-    }); */
+    this.userService.getById(this.currentUser.accountId).subscribe(user => {
+      this.currentUser = user[0];
+      this.joinedEvents = this.currentUser.events;
+      this.hostedEvents = this.currentUser.hostedEvents;     
+    });
   }
 
   navigate(destination: string) {
