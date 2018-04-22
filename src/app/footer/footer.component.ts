@@ -22,4 +22,8 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
+  navigateHome() {
+    this.router.navigate(['']);
+  }
+
 }
