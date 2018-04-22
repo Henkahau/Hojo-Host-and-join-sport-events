@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { User } from '../_models/user'
-import { UserService, AlertService, AuthenticationService } from '../_services';
+import { User, Event } from '../_models/index'
+import { UserService, AlertService, AuthenticationService, EventService } from '../_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,14 +14,19 @@ export class UserProfileComponent implements OnInit {
   
   model: any = {};
   currentUser: User;
+  hostedEvents: Event[];
+  joinedEvents: Event[];
   userProfileId: string;
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService,
+              protected eventService: EventService,
               private router: Router) {
                  var currUser = JSON.parse(localStorage.getItem('currentUser'));
                  this.currentUser = currUser.Account;
+                 this.joinedEvents = this.currentUser.events;
+                 console.log(this.currentUser.events);
                 }
 
   ngOnInit() {

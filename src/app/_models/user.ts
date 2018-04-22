@@ -8,4 +8,6 @@ export class User {
     pwsalt: string;
     firstName: string;
     lastName: string;
+    events: any = [];
+    hostedEvents: any = [];
 }
