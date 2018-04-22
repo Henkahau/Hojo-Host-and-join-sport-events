@@ -71,7 +71,6 @@ export class HeaderComponent{
     bigScreen(){
         var screenWidth = Math.max(document.documentElement.clientWidth,window.innerWidth);
         if( screenWidth > 700 ){
-            console.log(Math.max(document.documentElement.clientWidth, window.innerWidth));
             return true;
         }
         else{
