@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { EventService, AlertService } from '../../_services/index';
 import { Event, SportType, SkillLevel, PlayType } from '../../_models/index';
 
@@ -42,7 +41,6 @@ export class EditEventComponent implements OnInit {
       this.router.navigate(['/']);
     }   
   }
-
 
   private loadEvent(){
     this.eventService.getEventById(sessionStorage.getItem("eventId")).subscribe(event => {
@@ -96,7 +94,7 @@ export class EditEventComponent implements OnInit {
     if(newe.lng != old.lng){
       this.model.lng = newe.lng.toString();
     }
-    
+
     return this.model;
   }
 
@@ -116,11 +114,5 @@ export class EditEventComponent implements OnInit {
         this.alertService.error(error);
         this.loading = false;
       });
-  }
-
-  clean() {
-    this.sportValues.splice(0, 1);
-    this.skillValues.splice(0, 1);
-    this.playTypeValues.splice(0, 1);
   }
 }

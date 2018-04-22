@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-
 import { Event, SportType, SkillLevel, PlayType, User } from '../../_models/index';
 import { EventService, AlertService, UserService } from '../../_services/index';
 import { NgModel } from '@angular/forms';
@@ -51,7 +50,6 @@ export class CreateEventComponent implements OnInit {
     this.model.event.date = this.dateT.toISOString(); 
     this.model.accountId = this.currentUser.accountId;
     
-    console.log(this.model);
      this.eventService.createEvent(this.model)
         .subscribe(
           data => {

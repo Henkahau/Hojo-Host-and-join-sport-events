@@ -12,7 +12,6 @@
         </div>
         <div class="col-lg-6">
           <label for="date">Date</label>
-          <!-- <input type="datetime-local" class="form-control" name="date" [(ngModel)]="model.date" #date="ngModel" required /> -->
           <input [owlDateTime]="dateTime" [min]="now" [owlDateTimeTrigger]="dateTime" name="date" [(ngModel)]="dateT" #date="ngModel" required>
           <owl-date-time #dateTime [pickerMode]="'dialog'"></owl-date-time>
         </div>
@@ -55,12 +54,6 @@
       </div>
     </div>
 
-    <!-- <div class="form-group">
-      <label for="location">Location</label>
-      <input type="text" class="form-control" name="location" [(ngModel)]="model.location" #location="ngModel" required />
-      <div *ngIf="f.submitted && !location.valid" class="help-blog">Location is required</div>
-    </div> -->
-
     <label for="location">Location</label>
     <app-location-map (receivedLocation)="model.event.lat = $event.lat; model.event.lng = $event.lng;">
     </app-location-map>
@@ -68,13 +61,8 @@
     <div class="form-group">
       <div class="">
         <label for="description">Description</label>
-        <!-- <input type="text" name="description" maxlength="300" [(ngModel)]="model.description" #description="ngModel" /> -->
-
       </div>
       <textarea name="desciption" class="form-control" cols="90" rows="5" [(ngModel)]="model.event.description" #description="ngModel"></textarea>
-      <!--  <label for="description">Description</label>
-       <input type="text" name="description" maxlength="300" [(ngModel)]="model.description" #description="ngModel" /> 
-      <textarea name="desciption" cols="60" rows="5" [(ngModel)]="model.description" #description="ngModel"></textarea> -->
     </div>
 
     <div class="form-group">
@@ -85,5 +73,4 @@
       </div>
     </div>
   </form>
-
 </div>

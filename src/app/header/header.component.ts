@@ -1,12 +1,9 @@
 import { Component, Output, HostListener, HostBinding } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-
 import { Event } from '../_models/index';
 import { UserService, EventService, AuthenticationService } from '../_services/index';
-
 import { CreateEventComponent } from '../event/index';
 import { LoginComponent } from '../login';
 import { RegisterComponent } from '../register';
@@ -26,7 +23,6 @@ export class HeaderComponent{
     modalRef: BsModalRef;
     options = ['Options','Create Event', 'My Profile', 'Logout']
   
- 
     constructor(
         private router: Router,
         private modalService: BsModalService,
@@ -63,11 +59,10 @@ export class HeaderComponent{
             case 'My Profile':{
                 this.router.navigate(['/user-profile']);
                 break;
-
-            }
-            
+            }  
         }
     }
+
     bigScreen(){
         var screenWidth = Math.max(document.documentElement.clientWidth,window.innerWidth);
         if( screenWidth > 700 ){
@@ -77,18 +72,6 @@ export class HeaderComponent{
             return false;
         }
     }
-    // onOptionSelected(val: any) {
-    //     if(val == 'Create Event'){ 
-    //         this.modalRef = this.modalService.
-    //         show(CreateEventComponent, {ignoreBackdropClick: true, class: 'modal-lg'});        
-    //     }
-    //     if (val == 'Logout'){
-    //         this.authenticationService.logout();
-    //     }
-    //     if (val == 'My Profile'){
-    //         this.router.navigate(['/user-profile']);
-    //     }
-    //   }
 
     navigateHome() {
         this.router.navigate(['']);

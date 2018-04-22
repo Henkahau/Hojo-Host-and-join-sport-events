@@ -44,18 +44,17 @@
     <p class="form-control">      
      {{ address }} 
     </p>
-    <!-- MAP -->
+
     <app-simplemap #map (latlng)="reverseGeocode($event.lat, $event.lng, map)"></app-simplemap>
   </div>
   
   <div class="form-group">
     <div class="row">
       <div class="col-lg-4">
-        <!-- host PICTURE / INFO -->
         <img id="profilePicture" style="height: 30%;" src="http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337">
         <p>Host profile</p>
-
       </div>
+
       <div class="col-lg-3">
         <label>Host information</label>
         <div *ngIf="host; else noHost">
@@ -72,8 +71,8 @@
           <p>try to load the page again</p>
         </ng-template>
       </div>
+      
       <div class="col-lg-5" *ngIf="event">
-        <!-- DESCRIPTION TEXT BOX -->
         <label>Description:</label>
         <textarea class="form-control" cols="30" rows="8">
           {{ event[0].description }}

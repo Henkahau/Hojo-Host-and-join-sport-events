@@ -32,8 +32,6 @@ export class EventlistComponent implements OnInit {
   }
 
   loadEvents() {
-    // this.eventService.getAllEvents().subscribe(events => { this.events = events });
-
     // Catch filters emitted from map.component
     this.eventService.eventInfo.subscribe(res => {
       this.eventInfo = res;
@@ -59,5 +57,4 @@ export class EventlistComponent implements OnInit {
           this.events = [];
       });
   }
-
 }

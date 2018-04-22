@@ -26,9 +26,6 @@ export enum SportType{
     BASKETBALL = 'Basketball',
     BADMINTON = 'Badminton',
     CHESS = 'Chess',
-    
-    //ICEHOCKEY = 'Icehockey',
-    //TENNIS = 'Tennis'
 }
 
 export enum SkillLevel{
