@@ -1,5 +1,5 @@
 @media all and (min-width:0px) and (max-width: 640px) {
-    /* put your css styles in here */
+    
     .col-sm-5 {
         background: #A9D861;
         max-height: 100%;
@@ -8,8 +8,7 @@
         background: #F3F0F3;
         top: 80px;
         position: relative;
-        padding-top: 15px;
-        
+        padding-top: 15px;  
     }
 }
 

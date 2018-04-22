@@ -6,11 +6,8 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337"
-  // nappi: boolean = false;
-  // nimi: string = "My Profile";
+  @Output ()public imagePath: string = "http://i0.wp.com/cdn.techgyd.com/save-whatsapp-profile-picture-image3.jpg?resize=337%2C337";
   serverStatus: string = 'offline';
-
 
   constructor() { this.serverStatus = Math.random() > 0.5 ? 'online ' : 'offline' }
 
@@ -19,9 +16,7 @@ export class ProfileComponent implements OnInit {
 
   clickPicture() {
     return this.serverStatus;
-    
-    }
-    
+    }  
   }
 
 

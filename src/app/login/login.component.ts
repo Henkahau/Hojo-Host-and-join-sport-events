@@ -9,8 +9,7 @@ import { AlertService, AuthenticationService } from '../_services/index';
     selector: 'app-login',
     moduleId: module.id,
     templateUrl: 'login.component.html',
-    styles: ['head { background-color: green; }'] // Ei vaihda vielä edes taustaväriä perkele.
-    //styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css']
 })
  
 export class LoginComponent implements OnInit {
@@ -18,8 +17,6 @@ export class LoginComponent implements OnInit {
     loading = false;
     returnUrl: string;
     closeBtn: string;
-   // loggedIn = false;
-   // message: number;
 
     @Output () messageEvent = new EventEmitter<number>();
  
@@ -43,11 +40,8 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.email, this.model.notapwhash)
             .subscribe(
                 data => {
-                    //this.alertService.success('Login successful', false);
-                    //this.router.navigate([this.returnUrl]);
                     this.authenticationService.setLoginStatus(true);
                     this.close();
-                  
                 },
                 error => {
                     this.alertService.error(error);
@@ -58,17 +52,4 @@ export class LoginComponent implements OnInit {
     close(){
         this.bsModalRef.hide();
     }
-
- 
- //  onLoggedIn(){
-       
-  //  this.sendMessage(val)
-//    }
-
-//    sendMessage(val:any){
-
-//     this.message =   val;
-//     this.messageEvent.emit(this.message);
-
-//    }
 }

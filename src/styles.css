@@ -29,7 +29,6 @@
     }
 }
 
-
 .pac-container {
     z-index: 1050;
 }
@@ -49,16 +48,6 @@ body {
     border-color: #012400;
 }
 
-/* .movingHeader {
-    padding-left: 170px;
-    font-size: 30px;
-    color: #040f0f;
-} */
-
-/* .moving {
-    padding-right: 145px;
-} */
-
 .cancelButton {
     color: #012400;
     background: #A9D861;
@@ -68,18 +57,6 @@ body {
     color: #DFF1A0;
     background: #437422;
 }
-
-/*
-    Primary button is used for:
-        - Logging in
-        - Creating an event
-        - Joining an event
-        - Edit an event
-    Success:
-        - Cancel button
-    Danger:
-        - Delete an event
-*/
 
 .btn-primary {
     color: #DFF1A0 !important;

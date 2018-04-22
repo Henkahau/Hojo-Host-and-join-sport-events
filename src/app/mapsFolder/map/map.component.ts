@@ -120,7 +120,6 @@ export class MapComponent implements OnInit {
         this.playerAmount = event[0].players.length + 1;
       }
     });
-
     gm.lastOpen = infoWindow;
     infoWindow.open();
   }
@@ -154,7 +153,6 @@ export class MapComponent implements OnInit {
     imagePath(sporttype: string) {
       return '../../assets/Images/' + sporttype + '.png';
     }
-   
 }
 
 

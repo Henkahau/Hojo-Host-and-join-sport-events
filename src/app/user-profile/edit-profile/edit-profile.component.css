@@ -1,10 +1,11 @@
-textarea
-{
+textarea {
     resize: none;
 }
+
 .button.btn.btn-primary {
     padding-bottom: 50px;
 }
+
 .div {
     height: auto;
     width: 1000px;

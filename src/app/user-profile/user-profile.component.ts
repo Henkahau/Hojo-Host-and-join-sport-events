@@ -3,20 +3,18 @@ import { User } from '../_models/user'
 import { UserService, AlertService, AuthenticationService } from '../_services';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
   moduleId: module.id
 })
+
 export class UserProfileComponent implements OnInit {
   
   model: any = {};
   currentUser: User;
-
   userProfileId: string;
-
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
   constructor(private userService: UserService,

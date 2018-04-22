@@ -1,29 +1,11 @@
-// -------------------------------------------------------------------------------
-/*
-SERVICEN KÄYTTÖ-OHJEITA!
-Luodusta servicestä voidaan tehdä instanssi (jota käytetään ja jolla kutsutaan servicen funktioita)
-kun se importataan komponenttiin ja määritellään constructorissa.
-
-Provider: provider luo aina servicestä uuden instanssin. Eli jos useaan komponenttiin lisätään provider 
-servicestä, joka sisältää arrayListin, kaikilla komponenteilla on silloin henk.koht arraylist
-eikä toisessa komponentissa lisättyjä tietoja voida noutaa
-
-providerin avulla servicen instanssi periytyy -käsittääkseni- alempiin luokkiin. Eli jos service instanssi
-määritellään app modulessa, se service ja sinne talletetut tiedot pitäisi olla saatavilla kaikissa muissa 
-komponenteissa.
-*/
-// -------------------------------------------------------------------------------
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
- 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
- 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
- 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
@@ -51,7 +33,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RatingComponent } from './rating/rating.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 
 @NgModule({
     imports: [

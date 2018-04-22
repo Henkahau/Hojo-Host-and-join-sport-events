@@ -21,7 +21,6 @@
         <option *ngFor="let playTypeValue of playTypeValues" [ngValue]="playTypeValue">{{playTypeValue}}</option>
       </select>
     </div>
-    <!-- <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12"> -->
     <div class="col-lg-6">
       <label for="maxAttendees">Player amount</label>
       <input class="form-control" name="maxAttendees" type="number" name="maxAttendees" min="1" max="30" [(ngModel)]="eventInfo.maxAttendees" (ngModelChange)="onActivitySelected($event)" #maxAttendees="ngModel"/>

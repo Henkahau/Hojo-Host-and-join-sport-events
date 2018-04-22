@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
- 
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -14,7 +13,6 @@ import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.c
 import { RatingComponent } from './rating/index';
  
 const appRoutes: Routes = [
-    //{ path: '' ,component: ModalComponent },
     { path: '', component: MainpageComponent },
     { path: 'home' ,component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
@@ -25,9 +23,6 @@ const appRoutes: Routes = [
     { path: 'edit-event', component: EditEventComponent, canActivate: [AuthGuard] },
     { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
     { path: 'rating', component:RatingComponent},
-
-    // Test
-    // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
  

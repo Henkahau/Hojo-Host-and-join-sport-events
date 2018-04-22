@@ -23,7 +23,7 @@
 
       <div class="col-sm-5">
         <a *ngIf="getUserLoginStatus()" (click)="onSelect('logout')" style="color:#F3F0F3;">Logout</a>
-        <a *ngIf="getUserLoginStatus()" [routerLink]="['/user-profile']">
+        <a *ngIf="getUserLoginStatus()" (click)="onSelect('My Profile')">
           <img class="img" [src]="imagePath" style="max-height: 50px; padding-left: 0px;">
         </a>
       </div>

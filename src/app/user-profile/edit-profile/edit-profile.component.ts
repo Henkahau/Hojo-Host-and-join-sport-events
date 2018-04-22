@@ -1,8 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-
 import { User } from '../../_models';
 import { UserService, AlertService, AuthenticationService } from '../../_services';
 import { Router } from '@angular/router';
@@ -24,8 +22,7 @@ export class EditProfileComponent implements OnInit {
   modalRef: BsModalRef;
   imagePath: string = '../../assets/Images/default_profile_image.png'; 
 
-  onFileSelected(event){
-    
+  onFileSelected(event){   
   }
 
   constructor(private userService: UserService,
@@ -55,8 +52,7 @@ export class EditProfileComponent implements OnInit {
       var reader = new FileReader();
 
       reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
-      
+      reader.readAsBinaryString(file);   
   }
 }
 
@@ -80,7 +76,6 @@ _handleReaderLoaded(readerEvt) {
     this.profileEdited = true;
     return this.profileEdited
   }
-
 
   isSomethingChanged(): boolean{
     return this.profileEdited
@@ -109,7 +104,6 @@ _handleReaderLoaded(readerEvt) {
     }
 
     return this.model;
-
   }
 
   private editProfile(){
@@ -123,12 +117,11 @@ _handleReaderLoaded(readerEvt) {
             console.log(JSON.parse(localStorage.getItem('currentUser')));
             this.alertService.success('Profile edited successfully');
             this.router.navigate(['/user-profile']);
-          }
-        ,error =>{
+          },
+        error =>{
             this.alertService.error(error);
             this.loading = false;
-          }
-      );
+          });
   }
 
   navigate() {
