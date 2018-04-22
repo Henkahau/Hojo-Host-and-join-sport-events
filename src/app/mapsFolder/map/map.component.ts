@@ -140,8 +140,9 @@ export class MapComponent implements OnInit {
       },
       error => {
         // In case there is no events
-        if(error.status === 200)
-          console.log("No events found");
+        if(error.status === 200) {
+          this.events = [];
+        }
       });
     }
 
