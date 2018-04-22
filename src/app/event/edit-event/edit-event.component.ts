@@ -100,7 +100,6 @@ export class EditEventComponent implements OnInit {
 
   private editEvent(){
     sessionStorage.removeItem("eventId");
-    console.log(this.getChanges(this.event, this.eventToEdit));
     this.eventService.updateEvent(this.event.eventId, this.getChanges(this.event, this.eventToEdit))
     .subscribe(
       data => {

@@ -61,8 +61,6 @@ export class HomeComponent implements OnInit {
     _handleReaderLoaded(readerEvt) {
        var binaryString = readerEvt.target.result;
               this.base64textString= btoa(binaryString);
-              
-              console.log(this.base64textString);
       }
 
     baseToImg(){

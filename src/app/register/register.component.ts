@@ -27,16 +27,12 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    console.log('THIS ONE!: ' + data);
                     // set success message and pass true paramater to persist the message after redirecting to the login page
                     this.alertService.success('Registration successful', false);
                     this.close();
                 },
                 error => {
                     this.alertService.error(error);
-                    console.log('ERROR MESSAGE FOR KOEN: ' + JSON.stringify(error.error));
-                    console.log(error);
-                    console.log(error.message);
                     this.loading = false;
                 });
     }

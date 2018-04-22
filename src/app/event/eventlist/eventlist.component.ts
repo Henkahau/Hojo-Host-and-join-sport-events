@@ -35,7 +35,6 @@ export class EventlistComponent implements OnInit {
     // Catch filters emitted from map.component
     this.eventService.eventInfo.subscribe(res => {
       this.eventInfo = res;
-      console.log(this.eventInfo);
       this.filteredEvents();
     });
   }
@@ -53,7 +52,6 @@ export class EventlistComponent implements OnInit {
       error => {
         // In case there is no events
         if (error.status === 200)
-          console.log("No events found");
           this.events = [];
       });
   }

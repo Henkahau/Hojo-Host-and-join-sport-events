@@ -100,8 +100,6 @@ export class MapComponent implements OnInit {
   receiveMessage(event: any) {
     this.eventInfo = event;
 
-    console.log(this.eventInfo);
-
     if(this.events != null)
       this.events = [];
 

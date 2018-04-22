@@ -107,14 +107,12 @@ _handleReaderLoaded(readerEvt) {
   }
 
   private editProfile(){
-    console.log(this.getChanges(this.currentUser, this.profileToEdit));
       this.userService.update(this.currentUser.accountId, this.getChanges(this.currentUser, this.profileToEdit)).subscribe
       (
         data=>{
             var currUser = JSON.parse(localStorage.getItem('currentUser'));
             currUser.Account = this.profileToEdit;
             localStorage.setItem('currentUser', JSON.stringify(currUser));
-            console.log(JSON.parse(localStorage.getItem('currentUser')));
             this.alertService.success('Profile edited successfully');
             this.router.navigate(['/user-profile']);
           },

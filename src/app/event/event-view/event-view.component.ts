@@ -51,7 +51,6 @@ export class EventViewComponent implements OnInit {
  
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
-    console.log(this.eventID);
     this.eventService.getEventById(this.eventID).subscribe(event => {
       this.event = event; 
       this.host = event[0].host;
