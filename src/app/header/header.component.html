@@ -33,10 +33,10 @@
 <ng-template #smallScreen>
   <div class="col-sm-12">
 
-    <a href="#">
+    <a (click)="navigateHome()">
       <img class="img" [src]="imagePath2" style="height: 50px;">
     </a>
-    <a href="#" style="color:#F3F0F3; padding-top: 3.5px; padding-right: 30px;">Hojo</a>
+    <a (click)="navigateHome()" style="color:#F3F0F3; padding-top: 3.5px; padding-right: 30px;">Hojo</a>
 
     <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3; padding-left: 0px">Login</a>
     <a *ngIf="!getUserLoginStatus()" (click)="onSelect('register')" style="color:#F3F0F3; padding-left: 10px">Register</a>
