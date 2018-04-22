@@ -35,7 +35,7 @@ export class EditProfileComponent implements OnInit {
               }
                 
   ngOnInit() {
-    this.loadProfile();
+    this.loadProfile();   
   }
 
   private loadProfile(){
@@ -69,6 +69,7 @@ _handleReaderLoaded(readerEvt) {
   confirm(){
     this.userService.delete(this.currentUser.accountId).subscribe( data => {
       this.authenticationService.logout();
+      this.modalRef.hide();
     });
   }
 
