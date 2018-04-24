@@ -5,9 +5,7 @@
       </div>
 
       <div class="col-sm-4" style="padding-left: 2px;">
-        <a (click)="navigateHome()">
-          <img class="img" [src]="imagePath2" style="height: 50px;">
-        </a>
+        <img (click)="navigateHome()" class="img" [src]="imagePath2" style="height: 50px;">
         <a (click)="navigateHome()" style="color:#F3F0F3; padding-top: 3.5px;">Hojo</a>
       </div>
       <div class="col-sm-3" style="padding-top: 3.5px;">
@@ -32,10 +30,9 @@
 </div>
 <ng-template #smallScreen>
   <div class="col-sm-12">
-
-    <a (click)="navigateHome()">
-      <img class="img" [src]="imagePath2" style="height: 50px;">
-    </a>
+ 
+    <img (click)="navigateHome()" class="img" [src]="imagePath2" style="height: 50px;">
+   
     <a (click)="navigateHome()" style="color:#F3F0F3; padding-top: 3.5px; padding-right: 30px;">Hojo</a>
 
     <a *ngIf="!getUserLoginStatus()" (click)="onSelect('login')" style="color:#F3F0F3; padding-left: 0px">Login</a>
