@@ -37,8 +37,8 @@ export class LocationMapComponent implements OnInit {
       this.getMarkerLocation();
     }
     else {
-      this.latitude = 65.0;
-      this.longitude = 25.5;
+      this.latitude = 51.45208;
+      this.longitude = 5.47979;
       this.latitudeMarker  = this.latitude;
       this.longitudeMarker = this.longitude;
     }
@@ -106,8 +106,7 @@ export class LocationMapComponent implements OnInit {
     });
   }
 
-  dragEnd(event: any)
-  {
+  dragEnd(event: any) {
     this.latitudeMarker  = event.coords.lat;
     this.longitudeMarker = event.coords.lng;
 

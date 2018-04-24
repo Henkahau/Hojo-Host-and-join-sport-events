@@ -52,9 +52,9 @@ export class MapComponent implements OnInit {
   ngOnInit() {
 
     this.zoom = 10;
-    this.latitude = 65.0121;
-    this.longitude = 25.4651;
-    this.radius = 5;
+    this.latitude = 51.45208;
+    this.longitude = 5.47979;
+    this.radius = 10;
 
     //create search FormControl
     this.searchControl = new FormControl();
