@@ -68,8 +68,12 @@ _handleReaderLoaded(readerEvt) {
 
   confirm(){
     this.userService.delete(this.currentUser.accountId).subscribe( data => {
-      this.authenticationService.logout();
-      this.modalRef.hide();
+      this.alertService.success("Your profile is deleted");
+      setTimeout(() => {
+        this.authenticationService.logout();
+        this.modalRef.hide();
+      }, 1800);
+      
     });
   }
 
