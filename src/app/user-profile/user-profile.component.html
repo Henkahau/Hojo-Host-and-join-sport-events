@@ -5,7 +5,7 @@
         <img [src]="imagePath" alt="" style="max-width: 75%; max-height: 75%;">
     </div>
      <!-- hosted event list -->
-     <div class="col-sm-4" >
+     <div class="col-sm-4" *ngIf="isHosting()">
         <label style="color: #437422">Hosted Events</label>
         <div class="scrollmenu">
         
@@ -38,11 +38,12 @@
     </div>
       </div>
     <!-- joined event list -->
-    <div class="col-sm-4" >
+    <div class="col-sm-4" *ngIf="hasJoined()" >
     <label style="color: #437422">Joined Events</label>
     <div class="scrollmenu">
     
-    <ul class="list-group-item " *ngFor="let event of joinedEvents; let i = index; let isEven = even; let isOdd = odd">
+    <ul class="list-group-item " *ngFor="let event of joinedEvents; let i = index; let isEven = even; let isOdd = odd"
+    (click)="openEventView(event.eventId)">
      <div style="background: #F3F0F3" *ngIf="isOdd; else even ">
       <label style="padding-top: 10px">Title:</label> 
       {{event.title}} 
