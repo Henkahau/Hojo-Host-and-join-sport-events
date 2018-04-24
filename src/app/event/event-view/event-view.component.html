@@ -79,7 +79,7 @@
         </textarea>
 
         <div *ngIf="getUserLoginStatus()" align="left">
-          <button class="btn btn-default" [disabled]="joining" *ngIf="!hasJoined() && !isHost(); else leave" (click)="joinEvent()">Join</button>
+          <button class="btn btn-default" [disabled]="joining || eventFull()" *ngIf="!hasJoined() && !isHost(); else leave" (click)="joinEvent()">Join</button>
             <ng-template #leave>
               <button class="btn btn-default" *ngIf="!isHost()" (click)="leaveEvent()">Leave</button>
             </ng-template>

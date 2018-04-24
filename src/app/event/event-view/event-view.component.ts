@@ -133,4 +133,9 @@ export class EventViewComponent implements OnInit {
       }
     });
   }
+
+  eventFull() {
+    // If player amount is greater or equals to maxAttendees, disable join button (return true)
+    return this.event[0].players.length + 1 >= this.event[0].maxAttendees;
+  }
 }
