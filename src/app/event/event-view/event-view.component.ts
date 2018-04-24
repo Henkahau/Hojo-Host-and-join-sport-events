@@ -19,6 +19,7 @@ export class EventViewComponent implements OnInit {
   address: string;
   joining: boolean;
   playerAmount: number;
+  defaultProfile : string = '../../../assets/Images/default_profile_image.png';
 
   constructor(
     private router: Router,
