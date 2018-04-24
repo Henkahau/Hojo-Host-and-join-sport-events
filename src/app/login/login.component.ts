@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
                     this.close();
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error("Check your E-mail and password!");
                     this.loading = false;
                 });
     }

@@ -47,16 +47,32 @@ export class UserProfileComponent implements OnInit {
     this.userService.getById(this.id).subscribe(user => {
       this.currentUser = user[0];
 
-      this.joinedEvents = this.currentUser.events
+      this.joinedEvents = this.currentUser.events;
       this.hostedEvents = this.currentUser.hostedEvents;
 
     });
   }
 
+  private isHosting(): boolean{
+    if(this.hostedEvents != undefined){
+        return this.hostedEvents.length > 0;
+    }else{
+        return false;
+      }
+  }
+
+  private hasJoined(): boolean{
+    if(this.joinedEvents != undefined){
+      return this.joinedEvents.length > 0;
+    }else{
+      return false;
+    }
+  }
+
   private openEventView(id: string) {
     //OPENING EVENTVIEW HAS SOME ERROR
-    /* sessionStorage.setItem("eventId", id);
-    this.modalRef = this.modalService.show(EventViewComponent, { class: 'modal-lg' }); */
+    sessionStorage.setItem("eventId", id);
+    this.modalRef = this.modalService.show(EventViewComponent, { class: 'modal-lg' });
   }
 
   navigate(destination: string) {

@@ -15,7 +15,7 @@ export class EventViewComponent implements OnInit {
   host: User;
   currentUser: User;
   id: any = {};
-  geocoder = new google.maps.Geocoder;
+  geocoder: any;
   address: string;
   joining: boolean;
   playerAmount: number;
@@ -45,6 +45,7 @@ export class EventViewComponent implements OnInit {
       sessionStorage.setItem('addressStatus', 'N');
     }
   }
+
 
   getUserLoginStatus(): boolean {
     return this.authenticationService.getLoginStatus();
@@ -113,6 +114,7 @@ export class EventViewComponent implements OnInit {
   }
 
   reverseGeocode(lat: number, lng: number, map){
+    this.geocoder = new google.maps.Geocoder;
     var latlng = {lat: +lat, lng: +lng };
     sessionStorage.setItem('addressStatus', 'N');
    
