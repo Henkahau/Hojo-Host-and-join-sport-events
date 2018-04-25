@@ -49,6 +49,9 @@ export class UserProfileComponent implements OnInit {
 
       this.joinedEvents = this.currentUser.events;
       this.hostedEvents = this.currentUser.hostedEvents;
+      if(this.currentUser.profilePicture != null){
+        this.imagePath = this.currentUser.profilePicture;
+      }
 
     });
   }

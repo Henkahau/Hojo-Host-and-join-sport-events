@@ -88,9 +88,9 @@ _handleReaderLoaded(readerEvt) {
 
   private getChanges(curProf: User, ediProf: User){
     
-    /* if(this.base64ImgStr != null){
+    if(this.base64ImgStr != null){
       this.model.profilePicture = this.base64ImgStr;
-    } */
+    }
     
     if(curProf.firstName != ediProf.firstName){
       this.model.firstName = ediProf.firstName;
