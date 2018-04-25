@@ -32,6 +32,7 @@ export class EventViewComponent implements OnInit {
         var currentU = JSON.parse(localStorage.getItem('currentUser'));
         this.currentUser = currentU.Account;
         this.id.accountId = this.currentUser.accountId;
+        this.defaultProfile = this.currentUser.profilePicture;
       } 
   }
 

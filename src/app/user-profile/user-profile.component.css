@@ -5,3 +5,15 @@ textarea {
 html, body {
     height: 100%;
 }
+
+@media all and (min-width: 0px) and (max-width: 640px){
+    img{
+        padding-bottom: 50px;
+        padding-left: 25%;
+    }
+
+    h2{
+        color: #437422;
+        padding-left: 25%;
+    }
+}
