@@ -32,7 +32,6 @@ export class EventViewComponent implements OnInit {
         var currentU = JSON.parse(localStorage.getItem('currentUser'));
         this.currentUser = currentU.Account;
         this.id.accountId = this.currentUser.accountId;
-        this.defaultProfile = this.currentUser.profilePicture;
       } 
   }
 
@@ -58,6 +57,9 @@ export class EventViewComponent implements OnInit {
       this.event = event;
       this.userService.getById(this.event[0].host.accountId).subscribe(host => {
         this.host = host[0];
+        if(this.host.profilePicture != null){
+          this.defaultProfile = this.host.profilePicture;
+        }
       });
       this.joining = false;
 
