@@ -54,8 +54,10 @@ export class EventViewComponent implements OnInit {
   private loadEvent() {
     this.eventID = sessionStorage.getItem("eventId");
     this.eventService.getEventById(this.eventID).subscribe(event => {
-      this.event = event; 
-      this.host = event[0].host;
+      this.event = event;
+      this.userService.getById(this.event[0].host.accountId).subscribe(host => {
+        this.host = host[0];
+      });
       this.joining = false;
 
       if(event[0].players === undefined || event[0].players.length == 0) {
