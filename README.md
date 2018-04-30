@@ -1,7 +1,7 @@
 Use npm install and then run project with npm start.
 
 
-# Userlogin
+# Hojo-Host-and-join-sport-events
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 
