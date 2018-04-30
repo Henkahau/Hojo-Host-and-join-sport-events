@@ -34,7 +34,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Front-end programmers
 
 Henri Haukipuro     https://github.com/Henkahau
+
 Atte Karppinen      https://github.com/AtteKarppinen
+
 Valtteri Impola     https://github.com/impolar
+
 Anton Junttari      https://github.com/Antonjun
+
 Juho Kuoksa         https://github.com/Jauhoo
